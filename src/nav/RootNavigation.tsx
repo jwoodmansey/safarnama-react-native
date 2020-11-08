@@ -1,8 +1,8 @@
-import React from 'react'
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import MapScreen from '../MapScreen';
-import MapNavigation from './MapNavigation';
-import DrawerContent from './DrawerContent';
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import MapScreen from "../MapScreen";
+import MapNavigation from "./MapNavigation";
+import DrawerContent from "./DrawerContent";
 
 const Drawer = createDrawerNavigator();
 
@@ -13,6 +13,6 @@ const RootNavigation: React.FC = () => {
       <Drawer.Screen name="Article" component={MapScreen} />
     </Drawer.Navigator>
   );
-}
+};
 
-export default RootNavigation
+export default RootNavigation;

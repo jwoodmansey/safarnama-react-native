@@ -12,7 +12,6 @@ import React from 'react';
 import {
   StyleSheet,
 } from 'react-native';
-import RootNavigation from './src/nav/RootNavigation';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
@@ -23,6 +22,7 @@ import {
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
+import RootNavigation from './src/nav/RootNavigation';
 
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
@@ -41,17 +41,15 @@ const CombinedDarkTheme = {
   },
 };
 
-const App = () => {
-  return (
-    <>
-      <PaperProvider theme={CombinedDarkTheme}>
-        <NavigationContainer theme={CombinedDarkTheme}>
-          <RootNavigation></RootNavigation>
-        </NavigationContainer>
-      </PaperProvider>
-    </>
-  );
-};
+const App = () => (
+  <>
+    <PaperProvider theme={CombinedDarkTheme}>
+      <NavigationContainer theme={CombinedDarkTheme}>
+        <RootNavigation />
+      </NavigationContainer>
+    </PaperProvider>
+  </>
+);
 
 const styles = StyleSheet.create({
 });
