@@ -8,21 +8,21 @@
  * @format
  */
 
-import React from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
-} from '@react-navigation/native';
+} from "@react-navigation/native";
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
-} from 'react-native-paper';
-import RootNavigation from './src/nav/RootNavigation';
+} from "react-native-paper";
+import RootNavigation from "./src/nav/RootNavigation";
+import { Provider } from 'react-redux'
+import { store } from "./src/store/configure";
 
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
@@ -41,17 +41,16 @@ const CombinedDarkTheme = {
   },
 };
 
-const App = () => (
-  <>
+const App: React.FC = () => (
+  <Provider store={store}>
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer theme={CombinedDarkTheme}>
         <RootNavigation />
       </NavigationContainer>
     </PaperProvider>
-  </>
+  </Provider>
 );
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});
 
 export default App;
