@@ -2,11 +2,13 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import ExperienceMapView from "./experience/ExperienceMapView";
+import { ExperienceMapView } from "./experience/ExperienceMapView";
+import PlacesDetailsView from "./experience/PlaceDetailsView";
 
 const MapScreen: React.FC = () => {
   return (
     <View style={styles.map}>
+
       <MapView
         showsUserLocation
         showsMyLocationButton
@@ -21,6 +23,9 @@ const MapScreen: React.FC = () => {
       >
         <ExperienceMapView></ExperienceMapView>
       </MapView>
+      <PlacesDetailsView place={undefined}/>
+
+
     </View>
   );
 };

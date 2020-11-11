@@ -27,6 +27,7 @@
     "react-native-screens": "^2.13.0",
     "react-native-vector-icons": "^7.1.0",
     "react-redux": "^7.2.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
     "redux-observable": "^1.2.0"
   },
   "devDependencies": {
