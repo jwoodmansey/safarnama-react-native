@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import ExperienceMapView from "./experience/ExperienceMapView";
 
 const MapScreen: React.FC = () => {
   return (
@@ -18,13 +19,7 @@ const MapScreen: React.FC = () => {
         //   longitudeDelta: 0.0421,
         // }}
       >
-        <Marker
-          title="Test"
-          pinColor="#202020"
-          coordinate={{ latitude: 54, longitude: -2.81 }}
-        >
-          <Icon size={20} name="camera" />
-        </Marker>
+        <ExperienceMapView></ExperienceMapView>
       </MapView>
     </View>
   );

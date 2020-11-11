@@ -12,7 +12,7 @@ const loadExperiencesEpic = (action$: Observable<any>) => action$.pipe(
     () => ajax.get(
       `http://safarnama.lancs.ac.uk/api/experience/5d1ec21b47677179a752e3d2/snapshot`,
     ).pipe(
-      map(({ response }) => loadedExperiences({experiences: response})),
+      map(({ response }) => loadedExperiences({experiences: [response]})),
       // catchError((e) => of(error(.{ message: e.message }))),
     ),
   ),
