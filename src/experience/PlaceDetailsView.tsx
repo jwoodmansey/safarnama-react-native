@@ -44,6 +44,7 @@ import { useSelector } from 'react-redux'
 import BottomSheet from 'reanimated-bottom-sheet'
 import { RootState } from '../store/configure'
 import { PointOfInterestDocument } from '../types/common/point-of-interest'
+import PlaceDetailsViewContent from './PlaceDetailsViewContent'
 
 const PlaceDetailsView: React.FC = () => {
   const bs = useRef()
@@ -54,27 +55,7 @@ const PlaceDetailsView: React.FC = () => {
     }
   }, [selectedPlace])
 
-  const renderInner = () => (
-    <View style={styles.panel}>
-      {/* <TextInput
-        style={styles.search}
-        onFocus={() => {
-          bs.current.snapTo(1)
-        }}
-        placeholder="search"
-      /> */}
-      <Title style={styles.panelTitle}>{selectedPlace?.name}</Title>
-      <Text style={styles.panelSubtitle}>
-        International Airport - 40 miles away
-      </Text>
-      <View style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Directions</Text>
-      </View>
-      <View style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Search Nearby</Text>
-      </View>
-    </View>
-  )
+  const renderInner = () => <PlaceDetailsViewContent place={selectedPlace} />
 
   const renderHeader = () => (
     <View style={styles.header}>
@@ -86,13 +67,13 @@ const PlaceDetailsView: React.FC = () => {
 
 
   return (
-      <BottomSheet
-        ref={bs}
-        snapPoints={[500, 250, 0]}
-        renderContent={renderInner}
-        renderHeader={renderHeader}
-        initialSnap={2}
-      />
+    <BottomSheet
+      ref={bs}
+      snapPoints={['80%', 250, 0]}
+      renderContent={renderInner}
+      renderHeader={renderHeader}
+      initialSnap={2}
+    />
   )
 }
 
@@ -122,11 +103,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-  panel: {
-    height: 600,
-    padding: 20,
-    backgroundColor: '#f7f5eee8',
-  },
+
   header: {
     backgroundColor: '#f7f5eee8',
     shadowColor: '#000000',
@@ -143,29 +120,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#00000040',
     marginBottom: 10,
-  },
-  panelTitle: {
-    fontSize: 27,
-    // height: 35,
-    color: 'black',
-  },
-  panelSubtitle: {
-    fontSize: 14,
-    color: 'gray',
-    height: 30,
-    marginBottom: 10,
-  },
-  panelButton: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: '#318bfb',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  panelButtonTitle: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'white',
   },
   photo: {
     width: '100%',
