@@ -1,18 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Alert, Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import WebView from "react-native-webview";
 import { MediaDocument } from "../types/common/media";
 import { getMediaType, MediaType } from "../types/media";
+import { MapNaviationProp } from "../types/nav/map";
 
 type Props = {
   media: MediaDocument;
 };
 
 const MediaThumb: React.FC<Props> = ({ media }) => {
-  const nav = useNavigation();
+  const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const onPDFPress = () => {
     nav.navigate("PDFScreen", { media });
   };
@@ -27,14 +29,13 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
       return (
         <View>
           <Pdf
-            onPageSingleTap={onPDFPress}
             singlePage
             fitPolicy={1}
             style={styles.pdf}
             source={{ uri: media.path, cache: true }}
           />
           <TouchableOpacity
-            style={[{ width: "100%", height: "100%", position: "absolute" }]}
+            style={StyleSheet.absoluteFill}
             onPress={onPDFPress}
           />
         </View>
