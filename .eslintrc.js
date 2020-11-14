@@ -13,5 +13,6 @@ module.exports = {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off"
   }
 };

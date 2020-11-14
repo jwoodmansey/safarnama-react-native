@@ -1,31 +1,28 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { ExperienceMapView } from "./experience/ExperienceMapView";
+import { StatusBar, StyleSheet, View } from "react-native";
+import MapView from "react-native-maps";
+import ExperienceMapView from "./experience/ExperienceMapView";
 import PlacesDetailsView from "./experience/PlaceDetailsView";
 
 const MapScreen: React.FC = () => {
   return (
     <View style={styles.map}>
-
+      <StatusBar barStyle="light-content" />
       <MapView
-        showsUserLocation
+        // showsUserLocation
         showsMyLocationButton
         showsScale
         style={styles.map}
-        // initialRegion={{
-        //   latitude: -2,
-        //   longitude: 50.6,
-        //   latitudeDelta: 0.0922,
-        //   longitudeDelta: 0.0421,
-        // }}
+        initialRegion={{
+          latitude: 28.7041,
+          longitude: 77.1025,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
       >
-        <ExperienceMapView></ExperienceMapView>
+        <ExperienceMapView />
       </MapView>
-      <PlacesDetailsView place={undefined}/>
-
-
+      <PlacesDetailsView />
     </View>
   );
 };
