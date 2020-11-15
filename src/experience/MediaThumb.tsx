@@ -1,12 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Image, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import ImageViewer from "react-native-image-zoom-viewer";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
-import WebView from "react-native-webview";
+import HTML from "react-native-render-html";
 import { MediaDocument } from "../types/common/media";
 import { getMediaType, MediaType } from "../types/media";
 import { MapNaviationProp } from "../types/nav/map";
@@ -32,7 +31,14 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
       );
     }
     case MediaType.Text: {
-      return <WebView style={styles.image} source={{ uri: media.path }} />;
+      return (
+        <HTML
+          baseFontStyle={styles.htmlText}
+          containerStyle={styles.textContainer}
+          html=""
+          uri={media.path}
+        />
+      );
     }
     case MediaType.Pdf: {
       const onPDFPress = () => {
@@ -78,6 +84,9 @@ const styles = StyleSheet.create({
   },
   pdf: {
     height: 200,
+  },
+  htmlText: {
+    fontSize: 20,
   },
 });
 
