@@ -32,7 +32,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
       );
     }
     case MediaType.Text: {
-      return <WebView source={{ uri: media.path }} />;
+      return <WebView style={styles.image} source={{ uri: media.path }} />;
     }
     case MediaType.Pdf: {
       const onPDFPress = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { Title } from "react-native-paper";
 import { PointOfInterestDocument } from "../types/common/point-of-interest";
 import MediaItem from "./MediaItem";
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   panel: {
     padding: 20,
     backgroundColor: "#f7f5eee8",
+    minHeight: Dimensions.get("screen").height * 0.8,
   },
   panelTitle: {
     fontSize: 27,

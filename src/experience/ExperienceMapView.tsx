@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Marker } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
-// import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Colors } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 import { RootState } from "../store/configure";
 import { ExperienceSnapshotData } from "../types/common/experience";
 import { PointOfInterestDocument } from "../types/common/point-of-interest";
 import { setSelectedPlace } from "../store/experience/experienceReducer";
+import PlaceIcon from "./PlaceIcon";
 
 const ExperienceMapView: React.FC = () => {
   const experience = useSelector<RootState, ExperienceSnapshotData>(
     (s) => s.experience.experiences[0]
   );
+  const nav = useNavigation();
+  useEffect(() => {
+    if (experience) {
+      nav.setOptions({ title: experience.data.name });
+    }
+  }, [experience, nav]);
+
   const dispatch = useDispatch();
   const onPressPlace = (place: PointOfInterestDocument) => () => {
     dispatch(setSelectedPlace(place));
@@ -25,14 +32,14 @@ const ExperienceMapView: React.FC = () => {
           pinColor={Colors.red100}
           // eslint-disable-next-line no-underscore-dangle
           key={p._id}
-          description="Test"
+          // description="Test"
           onPress={onPressPlace(p)}
           coordinate={{
             latitude: p.location.coordinates[1],
             longitude: p.location.coordinates[0],
           }}
         >
-          <MaterialIcon size={20} name={p.type.matIcon.replace("_", "-")} />
+          <PlaceIcon name={p.type.matIcon} />
         </Marker>
       ))}
     </>

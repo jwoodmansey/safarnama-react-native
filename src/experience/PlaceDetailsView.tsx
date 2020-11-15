@@ -15,7 +15,7 @@
 //     sheetRef.current.snapTo(0)
 //   }, [place])
 //   return (
-//     <BottomSheet 
+//     <BottomSheet
 //     // enabledGestureInteraction={false}
 //     ref={sheetRef}
 //     snapPoints={['80%', 300, 0]}
@@ -30,32 +30,28 @@
 
 // export default PlaceDetailsView
 
-import React, { useEffect, useRef } from 'react'
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  TextInput,
-} from 'react-native'
-import { Title } from 'react-native-paper'
-import { useSelector } from 'react-redux'
-import BottomSheet from 'reanimated-bottom-sheet'
-import { RootState } from '../store/configure'
-import { PointOfInterestDocument } from '../types/common/point-of-interest'
-import PlaceDetailsViewContent from './PlaceDetailsViewContent'
+import React, { useEffect, useRef } from "react";
+import { StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
+import { useSelector } from "react-redux";
+import BottomSheet from "reanimated-bottom-sheet";
+import { RootState } from "../store/configure";
+import { PointOfInterestDocument } from "../types/common/point-of-interest";
+import PlaceDetailsViewContent from "./PlaceDetailsViewContent";
 
 const PlaceDetailsView: React.FC = () => {
-  const bs = useRef()
-  const selectedPlace = useSelector<RootState, PointOfInterestDocument | undefined>(state => state.experience.selectedPlace)
+  const bs = useRef();
+  const selectedPlace = useSelector<
+    RootState,
+    PointOfInterestDocument | undefined
+  >((state) => state.experience.selectedPlace);
   useEffect(() => {
     if (selectedPlace) {
-      bs.current.snapTo(1)
+      bs.current.snapTo(1);
     }
-  }, [selectedPlace])
+  }, [selectedPlace]);
 
-  const renderInner = () => <PlaceDetailsViewContent place={selectedPlace} />
+  const renderInner = () => <PlaceDetailsViewContent place={selectedPlace} />;
 
   const renderHeader = () => (
     <View style={styles.header}>
@@ -63,25 +59,24 @@ const PlaceDetailsView: React.FC = () => {
         <View style={styles.panelHandle} />
       </View>
     </View>
-  )
-
+  );
 
   return (
     <BottomSheet
       ref={bs}
-      snapPoints={['80%', 250, 0]}
+      snapPoints={["80%", 250, 0]}
       renderContent={renderInner}
       renderHeader={renderHeader}
       initialSnap={2}
     />
-  )
-}
+  );
+};
 
-const IMAGE_SIZE = 200
+const IMAGE_SIZE = 200;
 
 const styles = StyleSheet.create({
   search: {
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: StyleSheet.hairlineWidth,
     height: 40,
     borderRadius: 10,
@@ -89,15 +84,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    height: '100%',
-    backgroundColor: '#F5FCFF',
+    height: "100%",
+    backgroundColor: "#F5FCFF",
   },
   box: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
   },
   panelContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     bottom: 0,
     left: 0,
@@ -105,31 +100,31 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor: '#f7f5eee8',
-    shadowColor: '#000000',
+    backgroundColor: "#f7f5eee8",
+    shadowColor: "#000000",
     paddingTop: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
   panelHeader: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   panelHandle: {
     width: 40,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#00000040',
+    backgroundColor: "#00000040",
     marginBottom: 10,
   },
   photo: {
-    width: '100%',
+    width: "100%",
     height: 225,
     marginTop: 30,
   },
   map: {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
   },
-})
+});
 
-export default PlaceDetailsView
+export default PlaceDetailsView;
