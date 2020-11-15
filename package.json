@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@dudigital/react-native-zoomable-view": "^1.0.15",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/progress-bar-android": "^1.0.4",
     "@react-native-community/progress-view": "^1.2.3",
@@ -22,6 +23,8 @@
     "react-native": "0.63.3",
     "react-native-fast-image": "^8.3.3",
     "react-native-gesture-handler": "^1.8.0",
+    "react-native-image-pan-zoom": "^2.1.12",
+    "react-native-image-zoom-viewer": "^3.0.1",
     "react-native-maps": "^0.27.1",
     "react-native-paper": "^4.3.1",
     "react-native-pdf": "^6.2.2",

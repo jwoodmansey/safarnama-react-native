@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
+import ImageViewer from "react-native-image-zoom-viewer";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import WebView from "react-native-webview";
@@ -16,17 +17,27 @@ type Props = {
 
 const MediaThumb: React.FC<Props> = ({ media }) => {
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
-  const onPDFPress = () => {
-    nav.navigate("PDFScreen", { media });
-  };
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
-      return <FastImage style={styles.image} source={{ uri: media.path }} />;
+      // return (
+      //   <ImageViewer style={styles.image} imageUrls={[{ url: media.path }]} />
+      // );
+      const onImagePress = () => {
+        nav.navigate("ImageScreen", { media });
+      };
+      return (
+        <TouchableOpacity onPress={onImagePress}>
+          <FastImage style={styles.image} source={{ uri: media.path }} />
+        </TouchableOpacity>
+      );
     }
     case MediaType.Text: {
       return <WebView source={{ uri: media.path }} />;
     }
     case MediaType.Pdf: {
+      const onPDFPress = () => {
+        nav.navigate("PDFScreen", { media });
+      };
       return (
         <View>
           <Pdf
