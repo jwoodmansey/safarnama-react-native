@@ -18,9 +18,6 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
-      // return (
-      //   <ImageViewer style={styles.image} imageUrls={[{ url: media.path }]} />
-      // );
       const onImagePress = () => {
         nav.navigate("ImageScreen", { media });
       };

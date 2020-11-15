@@ -13,7 +13,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
         <Drawer.Item icon="download" label="Switch" />
       </Drawer.Section>
       <Drawer.Section title="About">
-        <Drawer.Item label="Third party licenses" />
+        <Drawer.Item icon="receipt" label="Third party licenses" />
       </Drawer.Section>
     </DrawerContentScrollView>
   );
