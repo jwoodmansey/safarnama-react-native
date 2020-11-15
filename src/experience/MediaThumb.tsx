@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import WebView from "react-native-webview";
@@ -20,7 +21,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   };
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
-      return <Image style={styles.image} source={{ uri: media.path }} />;
+      return <FastImage style={styles.image} source={{ uri: media.path }} />;
     }
     case MediaType.Text: {
       return <WebView source={{ uri: media.path }} />;
