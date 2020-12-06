@@ -1,38 +1,58 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Alert } from 'react-native'
-import { ExperienceSnapshotData } from '../../types/common/experience'
-import { PointOfInterestDocument } from '../../types/common/point-of-interest'
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  ExperienceRefData,
+  ExperienceSnapshotData,
+} from "../../types/common/experience";
+import { PointOfInterestDocument } from "../../types/common/point-of-interest";
 
-type LoadedExperiences = PayloadAction<{ experiences: ExperienceSnapshotData[] }>
+type LoadedExperiences = PayloadAction<{
+  experiences: ExperienceSnapshotData[];
+}>;
+
+type LoadedFeaturedExperiences = PayloadAction<{
+  featuredExperiences: ExperienceRefData[];
+}>;
 
 type ExperienceState = {
-  experiences: ExperienceSnapshotData[],
-  selectedPlace: PointOfInterestDocument | undefined
-}
+  experiences: ExperienceSnapshotData[];
+  selectedPlace: PointOfInterestDocument | undefined;
+  featuredExperiences: ExperienceRefData[];
+};
 
 const experienceReducer = createSlice({
-  name: 'experience',
+  name: "experience",
   initialState: {
-    experiences: [] as ExperienceSnapshotData[],
+    experiences: [],
     selectedPlace: undefined,
+    featuredExperiences: [],
   } as ExperienceState,
   reducers: {
-    loadExperiences: () => { },
+    loadExperiences: () => {},
     loadedExperiences: (state, action: LoadedExperiences) => {
-      state.experiences = action.payload.experiences
-      console.log(action.payload.experiences)
+      state.experiences = action.payload.experiences;
+      console.log(action.payload.experiences);
       // Alert.alert(JSON.stringify(state.experiences))
     },
-    setSelectedPlace: (state, action: PayloadAction<PointOfInterestDocument>) => {
-      state.selectedPlace = action.payload
-    }
-  }
-})
+    setSelectedPlace: (
+      state,
+      action: PayloadAction<PointOfInterestDocument>
+    ) => {
+      state.selectedPlace = action.payload;
+    },
+    loadFeaturedExperiences: () => {},
+    loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
+      state.featuredExperiences = action.payload.featuredExperiences;
+    },
+  },
+});
 
 export const {
   loadExperiences,
   loadedExperiences,
   setSelectedPlace,
-} = experienceReducer.actions
+  loadFeaturedExperiences,
+  loadedFeaturedExperiences,
+} = experienceReducer.actions;
 
-export default experienceReducer.reducer
+export default experienceReducer.reducer;

@@ -8,21 +8,22 @@
  * @format
  */
 
-import React from "react";
-import { StyleSheet } from "react-native";
 import {
-  NavigationContainer,
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
+  NavigationContainer,
 } from "@react-navigation/native";
+import React from "react";
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
-import { Provider } from 'react-redux'
-import { store } from "./src/store/configure";
+import { persistor, store } from "./src/store/configure";
 
 const CombinedDefaultTheme = {
   ...PaperDefaultTheme,
@@ -43,14 +44,14 @@ const CombinedDarkTheme = {
 
 const App: React.FC = () => (
   <Provider store={store}>
-    <PaperProvider theme={CombinedDarkTheme}>
-      <NavigationContainer theme={CombinedDarkTheme}>
-        <RootNavigation />
-      </NavigationContainer>
-    </PaperProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <PaperProvider theme={CombinedDarkTheme}>
+        <NavigationContainer theme={CombinedDarkTheme} ref={navigationRef}>
+          <RootNavigation />
+        </NavigationContainer>
+      </PaperProvider>
+    </PersistGate>
   </Provider>
 );
-
-const styles = StyleSheet.create({});
 
 export default App;

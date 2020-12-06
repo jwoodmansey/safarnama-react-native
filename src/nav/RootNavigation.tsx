@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import MapScreen from "../MapScreen";
-import MapNavigation from "./MapNavigation";
-import DrawerContent from "./DrawerContent";
+import FeaturedExperiencesScreen from "../experiences/FeaturedExperiencesScreen";
 import { RootDispatch } from "../store/configure";
 import { loadExperiences } from "../store/experience/experienceReducer";
+import DrawerContent from "./DrawerContent";
+import MapNavigation from "./MapNavigation";
 
 const Drawer = createDrawerNavigator();
 
@@ -15,9 +15,15 @@ const RootNavigation: React.FC = () => {
     dispatch(loadExperiences());
   }, [dispatch]);
   return (
-    <Drawer.Navigator screenOptions={{}} drawerContent={DrawerContent}>
-      <Drawer.Screen name="Feed" component={MapNavigation} />
-      <Drawer.Screen name="Article" component={MapScreen} />
+    <Drawer.Navigator
+      screenOptions={{}}
+      drawerContent={(props) => <DrawerContent {...props} />}
+    >
+      <Drawer.Screen name="MapScreen" component={MapNavigation} />
+      <Drawer.Screen
+        name="FeaturedScreen"
+        component={FeaturedExperiencesScreen}
+      />
     </Drawer.Navigator>
   );
 };

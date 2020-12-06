@@ -32,7 +32,6 @@
 
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text } from "react-native-paper";
 import { useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
 import { RootState } from "../store/configure";
@@ -40,14 +39,17 @@ import { PointOfInterestDocument } from "../types/common/point-of-interest";
 import PlaceDetailsViewContent from "./PlaceDetailsViewContent";
 
 const PlaceDetailsView: React.FC = () => {
-  const bs = useRef();
+  const bs = useRef<BottomSheet>(null);
   const selectedPlace = useSelector<
     RootState,
     PointOfInterestDocument | undefined
   >((state) => state.experience.selectedPlace);
   useEffect(() => {
-    if (selectedPlace) {
-      bs.current.snapTo(1);
+    if (selectedPlace && bs.current) {
+      const r = bs.current;
+      if (r) {
+        r.snapTo(1);
+      }
     }
   }, [selectedPlace]);
 
