@@ -14,6 +14,7 @@ import {
   NavigationContainer,
 } from "@react-navigation/native";
 import React from "react";
+import { useColorScheme } from "react-native";
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
@@ -25,7 +26,7 @@ import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
 
-const CombinedDefaultTheme = {
+const CombinedDefaultTheme: ReactNativePaper.Theme = {
   ...PaperDefaultTheme,
   ...NavigationDefaultTheme,
   colors: {
@@ -33,25 +34,35 @@ const CombinedDefaultTheme = {
     ...NavigationDefaultTheme.colors,
   },
 };
-const CombinedDarkTheme = {
+const CombinedDarkTheme: ReactNativePaper.Theme = {
   ...PaperDarkTheme,
   ...NavigationDarkTheme,
+  // dark: false,
   colors: {
     ...PaperDarkTheme.colors,
     ...NavigationDarkTheme.colors,
   },
 };
 
-const App: React.FC = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <PaperProvider theme={CombinedDarkTheme}>
-        <NavigationContainer theme={CombinedDarkTheme} ref={navigationRef}>
-          <RootNavigation />
-        </NavigationContainer>
-      </PaperProvider>
-    </PersistGate>
-  </Provider>
-);
+const App: React.FC = () => {
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <PaperProvider
+          theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+        >
+          <NavigationContainer
+            theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+            ref={navigationRef}
+          >
+            <RootNavigation />
+          </NavigationContainer>
+        </PaperProvider>
+      </PersistGate>
+    </Provider>
+  );
+};
 
 export default App;

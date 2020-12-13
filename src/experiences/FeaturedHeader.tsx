@@ -1,11 +1,11 @@
 import React from "react";
-import { Surface, Text } from "react-native-paper";
+import { Surface, Card, Text } from "react-native-paper";
 
 const FeaturedHeader: React.FC = () => {
   return (
-    <Surface>
+    <Card style={{ margin: 16, padding: 16 }}>
       <Text>If you have a QR code for an experience, scan it here</Text>
-    </Surface>
+    </Card>
   );
 };
 

@@ -20,7 +20,12 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
     <DrawerContentScrollView {...props}>
       <Drawer.Section title="Experience">
         {experiences.map((e) => (
-          <Drawer.Item key={e.id} icon="map" label={e.name} />
+          <Drawer.Item
+            key={e.id}
+            icon="map"
+            label={e.name}
+            onPress={onPressViewCurrent}
+          />
         ))}
         {/* <Drawer.Item
           icon="map"

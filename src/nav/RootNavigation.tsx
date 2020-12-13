@@ -1,10 +1,10 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import FeaturedExperiencesScreen from "../experiences/FeaturedExperiencesScreen";
 import { RootDispatch } from "../store/configure";
 import { loadExperiences } from "../store/experience/experienceReducer";
 import DrawerContent from "./DrawerContent";
+import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
 
 const Drawer = createDrawerNavigator();
@@ -22,7 +22,8 @@ const RootNavigation: React.FC = () => {
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
       <Drawer.Screen
         name="FeaturedScreen"
-        component={FeaturedExperiencesScreen}
+        options={{ title: "Featured" }}
+        component={ExperienceManagementNavigation}
       />
     </Drawer.Navigator>
   );
