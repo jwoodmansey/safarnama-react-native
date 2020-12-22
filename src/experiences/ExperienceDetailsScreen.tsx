@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
@@ -9,7 +9,10 @@ import { Button, Chip, Paragraph } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
 import { RootState } from "../store/configure";
-import { loadExperience } from "../store/experience/experienceReducer";
+import {
+  loadExperience,
+  setSelectedExperience,
+} from "../store/experience/experienceReducer";
 import { selectExperience } from "../store/experience/experienceSelectors";
 import { ExperienceSnapshotData } from "../types/common/experience";
 import { ExperienceManagementProp } from "../types/nav/experienceManagement";
@@ -18,6 +21,7 @@ import AuthorDetails from "./components/AuthorDetails";
 type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
 
 const ExperienceDetailsScreen: React.FC = () => {
+  const nav = useNavigation();
   const route = useRoute<Route>();
   const { experience } = route.params;
   const authorRef = useRef<BottomSheet>(null);
@@ -33,7 +37,11 @@ const ExperienceDetailsScreen: React.FC = () => {
     authorRef.current?.snapTo(1);
   };
   const ref = useRef<MapView>(null);
-  const onPressPlay = () => {};
+  const onPressPlay = () => {
+    dispatch(setSelectedExperience({ id: experienceSnapshot?.data._id }));
+    nav.goBack();
+    nav.navigate("MapScreen");
+  };
   useEffect(() => {
     if (experienceSnapshot) {
       ref.current?.fitToCoordinates(
@@ -82,7 +90,7 @@ const ExperienceDetailsScreen: React.FC = () => {
         >
           {experience.metaData.ownerPublicProfile.displayName}
         </Chip>
-        <Button mode="contained" style={styles.button}>
+        <Button onPress={onPressPlay} mode="contained" style={styles.button}>
           Play Experience
         </Button>
       </ScrollView>
