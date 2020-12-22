@@ -5,22 +5,21 @@ import { ajax } from "rxjs/ajax";
 import { catchError, map, mergeMap, tap } from "rxjs/operators";
 import { API_BASE_URL } from "../../config";
 import {
-  loadedExperiences,
+  loadExperience,
   loadedFeaturedExperiences,
-  loadExperiences,
+  loadedExperience,
   loadFeaturedExperiences,
+  LoadExperience,
 } from "./experienceReducer";
 
 const loadExperienceEpic = (action$: Observable<any>) =>
   action$.pipe(
-    ofType(loadExperiences.type),
-    mergeMap(() =>
-      ajax
-        .get(`${API_BASE_URL}/experience/5d1ec21b47677179a752e3d2/snapshot`)
-        .pipe(
-          map(({ response }) => loadedExperiences({ experiences: [response] }))
-          // catchError((e) => of(error(.{ message: e.message }))),
-        )
+    ofType<LoadExperience>(loadExperience.type),
+    mergeMap(({ payload: { id } }) =>
+      ajax.get(`${API_BASE_URL}/experience/${id}/snapshot`).pipe(
+        map(({ response }) => loadedExperience({ experience: response }))
+        // catchError((e) => of(error(.{ message: e.message }))),
+      )
     )
   );
 

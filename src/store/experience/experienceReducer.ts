@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
@@ -6,8 +7,10 @@ import {
 } from "../../types/common/experience";
 import { PointOfInterestDocument } from "../../types/common/point-of-interest";
 
+export type LoadExperience = PayloadAction<{ id: string }>;
+
 type LoadedExperiences = PayloadAction<{
-  experiences: ExperienceSnapshotData[];
+  experience: ExperienceSnapshotData;
 }>;
 
 type LoadedFeaturedExperiences = PayloadAction<{
@@ -15,24 +18,30 @@ type LoadedFeaturedExperiences = PayloadAction<{
 }>;
 
 type ExperienceState = {
-  experiences: ExperienceSnapshotData[];
+  experiences: Record<string, ExperienceSnapshotData>;
   selectedPlace: PointOfInterestDocument | undefined;
   featuredExperiences: ExperienceRefData[];
+  selectedExperience: string | undefined;
 };
 
 const experienceReducer = createSlice({
   name: "experience",
   initialState: {
-    experiences: [],
+    experiences: {},
     selectedPlace: undefined,
+    selectedExperience: undefined,
     featuredExperiences: [],
   } as ExperienceState,
   reducers: {
-    loadExperiences: () => {},
-    loadedExperiences: (state, action: LoadedExperiences) => {
-      state.experiences = action.payload.experiences;
-      console.log(action.payload.experiences);
+    loadExperience: (_, __: LoadExperience) => {},
+    loadedExperience: (state, action: LoadedExperiences) => {
+      // eslint-disable-next-line no-underscore-dangle
+      state.experiences[action.payload.experience.data._id] =
+        action.payload.experience;
       // Alert.alert(JSON.stringify(state.experiences))
+    },
+    setSelectedExperience: (state, action: LoadExperience) => {
+      state.selectedExperience = action.payload.id;
     },
     setSelectedPlace: (
       state,
@@ -48,8 +57,9 @@ const experienceReducer = createSlice({
 });
 
 export const {
-  loadExperiences,
-  loadedExperiences,
+  setSelectedExperience,
+  loadExperience,
+  loadedExperience,
   setSelectedPlace,
   loadFeaturedExperiences,
   loadedFeaturedExperiences,

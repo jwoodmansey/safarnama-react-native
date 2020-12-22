@@ -2,6 +2,7 @@ import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Avatar, Colors, Paragraph, Title } from "react-native-paper";
+import Animated from "react-native-reanimated";
 import { rgbToRgba } from "../../style/colors";
 import { PublicProfile } from "../../types/common/experience";
 
@@ -12,7 +13,7 @@ type Props = {
 const AuthorDetails: React.FC<Props> = ({ author }) => {
   const theme = useTheme();
   return (
-    <View
+    <Animated.View
       style={[
         styles.container,
         {
@@ -25,7 +26,7 @@ const AuthorDetails: React.FC<Props> = ({ author }) => {
         <Title style={styles.title}>{author.displayName}</Title>
       </View>
       <Paragraph>{author.bio}</Paragraph>
-    </View>
+    </Animated.View>
   );
 };
 

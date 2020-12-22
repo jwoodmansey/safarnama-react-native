@@ -8,10 +8,11 @@ import { ExperienceSnapshotData } from "../types/common/experience";
 import { PointOfInterestDocument } from "../types/common/point-of-interest";
 import { setSelectedPlace } from "../store/experience/experienceReducer";
 import PlaceIcon from "./PlaceIcon";
+import { selectCurrentExperience } from "../store/experience/experienceSelectors";
 
 const ExperienceMapView: React.FC = () => {
-  const experience = useSelector<RootState, ExperienceSnapshotData>(
-    (s) => s.experience.experiences[0]
+  const experience = useSelector<RootState, ExperienceSnapshotData | undefined>(
+    selectCurrentExperience
   );
   const nav = useNavigation();
   useEffect(() => {

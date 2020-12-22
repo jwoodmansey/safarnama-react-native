@@ -1,11 +1,17 @@
+/* eslint-disable no-underscore-dangle */
 import { RouteProp, useRoute } from "@react-navigation/native";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
-import MapView from "react-native-maps";
-import { Button, Chip, Paragraph, Title } from "react-native-paper";
+import MapView, { Marker } from "react-native-maps";
+import { Button, Chip, Paragraph } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
+import { RootState } from "../store/configure";
+import { loadExperience } from "../store/experience/experienceReducer";
+import { selectExperience } from "../store/experience/experienceSelectors";
+import { ExperienceSnapshotData } from "../types/common/experience";
 import { ExperienceManagementProp } from "../types/nav/experienceManagement";
 import AuthorDetails from "./components/AuthorDetails";
 
@@ -14,19 +20,51 @@ type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
 const ExperienceDetailsScreen: React.FC = () => {
   const route = useRoute<Route>();
   const { experience } = route.params;
-  console.log(experience);
   const authorRef = useRef<BottomSheet>(null);
+  const dispatch = useDispatch();
+  const experienceSnapshot = useSelector<
+    RootState,
+    ExperienceSnapshotData | undefined
+  >((state) => selectExperience(state, experience._id));
+  useEffect(() => {
+    dispatch(loadExperience({ id: experience._id }));
+  }, [dispatch, experience._id]);
   const onPressAuthor = () => {
     authorRef.current?.snapTo(1);
   };
+  const ref = useRef<MapView>(null);
+  const onPressPlay = () => {};
+  useEffect(() => {
+    if (experienceSnapshot) {
+      ref.current?.fitToCoordinates(
+        experienceSnapshot.data.pointOfInterests?.map((p) => ({
+          latitude: p.location.coordinates[1],
+          longitude: p.location.coordinates[0],
+        }))
+      );
+    }
+  }, [experienceSnapshot]);
   return (
     <View style={styles.container}>
       <MapView
+        ref={ref}
         liteMode
         scrollEnabled={false}
         zoomEnabled={false}
         style={styles.map}
-      />
+        rotateEnabled={false}
+      >
+        {experienceSnapshot &&
+          experienceSnapshot.data.pointOfInterests?.map((p) => (
+            <Marker
+              // pinColor={Colors.blue100}
+              coordinate={{
+                latitude: p.location.coordinates[1],
+                longitude: p.location.coordinates[0],
+              }}
+            />
+          ))}
+      </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Paragraph style={styles.description}>
           {experience.description}

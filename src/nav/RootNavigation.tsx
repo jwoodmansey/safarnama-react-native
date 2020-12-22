@@ -2,7 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { RootDispatch } from "../store/configure";
-import { loadExperiences } from "../store/experience/experienceReducer";
+// import { loadExperience } from "../store/experience/experienceReducer";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
@@ -10,10 +10,10 @@ import MapNavigation from "./MapNavigation";
 const Drawer = createDrawerNavigator();
 
 const RootNavigation: React.FC = () => {
-  const dispatch = useDispatch<RootDispatch>();
-  useEffect(() => {
-    dispatch(loadExperiences());
-  }, [dispatch]);
+  // const dispatch = useDispatch<RootDispatch>();
+  // useEffect(() => {
+  //   dispatch(loadExperiences());
+  // }, [dispatch]);
   return (
     <Drawer.Navigator
       screenOptions={{}}
