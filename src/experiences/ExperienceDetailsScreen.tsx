@@ -65,6 +65,7 @@ const ExperienceDetailsScreen: React.FC = () => {
         {experienceSnapshot &&
           experienceSnapshot.data.pointOfInterests?.map((p) => (
             <Marker
+              key={p._id}
               // pinColor={Colors.blue100}
               coordinate={{
                 latitude: p.location.coordinates[1],
@@ -93,6 +94,9 @@ const ExperienceDetailsScreen: React.FC = () => {
         <Button onPress={onPressPlay} mode="contained" style={styles.button}>
           Play Experience
         </Button>
+        <Button mode="text">
+          Download ({(experience.metaData.size / 1000000).toFixed(2)}mb)
+        </Button>
       </ScrollView>
       <BottomSheet
         borderRadius={16}
@@ -120,6 +124,7 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 12,
+    marginBottom: 12,
   },
   description: {
     marginBottom: 20,
