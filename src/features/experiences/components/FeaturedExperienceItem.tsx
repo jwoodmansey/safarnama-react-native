@@ -2,8 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { Card, Text } from "react-native-paper";
-import { ExperienceRefData } from "../../types/common/experience";
-import { ExperienceManagementProp } from "../../types/nav/experienceManagement";
+import { ExperienceRefData } from "../../../types/common/experience";
+import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
 
 type Props = {
   experience: ExperienceRefData;

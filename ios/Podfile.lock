@@ -83,6 +83,8 @@ PODS:
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
+  - Permission-Camera (3.0.0):
+    - RNPermissions
   - RCTRequired (0.63.3)
   - RCTTypeSafety (0.63.3):
     - FBLazyVector (= 0.63.3)
@@ -249,6 +251,14 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
+  - react-native-camera (3.42.0):
+    - React-Core
+    - react-native-camera/RCT (= 3.42.0)
+    - react-native-camera/RN (= 3.42.0)
+  - react-native-camera/RCT (3.42.0):
+    - React-Core
+  - react-native-camera/RN (3.42.0):
+    - React-Core
   - react-native-maps (0.27.1):
     - React
   - react-native-pdf (6.2.2):
@@ -333,6 +343,8 @@ PODS:
     - SDWebImageWebPCoder (~> 0.6.1)
   - RNGestureHandler (1.8.0):
     - React
+  - RNPermissions (3.0.0):
+    - React-Core
   - RNReanimated (1.13.1):
     - React
   - RNScreens (2.13.0):
@@ -376,6 +388,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - lottie-ios (from `../node_modules/lottie-ios`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
+  - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -388,6 +401,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
@@ -409,6 +423,7 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -447,6 +462,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/lottie-ios"
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
+  Permission-Camera:
+    :path: "../node_modules/react-native-permissions/ios/Camera"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -467,6 +484,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
   react-native-pdf:
@@ -509,6 +528,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -538,6 +559,7 @@ SPEC CHECKSUMS:
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
+  Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
   RCTRequired: 48884c74035a0b5b76dbb7a998bd93bcfc5f2047
   RCTTypeSafety: edf4b618033c2f1c5b7bc3d90d8e085ed95ba2ab
   React: f36e90f3ceb976546e97df3403e37d226f79d0e3
@@ -548,6 +570,7 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
+  react-native-camera: cf8a153d33138dcc457172fc3c33fdf4e5d288d2
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-pdf: 4b5a9e4465a6a3b399e91dc4838eb44ddf716d1f
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
@@ -569,6 +592,7 @@ SPEC CHECKSUMS:
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNFastImage: ff7e055d085abe465b358ce5aa51e3c6d64b1efd
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
+  RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 13f23e5498fb4aa749d19a5eda7f8792fbb9d01f
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
@@ -577,6 +601,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 76ce1de439da850dac999b968c3d34608df1adda
+PODFILE CHECKSUM: a9fef4c6ec5a08d0f6ec8b320ff8269302cb3392
 
 COCOAPODS: 1.8.4

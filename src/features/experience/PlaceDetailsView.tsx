@@ -34,8 +34,8 @@ import React, { useEffect, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
-import { RootState } from "../store/configure";
-import { PointOfInterestDocument } from "../types/common/point-of-interest";
+import { RootState } from "../../store/configure";
+import { PointOfInterestDocument } from "../../types/common/point-of-interest";
 import PlaceDetailsViewContent from "./PlaceDetailsViewContent";
 
 const PlaceDetailsView: React.FC = () => {

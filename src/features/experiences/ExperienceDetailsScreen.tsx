@@ -8,14 +8,14 @@ import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
-import { RootState } from "../store/configure";
+import { RootState } from "../../store/configure";
 import {
   loadExperience,
   setSelectedExperience,
-} from "../store/experience/experienceReducer";
-import { selectExperience } from "../store/experience/experienceSelectors";
-import { ExperienceSnapshotData } from "../types/common/experience";
-import { ExperienceManagementProp } from "../types/nav/experienceManagement";
+} from "../../store/experience/experienceReducer";
+import { selectExperience } from "../../store/experience/experienceSelectors";
+import { ExperienceSnapshotData } from "../../types/common/experience";
+import { ExperienceManagementProp } from "../../types/nav/experienceManagement";
 import AuthorDetails from "./components/AuthorDetails";
 
 type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;

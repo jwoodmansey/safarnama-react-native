@@ -3,8 +3,8 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Avatar, Colors, Paragraph, Title } from "react-native-paper";
 import Animated from "react-native-reanimated";
-import { rgbToRgba } from "../../style/colors";
-import { PublicProfile } from "../../types/common/experience";
+import { rgbToRgba } from "../../../style/colors";
+import { PublicProfile } from "../../../types/common/experience";
 
 type Props = {
   author: PublicProfile;

@@ -5,4 +5,5 @@ export type ExperienceManagementProp = {
   ExperienceDetailsScreen: {
     experience: ExperienceRefData;
   };
+  ScanQRCodeScreen: {};
 };

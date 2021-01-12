@@ -1,8 +1,8 @@
 import React from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
-import ExperienceMapView from "./experience/ExperienceMapView";
-import PlacesDetailsView from "./experience/PlaceDetailsView";
+import ExperienceMapView from "./features/experience/ExperienceMapView";
+import PlacesDetailsView from "./features/experience/PlaceDetailsView";
 
 const MapScreen: React.FC = () => {
   return (

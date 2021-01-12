@@ -6,9 +6,9 @@ import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
-import { MediaDocument } from "../types/common/media";
-import { getMediaType, MediaType } from "../types/media";
-import { MapNaviationProp } from "../types/nav/map";
+import { MediaDocument } from "../../types/common/media";
+import { getMediaType, MediaType } from "../../types/media";
+import { MapNaviationProp } from "../../types/nav/map";
 
 type Props = {
   media: MediaDocument;

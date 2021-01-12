@@ -1,7 +1,5 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { RootDispatch } from "../store/configure";
+import React from "react";
 // import { loadExperience } from "../store/experience/experienceReducer";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";

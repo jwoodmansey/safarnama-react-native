@@ -3,12 +3,12 @@ import { Marker } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import { RootState } from "../store/configure";
-import { ExperienceSnapshotData } from "../types/common/experience";
-import { PointOfInterestDocument } from "../types/common/point-of-interest";
-import { setSelectedPlace } from "../store/experience/experienceReducer";
+import { RootState } from "../../store/configure";
+import { ExperienceSnapshotData } from "../../types/common/experience";
+import { PointOfInterestDocument } from "../../types/common/point-of-interest";
+import { setSelectedPlace } from "../../store/experience/experienceReducer";
 import PlaceIcon from "./PlaceIcon";
-import { selectCurrentExperience } from "../store/experience/experienceSelectors";
+import { selectCurrentExperience } from "../../store/experience/experienceSelectors";
 
 const ExperienceMapView: React.FC = () => {
   const experience = useSelector<RootState, ExperienceSnapshotData | undefined>(

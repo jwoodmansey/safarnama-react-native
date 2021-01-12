@@ -7,7 +7,7 @@ import {
   Surface,
   Title,
 } from "react-native-paper";
-import { MediaDocument } from "../types/common/media";
+import { MediaDocument } from "../../types/common/media";
 import MediaThumb from "./MediaThumb";
 
 type Props = {

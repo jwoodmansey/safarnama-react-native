@@ -1,7 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import ExperienceDetailsScreen from "../experiences/ExperienceDetailsScreen";
-import FeaturedExperiencesScreen from "../experiences/FeaturedExperiencesScreen";
+import ExperienceDetailsScreen from "../features/experiences/ExperienceDetailsScreen";
+import FeaturedExperiencesScreen from "../features/experiences/FeaturedExperiencesScreen";
+import ScanQRCodeScreen from "../features/qr-code/screens/ScanQRCodeScreen";
 import { ExperienceManagementProp } from "../types/nav/experienceManagement";
 import DrawerToggle from "./DrawerToggle";
 
@@ -18,6 +19,7 @@ const ExperienceManagementNavigation: React.FC = () => {
         }}
         component={FeaturedExperiencesScreen}
       />
+      <Stack.Screen name="ScanQRCodeScreen" component={ScanQRCodeScreen} />
       <Stack.Screen
         name="ExperienceDetailsScreen"
         component={ExperienceDetailsScreen}

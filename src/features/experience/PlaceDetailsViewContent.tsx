@@ -1,7 +1,7 @@
 import React from "react";
 import { Dimensions, FlatList, StyleSheet, View } from "react-native";
 import { Title } from "react-native-paper";
-import { PointOfInterestDocument } from "../types/common/point-of-interest";
+import { PointOfInterestDocument } from "../../types/common/point-of-interest";
 import MediaItem from "./MediaItem";
 
 type Props = {
