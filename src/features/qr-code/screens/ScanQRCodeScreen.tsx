@@ -7,7 +7,11 @@ const ScanQRCodeScreen: React.FC = () => {
   return (
     <QRCodeScanner
       onRead={onSuccess}
-      topContent={<Title>Point your camera at a Safarnama QR code!</Title>}
+      topContent={
+        <Title style={{ flex: 1 }}>
+          Point your camera at a Safarnama QR code!
+        </Title>
+      }
     />
   );
 };

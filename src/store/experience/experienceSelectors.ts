@@ -26,7 +26,7 @@ export const selectMyExperiences: Selector<RootState, ExperienceRef[]> = (
   return Object.values(state.experience.experiences)?.map((e) => ({
     name: e.data.name,
     // eslint-disable-next-line no-underscore-dangle
-    id: e._id,
+    id: e.data._id,
   }));
 };
 

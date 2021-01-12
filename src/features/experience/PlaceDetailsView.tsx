@@ -45,10 +45,14 @@ const PlaceDetailsView: React.FC = () => {
     PointOfInterestDocument | undefined
   >((state) => state.experience.selectedPlace);
   useEffect(() => {
-    if (selectedPlace && bs.current) {
-      const r = bs.current;
-      if (r) {
-        r.snapTo(1);
+    if (bs.current) {
+      if (selectedPlace) {
+        const r = bs.current;
+        if (r) {
+          r.snapTo(1);
+        }
+      } else {
+        bs.current.snapTo(2);
       }
     }
   }, [selectedPlace]);

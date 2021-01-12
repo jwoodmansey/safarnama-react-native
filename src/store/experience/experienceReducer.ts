@@ -42,6 +42,7 @@ const experienceReducer = createSlice({
     },
     setSelectedExperience: (state, action: LoadExperience) => {
       state.selectedExperience = action.payload.id;
+      state.selectedPlace = undefined;
     },
     setSelectedPlace: (
       state,

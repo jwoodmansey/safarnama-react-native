@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { Marker } from "react-native-maps";
+/* eslint-disable no-underscore-dangle */
+import React, { RefObject, useEffect, useState } from "react";
+import MapView, { Marker } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -10,16 +11,41 @@ import { setSelectedPlace } from "../../store/experience/experienceReducer";
 import PlaceIcon from "./PlaceIcon";
 import { selectCurrentExperience } from "../../store/experience/experienceSelectors";
 
-const ExperienceMapView: React.FC = () => {
+type Props = {
+  mapView: RefObject<MapView>;
+};
+
+const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const experience = useSelector<RootState, ExperienceSnapshotData | undefined>(
     selectCurrentExperience
   );
   const nav = useNavigation();
+  const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
   useEffect(() => {
     if (experience) {
       nav.setOptions({ title: experience.data.name });
     }
-  }, [experience, nav]);
+    const id = experience?.data._id;
+    if (experience && currentlyZoomedTo !== id) {
+      const edgePadding = 20;
+      mapView.current?.fitToCoordinates(
+        experience.data.pointOfInterests?.map((p) => ({
+          latitude: p.location.coordinates[1],
+          longitude: p.location.coordinates[0],
+        })),
+        {
+          edgePadding: {
+            top: edgePadding,
+            bottom: edgePadding,
+            left: edgePadding,
+            right: edgePadding,
+          },
+          animated: true,
+        }
+      );
+      setCurrentlyZoomedTo(id);
+    }
+  }, [experience, nav, mapView, currentlyZoomedTo]);
 
   const dispatch = useDispatch();
   const onPressPlace = (place: PointOfInterestDocument) => () => {
