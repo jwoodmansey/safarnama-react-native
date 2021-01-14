@@ -5,7 +5,7 @@ import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
-import { Button, Chip, Paragraph } from "react-native-paper";
+import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
 import { RootState } from "../../store/configure";
@@ -52,6 +52,9 @@ const ExperienceDetailsScreen: React.FC = () => {
       );
     }
   }, [experienceSnapshot]);
+  if (!experience) {
+    return <ProgressBar />;
+  }
   return (
     <View style={styles.container}>
       <MapView

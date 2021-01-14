@@ -1,4 +1,4 @@
-package com.safarnama;
+package com.safarnama.safarnama;
 
 import com.facebook.react.ReactActivity;
 
