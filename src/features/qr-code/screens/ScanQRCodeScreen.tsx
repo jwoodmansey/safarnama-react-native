@@ -1,10 +1,26 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { Colors, Title } from "react-native-paper";
 import QRCodeScanner from "react-native-qrcode-scanner";
+import dynamicLinks from "@react-native-firebase/dynamic-links";
+import { BarCodeReadEvent } from "react-native-camera";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
 
 const ScanQRCodeScreen: React.FC = () => {
-  const onSuccess = () => {};
+  const nav = useNavigation<
+    StackNavigationProp<ExperienceManagementProp, "ScanQRCodeScreen">
+  >();
+  const onSuccess = async (event: BarCodeReadEvent) => {
+    const resolvedLink = await dynamicLinks().resolveLink(event.data);
+    const split = resolvedLink.url.split("/");
+    Alert.alert(split[split.length - 1]);
+
+    nav.navigate("ExperienceDetailsScreen", {
+      experience: { _id: split[split.length - 1] },
+    });
+  };
   return (
     <QRCodeScanner
       onRead={onSuccess}

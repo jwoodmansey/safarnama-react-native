@@ -52,7 +52,7 @@ const ExperienceDetailsScreen: React.FC = () => {
       );
     }
   }, [experienceSnapshot]);
-  if (!experience) {
+  if (!experience.metaData && !experienceSnapshot) {
     return <ProgressBar />;
   }
   return (
