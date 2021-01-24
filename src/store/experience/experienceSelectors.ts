@@ -5,7 +5,8 @@ import {
   ExperienceRefData,
   ExperienceSnapshotData,
 } from "../../types/common/experience";
-import { RootState } from "../configure";
+import { RootState } from "../rootReducer";
+import { MediaDocument } from "../../types/common/media";
 
 type ExperienceRef = {
   name: string;
@@ -17,7 +18,7 @@ export const selectCurrentExperience: Selector<
   ExperienceSnapshotData | undefined
 > = (state) =>
   state.experience.selectedExperience
-    ? state.experience.experiences[state.experience.selectedExperience]
+    ? selectExperience(state, state.experience.selectedExperience)
     : undefined;
 
 export const selectMyExperiences: Selector<RootState, ExperienceRef[]> = (
@@ -42,9 +43,13 @@ export const selectExperiences: Selector<
   return state.experience.experiences;
 };
 
+export const selectMedia: Selector<RootState, Record<string, MediaDocument>> = (
+  state
+) => state.experience.media;
+
 export const selectExperience = createSelector(
-  [selectExperiences, (_: RootState, id: string) => id],
-  (experiences, id) => {
+  [selectExperiences, selectMedia, (_: RootState, id: string) => id],
+  (experiences, media, id) => {
     const experience = experiences[id];
     if (!experience) return undefined;
     const geojson = {
@@ -58,6 +63,15 @@ export const selectExperience = createSelector(
     return experience
       ? {
           ...experience,
+          data: {
+            ...experience.data,
+            pointOfInterests: experience.data.pointOfInterests?.map(
+              (place) => ({
+                ...place,
+                media: place.media.map((m) => media[m._id]),
+              })
+            ),
+          },
           bbox: bb,
         }
       : undefined;

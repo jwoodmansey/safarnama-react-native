@@ -3,7 +3,8 @@ import { ExperienceRefData } from "../common/experience";
 export type ExperienceManagementProp = {
   FeaturedExperienceScreen: {};
   ExperienceDetailsScreen: {
-    experience: ExperienceRefData;
+    experience?: ExperienceRefData;
+    experienceId?: string;
   };
   ScanQRCodeScreen: {};
 };

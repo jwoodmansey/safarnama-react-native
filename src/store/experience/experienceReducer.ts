@@ -5,12 +5,16 @@ import {
   ExperienceRefData,
   ExperienceSnapshotData,
 } from "../../types/common/experience";
+import { MediaDocument } from "../../types/common/media";
 import { PointOfInterestDocument } from "../../types/common/point-of-interest";
 
 export type LoadExperience = PayloadAction<{ id: string }>;
 
 type LoadedExperiences = PayloadAction<{
   experience: ExperienceSnapshotData;
+}>;
+type DownloadedMedia = PayloadAction<{
+  media: Record<string, MediaDocument>;
 }>;
 
 type LoadedFeaturedExperiences = PayloadAction<{
@@ -22,6 +26,7 @@ type ExperienceState = {
   selectedPlace: PointOfInterestDocument | undefined;
   featuredExperiences: ExperienceRefData[];
   selectedExperience: string | undefined;
+  media: Record<string, MediaDocument>;
 };
 
 const experienceReducer = createSlice({
@@ -31,6 +36,7 @@ const experienceReducer = createSlice({
     selectedPlace: undefined,
     selectedExperience: undefined,
     featuredExperiences: [],
+    media: {},
   } as ExperienceState,
   reducers: {
     loadExperience: (_, __: LoadExperience) => {},
@@ -54,6 +60,13 @@ const experienceReducer = createSlice({
     loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
       state.featuredExperiences = action.payload.featuredExperiences;
     },
+    downloadExperienceMedia: (state, action: LoadExperience) => {},
+    downloadedMedia: (state, action: DownloadedMedia) => {
+      state.media = {
+        ...state.media,
+        ...action.payload.media,
+      };
+    },
   },
 });
 
@@ -64,6 +77,8 @@ export const {
   setSelectedPlace,
   loadFeaturedExperiences,
   loadedFeaturedExperiences,
+  downloadExperienceMedia,
+  downloadedMedia,
 } = experienceReducer.actions;
 
 export default experienceReducer.reducer;

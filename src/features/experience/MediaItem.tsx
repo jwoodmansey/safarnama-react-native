@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import {
   Caption,
   Colors,
@@ -25,6 +25,7 @@ const MediaItem: React.FC<Props> = ({ media }) => {
         !isEmpty(media.description) ||
         !isEmpty(media.acknowledgements)) && (
         <View style={styles.textContainer}>
+          <Text>LOCAL {media.localPath}</Text>
           {!isEmpty(media.name) && (
             <Subheading style={styles.name}>{media.name}</Subheading>
           )}

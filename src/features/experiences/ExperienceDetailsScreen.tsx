@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
@@ -12,6 +12,7 @@ import { RootState } from "../../store/configure";
 import {
   loadExperience,
   setSelectedExperience,
+  downloadExperienceMedia,
 } from "../../store/experience/experienceReducer";
 import { selectExperience } from "../../store/experience/experienceSelectors";
 import { ExperienceSnapshotData } from "../../types/common/experience";
@@ -23,25 +24,22 @@ type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
 const ExperienceDetailsScreen: React.FC = () => {
   const nav = useNavigation();
   const route = useRoute<Route>();
-  const { experience } = route.params;
+  const { experience, experienceId } = route.params;
+  const id = experience?._id || experienceId || "";
   const authorRef = useRef<BottomSheet>(null);
   const dispatch = useDispatch();
   const experienceSnapshot = useSelector<
     RootState,
     ExperienceSnapshotData | undefined
-  >((state) => selectExperience(state, experience._id));
+  >((state) => selectExperience(state, id));
   useEffect(() => {
-    dispatch(loadExperience({ id: experience._id }));
-  }, [dispatch, experience._id]);
+    dispatch(loadExperience({ id }));
+  }, [dispatch, id]);
   const onPressAuthor = () => {
     authorRef.current?.snapTo(1);
   };
   const ref = useRef<MapView>(null);
-  const onPressPlay = () => {
-    dispatch(setSelectedExperience({ id: experienceSnapshot?.data._id }));
-    nav.goBack();
-    nav.navigate("MapScreen");
-  };
+
   useEffect(() => {
     if (experienceSnapshot) {
       ref.current?.fitToCoordinates(
@@ -52,9 +50,31 @@ const ExperienceDetailsScreen: React.FC = () => {
       );
     }
   }, [experienceSnapshot]);
-  if (!experience.metaData && !experienceSnapshot) {
+  if (!experienceSnapshot) {
     return <ProgressBar />;
   }
+  const sizeInMb = (experienceSnapshot.metaData.size / 1000000).toFixed(2);
+  const onPressPlay = () => {
+    dispatch(setSelectedExperience({ id: experienceSnapshot?.data._id }));
+    nav.goBack();
+    nav.navigate("MapScreen");
+  };
+  const onPressDownload = () => {
+    Alert.alert(
+      "Download experience?",
+      `This will allow you to view this experience's media while offline.\n\nIt cannot guarantee that the map layer will be visible while offline.`,
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: `Download (${sizeInMb}Mb)`,
+          style: "default",
+          onPress: () => {
+            dispatch(downloadExperienceMedia({ id }));
+          },
+        },
+      ]
+    );
+  };
   return (
     <View style={styles.container}>
       <MapView
@@ -69,7 +89,6 @@ const ExperienceDetailsScreen: React.FC = () => {
           experienceSnapshot.data.pointOfInterests?.map((p) => (
             <Marker
               key={p._id}
-              // pinColor={Colors.blue100}
               coordinate={{
                 latitude: p.location.coordinates[1],
                 longitude: p.location.coordinates[0],
@@ -79,7 +98,7 @@ const ExperienceDetailsScreen: React.FC = () => {
       </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Paragraph style={styles.description}>
-          {experience.description}
+          {experienceSnapshot.data.description}
           {/* {JSON.stringify(experience)} */}
         </Paragraph>
         <Chip
@@ -87,18 +106,19 @@ const ExperienceDetailsScreen: React.FC = () => {
           style={styles.author}
           avatar={
             <FastImage
-              // style={{ height: 20, width: 20 }}
-              source={{ uri: experience.metaData.ownerPublicProfile.photoURL }}
+              source={{
+                uri: experienceSnapshot.metaData.ownerPublicProfile.photoURL,
+              }}
             />
           }
         >
-          {experience.metaData.ownerPublicProfile.displayName}
+          {experienceSnapshot.metaData.ownerPublicProfile.displayName}
         </Chip>
         <Button onPress={onPressPlay} mode="contained" style={styles.button}>
           Play Experience
         </Button>
-        <Button mode="text">
-          Download ({(experience.metaData.size / 1000000).toFixed(2)}mb)
+        <Button onPress={onPressDownload} mode="text">
+          Download ({(experienceSnapshot.metaData.size / 1000000).toFixed(2)}mb)
         </Button>
       </ScrollView>
       <BottomSheet
@@ -107,7 +127,9 @@ const ExperienceDetailsScreen: React.FC = () => {
         initialSnap={0}
         ref={authorRef}
         renderContent={() => (
-          <AuthorDetails author={experience.metaData.ownerPublicProfile} />
+          <AuthorDetails
+            author={experienceSnapshot.metaData.ownerPublicProfile}
+          />
         )}
       />
     </View>

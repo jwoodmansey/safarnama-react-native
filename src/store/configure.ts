@@ -1,19 +1,11 @@
-import {
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createEpicMiddleware } from "redux-observable";
 import { persistReducer, persistStore } from "redux-persist";
 import AsyncStorage from "@react-native-community/async-storage";
-import experienceReducer from "./experience/experienceReducer";
+import rootReducer from "./rootReducer";
 import rootEpic from "./rootEpic";
 
 const epicMiddleware = createEpicMiddleware();
-
-const rootReducer = combineReducers({
-  experience: experienceReducer,
-});
 
 const persistConfig = {
   key: "root",
@@ -35,6 +27,3 @@ const persistor = persistStore(store);
 export { store, persistor };
 
 epicMiddleware.run(rootEpic);
-
-export type RootState = ReturnType<typeof store.getState>;
-export type RootDispatch = typeof store.dispatch;

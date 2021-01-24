@@ -18,7 +18,7 @@ const ScanQRCodeScreen: React.FC = () => {
     Alert.alert(split[split.length - 1]);
 
     nav.navigate("ExperienceDetailsScreen", {
-      experience: { _id: split[split.length - 1] },
+      experienceId: split[split.length - 1],
     });
   };
   return (

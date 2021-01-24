@@ -1,16 +1,21 @@
 import { Alert } from "react-native";
-import { combineEpics, ofType } from "redux-observable";
-import { EMPTY, Observable } from "rxjs";
+import { combineEpics, ofType, StateObservable } from "redux-observable";
+import { EMPTY, from, Observable } from "rxjs";
 import { ajax } from "rxjs/ajax";
-import { catchError, map, mergeMap, tap } from "rxjs/operators";
+import { catchError, ignoreElements, map, mergeMap } from "rxjs/operators";
 import { API_BASE_URL } from "../../config";
+import { downloadAllMediaForExperience } from "../mediaService";
+import { RootState } from "../rootReducer";
 import {
   loadExperience,
   loadedFeaturedExperiences,
   loadedExperience,
   loadFeaturedExperiences,
   LoadExperience,
+  downloadExperienceMedia,
+  downloadedMedia,
 } from "./experienceReducer";
+import { selectExperience } from "./experienceSelectors";
 
 const loadExperienceEpic = (action$: Observable<any>) =>
   action$.pipe(
@@ -26,7 +31,6 @@ const loadExperienceEpic = (action$: Observable<any>) =>
 const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
   action$.pipe(
     ofType(loadFeaturedExperiences.type),
-    tap(() => console.log("observable")),
     mergeMap(() =>
       ajax.get(`${API_BASE_URL}/experiences/featured`).pipe(
         map(({ response }) =>
@@ -40,4 +44,27 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
     )
   );
 
-export default combineEpics(loadExperienceEpic, loadFeaturedExperiencesEpic);
+const downloadExperienceMediaEpic = (
+  action$: Observable<any>,
+  state$: StateObservable<RootState>
+) =>
+  action$.pipe(
+    ofType<LoadExperience>(downloadExperienceMedia.type),
+    mergeMap(({ payload: { id } }) =>
+      from(
+        downloadAllMediaForExperience(selectExperience(state$.value, id)!)
+      ).pipe(
+        map((media) => downloadedMedia({ media })),
+        catchError((e) => {
+          Alert.alert(JSON.stringify(e));
+          return EMPTY;
+        })
+      )
+    )
+  );
+
+export default combineEpics(
+  loadExperienceEpic,
+  downloadExperienceMediaEpic,
+  loadFeaturedExperiencesEpic
+);
