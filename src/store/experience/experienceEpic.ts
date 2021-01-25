@@ -2,8 +2,9 @@ import { Alert } from "react-native";
 import { combineEpics, ofType, StateObservable } from "redux-observable";
 import { EMPTY, from, Observable } from "rxjs";
 import { ajax } from "rxjs/ajax";
-import { catchError, ignoreElements, map, mergeMap } from "rxjs/operators";
+import { catchError, ignoreElements, map, mergeMap, tap } from "rxjs/operators";
 import { API_BASE_URL } from "../../config";
+import { navigate } from "../../nav/NavigationRef";
 import { downloadAllMediaForExperience } from "../mediaService";
 import { RootState } from "../rootReducer";
 import {
@@ -55,6 +56,13 @@ const downloadExperienceMediaEpic = (
         downloadAllMediaForExperience(selectExperience(state$.value, id)!)
       ).pipe(
         map((media) => downloadedMedia({ media })),
+        tap(() => {
+          Alert.alert("Download complete", undefined, undefined, {
+            onDismiss: () => {
+              navigate("MapScreen");
+            },
+          });
+        }),
         catchError((e) => {
           Alert.alert(JSON.stringify(e));
           return EMPTY;

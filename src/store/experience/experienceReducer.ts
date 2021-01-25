@@ -1,12 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import {
   ExperienceRefData,
   ExperienceSnapshotData,
 } from "../../types/common/experience";
 import { MediaDocument } from "../../types/common/media";
 import { PointOfInterestDocument } from "../../types/common/point-of-interest";
+import { getMediaFromExperienceData } from "../mediaService";
 
 export type LoadExperience = PayloadAction<{ id: string }>;
 
@@ -44,7 +46,16 @@ const experienceReducer = createSlice({
       // eslint-disable-next-line no-underscore-dangle
       state.experiences[action.payload.experience.data._id] =
         action.payload.experience;
-      // Alert.alert(JSON.stringify(state.experiences))
+      const newMedia = Object.values(
+        getMediaFromExperienceData(action.payload.experience)
+      ).filter((m) => state.media[m._id] === undefined);
+      state.media = {
+        ...state.media,
+        ...newMedia.reduce((acc, cur) => {
+          acc[cur._id] = cur;
+          return acc;
+        }, {} as Record<string, MediaDocument>),
+      };
     },
     setSelectedExperience: (state, action: LoadExperience) => {
       state.selectedExperience = action.payload.id;

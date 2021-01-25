@@ -25,7 +25,7 @@ const MediaItem: React.FC<Props> = ({ media }) => {
         !isEmpty(media.description) ||
         !isEmpty(media.acknowledgements)) && (
         <View style={styles.textContainer}>
-          <Text>LOCAL {media.localPath}</Text>
+          {/* <Text>LOCAL media.localPath}</Text> */}
           {!isEmpty(media.name) && (
             <Subheading style={styles.name}>{media.name}</Subheading>
           )}
