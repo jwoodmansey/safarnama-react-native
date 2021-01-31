@@ -28,6 +28,9 @@ export const downloadAllMediaForExperience = async (
     //   downloaded += 1;
     // })
   );
+  // for (const dl of downloads) {
+  // }
+  // TODO this isn't working great, probably better to do this at the observable level
   console.log("Starting media download");
   const res = await Promise.all(downloads);
   console.log("Finished download");

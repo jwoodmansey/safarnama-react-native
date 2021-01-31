@@ -8,13 +8,13 @@ import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import BottomSheet from "reanimated-bottom-sheet";
-import { RootState } from "../../store/configure";
 import {
+  downloadExperienceMedia,
   loadExperience,
   setSelectedExperience,
-  downloadExperienceMedia,
 } from "../../store/experience/experienceReducer";
 import { selectExperience } from "../../store/experience/experienceSelectors";
+import { RootState } from "../../store/rootReducer";
 import { ExperienceSnapshotData } from "../../types/common/experience";
 import { ExperienceManagementProp } from "../../types/nav/experienceManagement";
 import AuthorDetails from "./components/AuthorDetails";
@@ -97,29 +97,32 @@ const ExperienceDetailsScreen: React.FC = () => {
           ))}
       </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <Paragraph style={styles.description}>
-          {experienceSnapshot.data.description}
-          {/* {JSON.stringify(experience)} */}
-        </Paragraph>
-        <Chip
-          onPress={onPressAuthor}
-          style={styles.author}
-          avatar={
-            <FastImage
-              source={{
-                uri: experienceSnapshot.metaData.ownerPublicProfile.photoURL,
-              }}
-            />
-          }
-        >
-          {experienceSnapshot.metaData.ownerPublicProfile.displayName}
-        </Chip>
-        <Button onPress={onPressPlay} mode="contained" style={styles.button}>
-          Play Experience
-        </Button>
-        <Button onPress={onPressDownload} mode="text">
-          Download ({(experienceSnapshot.metaData.size / 1000000).toFixed(2)}mb)
-        </Button>
+        <View>
+          <Paragraph style={styles.description}>
+            {experienceSnapshot.data.description}
+            {/* {JSON.stringify(experience)} */}
+          </Paragraph>
+          <Chip
+            onPress={onPressAuthor}
+            style={styles.author}
+            avatar={
+              <FastImage
+                source={{
+                  uri: experienceSnapshot.metaData.ownerPublicProfile.photoURL,
+                }}
+              />
+            }
+          >
+            {experienceSnapshot.metaData.ownerPublicProfile.displayName}
+          </Chip>
+          <Button onPress={onPressPlay} mode="contained" style={styles.button}>
+            Play Experience
+          </Button>
+          <Button onPress={onPressDownload} mode="text">
+            Download ({(experienceSnapshot.metaData.size / 1000000).toFixed(2)}
+            mb)
+          </Button>
+        </View>
       </ScrollView>
       <BottomSheet
         borderRadius={16}
@@ -145,7 +148,8 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   scrollView: {
-    margin: 24,
+    padding: 24,
+    flexGrow: 1,
   },
   button: {
     padding: 12,
