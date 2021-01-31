@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import React from "react";
+import React, { useEffect } from "react";
+import SplashScreen from "react-native-splash-screen";
 // import { loadExperience } from "../store/experience/experienceReducer";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
@@ -12,6 +13,9 @@ const RootNavigation: React.FC = () => {
   // useEffect(() => {
   //   dispatch(loadExperiences());
   // }, [dispatch]);
+  useEffect(() => {
+    SplashScreen.hide();
+  });
   return (
     <Drawer.Navigator
       screenOptions={{}}

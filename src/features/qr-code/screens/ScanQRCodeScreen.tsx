@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { Colors, Title } from "react-native-paper";
 import QRCodeScanner from "react-native-qrcode-scanner";
 import dynamicLinks from "@react-native-firebase/dynamic-links";
@@ -27,9 +27,9 @@ const ScanQRCodeScreen: React.FC = () => {
       showMarker
       topContent={
         <View style={styles.instructionsContainer}>
-          <Title style={styles.insturctionsText}>
+          <Text style={styles.insturctionsText}>
             Point your camera at a Safarnama QR code
-          </Title>
+          </Text>
         </View>
       }
     />
@@ -48,6 +48,8 @@ const styles = StyleSheet.create({
   insturctionsText: {
     textAlign: "center",
     color: Colors.white,
+    flexWrap: "wrap",
+    flexShrink: 1,
     justifyContent: "center",
   },
 });
