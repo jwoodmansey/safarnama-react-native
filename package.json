@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "iphone12m": "yarn ios --simulator=\"iPhone 12 mini\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean": "react-native-clean-project"
   },
   "dependencies": {
     "@dudigital/react-native-zoomable-view": "^1.0.15",
@@ -22,6 +24,8 @@
     "@react-navigation/stack": "^5.12.3",
     "@reduxjs/toolkit": "^1.4.0",
     "@turf/bbox": "^6.0.1",
+    "@types/react-native-video": "^5.0.3",
+    "expo-av": "^9.0.0",
     "geojson": "^0.5.0",
     "lottie-ios": "3.1.8",
     "lottie-react-native": "^3.5.0",
@@ -42,7 +46,9 @@
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.13.0",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-unimodules": "^0.12.0",
     "react-native-vector-icons": "^7.1.0",
+    "react-native-video": "^5.1.1",
     "react-native-webview": "^10.10.2",
     "react-redux": "^7.2.2",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
@@ -72,6 +78,7 @@
     "eslint-plugin-react-native": "^3.10.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-clean-project": "^3.4.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
