@@ -1,12 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import {
-  Caption,
-  Colors,
-  Subheading,
-  Surface,
-  Title,
-} from "react-native-paper";
+import { StyleSheet, View } from "react-native";
+import { Caption, Card, Subheading, Title } from "react-native-paper";
 import { MediaDocument } from "../../types/common/media";
 import MediaThumb from "./MediaThumb";
 
@@ -19,7 +13,7 @@ const isEmpty = (str?: string): boolean =>
 
 const MediaItem: React.FC<Props> = ({ media }) => {
   return (
-    <Surface style={styles.container}>
+    <Card style={styles.container}>
       <MediaThumb media={media} />
       {(!isEmpty(media.name) ||
         !isEmpty(media.description) ||
@@ -39,28 +33,27 @@ const MediaItem: React.FC<Props> = ({ media }) => {
           )}
         </View>
       )}
-    </Surface>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
-    backgroundColor: Colors.white,
     marginBottom: 32,
   },
   textContainer: {
     padding: 16,
   },
   name: {
-    color: Colors.black,
+    // color: Colors.black,
   },
   description: {
-    color: Colors.black,
+    // color: Colors.black,
   },
   acknowledgements: {
     fontStyle: "italic",
-    color: Colors.grey600,
+    // color: Colors.grey600,
   },
 });
 

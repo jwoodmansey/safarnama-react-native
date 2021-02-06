@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { Video as ExpoVideo } from "expo-av";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
@@ -33,6 +34,27 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
         </TouchableOpacity>
       );
     }
+    case MediaType.Video: {
+      return (
+        <ExpoVideo
+          useNativeControls
+          usePoster={false}
+          shouldPlay={false}
+          style={{ height: 150, width: "100%" }}
+          source={{ uri: getPath(media) }}
+        />
+      );
+    }
+    // case MediaType.Audio: {
+    //   return (
+    //     <ExpoVideo
+    //       useNativeControls
+    //       usePoster
+    //       shouldPlay={false}
+    //       source={{ uri: getPath(media) }}
+    //     />
+    //   );
+    // }
     case MediaType.Text: {
       return (
         <HTML
@@ -90,6 +112,7 @@ const styles = StyleSheet.create({
   },
   htmlText: {
     fontSize: 20,
+    color: Colors.white,
   },
 });
 
