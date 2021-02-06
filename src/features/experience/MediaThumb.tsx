@@ -45,16 +45,16 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
         />
       );
     }
-    // case MediaType.Audio: {
-    //   return (
-    //     <ExpoVideo
-    //       useNativeControls
-    //       usePoster
-    //       shouldPlay={false}
-    //       source={{ uri: getPath(media) }}
-    //     />
-    //   );
-    // }
+    case MediaType.Audio: {
+      return (
+        <ExpoVideo
+          useNativeControls
+          shouldPlay={false}
+          style={{ height: 50, width: "100%" }}
+          source={{ uri: getPath(media) }}
+        />
+      );
+    }
     case MediaType.Text: {
       return (
         <HTML
