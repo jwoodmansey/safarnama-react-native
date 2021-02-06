@@ -2,7 +2,12 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Video as ExpoVideo } from "expo-av";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from "react-native";
 import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
@@ -17,6 +22,8 @@ type Props = {
 };
 
 const MediaThumb: React.FC<Props> = ({ media }) => {
+  const scheme = useColorScheme();
+  const color = scheme === "light" ? Colors.black : Colors.white;
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
@@ -58,7 +65,8 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
     case MediaType.Text: {
       return (
         <HTML
-          baseFontStyle={styles.htmlText}
+          key={media._id + scheme}
+          baseFontStyle={{ ...styles.htmlText, color }}
           containerStyle={styles.textContainer}
           html=""
           uri={getPath(media)}
@@ -112,7 +120,6 @@ const styles = StyleSheet.create({
   },
   htmlText: {
     fontSize: 20,
-    color: Colors.white,
   },
 });
 

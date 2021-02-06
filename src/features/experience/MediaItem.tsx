@@ -40,7 +40,8 @@ const MediaItem: React.FC<Props> = ({ media }) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
-    marginBottom: 32,
+    marginHorizontal: 20,
+    marginVertical: 10,
   },
   textContainer: {
     padding: 16,
