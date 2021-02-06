@@ -24,7 +24,7 @@ const MapScreen: React.FC = () => {
       >
         <ExperienceMapView mapView={mapRef} />
       </MapView>
-      <PlacesDetailsView />
+      {/* <PlacesDetailsView /> */}
     </View>
   );
 };

@@ -50,6 +50,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const dispatch = useDispatch();
   const onPressPlace = (place: PointOfInterestDocument) => () => {
     dispatch(setSelectedPlace(place));
+    nav.navigate("ViewPlaceScreen", { place });
   };
   return (
     <>
