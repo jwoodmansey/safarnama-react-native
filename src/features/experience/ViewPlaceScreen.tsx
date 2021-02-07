@@ -15,6 +15,25 @@ const ViewPlaceScreen: React.FC = () => {
   const renderItem: ListRenderItem<MediaDocument> = ({ item }) => (
     <MediaItem media={item} />
   );
+  const renderHeader = () => (
+    <MapView
+      ref={ref}
+      liteMode
+      scrollEnabled={false}
+      zoomEnabled={false}
+      style={styles.map}
+      cacheEnabled
+      rotateEnabled={false}
+    >
+      <Marker
+        title={place.name}
+        coordinate={{
+          latitude: place.location.coordinates[1],
+          longitude: place.location.coordinates[0],
+        }}
+      />
+    </MapView>
+  );
   useEffect(() => {
     ref.current?.setCamera({
       center: {
@@ -26,26 +45,7 @@ const ViewPlaceScreen: React.FC = () => {
   }, [place]);
   return (
     <FlatList
-      ListHeaderComponent={() => {
-        return (
-          <MapView
-            ref={ref}
-            liteMode
-            scrollEnabled={false}
-            zoomEnabled={false}
-            style={styles.map}
-            rotateEnabled={false}
-          >
-            <Marker
-              title={place.name}
-              coordinate={{
-                latitude: place.location.coordinates[1],
-                longitude: place.location.coordinates[0],
-              }}
-            />
-          </MapView>
-        );
-      }}
+      ListHeaderComponent={renderHeader}
       contentContainerStyle={styles.panel}
       data={place.media}
       keyExtractor={keyExtractor}

@@ -3,7 +3,6 @@ import { StatusBar, StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import ExperienceMapView from "./features/experience/ExperienceMapView";
 import KeyModal from "./features/experience/KeyModal";
-import PlacesDetailsView from "./features/experience/PlaceDetailsView";
 
 const MapScreen: React.FC = () => {
   const mapRef = useRef<MapView>(null);
@@ -11,10 +10,15 @@ const MapScreen: React.FC = () => {
     <View style={styles.map}>
       <StatusBar barStyle="light-content" />
       <MapView
-        // showsUserLocation
+        showsUserLocation
+        showsCompass
         showsMyLocationButton
         showsScale
         style={styles.map}
+        // onRegionChangeComplete={(reigon) => {}}
+        // onRegionChange={(r) => {
+        //   mapRef.current?.setMapBoundaries(28.7041, 77.1025);
+        // }}
         initialRegion={{
           latitude: 28.7041,
           longitude: 77.1025,

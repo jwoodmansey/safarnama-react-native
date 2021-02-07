@@ -1,24 +1,18 @@
-/* eslint-disable no-underscore-dangle */
+import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
-import { RootState } from "../../store/configure";
-import { ExperienceSnapshotData } from "../../types/common/experience";
-import { PointOfInterestDocument } from "../../types/common/point-of-interest";
-import { setSelectedPlace } from "../../store/experience/experienceReducer";
-import PlaceIcon from "./PlaceIcon";
+import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../store/experience/experienceSelectors";
+import { PointOfInterestDocument } from "../../types/common/point-of-interest";
+import PlaceIcon from "./PlaceIcon";
 
 type Props = {
   mapView: RefObject<MapView>;
 };
 
 const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
-  const experience = useSelector<RootState, ExperienceSnapshotData | undefined>(
-    selectCurrentExperience
-  );
+  const experience = useSelector(selectCurrentExperience);
   const nav = useNavigation();
   const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
   useEffect(() => {
@@ -46,17 +40,13 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
       setCurrentlyZoomedTo(id);
     }
   }, [experience, nav, mapView, currentlyZoomedTo]);
-
-  const dispatch = useDispatch();
   const onPressPlace = (place: PointOfInterestDocument) => () => {
-    dispatch(setSelectedPlace(place));
     nav.navigate("ViewPlaceScreen", { place });
   };
   return (
     <>
       {experience?.data.pointOfInterests?.map((p) => (
         <Marker
-          title={p.name}
           pinColor={Colors.red100}
           key={p._id}
           onPress={onPressPlace(p)}
