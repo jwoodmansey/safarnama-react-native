@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import ExperienceMapView from "./features/experience/ExperienceMapView";
+import KeyModal from "./features/experience/KeyModal";
 import PlacesDetailsView from "./features/experience/PlaceDetailsView";
 
 const MapScreen: React.FC = () => {
@@ -24,6 +25,7 @@ const MapScreen: React.FC = () => {
       >
         <ExperienceMapView mapView={mapRef} />
       </MapView>
+      <KeyModal />
       {/* <PlacesDetailsView /> */}
     </View>
   );

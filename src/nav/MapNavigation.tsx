@@ -1,13 +1,12 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { Alert } from "react-native";
-import { IconButton } from "react-native-paper";
 import ViewPlaceScreen from "../features/experience/ViewPlaceScreen";
 import MapScreen from "../MapScreen";
 import ImageScreen from "../media/ImageScreen";
 import PDFScreen from "../media/PDFScreen";
 import { MapNaviationProp } from "../types/nav/map";
 import DrawerToggle from "./DrawerToggle";
+import KeyToggle from "./KeyToggle";
 
 const Stack = createStackNavigator<MapNaviationProp>();
 
@@ -19,14 +18,7 @@ const MapNavigation: React.FC = () => {
         component={MapScreen}
         options={{
           headerLeft: () => <DrawerToggle />,
-          headerRight: () => (
-            <IconButton
-              onPress={() => {
-                Alert.alert("key");
-              }}
-              icon="key"
-            />
-          ),
+          headerRight: () => <KeyToggle />,
         }}
       />
       <Stack.Screen

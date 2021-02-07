@@ -7,6 +7,7 @@ import {
 } from "../../types/common/experience";
 import { RootState } from "../rootReducer";
 import { MediaDocument } from "../../types/common/media";
+import { PlaceType } from "../../types/common/point-of-interest";
 
 type ExperienceRef = {
   name: string;
@@ -35,6 +36,26 @@ export const selectFeaturedExperiences: Selector<
   RootState,
   ExperienceRefData[]
 > = (state) => state.experience.featuredExperiences;
+
+export const selectAllKeys = createSelector(
+  [selectCurrentExperience],
+  (experience) =>
+    experience?.data.pointOfInterests?.reduce((prev, curr) => {
+      return {
+        ...prev,
+        [curr.type.name]: curr.type,
+      };
+    }, {} as Record<string, PlaceType>)
+);
+export const selectIsKeyModalVisible: Selector<RootState, boolean> = (state) =>
+  state.experience.isKeyModalVisible === true;
+export const selectKeyModal = createSelector(
+  [selectIsKeyModalVisible, selectAllKeys],
+  (isVisible, keys) => ({
+    isVisible,
+    keys: keys ? Object.values(keys) : [],
+  })
+);
 
 export const selectExperiences: Selector<
   RootState,

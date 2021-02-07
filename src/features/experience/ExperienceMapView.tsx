@@ -58,9 +58,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
         <Marker
           title={p.name}
           pinColor={Colors.red100}
-          // eslint-disable-next-line no-underscore-dangle
           key={p._id}
-          // description="Test"
           onPress={onPressPlace(p)}
           coordinate={{
             latitude: p.location.coordinates[1],

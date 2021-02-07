@@ -1,7 +1,6 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
-import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   ExperienceRefData,
   ExperienceSnapshotData,
@@ -18,10 +17,10 @@ type LoadedExperiences = PayloadAction<{
 type DownloadedMedia = PayloadAction<{
   media: Record<string, MediaDocument>;
 }>;
-
 type LoadedFeaturedExperiences = PayloadAction<{
   featuredExperiences: ExperienceRefData[];
 }>;
+type ToggleKeyModal = PayloadAction<boolean>;
 
 type ExperienceState = {
   experiences: Record<string, ExperienceSnapshotData>;
@@ -29,6 +28,7 @@ type ExperienceState = {
   featuredExperiences: ExperienceRefData[];
   selectedExperience: string | undefined;
   media: Record<string, MediaDocument>;
+  isKeyModalVisible?: boolean;
 };
 
 const experienceReducer = createSlice({
@@ -39,11 +39,11 @@ const experienceReducer = createSlice({
     selectedExperience: undefined,
     featuredExperiences: [],
     media: {},
+    isKeyModalVisible: false,
   } as ExperienceState,
   reducers: {
     loadExperience: (_, __: LoadExperience) => {},
     loadedExperience: (state, action: LoadedExperiences) => {
-      // eslint-disable-next-line no-underscore-dangle
       state.experiences[action.payload.experience.data._id] =
         action.payload.experience;
       const newMedia = Object.values(
@@ -66,6 +66,9 @@ const experienceReducer = createSlice({
       action: PayloadAction<PointOfInterestDocument>
     ) => {
       state.selectedPlace = action.payload;
+    },
+    toggleKeyModal: (state, action: ToggleKeyModal) => {
+      state.isKeyModalVisible = action.payload;
     },
     loadFeaturedExperiences: () => {},
     loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
@@ -90,6 +93,7 @@ export const {
   loadedFeaturedExperiences,
   downloadExperienceMedia,
   downloadedMedia,
+  toggleKeyModal,
 } = experienceReducer.actions;
 
 export default experienceReducer.reducer;
