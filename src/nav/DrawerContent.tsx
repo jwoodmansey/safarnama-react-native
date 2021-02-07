@@ -15,9 +15,10 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
     dispatch(setSelectedExperience({ id }));
     navigate("MapScreen");
   };
-  const onPressFeatured = () => {
-    navigate("FeaturedScreen");
-  };
+  const onPressFeatured = () =>
+    navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
+  const onPressManage = () =>
+    navigate("ExperienceManagement", { screen: "ManageExperiencesScreen" });
   const experiences = useSelector(selectMyExperiences);
   return (
     <DrawerContentScrollView {...props}>
@@ -37,7 +38,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
         /> */}
         <Drawer.Item
           icon="bookmark-multiple"
-          onPress={onPressFeatured}
+          onPress={onPressManage}
           label="Manage"
         />
         <Drawer.Item

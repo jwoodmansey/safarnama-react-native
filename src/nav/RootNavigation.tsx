@@ -2,6 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
+import AddExperienceNavigation from "./AddExperienceNavigation";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
@@ -22,10 +23,10 @@ const RootNavigation: React.FC = () => {
     <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
       <Drawer.Screen
-        name="FeaturedScreen"
-        options={{ title: "Featured" }}
+        name="ExperienceManagement"
         component={ExperienceManagementNavigation}
       />
+      <Drawer.Screen name="AddExperience" component={AddExperienceNavigation} />
     </Drawer.Navigator>
   );
 };

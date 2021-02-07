@@ -1,18 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Card, Text } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Card } from "react-native-paper";
 import { ExperienceRefData } from "../../../types/common/experience";
-import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
+import { AddExperienceProp } from "../../../types/nav/addExperience";
 
 type Props = {
   experience: ExperienceRefData;
 };
 
-type Nav = StackNavigationProp<
-  ExperienceManagementProp,
-  "FeaturedExperienceScreen"
->;
+type Nav = StackNavigationProp<AddExperienceProp, "FeaturedExperienceScreen">;
 
 const FeaturedExperienceItem: React.FC<Props> = ({ experience }) => {
   const nav = useNavigation<Nav>();
@@ -20,24 +18,27 @@ const FeaturedExperienceItem: React.FC<Props> = ({ experience }) => {
     nav.navigate("ExperienceDetailsScreen", { experience });
   };
   return (
-    <Card
-      onPress={onPress}
-      style={{ marginLeft: 16, marginRight: 16, marginBottom: 16 }}
-    >
+    <Card onPress={onPress} style={styles.card}>
       {/* <Card.Cover source={experience.}/> */}
       <Card.Title
         title={experience.name}
         subtitle={experience.description}
         subtitleNumberOfLines={3}
-        style={{ padding: 16 }}
+        style={styles.title}
       />
-      {/* <Card.Content> */}
-      {/* <Text>{JSON.stringify(experience)}</Text> */}
-      {/* <Card. */}
-      {/* <Paragraph numberOfLines={3}>{experienc/e.description}</Paragraph> */}
-      {/* </Card.Content> */}
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    marginLeft: 16,
+    marginRight: 16,
+    marginBottom: 16,
+  },
+  title: {
+    padding: 16,
+  },
+});
 
 export default FeaturedExperienceItem;
