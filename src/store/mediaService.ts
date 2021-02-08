@@ -14,6 +14,7 @@ export const downloadAllMediaForExperience = async (
     (mediaId) =>
       RNFetchBlob.config({
         path: `${dirs.DocumentDir}/${mediaId}`,
+        // TODO, dont save all as png
         appendExt: ".png",
       })
         .fetch("GET", media[mediaId].path)
@@ -36,6 +37,13 @@ export const downloadAllMediaForExperience = async (
   console.log("Finished download");
   console.log(`Downloaded ${res.length} media`);
   return media;
+};
+
+export const removeMedia = async (media: MediaDocument[]) => {
+  const promises = media
+    .filter((m) => m.localPath !== undefined)
+    .map((m) => RNFetchBlob.fs.unlink(m.localPath!));
+  await Promise.all(promises);
 };
 
 export const getMediaFromExperienceData = (

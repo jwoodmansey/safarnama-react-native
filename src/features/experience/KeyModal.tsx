@@ -31,7 +31,7 @@ const KeyModal: React.FC = () => {
         ]}
       >
         {data.keys.map((key) => (
-          <View style={styles.keyItemContainer}>
+          <View key={key.name} style={styles.keyItemContainer}>
             <PlaceIcon name={key.matIcon} />
             <Caption style={styles.title}>{key.name}</Caption>
           </View>

@@ -16,6 +16,7 @@ type LoadedExperiences = PayloadAction<{
 }>;
 type DownloadedMedia = PayloadAction<{
   media: Record<string, MediaDocument>;
+  experienceId: string;
 }>;
 type LoadedFeaturedExperiences = PayloadAction<{
   featuredExperiences: ExperienceRefData[];
@@ -80,6 +81,16 @@ const experienceReducer = createSlice({
         ...state.media,
         ...action.payload.media,
       };
+      state.experiences[action.payload.experienceId] = {
+        ...state.experiences[action.payload.experienceId],
+        downloaded: true,
+      };
+    },
+    removeExperience: (_, __: LoadExperience) => {},
+    removedExperience: (state, action: LoadExperience) => {
+      const experiences = { ...state.experiences };
+      delete experiences[action.payload.id];
+      state.experiences = experiences;
     },
   },
 });
@@ -94,6 +105,8 @@ export const {
   downloadExperienceMedia,
   downloadedMedia,
   toggleKeyModal,
+  removeExperience,
+  removedExperience,
 } = experienceReducer.actions;
 
 export default experienceReducer.reducer;

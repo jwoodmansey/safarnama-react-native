@@ -48,6 +48,7 @@ export type ExperienceSnapshotData = {
   _id: any;
   ownerId: string;
   bbox?: any;
+  downloaded?: boolean;
 };
 
 export type ExperienceRefData = {

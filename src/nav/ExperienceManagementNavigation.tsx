@@ -13,6 +13,7 @@ const ExperienceManagementNavigation: React.FC = () => {
         name="ManageExperiencesScreen"
         component={ManageExperiencesScreen}
         options={{
+          title: "Manage experiences",
           headerLeft: () => <DrawerToggle />,
         }}
       />

@@ -2,21 +2,28 @@ import { Alert } from "react-native";
 import { combineEpics, ofType, StateObservable } from "redux-observable";
 import { EMPTY, from, Observable } from "rxjs";
 import { ajax } from "rxjs/ajax";
-import { catchError, ignoreElements, map, mergeMap, tap } from "rxjs/operators";
+import { catchError, map, mergeMap, tap, withLatestFrom } from "rxjs/operators";
 import { API_BASE_URL } from "../../config";
 import { navigate } from "../../nav/NavigationRef";
-import { downloadAllMediaForExperience } from "../mediaService";
+import { MediaDocument } from "../../types/common/media";
+import {
+  downloadAllMediaForExperience,
+  getMediaFromExperienceData,
+  removeMedia,
+} from "../mediaService";
 import { RootState } from "../rootReducer";
 import {
-  loadExperience,
-  loadedFeaturedExperiences,
-  loadedExperience,
-  loadFeaturedExperiences,
-  LoadExperience,
-  downloadExperienceMedia,
   downloadedMedia,
+  downloadExperienceMedia,
+  loadedExperience,
+  loadedFeaturedExperiences,
+  loadExperience,
+  LoadExperience,
+  loadFeaturedExperiences,
+  removedExperience,
+  removeExperience,
 } from "./experienceReducer";
-import { selectExperience } from "./experienceSelectors";
+import { selectExperience, selectExperiences } from "./experienceSelectors";
 
 const loadExperienceEpic = (action$: Observable<any>) =>
   action$.pipe(
@@ -55,7 +62,7 @@ const downloadExperienceMediaEpic = (
       from(
         downloadAllMediaForExperience(selectExperience(state$.value, id)!)
       ).pipe(
-        map((media) => downloadedMedia({ media })),
+        map((media) => downloadedMedia({ media, experienceId: id })),
         tap(() => {
           Alert.alert("Download complete", undefined, undefined, {
             onDismiss: () => {
@@ -71,8 +78,52 @@ const downloadExperienceMediaEpic = (
     )
   );
 
+const removeExperienceEpic = (
+  action$: Observable<any>,
+  state$: StateObservable<RootState>
+) =>
+  action$.pipe(
+    ofType<LoadExperience>(removeExperience.type),
+    withLatestFrom(state$.pipe(map(selectExperiences))),
+    mergeMap(
+      ([
+        {
+          payload: { id },
+        },
+        experiences,
+      ]) => {
+        // Find all media in use in the app outside of this experience
+        // We cannot remove this media
+        const mediaInUse = Object.values(experiences)
+          .filter((e) => e.data._id !== id)
+          .reduce(
+            (prev, curr) => ({
+              ...prev,
+              ...getMediaFromExperienceData(curr),
+            }),
+            {} as Record<string, MediaDocument>
+          );
+        const thisExperienceMedia = getMediaFromExperienceData(experiences[id]);
+        const mediaNotInUse = Object.values(thisExperienceMedia).filter(
+          (m) => mediaInUse[m._id] === undefined
+        );
+        return from(removeMedia(mediaNotInUse)).pipe(
+          map(() => removedExperience({ id })),
+          tap(() => {
+            Alert.alert("Experience removed", undefined, undefined);
+          }),
+          catchError((e) => {
+            Alert.alert(JSON.stringify(e));
+            return EMPTY;
+          })
+        );
+      }
+    )
+  );
+
 export default combineEpics(
   loadExperienceEpic,
   downloadExperienceMediaEpic,
-  loadFeaturedExperiencesEpic
+  loadFeaturedExperiencesEpic,
+  removeExperienceEpic
 );
