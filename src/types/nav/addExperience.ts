@@ -1,9 +1,9 @@
-import { ExperienceRefData } from "../common/experience";
+import { ExperienceData, ExperienceRefData } from "../common/experience";
 
 export type AddExperienceProp = {
   FeaturedExperienceScreen: {};
   ExperienceDetailsScreen: {
-    experience?: ExperienceRefData;
+    experience?: ExperienceRefData | ExperienceData;
     experienceId?: string;
   };
   ScanQRCodeScreen: {};

@@ -20,6 +20,11 @@ type Nav = StackNavigationProp<AddExperienceProp, "FeaturedExperienceScreen">;
 const ExperienceItem: React.FC<Props> = ({ experience }) => {
   const nav = useNavigation<Nav>();
   const dispatch = useDispatch();
+  const onPress = () => {
+    nav.navigate("ExperienceDetailsScreen", {
+      experience: experience.data,
+    });
+  };
   const onPressPlay = () => {
     dispatch(setSelectedExperience({ id: experience.data._id }));
     nav.navigate("MapScreen");
@@ -43,7 +48,7 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
   };
   const onPressDownload = () => {};
   return (
-    <Card onPress={onPressPlay} style={styles.card}>
+    <Card onPress={onPress} style={styles.card}>
       {/* <Card.Cover source={experience.}/> */}
       <Card.Title
         title={experience.data.name}

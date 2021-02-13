@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useRef } from "react";
 import { Alert, StyleSheet, View } from "react-native";
