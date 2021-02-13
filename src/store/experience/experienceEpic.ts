@@ -108,7 +108,12 @@ const removeExperienceEpic = (
           (m) => mediaInUse[m._id] === undefined
         );
         return from(removeMedia(mediaNotInUse)).pipe(
-          map(() => removedExperience({ id })),
+          map(() =>
+            removedExperience({
+              id,
+              removedMedia: mediaNotInUse.map((m) => m._id),
+            })
+          ),
           tap(() => {
             Alert.alert("Experience removed", undefined, undefined);
           }),
