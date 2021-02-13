@@ -2473,18 +2473,18 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/progress-view/-/progress-view-1.2.3.tgz#73ee6498d3ff2ba3ac3df77553f04344e1534a52"
   integrity sha512-CW7eOhxduIxA723aZlKMOnBEz1o5Cjo5ibMNsf81TcjNqtsamRHm8jFS98za7t5P7XdhM0MhzkbaS90cwOlN+Q==
 
-"@react-native-firebase/app@^10.6.4":
-  version "10.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.6.4.tgz#ab4a8d4833422326c79e915fcdcb8b6fea920e50"
-  integrity sha512-DIigHYpYwuVQFOlD5qrYoGvKdGgbXR0rFdjpKYd81HI/3OCcferPSOlNorAHncQmEpkZnOl0B2zig4ydCOZjmw==
+"@react-native-firebase/app@^10.7.0":
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.7.0.tgz#db0cd77c2d5e83024797073256d471dc9b27085c"
+  integrity sha512-C8H90p7lf+ZIxA22lxypuA7uJOWRX4GLlll6EXZTnUXHNYaIM8zW8/RPHECJZRPYwisbe+2pIlDwFJjyiRM+Jw==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/dynamic-links@^10.6.4":
-  version "10.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-10.6.4.tgz#5d66a1a28cb84cc1e927508a2d018c8dc50eb512"
-  integrity sha512-ITdwMyEqW7ydrFDm6m1r6c0Cev5ZC+mqHGidzGozgEO8qx7pXeZewP6PLD5GJgBUNo2Tl/SKOzfS7Z4pDNCAwQ==
+"@react-native-firebase/dynamic-links@^10.7.0":
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-10.7.0.tgz#9dee17e4fddbf1bea973501e1b1b256f30f9146b"
+  integrity sha512-xvcFSdEIISRVa+iOMfJhBjqvEJHUSJ50wVDDRZRF8SPt1q2ghYoaLKv0ly0W8TaGXHfA5G/vSZBBEnMy36tN7g==
 
 "@react-navigation/core@^5.15.1":
   version "5.15.1"
