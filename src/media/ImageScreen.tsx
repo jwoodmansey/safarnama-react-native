@@ -1,11 +1,9 @@
+import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import ImageZoom from "react-native-image-pan-zoom";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
-import { Caption, Colors } from "react-native-paper";
 import { MapNaviationProp } from "../types/nav/map";
 import AcknowledgementsOverlay from "./AcknowledgementsOverlay";
 

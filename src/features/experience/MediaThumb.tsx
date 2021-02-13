@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Video as ExpoVideo } from "expo-av";
 import React from "react";
@@ -25,6 +25,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   const scheme = useColorScheme();
   const color = scheme === "light" ? Colors.black : Colors.white;
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
+  const { colors } = useTheme();
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
       const onImagePress = () => {
@@ -65,11 +66,9 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
     case MediaType.Text: {
       return (
         <HTML
-          key={media._id + scheme}
           baseFontStyle={{ ...styles.htmlText, color }}
           containerStyle={styles.textContainer}
-          html=""
-          uri={getPath(media)}
+          source={{ uri: getPath(media) }}
         />
       );
     }
@@ -82,7 +81,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
           <Pdf
             singlePage
             fitPolicy={1}
-            style={styles.pdf}
+            style={[styles.pdf, { backgroundColor: colors.card }]}
             source={{ uri: getPath(media), cache: true }}
           />
           <TouchableOpacity
