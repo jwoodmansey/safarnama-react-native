@@ -2,9 +2,9 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { useEffect, useRef } from "react";
 import { FlatList, ListRenderItem, StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import { MediaDocument } from "../../types/common/media";
-import { MapNaviationProp } from "../../types/nav/map";
-import MediaItem from "./MediaItem";
+import { MediaDocument } from "../../../types/common/media";
+import { MapNaviationProp } from "../../../types/nav/map";
+import MediaItem from "../components/MediaItem";
 
 type Route = RouteProp<MapNaviationProp, "ViewPlaceScreen">;
 

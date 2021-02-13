@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import ViewPlaceScreen from "../features/experience/ViewPlaceScreen";
+import ViewPlaceScreen from "../features/experience/screens/ViewPlaceScreen";
 import MapScreen from "../MapScreen";
 import ImageScreen from "../media/ImageScreen";
 import PDFScreen from "../media/PDFScreen";

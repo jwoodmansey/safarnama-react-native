@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import ExperienceDetailsScreen from "../features/experiences/ExperienceDetailsScreen";
-import FeaturedExperiencesScreen from "../features/experiences/FeaturedExperiencesScreen";
+import ExperienceDetailsScreen from "../features/experience/screens/ExperienceDetailsScreen";
+import FeaturedExperiencesScreen from "../features/experiences/screens/FeaturedExperiencesScreen";
 import ScanQRCodeScreen from "../features/qr-code/screens/ScanQRCodeScreen";
 import { AddExperienceProp } from "../types/nav/addExperience";
 import DrawerToggle from "./DrawerToggle";

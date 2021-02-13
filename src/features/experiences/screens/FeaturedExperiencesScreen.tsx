@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { ListRenderItem } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { loadFeaturedExperiences } from "../../store/experience/experienceReducer";
-import { selectFeaturedExperiences } from "../../store/experience/experienceSelectors";
-import { ExperienceRefData } from "../../types/common/experience";
-import FeaturedExperienceItem from "./components/FeaturedExperienceItem";
-import FeaturedHeader from "./FeaturedHeader";
+import { loadFeaturedExperiences } from "../../../store/experience/experienceReducer";
+import { selectFeaturedExperiences } from "../../../store/experience/experienceSelectors";
+import { ExperienceRefData } from "../../../types/common/experience";
+import FeaturedExperienceItem from "../components/FeaturedExperienceItem";
+import FeaturedHeader from "../components/FeaturedHeader";
 
 const FeaturedExperiencesScreen: React.FC = () => {
   const dispatch = useDispatch();

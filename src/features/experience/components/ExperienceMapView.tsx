@@ -3,8 +3,8 @@ import React, { RefObject, useEffect, useState } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
-import { selectCurrentExperience } from "../../store/experience/experienceSelectors";
-import { PointOfInterestDocument } from "../../types/common/point-of-interest";
+import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
+import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
 import PlaceIcon from "./PlaceIcon";
 
 type Props = {

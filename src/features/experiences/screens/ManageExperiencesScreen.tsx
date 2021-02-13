@@ -19,6 +19,7 @@ const ManageExperiencesScreen: React.FC = () => {
   const onPressFind = () => {
     nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
   };
+  const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
   return (
     <FlatList
       contentContainerStyle={styles.container}
@@ -40,6 +41,7 @@ const ManageExperiencesScreen: React.FC = () => {
           </Button>
         </SafeAreaView>
       }
+      keyExtractor={keyExtractor}
     />
   );
 };

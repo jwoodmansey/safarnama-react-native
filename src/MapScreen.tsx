@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
-import ExperienceMapView from "./features/experience/ExperienceMapView";
-import KeyModal from "./features/experience/KeyModal";
+import ExperienceMapView from "./features/experience/components/ExperienceMapView";
+import KeyModal from "./features/experience/components/KeyModal";
 
 const MapScreen: React.FC = () => {
   const mapRef = useRef<MapView>(null);
@@ -15,10 +15,6 @@ const MapScreen: React.FC = () => {
         showsMyLocationButton
         showsScale
         style={styles.map}
-        // onRegionChangeComplete={(reigon) => {}}
-        // onRegionChange={(r) => {
-        //   mapRef.current?.setMapBoundaries(28.7041, 77.1025);
-        // }}
         initialRegion={{
           latitude: 28.7041,
           longitude: 77.1025,
@@ -30,7 +26,6 @@ const MapScreen: React.FC = () => {
         <ExperienceMapView mapView={mapRef} />
       </MapView>
       <KeyModal />
-      {/* <PlacesDetailsView /> */}
     </View>
   );
 };

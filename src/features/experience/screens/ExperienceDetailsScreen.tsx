@@ -11,12 +11,12 @@ import {
   downloadExperienceMedia,
   loadExperience,
   setSelectedExperience,
-} from "../../store/experience/experienceReducer";
-import { selectExperience } from "../../store/experience/experienceSelectors";
-import { RootState } from "../../store/rootReducer";
-import { ExperienceSnapshotData } from "../../types/common/experience";
-import { ExperienceManagementProp } from "../../types/nav/experienceManagement";
-import AuthorDetails from "./components/AuthorDetails";
+} from "../../../store/experience/experienceReducer";
+import { selectExperience } from "../../../store/experience/experienceSelectors";
+import { RootState } from "../../../store/rootReducer";
+import { ExperienceSnapshotData } from "../../../types/common/experience";
+import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
+import AuthorDetails from "../../experiences/components/AuthorDetails";
 
 type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
 

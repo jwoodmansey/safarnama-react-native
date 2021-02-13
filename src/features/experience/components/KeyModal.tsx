@@ -3,8 +3,8 @@ import { StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
 import { Caption, useTheme } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleKeyModal } from "../../store/experience/experienceReducer";
-import { selectKeyModal } from "../../store/experience/experienceSelectors";
+import { toggleKeyModal } from "../../../store/experience/experienceReducer";
+import { selectKeyModal } from "../../../store/experience/experienceSelectors";
 import PlaceIcon from "./PlaceIcon";
 
 const KeyModal: React.FC = () => {

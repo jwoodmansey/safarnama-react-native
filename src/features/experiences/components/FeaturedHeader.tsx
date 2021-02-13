@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 
-const QRAnimation = require("../../assets/anim/qr_code.json");
+const QRAnimation = require("../../../assets/anim/qr_code.json");
 
 const FeaturedHeader: React.FC = () => {
   const nav = useNavigation();

@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import ExperienceDetailsScreen from "../features/experiences/ExperienceDetailsScreen";
+import ExperienceDetailsScreen from "../features/experience/screens/ExperienceDetailsScreen";
 import ManageExperiencesScreen from "../features/experiences/screens/ManageExperiencesScreen";
 import { ExperienceManagementProp } from "../types/nav/experienceManagement";
 import DrawerToggle from "./DrawerToggle";
