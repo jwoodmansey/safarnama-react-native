@@ -22,6 +22,7 @@ import {
 } from "react-native-paper";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import Loading from "./src/nav/Loading";
 import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
             theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
             ref={navigationRef}
           >
+            <Loading />
             <RootNavigation />
           </NavigationContainer>
         </PaperProvider>

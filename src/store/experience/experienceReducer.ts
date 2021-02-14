@@ -35,6 +35,7 @@ type ExperienceState = {
   selectedExperience: string | undefined;
   media: Record<string, MediaDocument>;
   isKeyModalVisible?: boolean;
+  isDownloading?: boolean;
 };
 
 const experienceReducer = createSlice({
@@ -46,12 +47,15 @@ const experienceReducer = createSlice({
     featuredExperiences: [],
     media: {},
     isKeyModalVisible: false,
+    isDownloading: false,
   } as ExperienceState,
   reducers: {
     loadExperience: (_, __: LoadExperience) => {},
     loadedExperience: (state, action: LoadedExperiences) => {
-      state.experiences[action.payload.experience.data._id] =
-        action.payload.experience;
+      state.experiences[action.payload.experience.data._id] = {
+        ...state.experiences[action.payload.experience.data._id],
+        ...action.payload.experience,
+      };
       const newMedia = Object.values(
         getMediaFromExperienceData(action.payload.experience)
       ).filter((m) => state.media[m._id] === undefined);
@@ -80,7 +84,9 @@ const experienceReducer = createSlice({
     loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
       state.featuredExperiences = action.payload.featuredExperiences;
     },
-    downloadExperienceMedia: (state, action: LoadExperience) => {},
+    downloadExperienceMedia: (state, action: LoadExperience) => {
+      state.isDownloading = true;
+    },
     downloadedMedia: (state, action: DownloadedMedia) => {
       state.media = {
         ...state.media,
@@ -90,6 +96,10 @@ const experienceReducer = createSlice({
         ...state.experiences[action.payload.experienceId],
         downloaded: true,
       };
+      state.isDownloading = false;
+    },
+    errorDownloadingMedia: (state) => {
+      state.isDownloading = false;
     },
     removeExperience: (_, __: LoadExperience) => {},
     removedExperience: (state, action: RemovedExperience) => {
@@ -114,6 +124,7 @@ export const {
   loadedFeaturedExperiences,
   downloadExperienceMedia,
   downloadedMedia,
+  errorDownloadingMedia,
   toggleKeyModal,
   removeExperience,
   removedExperience,

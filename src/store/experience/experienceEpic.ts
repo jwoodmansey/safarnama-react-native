@@ -1,20 +1,26 @@
 import { Alert } from "react-native";
 import { combineEpics, ofType, StateObservable } from "redux-observable";
-import { EMPTY, from, Observable } from "rxjs";
+import RNFetchBlob from "rn-fetch-blob";
+import { combineLatest, EMPTY, from, Observable, of } from "rxjs";
 import { ajax } from "rxjs/ajax";
-import { catchError, map, mergeMap, tap, withLatestFrom } from "rxjs/operators";
-import { API_BASE_URL } from "../../config";
-import { navigate } from "../../nav/NavigationRef";
-import { MediaDocument } from "../../types/common/media";
 import {
-  downloadAllMediaForExperience,
-  getMediaFromExperienceData,
-  removeMedia,
-} from "../mediaService";
+  catchError,
+  ignoreElements,
+  map,
+  mapTo,
+  mergeMap,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from "rxjs/operators";
+import { API_BASE_URL } from "../../config";
+import { MediaDocument } from "../../types/common/media";
+import { getMediaFromExperienceData, removeMedia } from "../mediaService";
 import { RootState } from "../rootReducer";
 import {
   downloadedMedia,
   downloadExperienceMedia,
+  errorDownloadingMedia,
   loadedExperience,
   loadedFeaturedExperiences,
   loadExperience,
@@ -52,30 +58,58 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
     )
   );
 
+const { dirs } = RNFetchBlob.fs;
+
+// Would be good to display progress of downloads, revisit
+function downloadMedia(media: MediaDocument): Observable<MediaDocument> {
+  return new Observable((observer) => {
+    RNFetchBlob.config({
+      path: `${dirs.DocumentDir}/${media._id}`,
+      // TODO, dont save all as png
+      timeout: 10000,
+      appendExt: ".png",
+    })
+      .fetch("GET", media.path)
+      .progress(() => {
+        console.log("PROGRESS");
+      })
+      .then(() => {
+        observer.next(media);
+      })
+      .finally(() => {
+        observer.complete();
+      });
+  });
+}
+
 const downloadExperienceMediaEpic = (
   action$: Observable<any>,
   state$: StateObservable<RootState>
 ) =>
   action$.pipe(
     ofType<LoadExperience>(downloadExperienceMedia.type),
-    mergeMap(({ payload: { id } }) =>
-      from(
-        downloadAllMediaForExperience(selectExperience(state$.value, id)!)
+    switchMap(({ payload: { id } }) => {
+      const media = getMediaFromExperienceData(
+        selectExperience(state$.value, id)!
+      );
+      return combineLatest(
+        Object.values(media).map((m) => downloadMedia(m))
       ).pipe(
-        map((media) => downloadedMedia({ media, experienceId: id })),
-        tap(() => {
-          Alert.alert("Download complete", undefined, undefined, {
-            onDismiss: () => {
-              navigate("MapScreen");
-            },
-          });
-        }),
-        catchError((e) => {
-          Alert.alert(JSON.stringify(e));
-          return EMPTY;
-        })
-      )
-    )
+        map((m) =>
+          downloadedMedia({
+            experienceId: id,
+            media: m.reduce(
+              (prev, curr) => ({
+                ...prev,
+                [curr._id]: curr,
+              }),
+              {}
+            ),
+          })
+        ),
+        catchError(() => of(errorDownloadingMedia()))
+      );
+    })
   );
 
 const removeExperienceEpic = (

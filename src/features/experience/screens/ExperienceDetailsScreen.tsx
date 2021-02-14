@@ -1,12 +1,11 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
-import BottomSheet from "reanimated-bottom-sheet";
 import {
   downloadExperienceMedia,
   loadExperience,
@@ -25,8 +24,8 @@ const ExperienceDetailsScreen: React.FC = () => {
   const route = useRoute<Route>();
   const { experience, experienceId } = route.params;
   const id = experience?._id || experienceId || "";
-  const authorRef = useRef<BottomSheet>(null);
   const dispatch = useDispatch();
+  const [isAuthorModalVisible, setAuthorModalVisible] = useState(false);
   const experienceSnapshot = useSelector<
     RootState,
     ExperienceSnapshotData | undefined
@@ -34,8 +33,8 @@ const ExperienceDetailsScreen: React.FC = () => {
   useEffect(() => {
     dispatch(loadExperience({ id }));
   }, [dispatch, id]);
-  const onPressAuthor = () => {
-    authorRef.current?.snapTo(1);
+  const onPressAuthor = (open: boolean) => () => {
+    setAuthorModalVisible(open);
   };
   const ref = useRef<MapView>(null);
 
@@ -102,7 +101,7 @@ const ExperienceDetailsScreen: React.FC = () => {
             {/* {JSON.stringify(experience)} */}
           </Paragraph>
           <Chip
-            onPress={onPressAuthor}
+            onPress={onPressAuthor(true)}
             style={styles.author}
             avatar={
               <FastImage
@@ -117,22 +116,23 @@ const ExperienceDetailsScreen: React.FC = () => {
           <Button onPress={onPressPlay} mode="contained" style={styles.button}>
             Play Experience
           </Button>
-          <Button onPress={onPressDownload} mode="text">
-            Download ({(experienceSnapshot.metaData.size / 1000000).toFixed(2)}
-            mb)
+          <Button
+            disabled={experienceSnapshot.downloaded}
+            onPress={onPressDownload}
+            mode="text"
+          >
+            {experienceSnapshot.downloaded
+              ? "Downloaded"
+              : `Download (${(
+                  experienceSnapshot.metaData.size / 1000000
+                ).toFixed(2)} mb)`}
           </Button>
         </View>
       </ScrollView>
-      <BottomSheet
-        borderRadius={16}
-        snapPoints={[0, 300]}
-        initialSnap={0}
-        ref={authorRef}
-        renderContent={() => (
-          <AuthorDetails
-            author={experienceSnapshot.metaData.ownerPublicProfile}
-          />
-        )}
+      <AuthorDetails
+        onHide={onPressAuthor(false)}
+        isVisible={isAuthorModalVisible}
+        author={experienceSnapshot.metaData.ownerPublicProfile}
       />
     </View>
   );
