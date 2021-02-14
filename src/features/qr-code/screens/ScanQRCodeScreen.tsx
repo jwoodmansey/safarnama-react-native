@@ -1,22 +1,20 @@
-import React from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
-import { Colors, Title } from "react-native-paper";
-import QRCodeScanner from "react-native-qrcode-scanner";
 import dynamicLinks from "@react-native-firebase/dynamic-links";
-import { BarCodeReadEvent } from "react-native-camera";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
+import React from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import { BarCodeReadEvent } from "react-native-camera";
+import { Colors } from "react-native-paper";
+import QRCodeScanner from "react-native-qrcode-scanner";
+import { AddExperienceProp } from "../../../types/nav/addExperience";
 
 const ScanQRCodeScreen: React.FC = () => {
   const nav = useNavigation<
-    StackNavigationProp<ExperienceManagementProp, "ScanQRCodeScreen">
+    StackNavigationProp<AddExperienceProp, "ScanQRCodeScreen">
   >();
   const onSuccess = async (event: BarCodeReadEvent) => {
     const resolvedLink = await dynamicLinks().resolveLink(event.data);
     const split = resolvedLink.url.split("/");
-    Alert.alert(split[split.length - 1]);
-
     nav.navigate("ExperienceDetailsScreen", {
       experienceId: split[split.length - 1],
     });
@@ -48,8 +46,7 @@ const styles = StyleSheet.create({
   insturctionsText: {
     textAlign: "center",
     color: Colors.white,
-    flexWrap: "wrap",
-    flexShrink: 1,
+    flexShrink: Platform.select({ ios: 1, android: 0 }),
     justifyContent: "center",
   },
 });

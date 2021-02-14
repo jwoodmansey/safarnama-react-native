@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
+import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   downloadExperienceMedia,
   loadExperience,
@@ -46,8 +47,11 @@ const ExperienceDetailsScreen: React.FC = () => {
           longitude: p.location.coordinates[0],
         }))
       );
+      nav.setOptions({
+        title: experienceSnapshot.data.name,
+      });
     }
-  }, [experienceSnapshot]);
+  }, [experienceSnapshot, nav]);
   if (!experienceSnapshot) {
     return <ProgressBar />;
   }
@@ -96,19 +100,26 @@ const ExperienceDetailsScreen: React.FC = () => {
       </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View>
-          <Paragraph style={styles.description}>
-            {experienceSnapshot.data.description}
-            {/* {JSON.stringify(experience)} */}
-          </Paragraph>
+          {experienceSnapshot.data.description && (
+            <Paragraph style={styles.description}>
+              {experienceSnapshot.data.description}
+              {/* {JSON.stringify(experience)} */}
+            </Paragraph>
+          )}
           <Chip
             onPress={onPressAuthor(true)}
             style={styles.author}
             avatar={
-              <FastImage
-                source={{
-                  uri: experienceSnapshot.metaData.ownerPublicProfile.photoURL,
-                }}
-              />
+              experienceSnapshot.metaData.ownerPublicProfile.photoURL ? (
+                <FastImage
+                  source={{
+                    uri:
+                      experienceSnapshot.metaData.ownerPublicProfile.photoURL,
+                  }}
+                />
+              ) : (
+                <MaterialCommunityIcon size={24} name="account-circle" />
+              )
             }
           >
             {experienceSnapshot.metaData.ownerPublicProfile.displayName}

@@ -5,6 +5,7 @@ import { Alert, LayoutAnimation, StyleSheet } from "react-native";
 import { Button, Card } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import {
+  downloadExperienceMedia,
   removeExperience,
   setSelectedExperience,
 } from "../../../store/experience/experienceReducer";
@@ -46,7 +47,9 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
       ]
     );
   };
-  const onPressDownload = () => {};
+  const onPressDownload = () => {
+    dispatch(downloadExperienceMedia({ id: experience.data._id }));
+  };
   return (
     <Card onPress={onPress} style={styles.card}>
       {/* <Card.Cover source={experience.}/> */}

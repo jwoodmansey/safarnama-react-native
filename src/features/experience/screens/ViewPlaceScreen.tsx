@@ -41,6 +41,7 @@ const ViewPlaceScreen: React.FC = () => {
         longitude: place.location.coordinates[0],
       },
       altitude: 2000,
+      zoom: 16,
     });
   }, [place]);
   return (
