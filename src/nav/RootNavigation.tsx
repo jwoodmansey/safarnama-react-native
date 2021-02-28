@@ -2,6 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
+import useGeoLocation from "../hooks/useGeoLocation";
 import AddExperienceNavigation from "./AddExperienceNavigation";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
@@ -19,6 +20,7 @@ const RootNavigation: React.FC = () => {
       scheme === "light" ? "dark-content" : "light-content"
     );
   }, [scheme]);
+  useGeoLocation();
   return (
     <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
