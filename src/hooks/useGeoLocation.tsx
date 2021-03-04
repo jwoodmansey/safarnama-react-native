@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Alert } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
+import PushNotification from "react-native-push-notification";
 
 const useGeoLocation = () => {
   useEffect(() => {
@@ -27,15 +27,20 @@ const useGeoLocation = () => {
           /// /
           // 3. Start tracking!
           //
-          Alert.alert("Junkrat primed");
-
-          BackgroundGeolocation.startGeofences(function () {
-            Alert.alert("Junkrat primed");
+          BackgroundGeolocation.startGeofences(() => {
             console.log("- Start success");
           });
         }
       }
     );
+    BackgroundGeolocation.onGeofence((event) => {
+      if (event.action === "ENTER") {
+        PushNotification.localNotification({
+          title: "Place",
+          message: "Place geofence",
+        });
+      }
+    });
     return () => {
       BackgroundGeolocation.removeListeners();
     };
