@@ -90,7 +90,7 @@ PODS:
     - nanopb/encode (= 2.30907.0)
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
-  - Permission-Camera (3.0.0):
+  - Permission-Camera (3.0.1):
     - RNPermissions
   - PromisesObjC (1.2.12)
   - RCTRequired (0.63.4)
@@ -259,21 +259,19 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-camera (3.42.2):
+  - react-native-camera (3.43.0):
     - React-Core
-    - react-native-camera/RCT (= 3.42.2)
-    - react-native-camera/RN (= 3.42.2)
-  - react-native-camera/RCT (3.42.2):
+    - react-native-camera/RCT (= 3.43.0)
+    - react-native-camera/RN (= 3.43.0)
+  - react-native-camera/RCT (3.43.0):
     - React-Core
-  - react-native-camera/RN (3.42.2):
+  - react-native-camera/RN (3.43.0):
     - React-Core
   - react-native-maps (0.27.1):
     - React
-  - react-native-pdf (6.2.2):
+  - react-native-pdf (6.3.0):
     - React-Core
   - react-native-progress-bar-android (1.0.4):
-    - React
-  - react-native-progress-view (1.2.3):
     - React
   - react-native-safe-area-context (3.1.9):
     - React-Core
@@ -366,15 +364,15 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.10.1):
+  - RNGestureHandler (1.10.3):
     - React-Core
-  - RNPermissions (3.0.0):
+  - RNPermissions (3.0.1):
     - React-Core
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.17.1):
+  - RNScreens (2.18.1):
     - React-Core
-  - RNVectorIcons (8.0.0):
+  - RNVectorIcons (8.1.0):
     - React-Core
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
@@ -431,7 +429,6 @@ DEPENDENCIES:
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
-  - "react-native-progress-view (from `../node_modules/@react-native-community/progress-view`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -545,8 +542,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-pdf"
   react-native-progress-bar-android:
     :path: "../node_modules/@react-native-community/progress-bar-android"
-  react-native-progress-view:
-    :path: "../node_modules/@react-native-community/progress-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
@@ -653,7 +648,7 @@ SPEC CHECKSUMS:
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
-  Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
+  Permission-Camera: b2e50546c095139bb1264be9c34c796332340d32
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -665,11 +660,10 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-camera: eb89d59d50a3fc124b067134b688bccbff0ee841
+  react-native-camera: f432fcf1b32b528bbf7c3543d3e3b1deb0c5b72a
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
-  react-native-pdf: 4b5a9e4465a6a3b399e91dc4838eb44ddf716d1f
+  react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
-  react-native-progress-view: 21b1e29e70c7559c16c9e0a04c4adc19fce6ede2
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
@@ -692,11 +686,11 @@ SPEC CHECKSUMS:
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBApp: d75aa9756bca20df2c902a3f7e11bc276f03c65b
   RNFBDynamicLinks: b4e86c6dbd4f4eaee0c821874853223b008a4904
-  RNGestureHandler: 5e58135436aacc1c5d29b75547d3d2b9430d052c
-  RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNPermissions: 4c8a37b4dde50f1f152bf8cd08c4a43d2355829e
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
-  RNVectorIcons: f67a1abce2ec73e62fe4606e8110e95a832bc859
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
