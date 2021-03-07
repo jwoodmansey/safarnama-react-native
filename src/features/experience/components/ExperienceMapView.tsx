@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
-import MapView, { Marker } from "react-native-maps";
+import { View } from "react-native";
+import MapView, { Circle, Marker } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
@@ -41,22 +42,32 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
     }
   }, [experience, nav, mapView, currentlyZoomedTo]);
   const onPressPlace = (place: PointOfInterestDocument) => () => {
-    nav.navigate("ViewPlaceScreen", { place });
+    nav.navigate("ViewPlaceScreen", { place, name: place.name });
   };
   return (
     <>
       {experience?.data.pointOfInterests?.map((p) => (
-        <Marker
-          pinColor={Colors.red100}
-          key={p._id}
-          onPress={onPressPlace(p)}
-          coordinate={{
-            latitude: p.location.coordinates[1],
-            longitude: p.location.coordinates[0],
-          }}
-        >
-          <PlaceIcon name={p.type.matIcon} />
-        </Marker>
+        <View key={p._id}>
+          <Marker
+            pinColor={Colors.red100}
+            key={p._id}
+            onPress={onPressPlace(p)}
+            coordinate={{
+              latitude: p.location.coordinates[1],
+              longitude: p.location.coordinates[0],
+            }}
+          >
+            <PlaceIcon name={p.type.matIcon} />
+          </Marker>
+          <Circle
+            center={{
+              latitude: p.triggerZone.lat,
+              longitude: p.triggerZone.lng,
+            }}
+            radius={p.triggerZone.radius}
+            strokeColor={Colors.red100}
+          />
+        </View>
       ))}
     </>
   );

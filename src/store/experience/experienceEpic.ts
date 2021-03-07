@@ -1,7 +1,4 @@
 import { Alert } from "react-native";
-import BackgroundGeolocation, {
-  Geofence,
-} from "react-native-background-geolocation";
 import { combineEpics, ofType, StateObservable } from "redux-observable";
 import RNFetchBlob from "rn-fetch-blob";
 import { combineLatest, EMPTY, from, Observable, of } from "rxjs";
@@ -29,13 +26,8 @@ import {
   loadFeaturedExperiences,
   removedExperience,
   removeExperience,
-  setSelectedExperience,
 } from "./experienceReducer";
-import {
-  selectCurrentExperience,
-  selectExperience,
-  selectExperiences,
-} from "./experienceSelectors";
+import { selectExperience, selectExperiences } from "./experienceSelectors";
 
 const loadExperienceEpic = (action$: Observable<any>) =>
   action$.pipe(
@@ -163,40 +155,6 @@ const removeExperienceEpic = (
           })
         );
       }
-    )
-  );
-
-const onSetSelectedExperienceEpic = (
-  action$: Observable<any>,
-  state$: StateObservable<RootState>
-) =>
-  action$.pipe(
-    ofType<LoadExperience>(setSelectedExperience.type),
-    withLatestFrom(state$.pipe(map(selectCurrentExperience))),
-    mergeMap(([, experience]) =>
-      from(async () => {
-        await BackgroundGeolocation.removeGeofences();
-        const geoFences: Geofence[] = experience?.data.pointOfInterests
-          ? experience.data.pointOfInterests.map((place) => ({
-              notifyOnExit: false,
-              notifyOnEntry: true,
-              notifyOnDwell: false,
-              identifier: place._id,
-              latitude: place.triggerZone.lat,
-              longitude: place.triggerZone.lng,
-              radius: place.triggerZone.radius,
-            }))
-          : [];
-        await BackgroundGeolocation.addGeofences(geoFences);
-      }).pipe(
-        map(({ response }) =>
-          loadedFeaturedExperiences({ featuredExperiences: response })
-        ),
-        catchError((e) => {
-          Alert.alert(JSON.stringify(e));
-          return EMPTY;
-        })
-      )
     )
   );
 

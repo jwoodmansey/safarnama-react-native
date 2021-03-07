@@ -43,7 +43,7 @@ const MapNavigation: React.FC = () => {
         name="ViewPlaceScreen"
         component={ViewPlaceScreen}
         options={({ route }) => ({
-          title: route?.params?.place.name,
+          title: route?.params.name,
         })}
       />
     </Stack.Navigator>

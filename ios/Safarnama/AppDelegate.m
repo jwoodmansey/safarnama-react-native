@@ -10,6 +10,8 @@
 
 #import "RNSplashScreen.h"
 #import <TSBackgroundFetch/TSBackgroundFetch.h>
+#import <UserNotifications/UserNotifications.h>
+#import <RNCPushNotificationIOS.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -61,6 +63,9 @@ static void InitializeFlipper(UIApplication *application) {
   [super application:application didFinishLaunchingWithOptions:launchOptions];
   [RNSplashScreen show];
   [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+  // Define UNUserNotificationCenter
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  center.delegate = self;
 
   return YES;
 }
@@ -79,6 +84,20 @@ static void InitializeFlipper(UIApplication *application) {
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+// Required for localNotification event
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler
+{
+  [RNCPushNotificationIOS didReceiveNotificationResponse:response];
+}
+
+//Called when a notification is delivered to a foreground app.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+  completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
 }
 
 @end

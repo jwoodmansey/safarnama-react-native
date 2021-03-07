@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
 import ExperienceMapView from "./features/experience/components/ExperienceMapView";
 import KeyModal from "./features/experience/components/KeyModal";
@@ -8,7 +8,6 @@ const MapScreen: React.FC = () => {
   const mapRef = useRef<MapView>(null);
   return (
     <View style={styles.map}>
-      <StatusBar barStyle="light-content" />
       <MapView
         showsUserLocation
         showsCompass

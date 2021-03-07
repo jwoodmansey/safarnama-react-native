@@ -11,12 +11,32 @@ import {
   mergeMap,
   withLatestFrom,
 } from "rxjs/operators";
+import { ExperienceSnapshotData } from "../../types/common/experience";
 import {
   LoadExperience,
   setSelectedExperience,
 } from "../experience/experienceReducer";
 import { selectCurrentExperience } from "../experience/experienceSelectors";
 import { RootState } from "../rootReducer";
+
+async function setGeofences(experience?: ExperienceSnapshotData) {
+  await BackgroundGeolocation.removeGeofences();
+  const geoFences: Geofence[] = experience?.data.pointOfInterests
+    ? experience.data.pointOfInterests.map((place) => ({
+        notifyOnExit: false,
+        notifyOnEntry: true,
+        notifyOnDwell: true,
+        identifier: place._id,
+        latitude: place.triggerZone.lat,
+        longitude: place.triggerZone.lng,
+        radius: place.triggerZone.radius,
+        extras: {
+          name: place.name,
+        },
+      }))
+    : [];
+  await BackgroundGeolocation.addGeofences(geoFences);
+}
 
 const onSetSelectedExperienceEpic = (
   action$: Observable<any>,
@@ -26,21 +46,7 @@ const onSetSelectedExperienceEpic = (
     ofType<LoadExperience>(setSelectedExperience.type),
     withLatestFrom(state$.pipe(map(selectCurrentExperience))),
     mergeMap(([, experience]) =>
-      from(async () => {
-        await BackgroundGeolocation.removeGeofences();
-        const geoFences: Geofence[] = experience?.data.pointOfInterests
-          ? experience.data.pointOfInterests.map((place) => ({
-              notifyOnExit: false,
-              notifyOnEntry: true,
-              notifyOnDwell: false,
-              identifier: place._id,
-              latitude: place.triggerZone.lat,
-              longitude: place.triggerZone.lng,
-              radius: place.triggerZone.radius,
-            }))
-          : [];
-        await BackgroundGeolocation.addGeofences(geoFences);
-      }).pipe(
+      from(setGeofences(experience)).pipe(
         ignoreElements(),
         catchError((e) => {
           Alert.alert(JSON.stringify(e));
