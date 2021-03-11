@@ -5,12 +5,12 @@ import { Button, Subheading, Title, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useSelector } from "react-redux";
-import { selectExperiences } from "../../../store/experience/experienceSelectors";
+import { selectMyExperiences } from "../../../store/experience/experienceSelectors";
 import { ExperienceSnapshotData } from "../../../types/common/experience";
 import ExperienceItem from "../components/ExperienceItem";
 
 const ManageExperiencesScreen: React.FC = () => {
-  const data = useSelector(selectExperiences);
+  const data = useSelector(selectMyExperiences);
   const renderItem: ListRenderItem<ExperienceSnapshotData> = ({ item }) => (
     <ExperienceItem experience={item} />
   );

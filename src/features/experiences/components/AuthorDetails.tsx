@@ -50,7 +50,9 @@ const styles = StyleSheet.create({
   },
   container: {
     minHeight: 300,
-    padding: 24,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    padding: 20,
   },
   titleContainer: {
     flexDirection: "row",

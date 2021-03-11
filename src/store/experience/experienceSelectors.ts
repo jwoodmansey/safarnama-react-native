@@ -22,13 +22,11 @@ export const selectCurrentExperience: Selector<
     ? selectExperience(state, state.experience.selectedExperience)
     : undefined;
 
-export const selectMyExperiences: Selector<RootState, ExperienceRef[]> = (
-  state
-) => {
-  return Object.values(state.experience.experiences)?.map((e) => ({
-    name: e.data.name,
-    id: e.data._id,
-  }));
+export const selectMyExperiences: Selector<
+  RootState,
+  ExperienceSnapshotData[]
+> = (state) => {
+  return Object.values(state.experience.experiences)?.filter((e) => e.played);
 };
 
 export const selectFeaturedExperiences: Selector<

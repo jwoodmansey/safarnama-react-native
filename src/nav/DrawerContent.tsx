@@ -25,10 +25,10 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
       <Drawer.Section title="Experience">
         {Object.values(experiences).map((e) => (
           <Drawer.Item
-            key={e.id}
+            key={e.data._id}
             icon="map"
-            label={e.name}
-            onPress={onPressViewCurrent(e.id)}
+            label={e.data.name}
+            onPress={onPressViewCurrent(e.data._id)}
           />
         ))}
         {/* <Drawer.Item
