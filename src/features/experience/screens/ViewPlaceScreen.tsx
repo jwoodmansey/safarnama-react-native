@@ -75,6 +75,7 @@ const ViewPlaceScreen: React.FC = () => {
 const styles = StyleSheet.create({
   panel: {
     // padding: 20,
+    paddingBottom: 20,
   },
   map: {
     flex: 1,

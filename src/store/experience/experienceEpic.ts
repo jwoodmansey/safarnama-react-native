@@ -71,6 +71,9 @@ function downloadMedia(media: MediaDocument): Observable<MediaDocument> {
       .progress(() => {
         console.log("PROGRESS");
       })
+      .catch((e) => {
+        console.error(e);
+      })
       .then(() => {
         observer.next(media);
       })

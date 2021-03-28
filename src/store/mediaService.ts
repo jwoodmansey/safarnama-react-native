@@ -25,6 +25,9 @@ export const downloadAllMediaForExperience = async (
             localPath: res.path(),
           };
         })
+        .catch((e) => {
+          console.error(e);
+        })
     // .then(() => {
     //   downloaded += 1;
     // })

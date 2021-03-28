@@ -6,7 +6,7 @@ import { RootState } from "../store/rootReducer";
 
 const Loading: React.FC = () => {
   const isVisible = useSelector<RootState, boolean>(
-    (state) => state.experience.isDownloading === true
+    (state) => state.loading.isLoading === true
   );
   const { colors } = useTheme();
   return (

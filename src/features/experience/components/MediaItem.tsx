@@ -1,15 +1,24 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Caption, Card, Subheading, Title } from "react-native-paper";
-import { MediaDocument } from "../../types/common/media";
+import { Linking, StyleSheet, View } from "react-native";
+import {
+  Caption,
+  Card,
+  Divider,
+  List,
+  Subheading,
+  Title,
+} from "react-native-paper";
+import { MediaDocument } from "../../../types/common/media";
 import MediaThumb from "./MediaThumb";
 
 type Props = {
   media: MediaDocument;
 };
 
-const isEmpty = (str?: string): boolean =>
-  str === undefined || str.trim().length === 0;
+const isEmpty = (str?: string | any[]): boolean =>
+  str === undefined ||
+  (Array.isArray(str) && str.length === 0) ||
+  (typeof str === "string" && str.trim().length === 0);
 
 const MediaItem: React.FC<Props> = ({ media }) => {
   return (
@@ -17,7 +26,8 @@ const MediaItem: React.FC<Props> = ({ media }) => {
       <MediaThumb media={media} />
       {(!isEmpty(media.name) ||
         !isEmpty(media.description) ||
-        !isEmpty(media.acknowledgements)) && (
+        !isEmpty(media.acknowledgements) ||
+        !isEmpty(media.externalLinks)) && (
         <View style={styles.textContainer}>
           {/* <Text>LOCAL media.localPath}</Text> */}
           {!isEmpty(media.name) && (
@@ -30,6 +40,28 @@ const MediaItem: React.FC<Props> = ({ media }) => {
             <Caption style={styles.acknowledgements}>
               {media.acknowledgements}
             </Caption>
+          )}
+          {!isEmpty(media.externalLinks) && (
+            <>
+              {media.externalLinks.map((l) => {
+                const onPress = () => Linking.openURL(l.url);
+                return (
+                  <List.Section>
+                    <Divider style={styles.externalLinkDivider} />
+                    <Subheading>Links</Subheading>
+                    <List.Item
+                      onPress={onPress}
+                      style={styles.externalLinkListItem}
+                      title={l.name}
+                      left={() => <List.Icon color="#000" icon="open-in-new" />}
+                    />
+                  </List.Section>
+                );
+              })}
+              <Caption style={styles.acknowledgements}>
+                Safarnama is not responsible for the content of links.
+              </Caption>
+            </>
           )}
         </View>
       )}
@@ -54,7 +86,13 @@ const styles = StyleSheet.create({
   },
   acknowledgements: {
     fontStyle: "italic",
-    // color: Colors.grey600,
+  },
+  externalLinkDivider: {
+    marginVertical: 12,
+  },
+  externalLinkListItem: {
+    margin: 0,
+    padding: 0,
   },
 });
 

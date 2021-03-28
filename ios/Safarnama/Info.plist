@@ -41,6 +41,8 @@
 	<string>To allow you to scan QR codes</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Allowing background access to location will let us notify you when you're near a point of interest</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allowing background access to location will let us notify you when you're near a point of interest</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We'll use it to show your current position while playing an experience</string>
 	<key>UIAppFonts</key>

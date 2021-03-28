@@ -7,13 +7,14 @@ import {
 import { catchError } from "rxjs/operators";
 import experienceEpic from "./experience/experienceEpic";
 import geofenceEpic from "./geofence/geofenceEpic";
+import loadingEpic from "./loading/loadingEpic";
 
 export default (
   action$: ActionsObservable<Action>,
   store$: StateObservable<any>,
   dependencies: any
 ) =>
-  combineEpics(experienceEpic, geofenceEpic)(
+  combineEpics(experienceEpic, geofenceEpic, loadingEpic)(
     action$,
     store$,
     dependencies

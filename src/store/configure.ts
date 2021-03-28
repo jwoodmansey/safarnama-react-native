@@ -10,9 +10,8 @@ const epicMiddleware = createEpicMiddleware();
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  // Firebase will persist this anyway,
   // never persist loading or the app could get stuck
-  blacklist: [],
+  blacklist: ["loading"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

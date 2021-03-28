@@ -13,4 +13,5 @@ export type MediaDocument = {
   acknowledgements?: string;
   associatedExperiences?: string[];
   localPath?: string;
+  externalLinks: { name: string; url: string }[];
 };

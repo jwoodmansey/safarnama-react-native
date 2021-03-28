@@ -277,6 +277,8 @@ PODS:
     - React-Core
   - react-native-progress-bar-android (1.0.4):
     - React
+  - react-native-progress-view (1.2.4):
+    - React
   - react-native-safe-area-context (3.1.9):
     - React-Core
   - react-native-splash-screen (3.2.0):
@@ -435,6 +437,7 @@ DEPENDENCIES:
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
+  - "react-native-progress-view (from `../node_modules/@react-native-community/progress-view`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -552,6 +555,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-pdf"
   react-native-progress-bar-android:
     :path: "../node_modules/@react-native-community/progress-bar-android"
+  react-native-progress-view:
+    :path: "../node_modules/@react-native-community/progress-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
@@ -676,6 +681,7 @@ SPEC CHECKSUMS:
   react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
+  react-native-progress-view: 5e9560b491a149035b869d63603d4fc7f9258cb1
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-webview: 6520e3e7b4933de76b95ef542c8d7115cf45b68e
