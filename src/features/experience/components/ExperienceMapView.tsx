@@ -19,6 +19,8 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   useEffect(() => {
     if (experience) {
       nav.setOptions({ title: experience.data.name });
+    } else {
+      nav.navigate("AddExperience");
     }
     const id = experience?.data._id;
     if (experience && currentlyZoomedTo !== id) {

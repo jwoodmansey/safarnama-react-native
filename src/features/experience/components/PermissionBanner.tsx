@@ -14,7 +14,7 @@ const PermissionBanner: React.FC = () => {
         "ios.permission.LOCATION_WHEN_IN_USE",
         "ios.permission.LOCATION_ALWAYS",
       ]);
-      Alert.alert(JSON.stringify(always));
+      // Alert.alert(JSON.stringify(always));
       //   setState(always);
     }
     checkPerms();
