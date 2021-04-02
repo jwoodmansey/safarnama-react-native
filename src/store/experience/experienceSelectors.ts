@@ -9,11 +9,6 @@ import { RootState } from "../rootReducer";
 import { MediaDocument } from "../../types/common/media";
 import { PlaceType } from "../../types/common/point-of-interest";
 
-type ExperienceRef = {
-  name: string;
-  id: string;
-};
-
 export const selectCurrentExperience: Selector<
   RootState,
   ExperienceSnapshotData | undefined
@@ -25,9 +20,8 @@ export const selectCurrentExperience: Selector<
 export const selectMyExperiences: Selector<
   RootState,
   ExperienceSnapshotData[]
-> = (state) => {
-  return Object.values(state.experience.experiences)?.filter((e) => e.played);
-};
+> = (state) =>
+  Object.values(state.experience.experiences)?.filter((e) => e.played);
 
 export const selectFeaturedExperiences: Selector<
   RootState,
@@ -57,9 +51,7 @@ export const selectKeyModal = createSelector(
 export const selectExperiences: Selector<
   RootState,
   Record<string, ExperienceSnapshotData>
-> = (state) => {
-  return state.experience.experiences;
-};
+> = (state) => state.experience.experiences;
 
 export const selectMedia: Selector<RootState, Record<string, MediaDocument>> = (
   state

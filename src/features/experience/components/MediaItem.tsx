@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Linking, StyleSheet, View } from "react-native";
 import {
   Caption,
@@ -21,6 +22,7 @@ const isEmpty = (str?: string | any[]): boolean =>
   (typeof str === "string" && str.trim().length === 0);
 
 const MediaItem: React.FC<Props> = ({ media }) => {
+  const [t] = useTranslation(["media"]);
   return (
     <Card style={styles.container}>
       <MediaThumb media={media} />
@@ -45,21 +47,24 @@ const MediaItem: React.FC<Props> = ({ media }) => {
             <>
               {media.externalLinks.map((l) => {
                 const onPress = () => Linking.openURL(l.url);
+                const left = () => (
+                  <List.Icon color="#000" icon="open-in-new" />
+                );
                 return (
                   <List.Section>
                     <Divider style={styles.externalLinkDivider} />
-                    <Subheading>Links</Subheading>
+                    <Subheading>{t("media:links")}</Subheading>
                     <List.Item
                       onPress={onPress}
                       style={styles.externalLinkListItem}
                       title={l.name}
-                      left={() => <List.Icon color="#000" icon="open-in-new" />}
+                      left={left}
                     />
                   </List.Section>
                 );
               })}
               <Caption style={styles.acknowledgements}>
-                Safarnama is not responsible for the content of links.
+                {t("media:notResponsibleForLinks")}
               </Caption>
             </>
           )}

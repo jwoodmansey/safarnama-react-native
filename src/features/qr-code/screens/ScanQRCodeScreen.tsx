@@ -2,6 +2,7 @@ import dynamicLinks from "@react-native-firebase/dynamic-links";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { BarCodeReadEvent } from "react-native-camera";
 import { Colors } from "react-native-paper";
@@ -19,6 +20,7 @@ const ScanQRCodeScreen: React.FC = () => {
       experienceId: split[split.length - 1],
     });
   };
+  const [t] = useTranslation(["manage"]);
   return (
     <QRCodeScanner
       onRead={onSuccess}
@@ -26,7 +28,7 @@ const ScanQRCodeScreen: React.FC = () => {
       topContent={
         <View style={styles.instructionsContainer}>
           <Text style={styles.insturctionsText}>
-            Point your camera at a Safarnama QR code
+            {t("manage:qrCodePointAt")}
           </Text>
         </View>
       }

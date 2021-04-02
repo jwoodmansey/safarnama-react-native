@@ -2,6 +2,7 @@ import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Video as ExpoVideo } from "expo-av";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -26,6 +27,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   const color = scheme === "light" ? Colors.black : Colors.white;
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const { colors } = useTheme();
+  const [t] = useTranslation(["media"]);
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
       const onImagePress = () => {
@@ -48,7 +50,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
           useNativeControls
           usePoster={false}
           shouldPlay={false}
-          style={{ height: 150, width: "100%" }}
+          style={styles.video}
           source={{ uri: getPath(media) }}
         />
       );
@@ -58,7 +60,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
         <ExpoVideo
           useNativeControls
           shouldPlay={false}
-          style={{ height: 50, width: "100%" }}
+          style={styles.audio}
           source={{ uri: getPath(media) }}
         />
       );
@@ -94,7 +96,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
     default: {
       return (
         <Caption style={[styles.textContainer, styles.unsupported]}>
-          Unsupported media: {media.mimetype}
+          {t("media:unsupportedMedia", { type: media.mimetype })}
         </Caption>
       );
     }
@@ -119,6 +121,14 @@ const styles = StyleSheet.create({
   },
   htmlText: {
     fontSize: 20,
+  },
+  video: {
+    height: 150,
+    width: "100%",
+  },
+  audio: {
+    height: 50,
+    width: "100%",
   },
 });
 

@@ -1,5 +1,5 @@
 import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { RouteProp, useRoute } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
@@ -11,10 +11,9 @@ type Route = RouteProp<MapNaviationProp, "PDFScreen">;
 
 const ImageScreen: React.FC = () => {
   const route = useRoute<Route>();
-  const nav = useNavigation();
   const { media } = route.params;
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <SafeAreaView
         edges={["right", "bottom", "left"]}
         style={StyleSheet.absoluteFill}

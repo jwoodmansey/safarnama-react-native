@@ -7,6 +7,7 @@ import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useTranslation } from "react-i18next";
 import {
   downloadExperienceMedia,
   loadExperience,
@@ -52,6 +53,7 @@ const ExperienceDetailsScreen: React.FC = () => {
       });
     }
   }, [experienceSnapshot, nav]);
+  const [t] = useTranslation(["manage", "glossary"]);
   if (!experienceSnapshot) {
     return <ProgressBar />;
   }
@@ -63,12 +65,12 @@ const ExperienceDetailsScreen: React.FC = () => {
   };
   const onPressDownload = () => {
     Alert.alert(
-      "Download experience?",
-      `This will allow you to view this experience's media while offline.\n\nIt cannot guarantee that the map layer will be visible while offline.`,
+      t("manage:downloadExperience"),
+      t("manage:downloadExplanation"),
       [
-        { text: "Cancel", style: "cancel" },
+        { text: t("glossary:cancel"), style: "cancel" },
         {
-          text: `Download (${sizeInMb}Mb)`,
+          text: t("manage:downloadSizeInMb", { sizeInMb }),
           style: "default",
           onPress: () => {
             dispatch(downloadExperienceMedia({ id }));
@@ -125,7 +127,7 @@ const ExperienceDetailsScreen: React.FC = () => {
             {experienceSnapshot.metaData.ownerPublicProfile.displayName}
           </Chip>
           <Button onPress={onPressPlay} mode="contained" style={styles.button}>
-            Play Experience
+            {t("manage:playExperience")}
           </Button>
           <Button
             disabled={experienceSnapshot.downloaded}
@@ -133,10 +135,8 @@ const ExperienceDetailsScreen: React.FC = () => {
             mode="text"
           >
             {experienceSnapshot.downloaded
-              ? "Downloaded"
-              : `Download (${(
-                  experienceSnapshot.metaData.size / 1000000
-                ).toFixed(2)} mb)`}
+              ? t("manage:downloaded")
+              : t("manage:downloadSizeInMb", { sizeInMb })}
           </Button>
         </View>
       </ScrollView>

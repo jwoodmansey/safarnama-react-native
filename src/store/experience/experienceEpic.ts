@@ -12,6 +12,7 @@ import {
   withLatestFrom,
 } from "rxjs/operators";
 import { API_BASE_URL } from "../../config";
+import { translateOutsideComponent } from "../../i18n/config";
 import { MediaDocument } from "../../types/common/media";
 import { getMediaFromExperienceData, removeMedia } from "../mediaService";
 import { RootState } from "../rootReducer";
@@ -150,7 +151,11 @@ const removeExperienceEpic = (
             })
           ),
           tap(() => {
-            Alert.alert("Experience removed", undefined, undefined);
+            Alert.alert(
+              translateOutsideComponent("experienceRemoved"),
+              undefined,
+              undefined
+            );
           }),
           catchError((e) => {
             Alert.alert(JSON.stringify(e));

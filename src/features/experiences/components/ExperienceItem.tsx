@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, LayoutAnimation, StyleSheet } from "react-native";
 import { Button, Card } from "react-native-paper";
 import { useDispatch } from "react-redux";
@@ -28,28 +29,25 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
   };
   const onPressPlay = () => {
     dispatch(setSelectedExperience({ id: experience.data._id }));
-    nav.navigate("MapScreen");
+    nav.navigate<any>("MapScreen");
   };
   const onPressRemove = () => {
-    Alert.alert(
-      "Remove experience?",
-      "Are you sure you want to remove this experience?",
-      [
-        { style: "cancel", text: "Cancel" },
-        {
-          style: "destructive",
-          text: "Remove",
-          onPress: () => {
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
-            dispatch(removeExperience({ id: experience.data._id }));
-          },
+    Alert.alert(t("manage:removeExperience"), t("manage:removeExplanation"), [
+      { style: "cancel", text: t("glossary:cancel") },
+      {
+        style: "destructive",
+        text: t("manage:remove"),
+        onPress: () => {
+          LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+          dispatch(removeExperience({ id: experience.data._id }));
         },
-      ]
-    );
+      },
+    ]);
   };
   const onPressDownload = () => {
     dispatch(downloadExperienceMedia({ id: experience.data._id }));
   };
+  const [t] = useTranslation(["manage", "glossary"]);
   return (
     <Card onPress={onPress} style={styles.card}>
       {/* <Card.Cover source={experience.}/> */}
@@ -60,13 +58,13 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
         style={styles.title}
       />
       <Card.Actions>
-        <Button onPress={onPressPlay}>Play</Button>
-        <Button onPress={onPressRemove}>Remove</Button>
+        <Button onPress={onPressPlay}>{t("manage:play")}</Button>
+        <Button onPress={onPressRemove}>{t("manage:remove")}</Button>
         {experience.downloaded ? (
-          <Button disabled>Downloaded</Button>
+          <Button disabled>{t("manage:downloaded")}</Button>
         ) : (
           <Button onPress={onPressDownload} icon="download">
-            Download
+            {t("manage:download")}
           </Button>
         )}
       </Card.Actions>

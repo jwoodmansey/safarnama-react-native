@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TAG } from "../../config";
 import {
   ExperienceRefData,
   ExperienceSnapshotData,
@@ -86,7 +87,9 @@ const experienceReducer = createSlice({
     },
     loadFeaturedExperiences: () => {},
     loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
-      state.featuredExperiences = action.payload.featuredExperiences;
+      state.featuredExperiences = action.payload.featuredExperiences.filter(
+        (e) => e.metaData.tags?.includes(TAG)
+      );
     },
     downloadExperienceMedia: (state, action: LoadExperience) => {
       state.isDownloading = true;

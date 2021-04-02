@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import SpinnerOverlay from "react-native-loading-spinner-overlay";
 import { Colors, useTheme } from "react-native-paper";
 import { useSelector } from "react-redux";
@@ -9,10 +10,11 @@ const Loading: React.FC = () => {
     (state) => state.loading.isLoading === true
   );
   const { colors } = useTheme();
+  const [t] = useTranslation("loading");
   return (
     <SpinnerOverlay
       overlayColor={colors.backdrop}
-      textContent="Just a sec..."
+      textContent={t("justASec")}
       textStyle={{ color: Colors.white }}
       visible={isVisible}
     />

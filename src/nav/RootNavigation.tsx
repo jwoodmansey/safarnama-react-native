@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import useGeoLocation from "../hooks/useGeoLocation";
+import { RootStackNavigationProp } from "../types/nav/root";
 import AddExperienceNavigation from "./AddExperienceNavigation";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 
 const RootNavigation: React.FC = () => {
   useEffect(() => {

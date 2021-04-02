@@ -1,0 +1,42 @@
+{
+  "manage": {
+    "manageExperiences": "Manage experiences",
+    "noExperiences": "No experiences",
+    "noExeriencesSubtitle": "You have not started any experiences yet. Find one to get started.",
+    "findExperiences": "Find experiences",
+    "findMore": "Find more",
+    "featuredExperiences": "Featured experiences",
+    "qrCode": "QR Code",
+    "scanQrCode": "Scan QR Code",
+    "qrCodeSubtitle": "If you have a QR code for an experience, tap here. You can also download any featured experience from the list below.",
+    "qrCodePointAt": "Point your camera at a Safarnama QR code",
+    "playExperience": "Play experience",
+    "play": "Play",
+    "remove": "remove",
+    "download": "Download",
+    "downloaded": "Downloaded",
+    "downloadSizeInMb": "Download ({{sizeInMb}}Mb)",
+    "downloadExperience": "Download experience?",
+    "downloadExplanation": "This will allow you to view this experience's media while offline.\n\nIt cannot guarantee that the map layer will be visible while offline.`,",
+    "removeExperience": "Remove experience?",
+    "removeExplanation":"Are you sure you want to remove this experience?",
+    "experienceRemoved": "Experience removed"
+  },
+  "media": {
+    "unsupportedMedia": "Unsupported media: {{type}}",
+    "links": "Links",
+    "notResponsibleForLinks": "We are not responsible for the content of links."
+  },
+  "about": {
+    "thirdPartyLicenses": "Third party licenses"
+  },
+  "loading": {
+    "justASec": "Just a sec…"
+  },
+  "glossary": {
+    "cancel": "Cancel",
+    "experience": "Experience",
+    "about": "About",
+    "manage": "Manage"
+  }
+}

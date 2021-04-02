@@ -3,6 +3,7 @@ import {
   DrawerContentScrollView,
 } from "@react-navigation/drawer";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Drawer } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedExperience } from "../store/experience/experienceReducer";
@@ -20,9 +21,10 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const onPressManage = () =>
     navigate("ExperienceManagement", { screen: "ManageExperiencesScreen" });
   const experiences = useSelector(selectMyExperiences);
+  const [t] = useTranslation(["glossary", "manage", "about"]);
   return (
     <DrawerContentScrollView {...props}>
-      <Drawer.Section title="Experience">
+      <Drawer.Section title={t("glossary:experience")}>
         {Object.values(experiences).map((e) => (
           <Drawer.Item
             key={e.data._id}
@@ -31,24 +33,19 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
             onPress={onPressViewCurrent(e.data._id)}
           />
         ))}
-        {/* <Drawer.Item
-          icon="map"
-          onPress={onPressViewCurrent}
-          label="View current"
-        /> */}
         <Drawer.Item
           icon="bookmark-multiple"
           onPress={onPressManage}
-          label="Manage"
+          label={t("glossary:manage")}
         />
         <Drawer.Item
           icon="download"
           onPress={onPressFeatured}
-          label="Find more"
+          label={t("manage:findMore")}
         />
       </Drawer.Section>
-      <Drawer.Section title="About">
-        <Drawer.Item icon="receipt" label="Third party licenses" />
+      <Drawer.Section title={t("glossary:about")}>
+        <Drawer.Item icon="receipt" label={t("about:thirdPartyLicenses")} />
       </Drawer.Section>
     </DrawerContentScrollView>
   );

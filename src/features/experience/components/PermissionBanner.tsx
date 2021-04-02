@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Alert } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Banner } from "react-native-paper";
-import { check, checkMultiple } from "react-native-permissions";
+import { checkMultiple } from "react-native-permissions";
 
 const PermissionBanner: React.FC = () => {
   const [state, setState] = useState<

@@ -14,6 +14,7 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-console": "off"
   }
 };

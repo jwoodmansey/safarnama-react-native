@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { FlatList, ListRenderItem, StyleSheet } from "react-native";
 import { Button, Subheading, Title, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,6 +20,7 @@ const ManageExperiencesScreen: React.FC = () => {
   const onPressFind = () => {
     nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
   };
+  const [t] = useTranslation(["manage"]);
   const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
   return (
     <FlatList
@@ -32,12 +34,12 @@ const ManageExperiencesScreen: React.FC = () => {
             size={32}
             name="information-outline"
           />
-          <Title>No experiences</Title>
+          <Title>{t("manage:noExperiences")}</Title>
           <Subheading style={styles.subHeading}>
-            You have not started any experiences yet. Find one to get started.
+            {t("manage:noExperiences")}
           </Subheading>
           <Button onPress={onPressFind} mode="outlined">
-            Find experiences
+            {t("manage:findExperiences")}
           </Button>
         </SafeAreaView>
       }
