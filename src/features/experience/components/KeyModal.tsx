@@ -36,6 +36,14 @@ const KeyModal: React.FC = () => {
             <Caption style={styles.title}>{key.name}</Caption>
           </View>
         ))}
+        <View style={styles.keyItemContainer}>
+          <PlaceIcon name="outlined_flag" />
+          <Caption style={styles.title}>Route start</Caption>
+        </View>
+        <View style={styles.keyItemContainer}>
+          <PlaceIcon name="flag" />
+          <Caption style={styles.title}>Route end</Caption>
+        </View>
       </View>
     </Modal>
   );

@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
 import { View } from "react-native";
-import MapView, { Circle, Marker } from "react-native-maps";
+import MapView, { Circle, Marker, Polyline } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
@@ -69,6 +69,36 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
             radius={p.triggerZone.radius}
             strokeColor={Colors.red100}
           />
+        </View>
+      ))}
+      {experience?.data.routes?.map((r) => (
+        <View key={r._id}>
+          <Polyline
+            strokeColor={r.colour}
+            strokeWidth={3}
+            coordinates={r.geo.coordinates.map((c) => ({
+              latitude: c[1],
+              longitude: c[0],
+            }))}
+          />
+          <Marker
+            pinColor={r.colour}
+            coordinate={{
+              latitude: r.geo.coordinates[0][1],
+              longitude: r.geo.coordinates[0][0],
+            }}
+          >
+            <PlaceIcon color={r.colour} name="outlined_flag" />
+          </Marker>
+          <Marker
+            pinColor={r.colour}
+            coordinate={{
+              latitude: r.geo.coordinates[r.geo.coordinates.length - 1][1],
+              longitude: r.geo.coordinates[r.geo.coordinates.length - 1][0],
+            }}
+          >
+            <PlaceIcon color={r.colour} name="flag" />
+          </Marker>
         </View>
       ))}
     </>

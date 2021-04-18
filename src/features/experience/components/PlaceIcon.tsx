@@ -5,12 +5,13 @@ import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
 type Props = {
   name: string;
+  color?: string;
 };
 
 const size = 30;
-const color = Colors.red500;
+const DEFAULT_COLOR = Colors.red500;
 
-const PlaceIcon: React.FC<Props> = ({ name }) => {
+const PlaceIcon: React.FC<Props> = ({ name, color = DEFAULT_COLOR }) => {
   const parsedName = name.replace(/_/g, "-");
   if (MaterialIcon.hasIcon(parsedName)) {
     return <MaterialIcon color={color} size={size} name={parsedName} />;

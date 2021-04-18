@@ -20,7 +20,6 @@ export default (
     dependencies
   ).pipe(
     catchError((error, source) => {
-      // eslint-disable-next-line no-console
       console.error("global catchError hit");
       console.error(error);
       return source;

@@ -19,8 +19,11 @@
     "downloadExperience": "Download experience?",
     "downloadExplanation": "This will allow you to view this experience's media while offline.\n\nIt cannot guarantee that the map layer will be visible while offline.`,",
     "removeExperience": "Remove experience?",
-    "removeExplanation":"Are you sure you want to remove this experience?",
+    "removeExplanation": "Are you sure you want to remove this experience?",
     "experienceRemoved": "Experience removed"
+  },
+  "pushNotification": {
+    "tapToLearnMore": "Tap to learn more"
   },
   "media": {
     "unsupportedMedia": "Unsupported media: {{type}}",

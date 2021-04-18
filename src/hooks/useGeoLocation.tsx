@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { Alert } from "react-native";
+import { useTranslation } from "react-i18next";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import PushNotification from "react-native-push-notification";
 import { navigate } from "../nav/NavigationRef";
 
 const useGeoLocation = () => {
+  const [t] = useTranslation("pushNotification");
   useEffect(() => {
     BackgroundGeolocation.ready(
       {
@@ -39,7 +40,7 @@ const useGeoLocation = () => {
       if (event.action === "ENTER") {
         PushNotification.localNotification({
           title: `📍 ${event.extras?.name}`,
-          message: "Tap to learn more",
+          message: t("tapToLearnMore"),
           messageId: event.identifier,
           userInfo: {
             placeId: event.identifier,
@@ -51,17 +52,19 @@ const useGeoLocation = () => {
 
     PushNotification.configure({
       onNotification: (e) => {
-        navigate("ViewPlaceScreen", {
-          placeId: e.data.placeId,
-          name: e.data.name,
-        });
+        if (e.data.placeId) {
+          navigate("ViewPlaceScreen", {
+            placeId: e.data.placeId,
+            name: e.data.name,
+          });
+        }
       },
     });
 
     return () => {
       BackgroundGeolocation.removeListeners();
     };
-  }, []);
+  }, [t]);
 };
 
 export default useGeoLocation;
