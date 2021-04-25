@@ -152,7 +152,7 @@ const removeExperienceEpic = (
           ),
           tap(() => {
             Alert.alert(
-              translateOutsideComponent("experienceRemoved"),
+              translateOutsideComponent("manage:experienceRemoved"),
               undefined,
               undefined
             );

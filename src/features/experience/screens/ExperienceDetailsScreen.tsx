@@ -79,6 +79,7 @@ const ExperienceDetailsScreen: React.FC = () => {
       ]
     );
   };
+  const padding = 10;
   return (
     <View style={styles.container}>
       <MapView
@@ -86,6 +87,12 @@ const ExperienceDetailsScreen: React.FC = () => {
         liteMode
         scrollEnabled={false}
         zoomEnabled={false}
+        mapPadding={{
+          top: padding,
+          bottom: padding,
+          left: padding,
+          right: padding,
+        }}
         style={styles.map}
         rotateEnabled={false}
       >

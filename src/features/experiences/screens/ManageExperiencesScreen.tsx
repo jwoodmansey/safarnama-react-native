@@ -36,7 +36,7 @@ const ManageExperiencesScreen: React.FC = () => {
           />
           <Title>{t("manage:noExperiences")}</Title>
           <Subheading style={styles.subHeading}>
-            {t("manage:noExperiences")}
+            {t("manage:noExeriencesSubtitle")}
           </Subheading>
           <Button onPress={onPressFind} mode="outlined">
             {t("manage:findExperiences")}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   emptyContainer: {
     flex: 1,
     justifyContent: "center",
-    maxWidth: 275,
+    maxWidth: 300,
     alignItems: "center",
     alignSelf: "center",
   },
