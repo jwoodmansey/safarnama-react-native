@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView from "react-native-maps";
-import ExperienceMapView from "./features/experience/components/ExperienceMapView";
-import KeyModal from "./features/experience/components/KeyModal";
-import PermissionBanner from "./features/experience/components/PermissionBanner";
+import ExperienceMapView from "../components/ExperienceMapView";
+import KeyModal from "../components/KeyModal";
+import PermissionBanner from "../components/PermissionBanner";
 
 const MapScreen: React.FC = () => {
   const mapRef = useRef<MapView>(null);
@@ -32,10 +32,6 @@ const MapScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: 100,
-    height: 100,
-  },
   map: {
     ...StyleSheet.absoluteFillObject,
   },
