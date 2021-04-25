@@ -31,6 +31,9 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.63.4)
   - Firebase/CoreOnly (7.10.0):
     - FirebaseCore (= 7.10.0)
+  - Firebase/Crashlytics (7.10.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 7.10.0)
   - Firebase/DynamicLinks (7.10.0):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (~> 7.10.0)
@@ -43,8 +46,19 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30908.0)
+  - FirebaseCrashlytics (7.10.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.4)
+    - nanopb (~> 2.30908.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseDynamicLinks (7.10.0):
     - FirebaseCore (~> 7.0)
+  - FirebaseInstallations (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - PromisesObjC (~> 1.2)
   - Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -73,6 +87,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.2.2)"
   - GoogleUtilities/Reachability (7.2.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.2.2):
     - GoogleUtilities/Logger
   - libwebp (1.1.0):
     - libwebp/demux (= 1.1.0)
@@ -367,6 +383,10 @@ PODS:
   - RNFBApp (11.3.3):
     - Firebase/CoreOnly (= 7.10.0)
     - React-Core
+  - RNFBCrashlytics (11.3.3):
+    - Firebase/Crashlytics (= 7.10.0)
+    - React-Core
+    - RNFBApp
   - RNFBDynamicLinks (11.3.3):
     - Firebase/DynamicLinks (= 7.10.0)
     - GoogleUtilities/AppDelegateSwizzler
@@ -461,6 +481,7 @@ DEPENDENCIES:
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
@@ -489,7 +510,9 @@ SPEC REPOS:
     - Firebase
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseDynamicLinks
+    - FirebaseInstallations
     - GoogleDataTransport
     - GoogleUtilities
     - libwebp
@@ -601,6 +624,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBCrashlytics:
+    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNFBDynamicLinks:
     :path: "../node_modules/@react-native-firebase/dynamic-links"
   RNGestureHandler:
@@ -656,7 +681,9 @@ SPEC CHECKSUMS:
   Firebase: fffddd0bab8677d07376538365faa93ff3889b39
   FirebaseCore: ec566d917b2195fc2610aeb148dae99f57a788f9
   FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
+  FirebaseCrashlytics: e7669d368a22d202f1d0c7546ffdfdff496e1a8c
   FirebaseDynamicLinks: 5f898580358c4d65430a85ae96dd779efb26b098
+  FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
@@ -705,6 +732,7 @@ SPEC CHECKSUMS:
   RNCPushNotificationIOS: 61a7c72bd1ebad3568025957d001e0f0e7b32191
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNFBApp: 8b1b4308daa657b8ea87dbed517e31215f5f1456
+  RNFBCrashlytics: c101babbfeb8bf12150b947e36665e19b96aace0
   RNFBDynamicLinks: 6ed4d147b24fa297a7413c00b5c56634e5de8cb8
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNPermissions: 58c1eb5638504e3afda963a8b0f43b6752132b05

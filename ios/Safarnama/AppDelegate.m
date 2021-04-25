@@ -12,6 +12,7 @@
 #import <TSBackgroundFetch/TSBackgroundFetch.h>
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
+#import <Firebase.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -63,6 +64,11 @@ static void InitializeFlipper(UIApplication *application) {
   [super application:application didFinishLaunchingWithOptions:launchOptions];
   [RNSplashScreen show];
   [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
+
   // Define UNUserNotificationCenter
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
