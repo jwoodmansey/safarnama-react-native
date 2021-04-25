@@ -30,6 +30,8 @@
     "tapToLearnMore": "Tap to learn more"
   },
   "media": {
+    "noMedia": "No media found",
+    "noMediaSubtitle": "This place does not appear to have any associated media.",
     "unsupportedMedia": "Unsupported media: {{type}}",
     "links": "Links",
     "notResponsibleForLinks": "We are not responsible for the content of links."

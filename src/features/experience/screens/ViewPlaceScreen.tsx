@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { MediaDocument } from "../../../types/common/media";
 import { MapNaviationProp } from "../../../types/nav/map";
+import EmptyPlaceScreen from "../components/EmptyPlaceScreen";
 import MediaItem from "../components/MediaItem";
 import PlaceIcon from "../components/PlaceIcon";
 
@@ -68,6 +69,7 @@ const ViewPlaceScreen: React.FC = () => {
       data={place.media}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
+      ListEmptyComponent={<EmptyPlaceScreen />}
     />
   );
 };

@@ -1,11 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import MapView, { Circle, Marker, Polyline } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
+import { RouteDocument } from "../../../types/common/route";
 import PlaceIcon from "./PlaceIcon";
 
 type Props = {
@@ -46,6 +47,9 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const onPressPlace = (place: PointOfInterestDocument) => () => {
     nav.navigate("ViewPlaceScreen", { place, name: place.name });
   };
+  const onPressRoute = (route: RouteDocument) => () => {
+    Alert.alert("Route", route.name);
+  };
   return (
     <>
       {experience?.data.pointOfInterests?.map((p) => (
@@ -74,6 +78,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
       {experience?.data.routes?.map((r) => (
         <View key={r._id}>
           <Polyline
+            onPress={onPressRoute(r)}
             strokeColor={r.colour}
             strokeWidth={3}
             coordinates={r.geo.coordinates.map((c) => ({
@@ -82,6 +87,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
             }))}
           />
           <Marker
+            onPress={onPressRoute(r)}
             pinColor={r.colour}
             coordinate={{
               latitude: r.geo.coordinates[0][1],
@@ -91,6 +97,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
             <PlaceIcon color={r.colour} name="outlined_flag" />
           </Marker>
           <Marker
+            onPress={onPressRoute(r)}
             pinColor={r.colour}
             coordinate={{
               latitude: r.geo.coordinates[r.geo.coordinates.length - 1][1],
