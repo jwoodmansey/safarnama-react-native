@@ -2,6 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
+import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
 import useGeoLocation from "../hooks/useGeoLocation";
 import { RootStackNavigationProp } from "../types/nav/root";
 import AddExperienceNavigation from "./AddExperienceNavigation";
@@ -30,6 +31,7 @@ const RootNavigation: React.FC = () => {
         component={ExperienceManagementNavigation}
       />
       <Drawer.Screen name="AddExperience" component={AddExperienceNavigation} />
+      <Drawer.Screen name="Licenses" component={LicensesNavigation} />
     </Drawer.Navigator>
   );
 };

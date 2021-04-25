@@ -37,7 +37,9 @@
     "notResponsibleForLinks": "We are not responsible for the content of links."
   },
   "about": {
-    "thirdPartyLicenses": "Third party licenses"
+    "thirdPartyLicenses": "Third party licenses",
+    "license": "License",
+    "repository": "Repository"
   },
   "loading": {
     "justASec": "Just a sec…"

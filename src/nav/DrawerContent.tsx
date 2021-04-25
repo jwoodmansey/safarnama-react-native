@@ -20,6 +20,8 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
     navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
   const onPressManage = () =>
     navigate("ExperienceManagement", { screen: "ManageExperiencesScreen" });
+  const onPressLicenses = () => navigate("Licenses");
+
   const experiences = useSelector(selectMyExperiences);
   const [t] = useTranslation(["glossary", "manage", "about"]);
   return (
@@ -45,7 +47,11 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
         />
       </Drawer.Section>
       <Drawer.Section title={t("glossary:about")}>
-        <Drawer.Item icon="receipt" label={t("about:thirdPartyLicenses")} />
+        <Drawer.Item
+          icon="receipt"
+          label={t("about:thirdPartyLicenses")}
+          onPress={onPressLicenses}
+        />
       </Drawer.Section>
     </DrawerContentScrollView>
   );
