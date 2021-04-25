@@ -1,14 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Button,
   FlatList,
   Linking,
   ListRenderItem,
   StyleSheet,
   View,
 } from "react-native";
-import { Card, Paragraph } from "react-native-paper";
+import { Button, Card, Paragraph } from "react-native-paper";
 
 const LICENSES_FILE = require("../../../licenses.json");
 
@@ -61,10 +60,12 @@ const LicensesScreen: React.FC = () => {
       </Card.Content>
       <Card.Actions>
         {item.licenseSpecs.licenseUrl && (
-          <Button title={t("about:license")} onPress={onPressLicense(item)} />
+          <Button onPress={onPressLicense(item)}>{t("about:license")}</Button>
         )}
         {item.licenseSpecs.repository && (
-          <Button title={t("about:repository")} onPress={onPressRepo(item)} />
+          <Button mode="text" onPress={onPressRepo(item)}>
+            {t("about:repository")}
+          </Button>
         )}
       </Card.Actions>
     </Card>
