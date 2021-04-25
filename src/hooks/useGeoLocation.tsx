@@ -39,6 +39,7 @@ const useGeoLocation = () => {
     BackgroundGeolocation.onGeofence((event) => {
       if (event.action === "ENTER") {
         PushNotification.localNotification({
+          // eslint-disable-next-line i18next/no-literal-string
           title: `📍 ${event.extras?.name}`,
           message: t("tapToLearnMore"),
           messageId: event.identifier,

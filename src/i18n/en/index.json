@@ -22,6 +22,10 @@
     "removeExplanation": "Are you sure you want to remove this experience?",
     "experienceRemoved": "Experience removed"
   },
+  "route": {
+    "routeStart": "Route start",
+    "routeEnd": "Route end"
+  },
   "pushNotification": {
     "tapToLearnMore": "Tap to learn more"
   },

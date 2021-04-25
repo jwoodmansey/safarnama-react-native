@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import { Platform } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
 import { ExperienceSnapshotData } from "../types/common/experience";

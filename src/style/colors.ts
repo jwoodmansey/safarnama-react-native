@@ -1,2 +1,3 @@
-export const rgbToRgba = (rgb: string, a: number) =>
-  rgb.replace("rgb", "rgba").replace(")", ", 0.9)");
+// eslint-disable-next-line import/prefer-default-export
+export const rgbToRgba = (rgb: string, a: number = 0.9) =>
+  rgb.replace("rgb", "rgba").replace(")", `, ${a})`);

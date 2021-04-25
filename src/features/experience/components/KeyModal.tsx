@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
 import { Caption, useTheme } from "react-native-paper";
@@ -8,6 +9,7 @@ import { selectKeyModal } from "../../../store/experience/experienceSelectors";
 import PlaceIcon from "./PlaceIcon";
 
 const KeyModal: React.FC = () => {
+  const [t] = useTranslation(["route"]);
   const data = useSelector(selectKeyModal);
   const dispatch = useDispatch();
   const { colors } = useTheme();
@@ -38,11 +40,11 @@ const KeyModal: React.FC = () => {
         ))}
         <View style={styles.keyItemContainer}>
           <PlaceIcon name="outlined_flag" />
-          <Caption style={styles.title}>Route start</Caption>
+          <Caption style={styles.title}>{t("route:routeStart")}</Caption>
         </View>
         <View style={styles.keyItemContainer}>
           <PlaceIcon name="flag" />
-          <Caption style={styles.title}>Route end</Caption>
+          <Caption style={styles.title}>{t("route:routeEnd")}</Caption>
         </View>
       </View>
     </Modal>

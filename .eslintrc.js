@@ -9,12 +9,22 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
+  plugins: ['@typescript-eslint', 'i18next'],
   rules: {
+    'i18next/no-literal-string': [
+      1,
+      {
+        markupOnly: true,
+        onlyAttribute: ['label', 'title', 'subTitle'],
+        validateTemplate: true,
+        ignoreCallee: ['openURL', 'log'],
+      },
+    ],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "no-underscore-dangle": "off",
     "no-console": "off"
-  }
+  },
 };
