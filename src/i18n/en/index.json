@@ -23,6 +23,7 @@
     "experienceRemoved": "Experience removed"
   },
   "route": {
+    "route": "Route",
     "routeStart": "Route start",
     "routeEnd": "Route end"
   },

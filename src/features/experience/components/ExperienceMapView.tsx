@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, View } from "react-native";
 import MapView, { Circle, Marker, Polyline } from "react-native-maps";
 import { Colors } from "react-native-paper";
@@ -16,6 +17,7 @@ type Props = {
 const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const experience = useSelector(selectCurrentExperience);
   const nav = useNavigation();
+  const [t] = useTranslation(["route"]);
   const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
   useEffect(() => {
     if (experience) {
@@ -48,7 +50,11 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
     nav.navigate("ViewPlaceScreen", { place, name: place.name });
   };
   const onPressRoute = (route: RouteDocument) => () => {
-    Alert.alert("Route", route.name);
+    if (route.description) {
+      Alert.alert(route.name, route.description);
+    } else {
+      Alert.alert(t("route:route"), route.name);
+    }
   };
   return (
     <>
