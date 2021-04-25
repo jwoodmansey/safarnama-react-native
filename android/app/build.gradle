@@ -172,9 +172,6 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             proguardFiles "${background_geolocation.projectDir}/proguard-rules.pro"
-            firebaseCrashlytics {
-                nativeSymbolUploadEnabled true
-            }
         }
     }
 
@@ -203,6 +200,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
     addUnimodulesDependencies()
     implementation project(':react-native-splash-screen')
 

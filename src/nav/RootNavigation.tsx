@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
+import useDeeplinking from "../hooks/useDeeplinking";
 import useGeoLocation from "../hooks/useGeoLocation";
 import { RootStackNavigationProp } from "../types/nav/root";
 import AddExperienceNavigation from "./AddExperienceNavigation";
@@ -23,6 +24,7 @@ const RootNavigation: React.FC = () => {
     );
   }, [scheme]);
   useGeoLocation();
+  useDeeplinking();
   return (
     <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
