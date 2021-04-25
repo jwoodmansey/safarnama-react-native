@@ -1,4 +1,5 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useTheme } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
@@ -18,11 +19,13 @@ const RootNavigation: React.FC = () => {
     SplashScreen.hide();
   }, []);
   const scheme = useColorScheme();
+  const theme = useTheme();
   useEffect(() => {
     StatusBar.setBarStyle(
       scheme === "light" ? "dark-content" : "light-content"
     );
-  }, [scheme]);
+    StatusBar.setBackgroundColor(theme.colors.background);
+  }, [scheme, theme]);
   useGeoLocation();
   useDeeplinking();
   return (
