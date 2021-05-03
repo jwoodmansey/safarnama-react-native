@@ -1,18 +1,14 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
-import { StatusBar, useColorScheme } from "react-native";
+import { Platform, StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
-import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
+import OnboardingScreen from "../features/onboarding/screens/OnBoardingScreen";
 import useDeeplinking from "../hooks/useDeeplinking";
 import useGeoLocation from "../hooks/useGeoLocation";
-import { RootStackNavigationProp } from "../types/nav/root";
-import AddExperienceNavigation from "./AddExperienceNavigation";
-import DrawerContent from "./DrawerContent";
-import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
-import MapNavigation from "./MapNavigation";
+import DrawerNavigation from "./DrawerNavigation";
 
-const Drawer = createDrawerNavigator<RootStackNavigationProp>();
+const Stack = createStackNavigator();
 
 const RootNavigation: React.FC = () => {
   useEffect(() => {
@@ -24,20 +20,25 @@ const RootNavigation: React.FC = () => {
     StatusBar.setBarStyle(
       scheme === "light" ? "dark-content" : "light-content"
     );
-    StatusBar.setBackgroundColor(theme.colors.background);
+    if (Platform.OS === "android") {
+      StatusBar.setBackgroundColor(theme.colors.background);
+    }
   }, [scheme, theme]);
   useGeoLocation();
   useDeeplinking();
   return (
-    <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
-      <Drawer.Screen name="MapScreen" component={MapNavigation} />
-      <Drawer.Screen
-        name="ExperienceManagement"
-        component={ExperienceManagementNavigation}
+    <Stack.Navigator mode="modal">
+      <Stack.Screen
+        name="Drawer"
+        options={{ headerShown: false }}
+        component={DrawerNavigation}
       />
-      <Drawer.Screen name="AddExperience" component={AddExperienceNavigation} />
-      <Drawer.Screen name="Licenses" component={LicensesNavigation} />
-    </Drawer.Navigator>
+      <Stack.Screen
+        name="OnboardingScreen"
+        options={{ headerShown: false }}
+        component={OnboardingScreen}
+      />
+    </Stack.Navigator>
   );
 };
 

@@ -10,7 +10,7 @@ const MapScreen: React.FC = () => {
   return (
     <View style={styles.map}>
       <MapView
-        showsUserLocation
+        showsUserLocation={false}
         showsCompass
         showsMyLocationButton
         showsScale

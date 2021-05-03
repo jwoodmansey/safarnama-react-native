@@ -47,6 +47,10 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
+  
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
@@ -65,9 +69,7 @@ static void InitializeFlipper(UIApplication *application) {
   [RNSplashScreen show];
   [[TSBackgroundFetch sharedInstance] didFinishLaunching];
 
-  if ([FIRApp defaultApp] == nil) {
-    [FIRApp configure];
-  }
+
 
   // Define UNUserNotificationCenter
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];

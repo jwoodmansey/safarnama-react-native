@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Alert } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import PushNotification from "react-native-push-notification";
+import { useSelector } from "react-redux";
 import { navigate } from "../nav/NavigationRef";
+import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
 
 const useGeoLocation = () => {
   const [t] = useTranslation("pushNotification");
+
+  const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
+
   useEffect(() => {
     BackgroundGeolocation.ready(
       {
@@ -25,14 +31,15 @@ const useGeoLocation = () => {
           "- BackgroundGeolocation is configured and ready: ",
           state.enabled
         );
-
         if (!state.enabled) {
           /// /
           // 3. Start tracking!
           //
-          BackgroundGeolocation.startGeofences(() => {
-            console.log("- Start success");
-          });
+          if (isOnboardingComplete) {
+            BackgroundGeolocation.startGeofences(() => {
+              console.log("- Start success");
+            });
+          }
         }
       }
     );
@@ -52,6 +59,7 @@ const useGeoLocation = () => {
     });
 
     PushNotification.configure({
+      requestPermissions: false,
       onNotification: (e) => {
         if (e.data.placeId) {
           navigate("ViewPlaceScreen", {
@@ -65,7 +73,7 @@ const useGeoLocation = () => {
     return () => {
       BackgroundGeolocation.removeListeners();
     };
-  }, [t]);
+  }, [t, isOnboardingComplete]);
 };
 
 export default useGeoLocation;

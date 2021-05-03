@@ -16,7 +16,7 @@ const PermissionBanner: React.FC = () => {
       // Alert.alert(JSON.stringify(always));
       //   setState(always);
     }
-    checkPerms();
+    // checkPerms();
   }, []);
 
   return (
