@@ -1,14 +1,14 @@
-import { useNavigation, useTheme } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
+import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
 import { RootStackNavigationProp } from "../types/nav/root";
 import AddExperienceNavigation from "./AddExperienceNavigation";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
-import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
 
 const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 

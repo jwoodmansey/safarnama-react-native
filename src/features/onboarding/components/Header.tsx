@@ -7,11 +7,12 @@ type Props = {
   subheading: string;
 };
 
-const Header: React.FC<Props> = ({ title, subheading }) => {
+const Header: React.FC<Props> = ({ title, subheading, children }) => {
   return (
     <View style={styles.container}>
       <Title style={styles.text}>{title}</Title>
       <Subheading style={styles.text}>{subheading}</Subheading>
+      {children}
     </View>
   );
 };

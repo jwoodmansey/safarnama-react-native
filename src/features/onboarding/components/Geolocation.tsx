@@ -1,6 +1,9 @@
-import React from "react";
 import LottieView from "lottie-react-native";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Platform, StyleSheet } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
+import { Caption } from "react-native-paper";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
 
@@ -11,6 +14,7 @@ type Props = {
 };
 
 const Geolocation: React.FC<Props> = ({ onNext }) => {
+  const [t] = useTranslation(["onboarding", "glossary"]);
   const onPressEnable = async () => {
     await BackgroundGeolocation.startGeofences(() => {
       console.log("- Start success");
@@ -24,22 +28,36 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
         autoPlay
         resizeMode="contain"
         source={PinAnimation}
-        style={{ height: 200 }}
+        style={styles.animation}
       />
       <Header
-        title="Geolocation"
-        subheading="By enabling Safarnama access to your location, you can view your
-        location on the map, and we can alert you to nearby places. 
-        
-        
-        We won't use your location for anything else."
-      />
-      <PrimaryButton onPress={onPressEnable}>Enable Geolocation</PrimaryButton>
+        title={t("onboarding:geolocation")}
+        subheading={`${t("onboarding:geolocationSubtitle")}${
+          Platform.OS === "ios" ? t("onboarding:geolocationSubtitleIOS") : ""
+        }`}
+      >
+        <Caption style={styles.caption}>
+          {t("onboarding:geolocationWontUseForAnythingElse")}
+        </Caption>
+      </Header>
+      <PrimaryButton onPress={onPressEnable}>
+        {t("onboarding:enableGeolocation")}
+      </PrimaryButton>
       <PrimaryButton secondary onPress={onNext}>
-        Skip
+        {t("glossary:skip")}
       </PrimaryButton>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  animation: {
+    height: 200,
+  },
+  caption: {
+    textAlign: "center",
+    marginTop: 16,
+  },
+});
 
 export default Geolocation;

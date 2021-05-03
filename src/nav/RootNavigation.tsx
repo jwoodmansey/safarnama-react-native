@@ -1,4 +1,4 @@
-import { useNavigation, useTheme } from "@react-navigation/native";
+import { useTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 import { Platform, StatusBar, useColorScheme } from "react-native";

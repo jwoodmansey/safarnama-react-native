@@ -1,6 +1,8 @@
 import React from "react";
 import LottieView from "lottie-react-native";
 import PushNotification from "react-native-push-notification";
+import { StyleSheet } from "react-native";
+import { useTranslation } from "react-i18next";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
 
@@ -11,6 +13,7 @@ type Props = {
 };
 
 const OnBoardingPushNotifications: React.FC<Props> = ({ onNext }) => {
+  const [t] = useTranslation(["onboarding", "glossary"]);
   const onPressEnabled = async () => {
     await PushNotification.requestPermissions(["alert", "badge", "sound"]);
     onNext();
@@ -21,21 +24,27 @@ const OnBoardingPushNotifications: React.FC<Props> = ({ onNext }) => {
         autoPlay
         resizeMode="contain"
         source={PushAnimation}
-        style={{ height: 200 }}
+        style={styles.anim}
       />
       <Header
-        title="Push notifications"
-        subheading="Enable push notifcations and we'll let you know when there's a
-        nearby place when the app is closed."
+        title={t("onboarding:pushNotifications")}
+        subheading={t("onboarding:pushNotificationsSubtitle")}
       />
       <PrimaryButton onPress={onPressEnabled}>
-        Enable Push Notifications
+        {t("onboarding:enablePushNotifications")}
       </PrimaryButton>
       <PrimaryButton secondary onPress={onNext}>
-        Skip
+        {t("glossary:skip")}
       </PrimaryButton>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  anim: {
+    height: 200,
+    marginBottom: 32,
+  },
+});
 
 export default OnBoardingPushNotifications;

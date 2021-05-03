@@ -9,7 +9,7 @@
     "qrCode": "QR Code",
     "scanQrCode": "Scan QR Code",
     "qrCodeSubtitle": "If you have a QR code for an experience, tap here. You can also download any featured experience from the list below.",
-    "qrCodePointAt": "Point your camera at a Safarnama QR code",
+    "qrCodePointAt": "Point your camera at a $t(glossary:appName) QR code",
     "playExperience": "Play experience",
     "play": "Play",
     "remove": "Remove",
@@ -45,8 +45,23 @@
   "loading": {
     "justASec": "Just a sec…"
   },
+  "onboarding": {
+    "welcome": "Welcome",
+    "welcomeSubtitle": "With $t(glossary:appName) you can download and explore curated cultural heritage experiences.",
+    "geolocation": "Geolocation",
+    "geolocationSubtitle": "By enabling $t(glossary:appName) access to your location, you can view your location on the map, and we can alert you to nearby places.",
+    "geolocationSubtitleIOS": "\n\nWhen prompted please choose\n \"Allow while using\" and then \"Always allow\".",
+    "geolocationWontUseForAnythingElse": "We won't use your location for anything else.",
+    "enableGeolocation": "Enable Geolocation",
+    "pushNotifications": "Push notifications",
+    "pushNotificationsSubtitle": "Enable push notifcations and we'll let you know when there's a nearby place when the app is closed.",
+    "enablePushNotifications": "Enable push notifications"
+  },
   "glossary": {
+    "appName": "Safarnama",
     "cancel": "Cancel",
+    "continue": "Continue",
+    "skip": "Skip",
     "experience": "Experience",
     "about": "About",
     "manage": "Manage"
