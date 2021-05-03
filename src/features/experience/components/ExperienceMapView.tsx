@@ -6,6 +6,7 @@ import MapView, { Circle, Marker, Polyline } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
+import { selectIsOnboardingComplete } from "../../../store/onboarding/onboardingSelectors";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
 import { RouteDocument } from "../../../types/common/route";
 import PlaceIcon from "./PlaceIcon";
@@ -19,9 +20,13 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const nav = useNavigation();
   const [t] = useTranslation(["route"]);
   const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
+  const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
+
   useEffect(() => {
     if (experience) {
       nav.setOptions({ title: experience.data.name });
+    } else if (!isOnboardingComplete) {
+      nav.navigate("OnboardingScreen");
     } else {
       nav.navigate("AddExperience");
     }
@@ -45,7 +50,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
       );
       setCurrentlyZoomedTo(id);
     }
-  }, [experience, nav, mapView, currentlyZoomedTo]);
+  }, [experience, nav, mapView, currentlyZoomedTo, isOnboardingComplete]);
   const onPressPlace = (place: PointOfInterestDocument) => () => {
     nav.navigate("ViewPlaceScreen", { place, name: place.name });
   };

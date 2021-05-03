@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -28,7 +29,7 @@ const OnboardingScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const onComplete = () => {
-    nav.goBack();
+    nav.navigate("Drawer", { screen: "AddExperience" });
     dispatch(complete());
   };
   const onScroll = (event: any) => {
@@ -40,6 +41,13 @@ const OnboardingScreen: React.FC = () => {
         ...sliderState,
         currentPage: indexOfNextScreen,
       });
+    }
+  };
+  const onGeoComplete = () => {
+    if (Platform.OS === "android") {
+      onComplete();
+    } else {
+      setSliderPage(2)();
     }
   };
 
@@ -58,22 +66,25 @@ const OnboardingScreen: React.FC = () => {
           <Welcome onNext={setSliderPage(1)} />
         </View>
         <View style={[styles.wrapper, { width }]}>
-          <Geolocation onNext={setSliderPage(2)} />
+          <Geolocation onNext={onGeoComplete} />
         </View>
-        <View style={[styles.wrapper, { width }]}>
-          <PushNotification onNext={onComplete} />
-        </View>
+        {Platform.OS !== "android" && (
+          <View style={[styles.wrapper, { width }]}>
+            <PushNotification onNext={onComplete} />
+          </View>
+        )}
       </ScrollView>
       <View style={styles.paginationWrapper}>
-        {Array.from(Array(3).keys()).map((_, index) => (
-          <View
-            style={[
-              styles.paginationDots,
-              pageIndex === index ? {} : styles.paginationDotsInactive,
-            ]}
-            key={index.toString()}
-          />
-        ))}
+        {Platform.OS === "ios" &&
+          Array.from(Array(3).keys()).map((_, index) => (
+            <View
+              style={[
+                styles.paginationDots,
+                pageIndex === index ? {} : styles.paginationDotsInactive,
+              ]}
+              key={index.toString()}
+            />
+          ))}
       </View>
     </SafeAreaView>
   );
