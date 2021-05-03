@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
+import { deviceValue } from "../../../style/dimensions";
 
 const PushAnimation = require("../../../assets/anim/push_notification.json");
 
@@ -42,7 +43,7 @@ const OnBoardingPushNotifications: React.FC<Props> = ({ onNext }) => {
 
 const styles = StyleSheet.create({
   anim: {
-    height: 200,
+    height: deviceValue(150, 200),
     marginBottom: 32,
   },
 });

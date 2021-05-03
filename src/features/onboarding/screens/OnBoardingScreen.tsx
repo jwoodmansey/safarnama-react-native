@@ -2,13 +2,14 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
+  PixelRatio,
   Platform,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   View,
 } from "react-native";
 import { Colors } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { complete } from "../../../store/onboarding/onboardingReducer";
 import Geolocation from "../components/Geolocation";
@@ -52,7 +53,7 @@ const OnboardingScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["bottom"]}>
       <ScrollView
         style={styles.container}
         horizontal
@@ -65,9 +66,9 @@ const OnboardingScreen: React.FC = () => {
         <View style={[styles.wrapper, { width }]}>
           <Welcome onNext={setSliderPage(1)} />
         </View>
-        <View style={[styles.wrapper, { width }]}>
+        <ScrollView contentContainerStyle={[styles.wrapper, { width }]}>
           <Geolocation onNext={onGeoComplete} />
-        </View>
+        </ScrollView>
         {Platform.OS !== "android" && (
           <View style={[styles.wrapper, { width }]}>
             <PushNotification onNext={onComplete} />
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   paginationWrapper: {
     position: "absolute",
-    bottom: 200,
+    bottom: "20%",
     left: 0,
     right: 0,
     justifyContent: "center",

@@ -1,9 +1,10 @@
 import LottieView from "lottie-react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Platform, StyleSheet } from "react-native";
+import { PixelRatio, Platform, StyleSheet } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Caption } from "react-native-paper";
+import { deviceValue } from "../../../style/dimensions";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
 
@@ -52,7 +53,8 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
 
 const styles = StyleSheet.create({
   animation: {
-    height: 200,
+    height: deviceValue(100, 200),
+    resizeMode: "contain",
   },
   caption: {
     textAlign: "center",

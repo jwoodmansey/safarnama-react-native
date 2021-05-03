@@ -785,7 +785,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware.2019;
+				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
 				PRODUCT_NAME = Safarnama;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -811,7 +811,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware.2019;
+				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
 				PRODUCT_NAME = Safarnama;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
