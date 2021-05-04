@@ -32,8 +32,8 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
 
 const styles = StyleSheet.create({
   imageStyle: {
-    height: deviceValue(200, 200, 300),
-    width: deviceValue(200, 200, 300),
+    height: deviceValue(200, 250, 300),
+    width: deviceValue(200, 250, 300),
     marginBottom: 32,
   },
   button: {

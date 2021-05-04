@@ -8,6 +8,7 @@ import { MediaDocument } from "../../../types/common/media";
 import { MapNaviationProp } from "../../../types/nav/map";
 import EmptyPlaceScreen from "../components/EmptyPlaceScreen";
 import MediaItem from "../components/MediaItem";
+import PlaceFooter from "../components/PlaceFooter";
 import PlaceIcon from "../components/PlaceIcon";
 
 type Route = RouteProp<MapNaviationProp, "ViewPlaceScreen">;
@@ -70,6 +71,7 @@ const ViewPlaceScreen: React.FC = () => {
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       ListEmptyComponent={<EmptyPlaceScreen />}
+      ListFooterComponent={<PlaceFooter />}
     />
   );
 };
