@@ -10,7 +10,7 @@
     "iphone12m": "yarn ios --simulator=\"iPhone 12 mini\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "clean": "react-native-clean-project",
-    "postinstall": "npm-license-crawler -onlyDirectDependencies -json licenses.json"
+    "postinstall": "npm-license-cra§wler -onlyDirectDependencies -json licenses.json"
   },
   "dependencies": {
     "@dudigital/react-native-zoomable-view": "^1.0.16",

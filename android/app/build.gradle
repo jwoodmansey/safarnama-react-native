@@ -160,6 +160,24 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('safarnama-release.jks')
+            storePassword safarnamaSigningRelaseStorePassword
+            keyAlias = 'key0'
+            keyPassword safarnamaSigningRelaseKeyPassword
+        }
+    }
+    flavorDimensions 'default'
+    productFlavors {
+        safarnama {
+            dimension 'default'
+        }
+        portsPastAndPresent {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'eu.portspastandpresent.app'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
     }
     buildTypes {
         debug {
@@ -168,7 +186,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             proguardFiles "${background_geolocation.projectDir}/proguard-rules.pro"
