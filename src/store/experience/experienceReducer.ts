@@ -88,7 +88,7 @@ const experienceReducer = createSlice({
     loadFeaturedExperiences: () => {},
     loadedFeaturedExperiences: (state, action: LoadedFeaturedExperiences) => {
       state.featuredExperiences = action.payload.featuredExperiences.filter(
-        (e) => e.metaData.tags?.includes(TAG)
+        (e) => (TAG ? e.metaData.tags?.includes(TAG) : true)
       );
     },
     downloadExperienceMedia: (state, action: LoadExperience) => {

@@ -1,13 +1,21 @@
 import i18n from "i18next";
 import { initReactI18next, Namespace, TFunction } from "react-i18next";
 import { Platform, NativeModules } from "react-native";
+import { TAG } from "../config";
 import en from "./en/index.json";
 
-// slowly moving translations over to here, all new screens should put their text in translations
-// the translations
 // see https://github.com/i18next/i18next/issues/1504#issuecomment-742727015 for typesafety
 export const resources = {
-  en,
+  en: {
+    ...en,
+    glossary: {
+      ...en.glossary,
+      appName:
+        TAG === "Ports Past and Present"
+          ? "Ports Past and Present"
+          : "Safarnama",
+    },
+  },
 };
 
 export const locale =

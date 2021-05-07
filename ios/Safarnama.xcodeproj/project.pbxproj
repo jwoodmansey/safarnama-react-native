@@ -52,23 +52,31 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Safarnama/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Safarnama/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Safarnama/main.m; sourceTree = "<group>"; };
+		2BBB1C2E398791BF8DFB661A /* Pods-Safarnama-tvOS.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOS.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOS/Pods-Safarnama-tvOS.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Safarnama-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Safarnama-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Safarnama-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Safarnama-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3475D1CDD0E247406775CD9F /* Pods-Safarnama.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama/Pods-Safarnama.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		383D45595B3EF1CFA4B6688C /* Pods-Safarnama-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOS/Pods-Safarnama-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		43597499A8503FC290C43BB8 /* Pods-Safarnama-tvOS.release - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOS.release - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOS/Pods-Safarnama-tvOS.release - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		465978982635C13C00CB15DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469B116B25583DFA005AF236 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		469B116C25583DFA005AF236 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		46EFDD6B2644620300D62E56 /* Safarnama.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Safarnama.entitlements; path = Safarnama/Safarnama.entitlements; sourceTree = "<group>"; };
+		50285E9A6E248CC59D143FF9 /* Pods-Safarnama.release - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama.release - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama/Pods-Safarnama.release - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		606C323969FD02F9F0E5B225 /* libPods-Safarnama-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Safarnama-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67FECC7B8D1E67AB04A14C8C /* Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		6E17552622D96255B6EE46DF /* Pods-Safarnama-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOS/Pods-Safarnama-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		704BF36B65EC5ECDAB8616CE /* libPods-Safarnama.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Safarnama.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7453B40F5CBCE666A5571E64 /* Pods-Safarnama-tvOSTests.release - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOSTests.release - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOSTests/Pods-Safarnama-tvOSTests.release - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		7694A6A48502331B8C1D02D6 /* libPods-Safarnama-SafarnamaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Safarnama-SafarnamaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Safarnama/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9935D9D3505146085DB6D2B0 /* Pods-Safarnama-tvOSTests.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOSTests.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOSTests/Pods-Safarnama-tvOSTests.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		B1EA88ED1C643C6561D99010 /* Pods-Safarnama-SafarnamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-SafarnamaTests.debug.xcconfig"; path = "Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B26EA8848FFEA9BF465DE40A /* Pods-Safarnama-SafarnamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-SafarnamaTests.release.xcconfig"; path = "Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3FD4D2EC4E1F5F796F04A52 /* Pods-Safarnama-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOSTests/Pods-Safarnama-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C01F4CC85669DD0060AAFD15 /* libPods-Safarnama-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Safarnama-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CAB205886F44F8A120CCC7 /* Pods-Safarnama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama.release.xcconfig"; path = "Target Support Files/Pods-Safarnama/Pods-Safarnama.release.xcconfig"; sourceTree = "<group>"; };
+		DEC01A968B284AB6A0D60742 /* Pods-Safarnama-SafarnamaTests.release - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-SafarnamaTests.release - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests.release - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FCD9E0635F1FF2A58DA8E634 /* Pods-Safarnama-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Safarnama-tvOSTests/Pods-Safarnama-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +176,14 @@
 				6E17552622D96255B6EE46DF /* Pods-Safarnama-tvOS.release.xcconfig */,
 				B3FD4D2EC4E1F5F796F04A52 /* Pods-Safarnama-tvOSTests.debug.xcconfig */,
 				FCD9E0635F1FF2A58DA8E634 /* Pods-Safarnama-tvOSTests.release.xcconfig */,
+				3475D1CDD0E247406775CD9F /* Pods-Safarnama.debug - ports past and present.xcconfig */,
+				50285E9A6E248CC59D143FF9 /* Pods-Safarnama.release - ports past and present.xcconfig */,
+				67FECC7B8D1E67AB04A14C8C /* Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig */,
+				DEC01A968B284AB6A0D60742 /* Pods-Safarnama-SafarnamaTests.release - ports past and present.xcconfig */,
+				2BBB1C2E398791BF8DFB661A /* Pods-Safarnama-tvOS.debug - ports past and present.xcconfig */,
+				43597499A8503FC290C43BB8 /* Pods-Safarnama-tvOS.release - ports past and present.xcconfig */,
+				9935D9D3505146085DB6D2B0 /* Pods-Safarnama-tvOSTests.debug - ports past and present.xcconfig */,
+				7453B40F5CBCE666A5571E64 /* Pods-Safarnama-tvOSTests.release - ports past and present.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -792,6 +808,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
 				PRODUCT_NAME = Safarnama;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SAFARNAMA_DISPLAY_NAME = Safarnama;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -820,6 +837,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
 				PRODUCT_NAME = Safarnama;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SAFARNAMA_DISPLAY_NAME = Safarnama;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -935,7 +953,164 @@
 			};
 			name = Release;
 		};
-		83CBBA201A601CBA00E9B192 /* Debug */ = {
+		46EFDD6C26452C4400D62E56 /* Release - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.portspastpresent.app;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release - Ports Past and Present";
+		};
+		46EFDD6D26452C4400D62E56 /* Release - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50285E9A6E248CC59D143FF9 /* Pods-Safarnama.release - ports past and present.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = PPPAppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = TS7SW33F9Z;
+				INFOPLIST_FILE = Safarnama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.portspastpresent.app;
+				PRODUCT_NAME = "Ports Past and Present";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SAFARNAMA_DISPLAY_NAME = "Ports Past and Present";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release - Ports Past and Present";
+		};
+		46EFDD6E26452C4400D62E56 /* Release - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEC01A968B284AB6A0D60742 /* Pods-Safarnama-SafarnamaTests.release - ports past and present.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = SafarnamaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Safarnama.app/Safarnama";
+			};
+			name = "Release - Ports Past and Present";
+		};
+		46EFDD6F26452C4400D62E56 /* Release - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43597499A8503FC290C43BB8 /* Pods-Safarnama-tvOS.release - ports past and present.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Safarnama-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Safarnama-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = "Release - Ports Past and Present";
+		};
+		46EFDD7026452C4400D62E56 /* Release - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7453B40F5CBCE666A5571E64 /* Pods-Safarnama-tvOSTests.release - ports past and present.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Safarnama-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Safarnama-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Safarnama-tvOS.app/Safarnama-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = "Release - Ports Past and Present";
+		};
+		46EFDD7126452E5F00D62E56 /* Debug - Ports Past and Present */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -993,6 +1168,175 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
+			name = "Debug - Ports Past and Present";
+		};
+		46EFDD7226452E5F00D62E56 /* Debug - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3475D1CDD0E247406775CD9F /* Pods-Safarnama.debug - ports past and present.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = PPPAppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = TS7SW33F9Z;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Safarnama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.portspastpresent.app;
+				PRODUCT_NAME = "Ports Past and Present";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SAFARNAMA_DISPLAY_NAME = "Ports Past and Present";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug - Ports Past and Present";
+		};
+		46EFDD7326452E5F00D62E56 /* Debug - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67FECC7B8D1E67AB04A14C8C /* Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SafarnamaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Safarnama.app/Safarnama";
+			};
+			name = "Debug - Ports Past and Present";
+		};
+		46EFDD7426452E5F00D62E56 /* Debug - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BBB1C2E398791BF8DFB661A /* Pods-Safarnama-tvOS.debug - ports past and present.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Safarnama-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Safarnama-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = "Debug - Ports Past and Present";
+		};
+		46EFDD7526452E5F00D62E56 /* Debug - Ports Past and Present */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9935D9D3505146085DB6D2B0 /* Pods-Safarnama-tvOSTests.debug - ports past and present.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Safarnama-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Safarnama-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Safarnama-tvOS.app/Safarnama-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = "Debug - Ports Past and Present";
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
+				SDKROOT = iphoneos;
+			};
 			name = Debug;
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
@@ -1043,6 +1387,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.safarnamasoftware;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1055,7 +1400,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
+				46EFDD7326452E5F00D62E56 /* Debug - Ports Past and Present */,
 				00E356F71AD99517003FC87E /* Release */,
+				46EFDD6E26452C4400D62E56 /* Release - Ports Past and Present */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1064,7 +1411,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
+				46EFDD7226452E5F00D62E56 /* Debug - Ports Past and Present */,
 				13B07F951A680F5B00A75B9A /* Release */,
+				46EFDD6D26452C4400D62E56 /* Release - Ports Past and Present */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1073,7 +1422,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
+				46EFDD7426452E5F00D62E56 /* Debug - Ports Past and Present */,
 				2D02E4981E0B4A5E006451C7 /* Release */,
+				46EFDD6F26452C4400D62E56 /* Release - Ports Past and Present */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1082,7 +1433,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
+				46EFDD7526452E5F00D62E56 /* Debug - Ports Past and Present */,
 				2D02E49A1E0B4A5E006451C7 /* Release */,
+				46EFDD7026452C4400D62E56 /* Release - Ports Past and Present */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1091,7 +1444,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
+				46EFDD7126452E5F00D62E56 /* Debug - Ports Past and Present */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+				46EFDD6C26452C4400D62E56 /* Release - Ports Past and Present */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

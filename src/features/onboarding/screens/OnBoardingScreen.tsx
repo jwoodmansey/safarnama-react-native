@@ -53,7 +53,7 @@ const OnboardingScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["bottom"]}>
+    <SafeAreaView style={styles.container} edges={["bottom", 'top']}>
       <ScrollView
         style={styles.container}
         horizontal
