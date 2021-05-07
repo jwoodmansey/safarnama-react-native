@@ -82,7 +82,7 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
               longitude: p.triggerZone.lng,
             }}
             radius={p.triggerZone.radius}
-            strokeColor={Colors.red100}
+            strokeColor="rgba(255, 99, 71, 0.1)"
           />
         </View>
       ))}

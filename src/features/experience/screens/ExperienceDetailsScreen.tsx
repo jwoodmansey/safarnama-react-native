@@ -133,7 +133,12 @@ const ExperienceDetailsScreen: React.FC = () => {
           >
             {experienceSnapshot.metaData.ownerPublicProfile.displayName}
           </Chip>
-          <Button onPress={onPressPlay} mode="contained" style={styles.button}>
+          <Button
+            onPress={onPressPlay}
+            mode="contained"
+            style={styles.button}
+            contentStyle={styles.buttonContent}
+          >
             {t("manage:playExperience")}
           </Button>
           <Button
@@ -169,8 +174,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   button: {
-    padding: 12,
     marginBottom: 12,
+  },
+  buttonContent: {
+    padding: 12,
   },
   description: {
     marginBottom: 20,

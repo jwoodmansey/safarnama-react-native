@@ -25,6 +25,7 @@ const ScanQRCodeScreen: React.FC = () => {
     <QRCodeScanner
       onRead={onSuccess}
       showMarker
+      cameraProps={{ captureAudio: false }}
       topContent={
         <View style={styles.instructionsContainer}>
           <Text style={styles.insturctionsText}>
