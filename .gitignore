@@ -5,6 +5,7 @@
 google-services.json
 GoogleService-Info.plist
 licenses.json
+*.aab
 
 # Xcode
 #
