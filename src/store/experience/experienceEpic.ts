@@ -50,7 +50,7 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
           loadedFeaturedExperiences({ featuredExperiences: response })
         ),
         catchError((e) => {
-          Alert.alert(JSON.stringify(e));
+          Alert.alert("Error", JSON.stringify(e));
           return EMPTY;
         })
       )

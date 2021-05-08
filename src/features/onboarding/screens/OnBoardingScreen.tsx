@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
-  PixelRatio,
   Platform,
   ScrollView,
   StyleSheet,
@@ -53,7 +52,7 @@ const OnboardingScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["bottom", 'top']}>
+    <SafeAreaView style={styles.container} edges={["bottom", "top"]}>
       <ScrollView
         style={styles.container}
         horizontal

@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.transistorsoft.locationmanager.license"
-            android:value="YOUR_LICENCE_KEY_HERE" />
+            android:value="@string/API_KEY" />
 
         <activity
             android:name=".MainActivity"

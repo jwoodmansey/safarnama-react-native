@@ -2,7 +2,7 @@ import dynamicLinks, {
   FirebaseDynamicLinksTypes,
 } from "@react-native-firebase/dynamic-links";
 import { useCallback, useEffect, useState } from "react";
-import { Alert, Linking } from "react-native";
+import { Linking } from "react-native";
 import { navigate } from "../nav/NavigationRef";
 
 const useDeeplinking = () => {

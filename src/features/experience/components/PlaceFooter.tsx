@@ -12,7 +12,7 @@ const PlaceFooter: React.FC = () => {
   return (
     <View style={styles.container}>
       <FastImage
-        style={{ width: "100%", height: 100 }}
+        style={styles.logoImage}
         source={FundingLogos}
         resizeMode="contain"
       />
@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 20,
     marginVertical: 10,
+  },
+  logoImage: {
+    width: "100%",
+    height: 100,
   },
 });
 

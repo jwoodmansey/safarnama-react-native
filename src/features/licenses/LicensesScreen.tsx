@@ -70,6 +70,43 @@ const LicensesScreen: React.FC = () => {
       </Card.Actions>
     </Card>
   );
+  const openLink = (s: string) => () => {
+    Linking.openURL(s);
+  };
+  const renderHeader = () => (
+    <Card style={styles.card}>
+      <Card.Title
+        // eslint-disable-next-line i18next/no-literal-string
+        title="LottieFiles"
+        subtitle="Animations by"
+      />
+      <Card.Actions style={styles.actions}>
+        <Button
+          onPress={openLink(
+            "https://lottiefiles.com/18199-location-pin-on-a-map"
+          )}
+          // eslint-disable-next-line i18next/no-literal-string
+        >
+          Pavlo Monakhov
+        </Button>
+
+        <Button
+          onPress={openLink("https://lottiefiles.com/579-scan-qr-code-success")}
+          // eslint-disable-next-line i18next/no-literal-string
+        >
+          Hannii
+        </Button>
+
+        <Button
+          onPress={openLink("https://lottiefiles.com/55089-push-nitification")}
+          // eslint-disable-next-line i18next/no-literal-string
+        >
+          Andrés Leonardo Buzzo
+        </Button>
+      </Card.Actions>
+    </Card>
+  );
+
   const keyExtractor = (item: IFinalLicense) => item.name;
 
   return (
@@ -79,6 +116,7 @@ const LicensesScreen: React.FC = () => {
         data={finalLicense}
         contentContainerStyle={styles.list}
         renderItem={renderItem}
+        ListHeaderComponent={renderHeader}
         keyExtractor={keyExtractor}
       />
     </View>
@@ -96,6 +134,9 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     marginBottom: 16,
+  },
+  actions: {
+    flexWrap: "wrap",
   },
 });
 

@@ -67,3 +67,4 @@ buck-out/
 .expo/*
 web-build/
 android/app/safarnama-release.jks
+android/app/src/main/res/values/secrets.xml

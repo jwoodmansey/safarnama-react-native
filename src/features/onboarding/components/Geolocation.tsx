@@ -1,7 +1,7 @@
 import LottieView from "lottie-react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { PixelRatio, Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Caption } from "react-native-paper";
 import { deviceValue } from "../../../style/dimensions";

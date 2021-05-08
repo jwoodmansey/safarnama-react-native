@@ -140,7 +140,7 @@ android {
         applicationId "com.safarnama.safarnama"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 13
+        versionCode 14
         versionName "2.0"
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
         multiDexEnabled true
@@ -162,9 +162,9 @@ android {
         }
         release {
             storeFile file('safarnama-release.jks')
-            storePassword safarnamaSigningRelaseStorePassword
+            storePassword 'delhi89'
             keyAlias = 'key0'
-            keyPassword safarnamaSigningRelaseKeyPassword
+            keyPassword 'delhi89'
         }
     }
     flavorDimensions 'default'

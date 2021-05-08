@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Alert } from "react-native";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import PushNotification from "react-native-push-notification";
 import { useSelector } from "react-redux";

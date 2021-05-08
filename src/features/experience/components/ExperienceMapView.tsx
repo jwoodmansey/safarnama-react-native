@@ -1,15 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Alert, View } from "react-native";
-import MapView, { Circle, Marker, Polyline } from "react-native-maps";
-import { Colors } from "react-native-paper";
+import { Alert } from "react-native";
+import MapView from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { selectIsOnboardingComplete } from "../../../store/onboarding/onboardingSelectors";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
 import { RouteDocument } from "../../../types/common/route";
-import PlaceIcon from "./PlaceIcon";
+import PlaceMarker from "./PlaceMarker";
+import Route from "./Route";
 
 type Props = {
   mapView: RefObject<MapView>;
@@ -64,60 +64,10 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   return (
     <>
       {experience?.data.pointOfInterests?.map((p) => (
-        <View key={p._id}>
-          <Marker
-            pinColor={Colors.red100}
-            key={p._id}
-            onPress={onPressPlace(p)}
-            coordinate={{
-              latitude: p.location.coordinates[1],
-              longitude: p.location.coordinates[0],
-            }}
-          >
-            <PlaceIcon name={p.type.matIcon} />
-          </Marker>
-          <Circle
-            center={{
-              latitude: p.triggerZone.lat,
-              longitude: p.triggerZone.lng,
-            }}
-            radius={p.triggerZone.radius}
-            strokeColor="rgba(255, 99, 71, 0.1)"
-          />
-        </View>
+        <PlaceMarker data={p} onPress={onPressPlace(p)} key={p._id} />
       ))}
       {experience?.data.routes?.map((r) => (
-        <View key={r._id}>
-          <Polyline
-            onPress={onPressRoute(r)}
-            strokeColor={r.colour}
-            strokeWidth={3}
-            coordinates={r.geo.coordinates.map((c) => ({
-              latitude: c[1],
-              longitude: c[0],
-            }))}
-          />
-          <Marker
-            onPress={onPressRoute(r)}
-            pinColor={r.colour}
-            coordinate={{
-              latitude: r.geo.coordinates[0][1],
-              longitude: r.geo.coordinates[0][0],
-            }}
-          >
-            <PlaceIcon color={r.colour} name="outlined_flag" />
-          </Marker>
-          <Marker
-            onPress={onPressRoute(r)}
-            pinColor={r.colour}
-            coordinate={{
-              latitude: r.geo.coordinates[r.geo.coordinates.length - 1][1],
-              longitude: r.geo.coordinates[r.geo.coordinates.length - 1][0],
-            }}
-          >
-            <PlaceIcon color={r.colour} name="flag" />
-          </Marker>
-        </View>
+        <Route key={r._id} data={r} onPress={onPressRoute(r)} />
       ))}
     </>
   );
