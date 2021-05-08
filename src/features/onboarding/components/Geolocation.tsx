@@ -54,7 +54,6 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
 const styles = StyleSheet.create({
   animation: {
     height: deviceValue(100, 200),
-    resizeMode: "contain",
   },
   caption: {
     textAlign: "center",

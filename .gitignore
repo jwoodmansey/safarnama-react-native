@@ -65,3 +65,4 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+android/app/safarnama-release.jks

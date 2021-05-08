@@ -3,10 +3,10 @@
 buildscript {
     ext {
         googlePlayServicesLocationVersion = "17.0.0"
-        buildToolsVersion = "29.0.2"
+        buildToolsVersion = "30.0.0"
         minSdkVersion = 21
-        compileSdkVersion = 29
-        targetSdkVersion = 29
+        compileSdkVersion = 30
+        targetSdkVersion = 30
         appCompatVersion = "1.1.0"
     }
     repositories {
