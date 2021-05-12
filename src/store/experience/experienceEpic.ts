@@ -27,6 +27,7 @@ import {
   loadFeaturedExperiences,
   removedExperience,
   removeExperience,
+  updateExperiences,
 } from "./experienceReducer";
 import { selectExperience, selectExperiences } from "./experienceSelectors";
 
@@ -53,6 +54,22 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
           Alert.alert("Error", JSON.stringify(e));
           return EMPTY;
         })
+      )
+    )
+  );
+
+const updateExperiencesEpic = (
+  action$: Observable<any>,
+  state$: StateObservable<RootState>
+) =>
+  action$.pipe(
+    ofType(updateExperiences.type),
+    withLatestFrom(state$.pipe(map(selectExperiences))),
+    mergeMap(([, experiences]) =>
+      of(
+        ...Object.values(experiences)
+          .filter((e) => e.played === true)
+          .map((e) => loadExperience({ id: e.data._id }))
       )
     )
   );
@@ -170,5 +187,6 @@ export default combineEpics(
   loadExperienceEpic,
   downloadExperienceMediaEpic,
   loadFeaturedExperiencesEpic,
-  removeExperienceEpic
+  removeExperienceEpic,
+  updateExperiencesEpic
 );

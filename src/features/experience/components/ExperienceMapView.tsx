@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import React, { RefObject, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert } from "react-native";
@@ -22,14 +22,18 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
   const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
   const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
 
+  const isFocused = useIsFocused();
   useEffect(() => {
-    if (experience) {
-      nav.setOptions({ title: experience.data.name });
-    } else if (!isOnboardingComplete) {
-      nav.navigate("OnboardingScreen");
-    } else {
-      nav.navigate("AddExperience");
+    if (isFocused) {
+      if (experience) {
+        nav.setOptions({ title: experience.data.name });
+      } else if (!isOnboardingComplete) {
+        nav.navigate("OnboardingScreen");
+      } else {
+        nav.navigate("AddExperience");
+      }
     }
+
     const id = experience?.data._id;
     if (experience && currentlyZoomedTo !== id) {
       const edgePadding = 20;
@@ -50,7 +54,14 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
       );
       setCurrentlyZoomedTo(id);
     }
-  }, [experience, nav, mapView, currentlyZoomedTo, isOnboardingComplete]);
+  }, [
+    experience,
+    nav,
+    mapView,
+    isFocused,
+    currentlyZoomedTo,
+    isOnboardingComplete,
+  ]);
   const onPressPlace = (place: PointOfInterestDocument) => () => {
     nav.navigate("ViewPlaceScreen", { place, name: place.name });
   };

@@ -91,7 +91,7 @@ const experienceReducer = createSlice({
         (e) => (TAG ? e.metaData.tags?.includes(TAG) : true)
       );
     },
-    downloadExperienceMedia: (state, action: LoadExperience) => {
+    downloadExperienceMedia: (state, _: LoadExperience) => {
       state.isDownloading = true;
     },
     downloadedMedia: (state, action: DownloadedMedia) => {
@@ -119,6 +119,7 @@ const experienceReducer = createSlice({
       });
       state.media = media;
     },
+    updateExperiences: () => {},
   },
 });
 
@@ -135,6 +136,7 @@ export const {
   toggleKeyModal,
   removeExperience,
   removedExperience,
+  updateExperiences,
 } = experienceReducer.actions;
 
 export default experienceReducer.reducer;
