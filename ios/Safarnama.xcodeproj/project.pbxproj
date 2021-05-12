@@ -794,7 +794,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TS7SW33F9Z;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Safarnama/Info.plist;
@@ -824,7 +824,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TS7SW33F9Z;
 				INFOPLIST_FILE = Safarnama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1016,7 +1016,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TS7SW33F9Z;
 				INFOPLIST_FILE = Safarnama/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1179,7 +1179,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safarnama/Safarnama.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TS7SW33F9Z;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Safarnama/Info.plist;
