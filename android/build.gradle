@@ -8,6 +8,7 @@ buildscript {
         compileSdkVersion = 30
         targetSdkVersion = 30
         appCompatVersion = "1.1.0"
+        firebaseMessagingVersion = "21.1.0"
     }
     repositories {
         google()

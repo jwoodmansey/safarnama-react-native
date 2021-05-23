@@ -20,3 +20,7 @@
 
 # [react-native-background-fetch]
 -keep class com.transistorsoft.rnbackgroundfetch.HeadlessTask { *; }
+
+-keep public class eu.portspastpresent.app.BuildConfig {*; }
+-keep public class com.safarnama.safarnama.BuildConfig {*; }
+
