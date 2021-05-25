@@ -5,6 +5,7 @@ import PushNotification from "react-native-push-notification";
 import { useSelector } from "react-redux";
 import { navigate } from "../nav/NavigationRef";
 import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
+import { createChannel, sendPlacePush } from "../utils/pushNotifications";
 
 const useGeoLocation = () => {
   const [t] = useTranslation("pushNotification");
@@ -18,9 +19,17 @@ const useGeoLocation = () => {
         desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
         distanceFilter: 10,
         // Activity Recognition
+        foregroundService: true,
         stopTimeout: 1,
         // Application config
-        debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
+        enableHeadless: true,
+        geofenceModeHighAccuracy: true,
+        geofenceInitialTriggerEntry: true,
+        notification: {
+          channelName: "Something",
+          smallIcon: "drawable/ic_stat_name",
+        },
+        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
         logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
         stopOnTerminate: false, // <-- Allow the background-service to continue tracking when user closes the app.
         startOnBoot: true, // <-- Auto start tracking when device is powered-up.
@@ -42,18 +51,10 @@ const useGeoLocation = () => {
         }
       }
     );
+    createChannel();
     BackgroundGeolocation.onGeofence((event) => {
-      if (event.action === "ENTER") {
-        PushNotification.localNotification({
-          // eslint-disable-next-line i18next/no-literal-string
-          title: `📍 ${event.extras?.name}`,
-          message: t("tapToLearnMore"),
-          messageId: event.identifier,
-          userInfo: {
-            placeId: event.identifier,
-            name: event.extras?.name,
-          },
-        });
+      if (event.action === "ENTER" || event.action === "DWELL") {
+        sendPlacePush(event);
       }
     });
 

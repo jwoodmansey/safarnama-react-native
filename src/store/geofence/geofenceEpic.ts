@@ -25,7 +25,7 @@ async function setGeofences(experience?: ExperienceSnapshotData) {
     ? experience.data.pointOfInterests.map((place) => ({
         notifyOnExit: false,
         notifyOnEntry: true,
-        notifyOnDwell: true,
+        notifyOnDwell: false,
         identifier: place._id,
         latitude: place.triggerZone.lat,
         longitude: place.triggerZone.lng,

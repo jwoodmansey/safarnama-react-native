@@ -3,6 +3,6 @@ import { getBundleId } from "react-native-device-info";
 export const API_BASE_URL = "https://safarnama.lancs.ac.uk/api";
 // export const TAG = "Delhi";
 export const TAG =
-  getBundleId() === "eu.portspastpresent.app"
+  getBundleId() === "com.safarnama.safarnama.portspastpresent"
     ? "Ports Past and Present"
     : undefined;
