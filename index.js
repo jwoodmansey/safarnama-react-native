@@ -4,6 +4,7 @@
 
 import { AppRegistry } from "react-native";
 import BackgroundFetch from "react-native-background-fetch";
+import BackgroundGeolocation from "react-native-background-geolocation";
 import "react-native-gesture-handler";
 import { enableScreens } from "react-native-screens";
 import { Constants } from "react-native-unimodules";
@@ -16,7 +17,7 @@ import { sendPlacePush } from "./src/utils/pushNotifications";
 console.log(Constants.systemFonts);
 enableScreens();
 
-const MyHeadlessTask = async (event) => {
+const HeadlessTask = async (event) => {
   // Get task id from event {}:
   const { taskId } = event;
   const isTimeout = event.timeout; // <-- true when your background-time has expired.
@@ -36,8 +37,42 @@ const MyHeadlessTask = async (event) => {
   // battery-blame for consuming too much time in background.
   BackgroundFetch.finish(taskId);
 };
-// BackgroundFetch.configure({})
-// Register your BackgroundFetch HeadlessTask
-BackgroundFetch.registerHeadlessTask(MyHeadlessTask);
+
+// const HeadlessTask = async (event) => {
+//   const { params } = event;
+//   console.log("[BackgroundGeolocation HeadlessTask] -", event.name, params);
+
+//   switch (event.name) {
+//     case "heartbeat":
+//       // Use await for async tasks
+//       const location = await getCurrentPosition();
+//       console.log(
+//         "[BackgroundGeolocation HeadlessTask] - getCurrentPosition:",
+//         location
+//       );
+//       break;
+//     default:
+//       console.log("Other");
+//   }
+// };
+
+// let getCurrentPosition = () => {
+//   return new Promise((resolve) => {
+//     BackgroundGeolocation.getCurrentPosition(
+//       {
+//         samples: 1,
+//         persist: false,
+//       },
+//       (location) => {
+//         resolve(location);
+//       },
+//       (error) => {
+//         resolve(error);
+//       }
+//     );
+//   });
+// };
 
 AppRegistry.registerComponent(appName, () => App);
+
+BackgroundGeolocation.registerHeadlessTask(HeadlessTask);
