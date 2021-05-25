@@ -1,0 +1,69 @@
+{
+  "manage": {
+    "manageExperiences": "Rheoli profiadau",
+    "noExperiences": "Dim profiadau",
+    "noExeriencesSubtitle": "Dydych chi ddim wedi dechrau unrhyw brofiad eto. Darganfyddwch un er mwyn cychwyn.",
+    "findExperiences": "Darganfod profiadau",
+    "findMore": "Darganfod mwy",
+    "featuredExperiences": "Profiadau dan sylw",
+    "qrCode": "Côd QR",
+    "scanQrCode": "Sganio Côd QR",
+    "qrCodeSubtitle": "Os oes gennych chi gôd QR ar gyfer profiad, cliciwch yma. Gallwch chi hefyd lawrlwytho unrhyw brofiad dan sylw o’r rhestr isod.",
+    "qrCodePointAt": "Anelwch eich camera at $t(glossary:appName) gôd QR",
+    "playExperience": "Chwarae profiad",
+    "play": "Chwarae",
+    "remove": "Dileu",
+    "download": "Lawrlwytho",
+    "downloaded": "Wedi ei lawrlwytho",
+    "downloadSizeInMb": "Lawrlwytho ({{sizeInMb}}Mb)",
+    "downloadExperience": "Lawrlwytho profiad?",
+    "downloadExplanation": "Bydd hwn yn eich galluogi i wylio cyfryngau’r profiad hwn tra’ch bod chi all-lein. Does dim gwarant bydd \n\nIt yn dangos haen y map tra’ch bod chi all-lein.",
+    "removeExperience": "Dileu profiad?",
+    "removeExplanation": "Ydych chi’n siŵr eich bod chi eisiau dileu’r profiad hwn?",
+    "experienceRemoved": "Profiad wedi ei ddileu"
+  },
+  "route": {
+    "route": "Taith",
+    "routeStart": "Cychwyn y daith",
+    "routeEnd": "Pen y daith"
+  },
+  "pushNotification": {
+    "tapToLearnMore": "Cliciwch i ddarganfod mwy",
+  },
+  "media": {
+    "noMedia": "Ni chafwyd cyfrwng",
+    "noMediaSubtitle": "Mae’n debyg nad oes cyfrwng yn gysylltiedig gyda’r safle hwn.",
+    "unsupportedMedia": "Cyfrwng digymorth: {{type}}",
+    "links": "Dolenni",
+    "notResponsibleForLinks": "Nid ydym yn gyfrifol am gynnwys dolenni.",
+  },
+  "about": {
+    "thirdPartyLicenses": "Trwyddedau trydydd parti",
+    "license": "Trwydded",
+    "repository": "Storfa"
+  },
+  "loading": {
+    "justASec": "Mewn chwinciad…"
+  },
+  "onboarding": {
+    "welcome": "Croeso",
+    "welcomeSubtitle": "Gan ddefnyddio $t(glossary:appName) rydych chi’n gallu lawrlwytho a darganfod profiadau diwylliannol wedi eu curadu.",
+    "geolocation": "Canfod lleoliad",
+    "geolocationSubtitle": "Wrth gytuno i roi mynediad i $t(glossary:appName) i’ch lleoliad, byddwch yn gallu gweld eich lleoliad ar y map ac mi fyddwn ni’n gallu’ch hysbysu am safleoedd cyfagos.",
+    "geolocationSubtitleIOS": "\n\nPan ofynnir i chi wneud hynny, dewiswch os gwelwch yn dda\n \"Caniatáu tra’n defnyddio\" ac wedyn \"Caniatáu bob tro\".",
+    "geolocationWontUseForAnythingElse": "Ni fyddwn yn defnyddio eich lleoliad am unrhyw reswm arall.",
+    "enableGeolocation": "Galluogi canfod lleoliad",
+    "pushNotifications": "Hysbysiadau gwthio",
+    "pushNotificationsSubtitle": "Galluogwch hysbysiadau gwthio ac mi fyddwn ni’n eich hysbysu am leoliad cyfagos pan fydd yr ap ar gau.",
+    "enablePushNotifications": "Galluogi hysbysiadau gwthio"
+  },
+  "glossary": {
+    "appName": "Lleoedd Porthladd",
+    "cancel": "Canslo",
+    "continue": "Parhau",
+    "skip": "Neidio",
+    "experience": "Profiad",
+    "about": "Am",
+    "manage": "Rheoli"
+  }
+}
