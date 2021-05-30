@@ -1,6 +1,7 @@
 export type RootStackNavigationProp = {
-  MapScreen: {};
-  ExperienceManagement: {};
-  AddExperience: {};
+  MapScreen: undefined;
+  ExperienceManagement: undefined;
+  AddExperience: undefined;
   Licenses: undefined;
+  About: undefined;
 };
