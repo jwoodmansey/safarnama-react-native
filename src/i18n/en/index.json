@@ -42,6 +42,15 @@
     "license": "License",
     "repository": "Repository"
   },
+  "settings": {
+    "settings": "Settings",
+    "privacy": {
+      "privacy": "Privacy",
+      "errorReporting": "Error reporting",
+      "optInToErrorReporting": "Opt-in to error reporting",
+      "helpImprove": "Help improve $t(glossary:appName) by sending error reports, these may include installation UUIDs, and crash traces."
+    }
+  },
   "loading": {
     "justASec": "Just a sec…"
   },

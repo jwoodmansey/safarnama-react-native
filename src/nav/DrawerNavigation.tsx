@@ -10,6 +10,7 @@ import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
 import AboutNavigator from "../features/about/nav/AboutNavigator";
+import PrivacyNavigator from "../features/privacy/nav/PrivacyNavigator";
 
 const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 
@@ -31,6 +32,7 @@ const DrawerNavigation: React.FC = () => {
       <Drawer.Screen name="AddExperience" component={AddExperienceNavigation} />
       <Drawer.Screen name="Licenses" component={LicensesNavigation} />
       <Drawer.Screen name="About" component={AboutNavigator} />
+      <Drawer.Screen name="Privacy" component={PrivacyNavigator} />
     </Drawer.Navigator>
   );
 };

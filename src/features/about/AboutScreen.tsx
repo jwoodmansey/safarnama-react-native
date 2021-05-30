@@ -1,6 +1,6 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Linking, StyleSheet, Text, View } from "react-native";
+import { Linking, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Paragraph } from "react-native-paper";
 import { TAG } from "../../config";

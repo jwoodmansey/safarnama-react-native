@@ -22,6 +22,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
     navigate("ExperienceManagement", { screen: "ManageExperiencesScreen" });
   const onPressLicenses = () => navigate("Licenses");
   const onPressAbout = () => navigate("About");
+  const onPressPrivacySettings = () => navigate("Privacy");
 
   const experiences = useSelector(selectMyExperiences);
   const [t] = useTranslation(["glossary", "manage", "about"]);
@@ -45,6 +46,13 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
           icon="download"
           onPress={onPressFeatured}
           label={t("manage:findMore")}
+        />
+      </Drawer.Section>
+      <Drawer.Section title={t("settings:settings")}>
+        <Drawer.Item
+          icon="account-lock"
+          label={t("settings:privacy:privacy")}
+          onPress={onPressPrivacySettings}
         />
       </Drawer.Section>
       <Drawer.Section title={t("glossary:about")}>

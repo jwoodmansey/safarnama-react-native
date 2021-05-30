@@ -1,6 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next, Namespace, TFunction } from "react-i18next";
-import { Platform, NativeModules, Alert } from "react-native";
+import { Platform, NativeModules } from "react-native";
 import { TAG } from "../config";
 import en from "./en/index.json";
 import cy from "./cy/index.json";
