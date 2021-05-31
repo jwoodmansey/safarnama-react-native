@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import BackgroundGeolocation from "react-native-background-geolocation";
-import PushNotification from "react-native-push-notification";
 import { useSelector } from "react-redux";
-import { navigate } from "../nav/NavigationRef";
 import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
 import { createChannel, sendPlacePush } from "../utils/pushNotifications";
 
@@ -29,7 +27,7 @@ const useGeoLocation = () => {
           channelName: "Place Tracker",
           smallIcon: "drawable/ic_stat_name",
         },
-        debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+        debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
         logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
         stopOnTerminate: false, // <-- Allow the background-service to continue tracking when user closes the app.
         startOnBoot: true, // <-- Auto start tracking when device is powered-up.

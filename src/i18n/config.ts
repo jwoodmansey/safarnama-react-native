@@ -11,6 +11,10 @@ export const resources = {
     ...en,
     about: {
       ...en.about,
+      projectName:
+        TAG === "Ports Past and Present"
+          ? "Ports, Past and Present"
+          : "Safarnama",
       aboutFull:
         TAG === "Ports Past and Present"
           ? "<0>A project led by University College Cork in partnership with Aberystwyth University, the University of Wales Trinity St David and Wexford County Council examining the cultural heritage of the <0>ports in the Irish sea basin</0>. Funded by the European Regional Development Fund through the <1>Ireland Wales Cooperation programme</1>.</0>"
@@ -18,16 +22,17 @@ export const resources = {
     },
     glossary: {
       ...en.glossary,
-      appName:
-        TAG === "Ports Past and Present"
-          ? "Ports Past and Present"
-          : "Safarnama",
+      appName: TAG === "Ports Past and Present" ? "Port Places" : "Safarnama",
     },
   },
   cy: {
     ...cy,
     about: {
       ...cy.about,
+      projectName:
+        TAG === "Ports Past and Present"
+          ? "Porthladdoedd, Ddoe a Heddiw"
+          : "Safarnama",
       aboutFull:
         TAG === "Ports Past and Present"
           ? "<0>Prosiect dan arweiniad Coleg Prifysgol Corc, mewn cydweithrediad â Phrifysgol Aberystwyth, Prifysgol Cymru y Drindod Dewi Sant a chyngor sir Loch Garman (Wexford), sy’n archwilio treftadaeth ddiwylliannol <1>5 porthladd o amgylch Môr Iwerddon</1>. Noddir gan Gronfa Datblygu Rhanbarthol Ewrop trwy <2>Raglen Iwerddon Cymru.</2></0>"
