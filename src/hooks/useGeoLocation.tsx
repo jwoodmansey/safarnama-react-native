@@ -26,7 +26,7 @@ const useGeoLocation = () => {
         geofenceModeHighAccuracy: true,
         geofenceInitialTriggerEntry: true,
         notification: {
-          channelName: "Something",
+          channelName: "Place Tracker",
           smallIcon: "drawable/ic_stat_name",
         },
         debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
@@ -40,36 +40,28 @@ const useGeoLocation = () => {
           state.enabled
         );
         if (!state.enabled) {
-          /// /
           // 3. Start tracking!
-          //
+
           if (isOnboardingComplete) {
-            BackgroundGeolocation.startGeofences(() => {
-              console.log("- Start success");
-            });
+            BackgroundGeolocation.startGeofences(
+              () => {
+                console.log("- Start success");
+              },
+              (e) => {
+                console.error("Could not start geofences", e);
+              }
+            );
           }
         }
       }
     );
     createChannel();
     BackgroundGeolocation.onGeofence((event) => {
+      console.log("On geofence", event);
       if (event.action === "ENTER" || event.action === "DWELL") {
         sendPlacePush(event);
       }
     });
-
-    PushNotification.configure({
-      requestPermissions: false,
-      onNotification: (e) => {
-        if (e.data.placeId) {
-          navigate("ViewPlaceScreen", {
-            placeId: e.data.placeId,
-            name: e.data.name,
-          });
-        }
-      },
-    });
-
     return () => {
       BackgroundGeolocation.removeListeners();
     };
