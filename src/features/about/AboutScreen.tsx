@@ -1,6 +1,6 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Linking, StyleSheet, View } from "react-native";
+import { Linking, ScrollView, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Paragraph } from "react-native-paper";
 import { TAG } from "../../config";
@@ -24,7 +24,10 @@ const AboutScreen: React.FC = () => {
     }
   };
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       {TAG === "Ports Past and Present" ? (
         <FastImage
           style={styles.image}
@@ -48,15 +51,17 @@ const AboutScreen: React.FC = () => {
           </Paragraph>
         </Paragraph>
       </Trans>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
+  },
+  contentContainer: {
     alignItems: "center",
-    margin: 20,
   },
   text: {
     textAlign: "center",

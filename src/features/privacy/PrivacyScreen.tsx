@@ -1,7 +1,7 @@
 import crashlytics from "@react-native-firebase/crashlytics";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Paragraph, Subheading, Switch } from "react-native-paper";
 
 const PrivacyScreen: React.FC = () => {
@@ -17,7 +17,7 @@ const PrivacyScreen: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Subheading>{t("settings:privacy.errorReporting")}</Subheading>
       <Paragraph>{t("settings:privacy.helpImprove")}</Paragraph>
       <View style={styles.labelRow}>
@@ -26,14 +26,14 @@ const PrivacyScreen: React.FC = () => {
         </Paragraph>
         <Switch value={enabled} onValueChange={toggleCrashlytics} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
+    padding: 20,
   },
   labelRow: {
     flexDirection: "row",
