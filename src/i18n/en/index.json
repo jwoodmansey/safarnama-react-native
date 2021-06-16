@@ -46,9 +46,15 @@
     "settings": "Settings",
     "privacy": {
       "privacy": "Privacy",
+      "viewPrivacyPolicy": "View privacy policy",
       "errorReporting": "Error reporting",
       "optInToErrorReporting": "Opt-in to error reporting",
       "helpImprove": "Help improve $t(glossary:appName) by sending error reports, these may include installation UUIDs, and crash traces."
+    },
+    "language": {
+      "language": "Language",
+      "english": "English",
+      "welsh": "Welsh"
     }
   },
   "loading": {
@@ -58,7 +64,7 @@
     "welcome": "Welcome",
     "welcomeSubtitle": "With $t(glossary:appName) you can download and explore curated cultural heritage experiences.",
     "geolocation": "Geolocation",
-    "geolocationSubtitle": "By enabling $t(glossary:appName) access to your location, you can view your location on the map, and we can alert you to nearby places.",
+    "geolocationSubtitle": "By enabling $t(glossary:appName) access to your location, you can view your location on the map, and we can alert you to nearby places when the app is closed.",
     "geolocationSubtitleIOS": "\n\nWhen prompted please choose\n \"Allow while using\" and then \"Always allow\".",
     "geolocationWontUseForAnythingElse": "We won't use your location for anything else.",
     "enableGeolocation": "Enable Geolocation",

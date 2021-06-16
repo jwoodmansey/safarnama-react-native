@@ -4,4 +4,6 @@ export type RootStackNavigationProp = {
   AddExperience: undefined;
   Licenses: undefined;
   About: undefined;
+  Privacy: undefined;
+  Language: undefined;
 };

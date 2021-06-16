@@ -35,12 +35,27 @@
     "noMediaSubtitle": "Mae’n debyg nad oes cyfrwng yn gysylltiedig gyda’r safle hwn.",
     "unsupportedMedia": "Cyfrwng digymorth: {{type}}",
     "links": "Dolenni",
-    "notResponsibleForLinks": "Nid ydym yn gyfrifol am gynnwys dolenni.",
+    "notResponsibleForLinks": "Nid ydym yn gyfrifol am gynnwys dolenni."
   },
   "about": {
     "thirdPartyLicenses": "Trwyddedau trydydd parti",
     "license": "Trwydded",
     "repository": "Storfa"
+  },
+  "settings": {
+    "settings": "Settings",
+    "language": {
+      "language": "Iaith",
+      "english": "Saesneg",
+      "welsh": "Cymraeg"
+    },
+    "privacy": {
+      "privacy": "Preifatrwydd",
+      "viewPrivacyPolicy": "Gweld polisi preifatrwydd",
+      "errorReporting": "Error reporting",
+      "optInToErrorReporting": "Opt-in to error reporting",
+      "helpImprove": "Help improve $t(glossary:appName) by sending error reports, these may include installation UUIDs, and crash traces."
+    }
   },
   "loading": {
     "justASec": "Mewn chwinciad…"
@@ -49,7 +64,7 @@
     "welcome": "Croeso",
     "welcomeSubtitle": "Gan ddefnyddio $t(glossary:appName) rydych chi’n gallu lawrlwytho a darganfod profiadau diwylliannol wedi eu curadu.",
     "geolocation": "Canfod lleoliad",
-    "geolocationSubtitle": "Wrth gytuno i roi mynediad i $t(glossary:appName) i’ch lleoliad, byddwch yn gallu gweld eich lleoliad ar y map ac mi fyddwn ni’n gallu’ch hysbysu am safleoedd cyfagos.",
+    "geolocationSubtitle": "Gan gytuno i roi $t(glossary:appName) mynediad i’ch lleoliad, byddech chi’n gwelwch eich lleoliad ar y map ac mi fyddwn ni’n rhoi gwybod am safleoedd cyfagos tra’r ap ar gau.",
     "geolocationSubtitleIOS": "\n\nPan ofynnir i chi wneud hynny, dewiswch os gwelwch yn dda\n \"Caniatáu tra’n defnyddio\" ac wedyn \"Caniatáu bob tro\".",
     "geolocationWontUseForAnythingElse": "Ni fyddwn yn defnyddio eich lleoliad am unrhyw reswm arall.",
     "enableGeolocation": "Galluogi canfod lleoliad",
@@ -58,7 +73,6 @@
     "enablePushNotifications": "Galluogi hysbysiadau gwthio"
   },
   "glossary": {
-    "appName": "Lleoedd Porthladd",
     "cancel": "Canslo",
     "continue": "Parhau",
     "skip": "Neidio",

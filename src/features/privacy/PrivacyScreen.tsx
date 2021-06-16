@@ -1,14 +1,19 @@
 import crashlytics from "@react-native-firebase/crashlytics";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, View, ScrollView } from "react-native";
-import { Paragraph, Subheading, Switch } from "react-native-paper";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Button, Paragraph, Subheading, Switch } from "react-native-paper";
+import { PRIVACY_URL } from "../../config";
+import { openInAppBrowser } from "../../utils/linking";
 
 const PrivacyScreen: React.FC = () => {
   const [t] = useTranslation(["settings"]);
   const [enabled, setEnabled] = useState(
     crashlytics().isCrashlyticsCollectionEnabled
   );
+  const onPressPrivacyPolicy = () => {
+    openInAppBrowser(PRIVACY_URL);
+  };
 
   async function toggleCrashlytics() {
     await crashlytics()
@@ -26,6 +31,13 @@ const PrivacyScreen: React.FC = () => {
         </Paragraph>
         <Switch value={enabled} onValueChange={toggleCrashlytics} />
       </View>
+      <Button
+        style={styles.button}
+        mode="outlined"
+        onPress={onPressPrivacyPolicy}
+      >
+        {t("settings:privacy.viewPrivacyPolicy")}
+      </Button>
     </ScrollView>
   );
 };
@@ -44,6 +56,9 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: "500",
+  },
+  button: {
+    marginTop: 32,
   },
 });
 

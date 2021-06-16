@@ -23,6 +23,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const onPressLicenses = () => navigate("Licenses");
   const onPressAbout = () => navigate("About");
   const onPressPrivacySettings = () => navigate("Privacy");
+  const onPressLanguageSettings = () => navigate("Language");
 
   const experiences = useSelector(selectMyExperiences);
   const [t] = useTranslation(["glossary", "manage", "about"]);
@@ -53,6 +54,11 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
           icon="account-lock"
           label={t("settings:privacy:privacy")}
           onPress={onPressPrivacySettings}
+        />
+        <Drawer.Item
+          icon="translate"
+          label={t("settings:language:language")}
+          onPress={onPressLanguageSettings}
         />
       </Drawer.Section>
       <Drawer.Section title={t("glossary:about")}>
