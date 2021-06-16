@@ -3,11 +3,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 import { Platform, StatusBar, useColorScheme } from "react-native";
 import SplashScreen from "react-native-splash-screen";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OnboardingScreen from "../features/onboarding/screens/OnBoardingScreen";
 import useDeeplinking from "../hooks/useDeeplinking";
 import useGeoLocation from "../hooks/useGeoLocation";
+import useLanguage from "../hooks/useLanguage";
 import { updateExperiences } from "../store/experience/experienceReducer";
+import { RootState } from "../store/rootReducer";
 import DrawerNavigation from "./DrawerNavigation";
 
 const Stack = createStackNavigator();
@@ -28,6 +30,7 @@ const RootNavigation: React.FC = () => {
   }, [scheme, theme]);
   useGeoLocation();
   useDeeplinking();
+  useLanguage();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateExperiences());
