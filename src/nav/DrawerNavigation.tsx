@@ -11,7 +11,7 @@ import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
 import MapNavigation from "./MapNavigation";
 import AboutNavigator from "../features/about/nav/AboutNavigator";
 import PrivacyNavigator from "../features/privacy/nav/PrivacyNavigator";
-import LanguageNavigator from "../features/privacy copy/nav/PrivacyNavigator";
+import LanguageNavigator from "../features/language/nav/LanguageNavigator";
 
 const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 

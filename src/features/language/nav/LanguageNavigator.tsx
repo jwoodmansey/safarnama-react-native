@@ -14,7 +14,7 @@ const LanguageNavigator: React.FC = () => {
         name="LanguageScreen"
         component={PrivacyScreen}
         options={{
-          title: t("settings:privacy:privacy"),
+          title: t("settings:language.language"),
           headerLeft: () => <DrawerToggle />,
         }}
       />
