@@ -6,9 +6,9 @@ export const TAG =
   getBundleId() === "com.safarnama.safarnama.portspastpresent" ||
   getBundleId() === "eu.portspastpresent.app"
     ? "Ports Past and Present"
-    : undefined;
+    : "Safarnama";
 
 export const PRIVACY_URL =
   TAG === "Ports Past and Present"
     ? "https://portspastpresent.eu/ppappdpn"
-    : "https://safarnama.lancs.ac.uk/";
+    : "https://safarnama.lancs.ac.uk/privacy/app";

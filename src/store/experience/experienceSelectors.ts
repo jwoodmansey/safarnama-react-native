@@ -26,7 +26,10 @@ export const selectMyExperiences: Selector<
 export const selectFeaturedExperiences: Selector<
   RootState,
   ExperienceRefData[]
-> = (state) => state.experience.featuredExperiences;
+> = (state) =>
+  state.experience.featuredExperiences
+    ?.slice(0)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
 export const selectAllKeys = createSelector(
   [selectCurrentExperience],
