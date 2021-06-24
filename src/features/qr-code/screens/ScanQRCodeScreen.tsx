@@ -14,11 +14,18 @@ const ScanQRCodeScreen: React.FC = () => {
     StackNavigationProp<AddExperienceProp, "ScanQRCodeScreen">
   >();
   const onSuccess = async (event: BarCodeReadEvent) => {
-    const resolvedLink = await dynamicLinks().resolveLink(event.data);
-    const split = resolvedLink.url.split("/");
-    nav.navigate("ExperienceDetailsScreen", {
-      experienceId: split[split.length - 1],
-    });
+    let link = event.data;
+    try {
+      link = (await dynamicLinks().resolveLink(event.data)).url;
+    } catch (e) {
+      console.log("link was not a dynamic link");
+    }
+    const split = link.split("/");
+    if (split[split.length - 2] === "download") {
+      nav.navigate("ExperienceDetailsScreen", {
+        experienceId: split[split.length - 1],
+      });
+    }
   };
   const [t] = useTranslation(["manage"]);
   return (
