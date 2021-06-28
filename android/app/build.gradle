@@ -140,7 +140,7 @@ android {
         applicationId "com.safarnama.safarnama"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 18
+        versionCode 19
         versionName "2.0.1"
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
         multiDexEnabled true
