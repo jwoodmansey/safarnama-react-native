@@ -43,7 +43,7 @@
     "repository": "Storfa"
   },
   "settings": {
-    "settings": "Settings",
+    "settings": "Gosodiadau",
     "language": {
       "language": "Iaith",
       "english": "Saesneg",
@@ -52,9 +52,9 @@
     "privacy": {
       "privacy": "Preifatrwydd",
       "viewPrivacyPolicy": "Gweld polisi preifatrwydd",
-      "errorReporting": "Error reporting",
-      "optInToErrorReporting": "Opt-in to error reporting",
-      "helpImprove": "Help improve $t(glossary:appName) by sending error reports, these may include installation UUIDs, and crash traces."
+      "errorReporting": "Cofnodi gwallau",
+      "optInToErrorReporting": "Optio i mewn i gofnodi gwallau",
+      "helpImprove": "Helpwch i wella $t(glossary:appName) trwy ddanfon adroddiadau gwallau. Gall rhain gynnwys gosodiadau UUID ac olion chwalu."
     }
   },
   "loading": {
