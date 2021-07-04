@@ -1,7 +1,12 @@
 import React from "react";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import {
+  Dimensions,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from "react-native";
 import FastImage from "react-native-fast-image";
-import { Colors } from "react-native-paper";
 import { TAG } from "../../../config";
 
 const FundingLogos = require("../../../assets/images/funding_logos.jpg");
@@ -17,7 +22,7 @@ const PlaceFooter: React.FC<Props> = ({ containerStyle }) => {
   return (
     <View style={[styles.container, containerStyle]}>
       <FastImage
-        style={styles.logoImage}
+        style={[styles.logoImage]}
         source={FundingLogos}
         resizeMode="contain"
       />
@@ -27,14 +32,13 @@ const PlaceFooter: React.FC<Props> = ({ containerStyle }) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 4,
     marginHorizontal: 20,
     marginVertical: 10,
-    width: "100%",
+    overflow: "hidden",
   },
   logoImage: {
-    width: "100%",
     height: 100,
+    width: Dimensions.get("window").width - 40,
   },
 });
 
