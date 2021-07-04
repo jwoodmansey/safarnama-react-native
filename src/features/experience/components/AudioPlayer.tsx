@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import MusicControl, { Command } from "react-native-music-control";
 import { getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
 
@@ -43,6 +44,7 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         allowsRecordingIOS: false,
         playsInSilentModeIOS: true,
         staysActiveInBackground: true,
+        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
       });
       const {
         sound: soundObject,
@@ -56,6 +58,23 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         if (status.isLoaded) {
           console.log("on status update");
           setIsPlaying(status.isPlaying);
+          // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
+          if (status.isPlaying) {
+            MusicControl.setNowPlaying({
+              title: media.description,
+              elapsedTime: Math.round((status.positionMillis || 0) / 1000),
+              duration: Math.round((status.durationMillis || 0) / 1000),
+            });
+            MusicControl.enableBackgroundMode(true);
+            MusicControl.enableControl("play", true);
+            MusicControl.enableControl("pause", true);
+            MusicControl.on(Command.pause, () => {
+              soundObject.pauseAsync();
+            });
+            MusicControl.on(Command.play, () => {
+              soundObject.playAsync();
+            });
+          }
           setDuration(status.durationMillis || 0);
           setPosition(status.positionMillis);
         }
