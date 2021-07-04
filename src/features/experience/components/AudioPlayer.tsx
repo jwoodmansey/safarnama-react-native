@@ -1,9 +1,9 @@
 import { Audio } from "expo-av";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import MusicControl, { Command } from "react-native-music-control";
 import { Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import MusicControl, { Command } from "react-native-music-control";
 import { getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
 
@@ -26,16 +26,10 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
     await sound?.playAsync();
   };
   const pauseAudio = async () => {
-    if (sound) {
-      await sound.pauseAsync();
-      // setIsPlaying(false);
-    }
+    await sound?.pauseAsync();
   };
   const stopAudio = async () => {
-    if (sound) {
-      await sound.stopAsync();
-      // setIsPlaying(false);
-    }
+    await sound?.stopAsync();
   };
 
   useEffect(() => {
