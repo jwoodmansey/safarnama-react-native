@@ -98,6 +98,7 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
   useEffect(() => {
     return sound
       ? () => {
+          MusicControl.stopControl();
           sound.unloadAsync();
         }
       : undefined;
