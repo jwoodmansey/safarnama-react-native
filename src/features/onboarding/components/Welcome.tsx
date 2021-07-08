@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingBottom: 10,
+    paddingHorizontal: 30,
     alignSelf: "stretch",
   },
 });

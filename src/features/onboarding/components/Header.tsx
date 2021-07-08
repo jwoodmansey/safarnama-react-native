@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
+
 import { Subheading, Title } from "react-native-paper";
 
 type Props = {
@@ -9,20 +10,27 @@ type Props = {
 
 const Header: React.FC<Props> = ({ title, subheading, children }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Title style={styles.text}>{title}</Title>
-      <Subheading style={styles.text}>{subheading}</Subheading>
+      <Subheading style={[styles.text, styles.subheading]}>
+        {subheading}
+      </Subheading>
       {children}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 30,
+    marginBottom: 30,
   },
   text: {
     textAlign: "center",
+  },
+  subheading: {
+    fontSize: 14,
   },
 });
 

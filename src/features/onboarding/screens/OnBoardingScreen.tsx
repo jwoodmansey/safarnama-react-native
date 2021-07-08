@@ -65,9 +65,9 @@ const OnboardingScreen: React.FC = () => {
         <View style={[styles.wrapper, { width }]}>
           <Welcome onNext={setSliderPage(1)} />
         </View>
-        <ScrollView contentContainerStyle={[styles.wrapper, { width }]}>
+        <View style={[[styles.wrapper], { width }]}>
           <Geolocation onNext={onGeoComplete} />
-        </ScrollView>
+        </View>
         {Platform.OS !== "android" && (
           <View style={[styles.wrapper, { width }]}>
             <PushNotification onNext={onComplete} />
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
   wrapper: {
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 30,
     marginTop: 30,
     flex: 1,
   },

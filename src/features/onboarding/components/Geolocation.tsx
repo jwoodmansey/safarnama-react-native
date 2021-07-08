@@ -1,7 +1,8 @@
 import LottieView from "lottie-react-native";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Platform, StyleSheet } from "react-native";
+import { View, Platform, StyleSheet } from "react-native";
+
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Caption } from "react-native-paper";
 import { deviceValue } from "../../../style/dimensions";
@@ -33,31 +34,39 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
       />
       <Header
         title={t("onboarding:geolocation")}
-        subheading={`${t("onboarding:geolocationSubtitle")}${
-          Platform.OS === "ios" ? t("onboarding:geolocationSubtitleIOS") : ""
-        }`}
+        subheading={t("onboarding:geolocationSubtitle")}
       >
         <Caption style={styles.caption}>
+          {Platform.OS === "ios" ? t("onboarding:geolocationSubtitleIOS") : ""}
+          {"\n"}
           {t("onboarding:geolocationWontUseForAnythingElse")}
         </Caption>
       </Header>
-      <PrimaryButton onPress={onPressEnable}>
-        {t("onboarding:enableGeolocation")}
-      </PrimaryButton>
-      <PrimaryButton secondary onPress={onNext}>
-        {t("glossary:skip")}
-      </PrimaryButton>
+      <View style={styles.container}>
+        <PrimaryButton onPress={onPressEnable}>
+          {t("onboarding:enableGeolocation")}
+        </PrimaryButton>
+        <PrimaryButton secondary onPress={onNext}>
+          {t("glossary:skip")}
+        </PrimaryButton>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 30,
+    width: "100%",
+  },
   animation: {
     height: deviceValue(100, 200),
   },
+  subtitle: {
+    fontSize: 14,
+  },
   caption: {
     textAlign: "center",
-    marginTop: 16,
   },
 });
 
