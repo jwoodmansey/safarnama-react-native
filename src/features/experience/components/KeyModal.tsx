@@ -34,16 +34,16 @@ const KeyModal: React.FC = () => {
       >
         {data.keys.map((key) => (
           <View key={key.name} style={styles.keyItemContainer}>
-            <PlaceIcon name={key.matIcon} />
+            <PlaceIcon placeType={key} />
             <Caption style={styles.title}>{key.name}</Caption>
           </View>
         ))}
         <View style={styles.keyItemContainer}>
-          <PlaceIcon name="outlined_flag" />
+          <PlaceIcon placeType={{ matIcon: "outlined_flag" }} />
           <Caption style={styles.title}>{t("route:routeStart")}</Caption>
         </View>
         <View style={styles.keyItemContainer}>
-          <PlaceIcon name="flag" />
+          <PlaceIcon placeType={{ matIcon: "flag" }} />
           <Caption style={styles.title}>{t("route:routeEnd")}</Caption>
         </View>
       </View>

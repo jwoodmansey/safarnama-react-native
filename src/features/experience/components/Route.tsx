@@ -28,7 +28,10 @@ const Route: React.FC<Props> = ({ data, onPress }) => {
           longitude: data.geo.coordinates[0][0],
         }}
       >
-        <PlaceIcon color={data.colour} name="outlined_flag" />
+        <PlaceIcon
+          color={data.colour}
+          placeType={{ matIcon: "outlined_flag" }}
+        />
       </Marker>
       <Marker
         onPress={onPress}
@@ -38,7 +41,7 @@ const Route: React.FC<Props> = ({ data, onPress }) => {
           longitude: data.geo.coordinates[data.geo.coordinates.length - 1][0],
         }}
       >
-        <PlaceIcon color={data.colour} name="flag" />
+        <PlaceIcon color={data.colour} placeType={{ matIcon: "flag" }} />
       </Marker>
     </>
   );

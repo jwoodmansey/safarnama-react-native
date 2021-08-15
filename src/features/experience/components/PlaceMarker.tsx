@@ -23,14 +23,7 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
           longitude: data.location.coordinates[0],
         }}
       >
-        {data.type.imageIcon ? (
-          <FastImage
-            source={{ uri: data.type.imageIcon }}
-            style={styles.imageIcon}
-          />
-        ) : (
-          <PlaceIcon name={data.type.matIcon} />
-        )}
+        <PlaceIcon placeType={data.type} />
       </Marker>
       <Circle
         center={{
@@ -43,12 +36,5 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  imageIcon: {
-    width: 24,
-    height: 24,
-  },
-});
 
 export default memo(PlaceMarker);

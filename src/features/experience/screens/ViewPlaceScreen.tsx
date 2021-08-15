@@ -44,7 +44,7 @@ const ViewPlaceScreen: React.FC = () => {
             longitude: place.location.coordinates[0],
           }}
         >
-          <PlaceIcon name={place.type.matIcon} />
+          <PlaceIcon placeType={place.type} />
         </Marker>
       </MapView>
     ) : null;
