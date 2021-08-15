@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+import { StyleSheet } from "react-native";
+import FastImage from "react-native-fast-image";
 import { Circle, Marker } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
@@ -21,7 +23,14 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
           longitude: data.location.coordinates[0],
         }}
       >
-        <PlaceIcon name={data.type.matIcon} />
+        {data.type.imageIcon ? (
+          <FastImage
+            source={{ uri: data.type.imageIcon }}
+            style={styles.imageIcon}
+          />
+        ) : (
+          <PlaceIcon name={data.type.matIcon} />
+        )}
       </Marker>
       <Circle
         center={{
@@ -34,5 +43,12 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  imageIcon: {
+    width: 24,
+    height: 24,
+  },
+});
 
 export default memo(PlaceMarker);

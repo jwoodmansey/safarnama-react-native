@@ -5,7 +5,9 @@ import { View, Platform, StyleSheet } from "react-native";
 
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Caption } from "react-native-paper";
+import { PRIVACY_URL } from "../../../config";
 import { deviceValue } from "../../../style/dimensions";
+import { openInAppBrowser } from "../../../utils/linking";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
 
@@ -16,12 +18,15 @@ type Props = {
 };
 
 const Geolocation: React.FC<Props> = ({ onNext }) => {
-  const [t] = useTranslation(["onboarding", "glossary"]);
+  const [t] = useTranslation(["onboarding", "glossary", "settings"]);
   const onPressEnable = async () => {
     await BackgroundGeolocation.startGeofences(() => {
       console.log("- Start success");
       onNext();
     });
+  };
+  const onPressPrivacyPolicy = () => {
+    openInAppBrowser(PRIVACY_URL);
   };
 
   return (
@@ -40,6 +45,12 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
           {Platform.OS === "ios" ? t("onboarding:geolocationSubtitleIOS") : ""}
           {"\n"}
           {t("onboarding:geolocationWontUseForAnythingElse")}
+        </Caption>
+        <Caption
+          style={styles.viewPolicyCaption}
+          onPress={onPressPrivacyPolicy}
+        >
+          {t("settings:privacy.viewPrivacyPolicy")}
         </Caption>
       </Header>
       <View style={styles.container}>
@@ -67,6 +78,11 @@ const styles = StyleSheet.create({
   },
   caption: {
     textAlign: "center",
+  },
+  viewPolicyCaption: {
+    textAlign: "center",
+    textDecorationLine: "underline",
+    marginTop: 16,
   },
 });
 

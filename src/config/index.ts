@@ -10,5 +10,5 @@ export const TAG =
 
 export const PRIVACY_URL =
   TAG === "Ports Past and Present"
-    ? "https://portspastpresent.eu/ppappdpn"
+    ? "https://portspastpresent.eu/app-privacy"
     : "https://safarnama.lancs.ac.uk/privacy/app";

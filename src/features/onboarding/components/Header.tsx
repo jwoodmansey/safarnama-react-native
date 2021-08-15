@@ -1,6 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-
+import { ScrollView, StyleSheet } from "react-native";
 import { Subheading, Title } from "react-native-paper";
 
 type Props = {

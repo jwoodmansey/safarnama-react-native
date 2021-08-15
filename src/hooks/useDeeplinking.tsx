@@ -16,8 +16,11 @@ const useDeeplinking = () => {
         setHandledInitial(true);
         const split = link.dynamicLink.url.split("/");
         if (split[split.length - 2] === "download") {
-          navigate("ExperienceDetailsScreen", {
-            experienceId: split[split.length - 1],
+          navigate("ExperienceManagement", {
+            screen: "ExperienceDetailsScreen",
+            params: {
+              experienceId: split[split.length - 1],
+            },
           });
         }
       }
