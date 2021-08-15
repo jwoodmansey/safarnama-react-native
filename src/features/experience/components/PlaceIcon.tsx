@@ -15,10 +15,10 @@ const size = 30;
 const DEFAULT_COLOR = Colors.red500;
 
 const PlaceIcon: React.FC<Props> = ({ placeType, color = DEFAULT_COLOR }) => {
-  if (placeType.imageIcon) {
+  if (placeType.imageIconURL) {
     return (
       <FastImage
-        source={{ uri: placeType.imageIcon }}
+        source={{ uri: placeType.imageIconURL }}
         style={styles.imageIcon}
       />
     );
@@ -34,7 +34,7 @@ const PlaceIcon: React.FC<Props> = ({ placeType, color = DEFAULT_COLOR }) => {
       );
     }
   }
-  return <MaterialIcon color={color} name="question" size={size} />;
+  return <MaterialIcon color={color} name="wrong-location" size={size} />;
 };
 
 const styles = StyleSheet.create({
