@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Circle, Marker } from "react-native-maps";
 import { Colors } from "react-native-paper";
@@ -17,7 +17,7 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
       <Marker
         pinColor={Colors.red100}
         onPress={onPress}
-        tracksViewChanges={false}
+        tracksViewChanges={Platform.OS === "android"}
         coordinate={{
           latitude: data.location.coordinates[1],
           longitude: data.location.coordinates[0],

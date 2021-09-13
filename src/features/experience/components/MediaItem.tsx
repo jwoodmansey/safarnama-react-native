@@ -45,15 +45,15 @@ const MediaItem: React.FC<Props> = ({ media }) => {
           )}
           {!isEmpty(media.externalLinks) && (
             <>
+              <Divider style={styles.externalLinkDivider} />
+              <Subheading>{t("media:links")}</Subheading>
               {media.externalLinks.map((l) => {
                 const onPress = () => Linking.openURL(l.url);
                 const left = () => (
                   <List.Icon color="#000" icon="open-in-new" />
                 );
                 return (
-                  <List.Section>
-                    <Divider style={styles.externalLinkDivider} />
-                    <Subheading>{t("media:links")}</Subheading>
+                  <List.Section key={l.name}>
                     <List.Item
                       onPress={onPress}
                       style={styles.externalLinkListItem}

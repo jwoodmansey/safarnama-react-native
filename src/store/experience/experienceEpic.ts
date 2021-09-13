@@ -47,6 +47,7 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
     ofType(loadFeaturedExperiences.type),
     mergeMap(() =>
       ajax.get(`${API_BASE_URL}/experiences/featured`).pipe(
+        tap((response) => console.log("Loaded experiences", response)),
         map(({ response }) =>
           loadedFeaturedExperiences({ featuredExperiences: response })
         ),
