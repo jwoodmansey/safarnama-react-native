@@ -35,6 +35,9 @@ export const selectAllKeys = createSelector(
   [selectCurrentExperience],
   (experience) =>
     experience?.data.pointOfInterests?.reduce((prev, curr) => {
+      if (!curr.type.name) {
+        return prev;
+      }
       return {
         ...prev,
         [curr.type.name]: curr.type,

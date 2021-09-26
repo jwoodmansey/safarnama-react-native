@@ -112,7 +112,6 @@ const ExperienceDetailsScreen: React.FC = () => {
           {experienceSnapshot.data.description && (
             <Paragraph style={styles.description}>
               {experienceSnapshot.data.description}
-              {/* {JSON.stringify(experience)} */}
             </Paragraph>
           )}
           <Chip

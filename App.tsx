@@ -12,6 +12,7 @@ import {
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
   NavigationContainer,
+  Theme,
 } from "@react-navigation/native";
 import React from "react";
 import { useColorScheme } from "react-native";
@@ -27,7 +28,7 @@ import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
 
-const CombinedDefaultTheme: ReactNativePaper.Theme = {
+const CombinedDefaultTheme: ReactNativePaper.Theme & Theme = {
   ...PaperDefaultTheme,
   ...NavigationDefaultTheme,
   colors: {
@@ -35,10 +36,9 @@ const CombinedDefaultTheme: ReactNativePaper.Theme = {
     ...NavigationDefaultTheme.colors,
   },
 };
-const CombinedDarkTheme: ReactNativePaper.Theme = {
+const CombinedDarkTheme: ReactNativePaper.Theme & Theme = {
   ...PaperDarkTheme,
   ...NavigationDarkTheme,
-  // dark: false,
   colors: {
     ...PaperDarkTheme.colors,
     ...NavigationDarkTheme.colors,
