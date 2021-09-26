@@ -71,7 +71,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB9AJzeWXO-DqKYBLFBsuz20gSNvYDB_k4" />
+            android:value="@string/MAPS_API_KEY" />
 
         <service android:name="com.transistorsoft.locationmanager.service.TrackingService" android:foregroundServiceType="location" />
         <service android:name="com.transistorsoft.locationmanager.service.LocationRequestService" android:foregroundServiceType="location" />

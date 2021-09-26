@@ -162,9 +162,9 @@ android {
         }
         release {
             storeFile file('safarnama-release.jks')
-            storePassword 'delhi89'
+            storePassword safarnamaSigningRelaseStorePassword
             keyAlias = 'key0'
-            keyPassword 'delhi89'
+            keyPassword safarnamaSigningRelaseKeyPassword
         }
     }
     flavorDimensions 'default'
