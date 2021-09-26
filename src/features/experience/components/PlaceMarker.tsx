@@ -1,6 +1,5 @@
 import React, { memo } from "react";
-import { Platform, StyleSheet } from "react-native";
-import FastImage from "react-native-fast-image";
+import { Platform } from "react-native";
 import { Circle, Marker } from "react-native-maps";
 import { Colors } from "react-native-paper";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";

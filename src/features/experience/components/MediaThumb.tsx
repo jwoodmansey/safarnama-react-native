@@ -1,6 +1,6 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Audio, Video as ExpoVideo } from "expo-av";
+import { Video as ExpoVideo } from "expo-av";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
-import { Icon } from "react-native-paper/lib/typescript/components/Avatar/Avatar";
 import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
 import { getPath } from "../../../store/mediaService";
