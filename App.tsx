@@ -15,6 +15,7 @@ import {
   Theme,
 } from "@react-navigation/native";
 import React from "react";
+import { I18nextProvider } from "react-i18next";
 import { useColorScheme } from "react-native";
 import {
   DarkTheme as PaperDarkTheme,
@@ -27,6 +28,7 @@ import Loading from "./src/nav/Loading";
 import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
+import i18n from "./src/i18n/config";
 
 const CombinedDefaultTheme: ReactNativePaper.Theme & Theme = {
   ...PaperDefaultTheme,
@@ -50,19 +52,21 @@ const App: React.FC = () => {
   const isDarkMode = colorScheme === "dark";
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <PaperProvider
-          theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-        >
-          <NavigationContainer
+      <I18nextProvider i18n={i18n}>
+        <PersistGate loading={null} persistor={persistor}>
+          <PaperProvider
             theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-            ref={navigationRef}
           >
-            <Loading />
-            <RootNavigation />
-          </NavigationContainer>
-        </PaperProvider>
-      </PersistGate>
+            <NavigationContainer
+              theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+              ref={navigationRef}
+            >
+              <Loading />
+              <RootNavigation />
+            </NavigationContainer>
+          </PaperProvider>
+        </PersistGate>
+      </I18nextProvider>
     </Provider>
   );
 };
