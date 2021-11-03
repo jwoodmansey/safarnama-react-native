@@ -3,6 +3,7 @@ package com.safarnama.safarnama;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+import expo.modules.ReactActivityDelegateWrapper;
 
 import org.devio.rn.splashscreen.SplashScreen;
 
@@ -21,5 +22,18 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "Safarnama";
+    }
+
+      @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return new ReactActivityDelegateWrapper(
+          this,
+          new ReactActivityDelegate(this, getMainComponentName()) {
+            @Override
+            protected ReactRootView createRootView() {
+              return new RNGestureHandlerEnabledRootView(MainActivity.this);
+            }
+          }
+        );
     }
 }
