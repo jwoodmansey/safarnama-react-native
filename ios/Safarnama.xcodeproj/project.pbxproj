@@ -19,6 +19,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* SafarnamaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SafarnamaTests.m */; };
 		46093B2C26848C750043FF66 /* LaunchScreen_PPP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46093B2B26848C750043FF66 /* LaunchScreen_PPP.storyboard */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9F7A40C22E4E33D50A68051E /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9489FDDE06D296A0B39E25 /* ExpoModulesProvider.swift */; };
+		E5C40C1D5028F9CD27F72364 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FF6CDB421DEED25A7E59A /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Safarnama/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Safarnama-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Safarnama-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Safarnama-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Safarnama-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9489FDDE06D296A0B39E25 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Safarnama-SafarnamaTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		3475D1CDD0E247406775CD9F /* Pods-Safarnama.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama/Pods-Safarnama.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		46093B2B26848C750043FF66 /* LaunchScreen_PPP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen_PPP.storyboard; sourceTree = "<group>"; };
 		465978982635C13C00CB15DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		46E7A645264D0F5900394C09 /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 		46E7A648264D105D00394C09 /* Firebase */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Firebase; sourceTree = "<group>"; };
 		46EFDD6B2644620300D62E56 /* Safarnama.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Safarnama.entitlements; path = Safarnama/Safarnama.entitlements; sourceTree = "<group>"; };
+		4D8FF6CDB421DEED25A7E59A /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Safarnama/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		50285E9A6E248CC59D143FF9 /* Pods-Safarnama.release - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama.release - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama/Pods-Safarnama.release - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		67FECC7B8D1E67AB04A14C8C /* Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig"; path = "Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests.debug - ports past and present.xcconfig"; sourceTree = "<group>"; };
 		704BF36B65EC5ECDAB8616CE /* libPods-Safarnama.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Safarnama.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +200,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				4350C75B7642BD7E17D7967F /* Pods */,
 				B54EB5C7EBCA4172B7DDAC35 /* Resources */,
+				C6B0339A3660B50544FA96C1 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -213,11 +218,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A4D164A2CC0DD6C24B662BF7 /* Safarnama */ = {
+			isa = PBXGroup;
+			children = (
+				4D8FF6CDB421DEED25A7E59A /* ExpoModulesProvider.swift */,
+			);
+			name = Safarnama;
+			sourceTree = "<group>";
+		};
 		B54EB5C7EBCA4172B7DDAC35 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C6B0339A3660B50544FA96C1 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				A4D164A2CC0DD6C24B662BF7 /* Safarnama */,
+				CC2D7F94E67F2372B673C130 /* SafarnamaTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		CC2D7F94E67F2372B673C130 /* SafarnamaTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E9489FDDE06D296A0B39E25 /* ExpoModulesProvider.swift */,
+			);
+			name = SafarnamaTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +440,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Safarnama/Pods-Safarnama-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -430,6 +461,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -549,6 +581,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Safarnama-SafarnamaTests/Pods-Safarnama-SafarnamaTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -569,6 +602,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -652,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* SafarnamaTests.m in Sources */,
+				9F7A40C22E4E33D50A68051E /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +696,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				E5C40C1D5028F9CD27F72364 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

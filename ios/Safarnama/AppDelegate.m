@@ -4,9 +4,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
-#import <UMCore/UMModuleRegistry.h>
-#import <UMReactNativeAdapter/UMNativeModulesProxy.h>
-#import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
+#import <React/RCTConvert.h>
 
 #import "RNSplashScreen.h"
 #import <TSBackgroundFetch/TSBackgroundFetch.h>
@@ -32,12 +30,6 @@ static void InitializeFlipper(UIApplication *application) {
   [client start];
 }
 #endif
-
-@interface AppDelegate () <RCTBridgeDelegate>
- 
-@property (nonatomic, strong) UMModuleRegistryAdapter *moduleRegistryAdapter;
- 
-@end
  
 @implementation AppDelegate
 
@@ -51,8 +43,6 @@ static void InitializeFlipper(UIApplication *application) {
     [FIRApp configure];
   }
   
-  self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
-
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"Safarnama"
@@ -84,9 +74,8 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge
 {
-    NSArray<id<RCTBridgeModule>> *extraModules = [_moduleRegistryAdapter extraModulesForBridge:bridge];
     // If you'd like to export some custom RCTBridgeModules that are not Expo modules, add them here!
-    return extraModules;
+    return @[];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

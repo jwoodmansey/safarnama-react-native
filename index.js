@@ -8,7 +8,6 @@ import BackgroundGeolocation from "react-native-background-geolocation";
 import "react-native-gesture-handler";
 import PushNotification from "react-native-push-notification";
 import { enableScreens } from "react-native-screens";
-import { Constants } from "react-native-unimodules";
 import App from "./App";
 import { name as appName } from "./app.json";
 import { navigate } from "./src/nav/NavigationRef";
@@ -16,7 +15,6 @@ import { sendPlacePush } from "./src/utils/pushNotifications";
 
 // Before rendering any navigation stack
 
-console.log(Constants.systemFonts);
 enableScreens();
 
 const HeadlessTask = async (event) => {
