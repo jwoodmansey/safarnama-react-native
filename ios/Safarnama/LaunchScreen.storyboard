@@ -25,7 +25,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PPu-Qq-IIS"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="tIJ-lW-JQq" firstAttribute="centerX" secondItem="ZGu-CL-Qtr" secondAttribute="centerX" id="4aK-RC-HCC"/>
                             <constraint firstItem="tIJ-lW-JQq" firstAttribute="centerY" secondItem="ZGu-CL-Qtr" secondAttribute="centerY" id="lvH-Q7-mij"/>
