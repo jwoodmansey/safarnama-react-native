@@ -7,7 +7,7 @@ import PlaceIcon from "./PlaceIcon";
 
 type Props = {
   data: PointOfInterestDocument;
-  onPress: () => void;
+  onPress?: () => void;
 };
 
 const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {

@@ -1,7 +1,7 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import React, { useEffect, useRef } from "react";
-import { FlatList, ListRenderItem, StyleSheet } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import React, { useCallback, useEffect, useRef } from "react";
+import { FlatList, ListRenderItem, Platform, StyleSheet } from "react-native";
+import MapView from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { MediaDocument } from "../../../types/common/media";
@@ -9,7 +9,7 @@ import { MapNaviationProp } from "../../../types/nav/map";
 import EmptyPlaceScreen from "../components/EmptyPlaceScreen";
 import MediaItem from "../components/MediaItem";
 import PlaceFooter from "../components/PlaceFooter";
-import PlaceIcon from "../components/PlaceIcon";
+import PlaceMarker from "../components/PlaceMarker";
 
 type Route = RouteProp<MapNaviationProp, "ViewPlaceScreen">;
 
@@ -26,28 +26,23 @@ const ViewPlaceScreen: React.FC = () => {
     <MediaItem media={item} />
   );
 
-  const renderHeader = () =>
-    place ? (
-      <MapView
-        ref={ref}
-        liteMode
-        scrollEnabled={false}
-        zoomEnabled={false}
-        style={styles.map}
-        cacheEnabled
-        rotateEnabled={false}
-      >
-        <Marker
-          title={place.name}
-          coordinate={{
-            latitude: place.location.coordinates[1],
-            longitude: place.location.coordinates[0],
-          }}
+  const renderHeader = useCallback(
+    () =>
+      place ? (
+        <MapView
+          ref={ref}
+          liteMode
+          scrollEnabled={false}
+          zoomEnabled={false}
+          style={styles.map}
+          cacheEnabled={Platform.OS === "ios"}
+          rotateEnabled={false}
         >
-          <PlaceIcon placeType={place.type} />
-        </Marker>
-      </MapView>
-    ) : null;
+          <PlaceMarker data={place} />
+        </MapView>
+      ) : null,
+    [place]
+  );
   useEffect(() => {
     if (place) {
       ref.current?.setCamera({
