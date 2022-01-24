@@ -114,24 +114,25 @@ const ExperienceDetailsScreen: React.FC = () => {
               {experienceSnapshot.data.description}
             </Paragraph>
           )}
-          <Chip
-            onPress={onPressAuthor(true)}
-            style={styles.author}
-            avatar={
-              experienceSnapshot.metaData.ownerPublicProfile.photoURL ? (
-                <FastImage
-                  source={{
-                    uri:
-                      experienceSnapshot.metaData.ownerPublicProfile.photoURL,
-                  }}
-                />
-              ) : (
-                <MaterialCommunityIcon size={24} name="account-circle" />
-              )
-            }
-          >
-            {experienceSnapshot.metaData.ownerPublicProfile.displayName}
-          </Chip>
+          <View style={styles.author}>
+            <Chip
+              onPress={onPressAuthor(true)}
+              avatar={
+                experienceSnapshot.metaData.ownerPublicProfile.photoURL ? (
+                  <FastImage
+                    source={{
+                      uri: experienceSnapshot.metaData.ownerPublicProfile
+                        .photoURL,
+                    }}
+                  />
+                ) : (
+                  <MaterialCommunityIcon size={24} name="account-circle" />
+                )
+              }
+            >
+              {experienceSnapshot.metaData.ownerPublicProfile.displayName}
+            </Chip>
+          </View>
           <Button
             onPress={onPressPlay}
             mode="contained"
@@ -183,6 +184,7 @@ const styles = StyleSheet.create({
   },
   author: {
     alignSelf: "flex-start",
+    flexDirection: "row",
     marginBottom: 32,
   },
 });
