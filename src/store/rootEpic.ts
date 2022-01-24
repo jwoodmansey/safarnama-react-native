@@ -5,6 +5,7 @@ import {
   StateObservable,
 } from "redux-observable";
 import { catchError } from "rxjs/operators";
+import crashlytics from "@react-native-firebase/crashlytics";
 import experienceEpic from "./experience/experienceEpic";
 import geofenceEpic from "./geofence/geofenceEpic";
 import loadingEpic from "./loading/loadingEpic";
@@ -22,6 +23,7 @@ export default (
     catchError((error, source) => {
       console.error("global catchError hit");
       console.error(error);
+      crashlytics().recordError(error);
       return source;
     })
   );
