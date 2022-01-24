@@ -109,11 +109,11 @@ const ExperienceDetailsScreen: React.FC = () => {
       </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View>
-          {experienceSnapshot.data.description && (
+          {experienceSnapshot.data.description ? (
             <Paragraph style={styles.description}>
               {experienceSnapshot.data.description}
             </Paragraph>
-          )}
+          ) : null}
           <View style={styles.author}>
             <Chip
               onPress={onPressAuthor(true)}

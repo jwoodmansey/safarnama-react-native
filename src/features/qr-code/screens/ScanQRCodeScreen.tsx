@@ -10,9 +10,8 @@ import QRCodeScanner from "react-native-qrcode-scanner";
 import { AddExperienceProp } from "../../../types/nav/addExperience";
 
 const ScanQRCodeScreen: React.FC = () => {
-  const nav = useNavigation<
-    StackNavigationProp<AddExperienceProp, "ScanQRCodeScreen">
-  >();
+  const nav =
+    useNavigation<StackNavigationProp<AddExperienceProp, "ScanQRCodeScreen">>();
   const onSuccess = async (event: BarCodeReadEvent) => {
     let link = event.data;
     try {
