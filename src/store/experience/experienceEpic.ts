@@ -1,6 +1,6 @@
 import { Alert } from "react-native";
 import { combineEpics, ofType, StateObservable } from "redux-observable";
-import RNFetchBlob from "rn-fetch-blob";
+import RNFetchBlob from "react-native-blob-util";
 import { combineLatest, EMPTY, from, Observable, of } from "rxjs";
 import { ajax } from "rxjs/ajax";
 import {

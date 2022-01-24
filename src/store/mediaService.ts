@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { Platform } from "react-native";
-import RNFetchBlob from "rn-fetch-blob";
+import RNFetchBlob from "react-native-blob-util";
 import { ExperienceSnapshotData } from "../types/common/experience";
 import { MediaDocument } from "../types/common/media";
 
