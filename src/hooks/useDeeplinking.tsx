@@ -37,9 +37,13 @@ const useDeeplinking = () => {
   }, [handleDynamicLink]);
 
   const handleNativeUrl = useCallback(
-    (event: { url: string }) => {
+    (event: { url: string; utmParameters?: Record<string, string> }) => {
       handleDynamicLink({
-        dynamicLink: { url: event.url, minimumAppVersion: null },
+        dynamicLink: {
+          url: event.url,
+          minimumAppVersion: null,
+          utmParameters: event.utmParameters || {},
+        },
         foreground: true,
       });
     },
@@ -62,7 +66,7 @@ const useDeeplinking = () => {
     Linking.getInitialURL().then((url) => {
       if (url !== null) {
         handleDynamicLink({
-          dynamicLink: { url, minimumAppVersion: null },
+          dynamicLink: { url, utmParameters: {}, minimumAppVersion: null },
           foreground: false,
         });
       }
