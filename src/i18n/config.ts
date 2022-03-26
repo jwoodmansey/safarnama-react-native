@@ -65,8 +65,7 @@ i18n
 /**
  * Use useTranlation hook in components!
  */
-export const translateOutsideComponent: TFunction<Namespace> = i18n.t.bind(
-  i18n
-);
+export const translateOutsideComponent: TFunction<Namespace> =
+  i18n.t.bind(i18n);
 
 export default i18n;
