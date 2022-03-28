@@ -33,6 +33,13 @@ const useDeeplinking = () => {
       (dynamicLink: FirebaseDynamicLinksTypes.DynamicLink) =>
         handleDynamicLink({ dynamicLink, foreground: true })
     );
+    navigate("ExperienceManagement", {
+      screen: "ExperienceDetailsScreen",
+      params: {
+        experienceId: "615dc184ae70ce8cdcaa60df",
+      },
+    });
+
     return () => unsubscribe();
   }, [handleDynamicLink]);
 

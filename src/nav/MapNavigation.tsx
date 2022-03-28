@@ -7,6 +7,7 @@ import PDFScreen from "../media/PDFScreen";
 import { MapNaviationProp } from "../types/nav/map";
 import DrawerToggle from "./DrawerToggle";
 import KeyToggle from "./KeyToggle";
+import PlaceListScreen from "../features/experience/screens/PlaceListScreen";
 
 const Stack = createStackNavigator<MapNaviationProp>();
 
@@ -44,6 +45,13 @@ const MapNavigation: React.FC = () => {
         component={ViewPlaceScreen}
         options={({ route }) => ({
           title: route?.params.name,
+        })}
+      />
+      <Stack.Screen
+        name="PlaceListScreen"
+        component={PlaceListScreen}
+        options={({ route }) => ({
+          title: "Places",
         })}
       />
     </Stack.Navigator>
