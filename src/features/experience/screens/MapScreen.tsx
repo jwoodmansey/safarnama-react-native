@@ -68,7 +68,6 @@ const MapScreen: React.FC = () => {
       setIsCentred(true);
     }
   };
-  console.log("rerender");
 
   return (
     <View style={styles.map}>
