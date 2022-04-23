@@ -21,6 +21,9 @@ const MapScreen: React.FC = () => {
 
   const experience = useSelector(selectCurrentExperience);
   const [isRegionVisible, setIsRegionVisible] = useState(true);
+  const [isCentred, setIsCentred] = useState(true);
+  const centering = useRef(false);
+
   const onRegionChange = (region: Region) => {
     // bbox extent in minX, minY, maxX, maxY order
     if (
@@ -34,6 +37,9 @@ const MapScreen: React.FC = () => {
       }
     } else if (isRegionVisible) {
       setIsRegionVisible(false);
+    }
+    if (!centering.current) {
+      setIsCentred(false);
     }
   };
 
@@ -55,8 +61,14 @@ const MapScreen: React.FC = () => {
           animated: true,
         }
       );
+      centering.current = true;
+      setTimeout(() => {
+        centering.current = false;
+      }, 2000);
+      setIsCentred(true);
     }
   };
+  console.log("rerender");
 
   return (
     <View style={styles.map}>
@@ -72,7 +84,11 @@ const MapScreen: React.FC = () => {
       >
         <ExperienceMapView centreMap={centreMap} />
       </MapView>
-      <ActionMenu onPressCentre={centreMap} isRegionVisible={isRegionVisible} />
+      <ActionMenu
+        onPressCentre={centreMap}
+        isRegionVisible={isRegionVisible}
+        isCentred={isCentred}
+      />
       <KeyModal />
     </View>
   );

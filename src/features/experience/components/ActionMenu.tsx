@@ -10,9 +10,14 @@ import { toggleKeyModal } from "../../../store/experience/experienceReducer";
 type Props = {
   onPressCentre: () => void;
   isRegionVisible: boolean;
+  isCentred: boolean;
 };
 
-const ActionMenu: React.FC<Props> = ({ onPressCentre, isRegionVisible }) => {
+const ActionMenu: React.FC<Props> = ({
+  onPressCentre,
+  isRegionVisible,
+  isCentred,
+}) => {
   const [fabOpen, setFabOpen] = useState(false);
   const onStateChange = ({ open }: { open: boolean }) => setFabOpen(open);
 
@@ -42,12 +47,16 @@ const ActionMenu: React.FC<Props> = ({ onPressCentre, isRegionVisible }) => {
           label: t("place:mapKey"),
           onPress: onPressKey,
         },
-        {
-          icon: "backup-restore",
-          label: "Centre experience",
-          onPress: onPressCentre,
-          small: isRegionVisible,
-        },
+        ...(isCentred
+          ? []
+          : [
+              {
+                icon: "backup-restore",
+                label: "Centre experience",
+                onPress: onPressCentre,
+                small: isRegionVisible,
+              },
+            ]),
         {
           icon: "map-marker-multiple",
           label: "All places",
