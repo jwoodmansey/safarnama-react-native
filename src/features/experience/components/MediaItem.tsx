@@ -49,9 +49,7 @@ const MediaItem: React.FC<Props> = ({ media }) => {
               <Subheading>{t("media:links")}</Subheading>
               {media.externalLinks.map((l) => {
                 const onPress = () => Linking.openURL(l.url);
-                const left = () => (
-                  <List.Icon color="#000" icon="open-in-new" />
-                );
+                const left = () => <List.Icon icon="open-in-new" />;
                 return (
                   <List.Section key={l.name}>
                     <List.Item
