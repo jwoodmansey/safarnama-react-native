@@ -1,8 +1,7 @@
 import { useIsFocused, useNavigation } from "@react-navigation/native";
-import React, { RefObject, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert } from "react-native";
-import MapView from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { selectIsOnboardingComplete } from "../../../store/onboarding/onboardingSelectors";
@@ -12,10 +11,10 @@ import PlaceMarker from "./PlaceMarker";
 import Route from "./Route";
 
 type Props = {
-  mapView: RefObject<MapView>;
+  centreMap: () => void;
 };
 
-const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
+const ExperienceMapView: React.FC<Props> = ({ centreMap }) => {
   const experience = useSelector(selectCurrentExperience);
   const nav = useNavigation();
   const [t] = useTranslation(["route"]);
@@ -36,28 +35,13 @@ const ExperienceMapView: React.FC<Props> = ({ mapView }) => {
 
     const id = experience?.data._id;
     if (experience && currentlyZoomedTo !== id) {
-      const edgePadding = 20;
-      mapView.current?.fitToCoordinates(
-        experience.data.pointOfInterests?.map((p) => ({
-          latitude: p.location.coordinates[1],
-          longitude: p.location.coordinates[0],
-        })),
-        {
-          edgePadding: {
-            top: edgePadding,
-            bottom: edgePadding,
-            left: edgePadding,
-            right: edgePadding,
-          },
-          animated: true,
-        }
-      );
+      centreMap();
       setCurrentlyZoomedTo(id);
     }
   }, [
     experience,
     nav,
-    mapView,
+    centreMap,
     isFocused,
     currentlyZoomedTo,
     isOnboardingComplete,
