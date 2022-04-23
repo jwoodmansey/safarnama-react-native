@@ -1,4 +1,5 @@
 import * as GeoJSON from "geojson";
+import { BBox } from "./GeoJSON";
 import { PointOfInterestDocument } from "./point-of-interest";
 import { RouteDocument } from "./route";
 
@@ -48,7 +49,7 @@ export type ExperienceSnapshotData = {
   data: ExperienceData;
   _id: any;
   ownerId: string;
-  bbox?: any;
+  bbox?: BBox;
   downloaded?: boolean;
   played?: boolean;
 };
