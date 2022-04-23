@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export type StartLoadingPayloadAction = PayloadAction<any>;
+import { createSlice } from "@reduxjs/toolkit";
 
 type OnboardingState = {
   completed: boolean;

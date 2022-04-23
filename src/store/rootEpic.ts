@@ -9,10 +9,11 @@ import crashlytics from "@react-native-firebase/crashlytics";
 import experienceEpic from "./experience/experienceEpic";
 import geofenceEpic from "./geofence/geofenceEpic";
 import loadingEpic from "./loading/loadingEpic";
+import { RootState } from "./rootReducer";
 
 export default (
   action$: ActionsObservable<Action>,
-  store$: StateObservable<any>,
+  store$: StateObservable<RootState>,
   dependencies: any
 ) =>
   combineEpics(experienceEpic, geofenceEpic, loadingEpic)(

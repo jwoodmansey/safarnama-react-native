@@ -2,7 +2,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { resources } from "../../i18n/config";
 
-export type StartLoadingPayloadAction = PayloadAction<any>;
 export type LanguageSetting = keyof typeof resources | undefined;
 
 type SettingsState = {

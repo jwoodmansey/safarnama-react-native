@@ -2,6 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {
   Dimensions,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   Platform,
   ScrollView,
   StyleSheet,
@@ -32,7 +34,7 @@ const OnboardingScreen: React.FC = () => {
     nav.navigate("Drawer", { screen: "AddExperience" });
     dispatch(complete());
   };
-  const onScroll = (event: any) => {
+  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { currentPage } = sliderState;
     const { x } = event.nativeEvent.contentOffset;
     const indexOfNextScreen = Math.floor(x / width);

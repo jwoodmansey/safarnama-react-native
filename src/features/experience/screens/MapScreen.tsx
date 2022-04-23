@@ -27,10 +27,11 @@ const MapScreen: React.FC = () => {
   const onRegionChange = (region: Region) => {
     // bbox extent in minX, minY, maxX, maxY order
     if (
-      region.latitude > experience?.bbox[1] &&
-      region.latitude < experience?.bbox[3] &&
-      region.longitude > experience?.bbox[0] &&
-      region.longitude < experience?.bbox[2]
+      experience?.bbox &&
+      region.latitude > experience.bbox[1] &&
+      region.latitude < experience.bbox[3] &&
+      region.longitude > experience.bbox[0] &&
+      region.longitude < experience.bbox[2]
     ) {
       if (!isRegionVisible) {
         setIsRegionVisible(true);

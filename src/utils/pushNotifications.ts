@@ -1,3 +1,4 @@
+import { GeofenceEvent } from "react-native-background-geolocation";
 import PushNotification from "react-native-push-notification";
 import { translateOutsideComponent } from "../i18n/config";
 
@@ -13,7 +14,7 @@ export const createChannel = () => {
   );
 };
 
-export const sendPlacePush = (event: any) => {
+export const sendPlacePush = (event: GeofenceEvent) => {
   console.log("Sending place push", event);
   // PushNotification.scheduleLocalNotification({
   //   date: new Date(new Date().getTime() + 6000),
