@@ -50,7 +50,6 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
   const [t] = useTranslation(["manage", "glossary"]);
   return (
     <Card onPress={onPress} style={styles.card}>
-      {/* <Card.Cover source={experience.}/> */}
       <Card.Title
         title={experience.data.name}
         subtitle={experience.data.description}

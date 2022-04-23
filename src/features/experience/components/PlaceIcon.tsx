@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Colors } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -9,17 +8,22 @@ import { PlaceType } from "../../../types/common/point-of-interest";
 type Props = {
   placeType: PlaceType;
   color?: string;
+  size?: number;
 };
 
-const size = 30;
 const DEFAULT_COLOR = Colors.red500;
+const DEFAULT_SIZE = 30;
 
-const PlaceIcon: React.FC<Props> = ({ placeType, color = DEFAULT_COLOR }) => {
+const PlaceIcon: React.FC<Props> = ({
+  placeType,
+  color = DEFAULT_COLOR,
+  size = DEFAULT_SIZE,
+}) => {
   if (placeType.imageIconURL) {
     return (
       <FastImage
         source={{ uri: placeType.imageIconURL }}
-        style={styles.imageIcon}
+        style={{ width: size, height: size }}
       />
     );
   }
@@ -36,12 +40,5 @@ const PlaceIcon: React.FC<Props> = ({ placeType, color = DEFAULT_COLOR }) => {
   }
   return <MaterialIcon color={color} name="wrong-location" size={size} />;
 };
-
-const styles = StyleSheet.create({
-  imageIcon: {
-    width: size,
-    height: size,
-  },
-});
 
 export default memo(PlaceIcon);

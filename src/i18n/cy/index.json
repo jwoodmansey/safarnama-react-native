@@ -27,8 +27,12 @@
     "routeStart": "Cychwyn y daith",
     "routeEnd": "Pen y daith"
   },
+  "place": {
+    "allPlaces": "Bob safleoedd",
+    "places": "Safleoedd"
+  },
   "pushNotification": {
-    "tapToLearnMore": "Cliciwch i ddarganfod mwy",
+    "tapToLearnMore": "Cliciwch i ddarganfod mwy"
   },
   "media": {
     "noMedia": "Ni chafwyd cyfrwng",

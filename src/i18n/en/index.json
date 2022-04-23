@@ -30,7 +30,17 @@
   "pushNotification": {
     "tapToLearnMore": "Tap to learn more"
   },
+  "place": {
+    "allPlaces": "All places",
+    "places": "Places",
+    "mapKey": "Map key"
+  },
+  "distance": {
+    "kmAway": "{{distance}} km away"
+  },
   "media": {
+    "mediaCount": "{{count}} media item",
+    "mediaCount_plural": "{{count}} media items",
     "noMedia": "No media found",
     "noMediaSubtitle": "This place does not appear to have any associated media.",
     "unsupportedMedia": "Unsupported media: {{type}}",
