@@ -319,7 +319,7 @@ PODS:
   - React-jsinspector (0.68.1)
   - React-logger (0.68.1):
     - glog
-  - react-native-blob-util (0.13.18):
+  - react-native-blob-util (0.16.0):
     - React-Core
   - react-native-camera (4.2.1):
     - React-Core
@@ -331,7 +331,7 @@ PODS:
     - React-Core
   - react-native-maps (0.31.1):
     - React-Core
-  - react-native-music-control (1.4.0):
+  - react-native-music-control (1.4.1):
     - React-Core
   - react-native-pdf (6.5.0):
     - React-Core
@@ -796,10 +796,10 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 4a4bae5671b064a2248a690cf75957669489d08c
   React-jsinspector: 218a2503198ff28a085f8e16622a8d8f507c8019
   React-logger: f79dd3cc0f9b44f5611c6c7862badd891a862cf8
-  react-native-blob-util: 600972b1782380a5a7d5db61a3817ea32349dae9
+  react-native-blob-util: 2d49d135d6fe1410c019fb5bff241dac7f12d73d
   react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
   react-native-maps: 8b8bfada2c86205a7f5a07dd1f92f29b33ea83aa
-  react-native-music-control: 93b521377efdf2e49b46ccade8457f9503359b38
+  react-native-music-control: 3fc719c179a6562e18af1ac6e30ba9e33b397a31
   react-native-pdf: de35db0d8f1e5d37e65e887554f7d4bd062af56b
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
   react-native-safe-area-context: ebf8c413eb8b5f7c392a036a315eb7b46b96845f

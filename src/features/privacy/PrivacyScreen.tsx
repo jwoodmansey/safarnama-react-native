@@ -15,11 +15,11 @@ const PrivacyScreen: React.FC = () => {
     openInAppBrowser(PRIVACY_URL);
   };
 
-  async function toggleCrashlytics() {
-    await crashlytics()
+  const toggleCrashlytics = () => {
+    crashlytics()
       .setCrashlyticsCollectionEnabled(!enabled)
       .then(() => setEnabled(crashlytics().isCrashlyticsCollectionEnabled));
-  }
+  };
 
   return (
     <ScrollView style={styles.container}>
