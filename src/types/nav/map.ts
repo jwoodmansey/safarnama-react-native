@@ -5,7 +5,7 @@ export type MapNaviationProp = {
   MapScreen: {};
   PDFScreen: { media: MediaDocument };
   ImageScreen: { media: MediaDocument };
-  PlaceListScreen: {};
+  PlaceListScreen: undefined;
   ViewPlaceScreen: {
     place?: PointOfInterestDocument;
     placeId: string;

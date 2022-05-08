@@ -14,7 +14,7 @@ const Stack = createStackNavigator<MapNaviationProp>();
 const MapNavigation: React.FC = () => {
   const [t] = useTranslation(["places"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="MapScreen"
         component={MapScreen}

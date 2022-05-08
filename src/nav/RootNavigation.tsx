@@ -35,15 +35,15 @@ const RootNavigation: React.FC = () => {
     dispatch(updateExperiences());
   }, [dispatch]);
   return (
-    <Stack.Navigator mode="modal">
+    <Stack.Navigator>
       <Stack.Screen
         name="Drawer"
-        options={{ headerShown: false }}
+        options={{ headerShown: false, presentation: "modal" }}
         component={DrawerNavigation}
       />
       <Stack.Screen
         name="OnboardingScreen"
-        options={{ headerShown: false }}
+        options={{ headerShown: false, presentation: "modal" }}
         component={OnboardingScreen}
       />
     </Stack.Navigator>
