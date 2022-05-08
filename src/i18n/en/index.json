@@ -36,7 +36,7 @@
     "mapKey": "Map key"
   },
   "distance": {
-    "kmAway": "{{distance}} km away"
+    "kmAway": "{{distance}}km away"
   },
   "media": {
     "mediaCount": "{{count}} media item",

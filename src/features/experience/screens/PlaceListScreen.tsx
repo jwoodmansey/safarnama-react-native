@@ -29,19 +29,13 @@ const PlaceListScreen: React.FC = () => {
   >(undefined);
 
   useEffect(() => {
-    // BackgroundGeolocation.getCurrentPosition({ extras: {} }, (location) => {
-    //   setCurrentLocation(location.coords);
-    //   console.log(location.activity);
-    //   console.log(
-    //     "heading",
-    //     location.coords.heading,
-    //     location.coords.heading_accuracy
-    //   );
-    //   console.log(location.coords.latitude, location.coords.longitude);
-    // });
-    BackgroundGeolocation.onLocation((location) => {
+    BackgroundGeolocation.watchPosition((location) => {
       setCurrentLocation(location.coords);
     });
+
+    return () => {
+      BackgroundGeolocation.stopWatchPosition();
+    };
   }, []);
 
   const onPressCard = (place: PointOfInterestDocument) => () => {
@@ -100,7 +94,8 @@ const PlaceListScreen: React.FC = () => {
             <Paragraph>
               {t("media:mediaCount", { count: item.media.length })}
               {currentLocation &&
-                ` | ${t("distance:kmAway", {
+                // eslint-disable-next-line i18next/no-literal-string
+                `\n${t("distance:kmAway", {
                   distance: (
                     haversine(currentLocation, {
                       longitude: item.location.coordinates[0],
@@ -119,6 +114,7 @@ const PlaceListScreen: React.FC = () => {
     <FlatList
       contentContainerStyle={styles.list}
       data={places}
+      scrollIndicatorInsets={{ right: 1 }}
       renderItem={renderItem}
     />
   );
