@@ -329,7 +329,7 @@ PODS:
     - React-Core
   - react-native-camera/RN (4.2.1):
     - React-Core
-  - react-native-maps (0.29.4):
+  - react-native-maps (0.31.1):
     - React-Core
   - react-native-music-control (1.4.0):
     - React-Core
@@ -448,7 +448,7 @@ PODS:
     - React
   - RNCPushNotificationIOS (1.10.1):
     - React-Core
-  - RNDeviceInfo (8.4.8):
+  - RNDeviceInfo (8.7.1):
     - React-Core
   - RNFastImage (8.5.11):
     - React-Core
@@ -793,7 +793,7 @@ SPEC CHECKSUMS:
   React-logger: f79dd3cc0f9b44f5611c6c7862badd891a862cf8
   react-native-blob-util: 600972b1782380a5a7d5db61a3817ea32349dae9
   react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
-  react-native-maps: a421fe6aeb74279597c4ea9598f25796108e2d89
+  react-native-maps: 8b8bfada2c86205a7f5a07dd1f92f29b33ea83aa
   react-native-music-control: 93b521377efdf2e49b46ccade8457f9503359b38
   react-native-pdf: a6a5a3f0bdf340eb2eed6c96034424d2cc3f84b0
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
@@ -817,7 +817,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
-  RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
+  RNDeviceInfo: aad3c663b25752a52bf8fce93f2354001dd185aa
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: fd23737680ed2bdde41ca27d8bfb171b6d668c6b
   RNFBCrashlytics: f2fdce92e0f561ed2b5a6ce5f86e43404ff67a18
