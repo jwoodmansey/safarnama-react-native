@@ -470,7 +470,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler
     - React-Core
     - RNFBApp
-  - RNGestureHandler (1.10.3):
+  - RNGestureHandler (2.4.2):
     - React-Core
   - RNInAppBrowser (3.6.3):
     - React-Core
@@ -827,7 +827,7 @@ SPEC CHECKSUMS:
   RNFBApp: fd23737680ed2bdde41ca27d8bfb171b6d668c6b
   RNFBCrashlytics: f2fdce92e0f561ed2b5a6ce5f86e43404ff67a18
   RNFBDynamicLinks: 20bd934c6c89ecba6af23a31c1de6b03786923ca
-  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNGestureHandler: 61628a2c859172551aa2100d3e73d1e57878392f
   RNInAppBrowser: 3ff3a3b8f458aaf25aaee879d057352862edf357
   RNPermissions: 34d678157c800b25b22a488e4d8babb57456e796
   RNReanimated: 64573e25e078ae6bec03b891586d50b9ec284393
