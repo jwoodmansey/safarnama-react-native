@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const LicensesNavigation: React.FC = () => {
   const [t] = useTranslation(["about"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="LicensesScreen"
         component={LicensesScreen}

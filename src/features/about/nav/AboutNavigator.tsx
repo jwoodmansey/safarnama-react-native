@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const AboutNavigator: React.FC = () => {
   const [t] = useTranslation(["glossary"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="LicensesScreen"
         component={LicensesScreen}

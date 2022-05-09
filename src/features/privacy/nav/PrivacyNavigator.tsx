@@ -9,12 +9,12 @@ const Stack = createStackNavigator();
 const PrivacyNavigator: React.FC = () => {
   const [t] = useTranslation(["settings"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="PrivacyScreen"
         component={PrivacyScreen}
         options={{
-          title: t("settings:privacy:privacy"),
+          title: t("settings:privacy.privacy"),
           headerLeft: () => <DrawerToggle />,
         }}
       />

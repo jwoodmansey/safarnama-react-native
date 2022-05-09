@@ -12,7 +12,7 @@ const Stack = createStackNavigator<AddExperienceProp>();
 const AddExperienceNavigation: React.FC = () => {
   const [t] = useTranslation(["manage"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="FeaturedExperienceScreen"
         options={{
