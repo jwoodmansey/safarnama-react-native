@@ -12,13 +12,14 @@ import PlaceListScreen from "../features/experience/screens/PlaceListScreen";
 const Stack = createStackNavigator<MapNaviationProp>();
 
 const MapNavigation: React.FC = () => {
-  const [t] = useTranslation(["place"]);
+  const [t] = useTranslation(["place", "glossary"]);
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="MapScreen"
         component={MapScreen}
         options={{
+          title: t("glossary:appName"),
           headerLeft: () => <DrawerToggle />,
         }}
       />
