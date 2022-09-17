@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import MapView, { Region } from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { selectIsOnboardingComplete } from "../../../store/onboarding/onboardingSelectors";
+import OfflineBanner from "../../../ui/OfflineBanner";
 import ActionMenu from "../components/ActionMenu";
 import ExperienceMapView from "../components/ExperienceMapView";
 import KeyModal from "../components/KeyModal";
@@ -70,6 +72,8 @@ const MapScreen: React.FC = () => {
     }
   };
 
+  const [t] = useTranslation("manage");
+
   return (
     <View style={styles.map}>
       <MapView
@@ -84,6 +88,9 @@ const MapScreen: React.FC = () => {
       >
         <ExperienceMapView centreMap={centreMap} />
       </MapView>
+      {!experience?.downloaded && (
+        <OfflineBanner title={t("youAreOfflineAndNotDownloaded")} />
+      )}
       <ActionMenu
         onPressCentre={centreMap}
         isRegionVisible={isRegionVisible}

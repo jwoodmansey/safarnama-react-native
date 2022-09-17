@@ -20,7 +20,9 @@
     "downloadExplanation": "This will allow you to view this experience's media while offline.\n\nIt cannot guarantee that the map layer will be visible while offline.",
     "removeExperience": "Remove experience?",
     "removeExplanation": "Are you sure you want to remove this experience?",
-    "experienceRemoved": "Experience removed"
+    "experienceRemoved": "Experience removed",
+    "youAreOffline": "You appear to be offline",
+    "youAreOfflineAndNotDownloaded": "You appear to be offline. This experience has not been downloaded, so some media may be unavailable."
   },
   "route": {
     "route": "Route",
