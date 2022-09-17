@@ -6,4 +6,5 @@ export type RootStackNavigationProp = {
   About: undefined;
   Privacy: undefined;
   Language: undefined;
+  OnboardingScreen: undefined;
 };

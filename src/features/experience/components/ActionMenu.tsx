@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
@@ -6,6 +7,7 @@ import { FAB } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { toggleKeyModal } from "../../../store/experience/experienceReducer";
+import { MapNaviationProp } from "../../../types/nav/map";
 
 type Props = {
   onPressCentre: () => void;
@@ -27,7 +29,7 @@ const ActionMenu: React.FC<Props> = ({
     dispatch(toggleKeyModal(true));
   };
 
-  const nav = useNavigation();
+  const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const onPressList = () => {
     setFabOpen(false);
     nav.navigate("PlaceListScreen");

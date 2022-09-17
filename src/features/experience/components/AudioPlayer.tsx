@@ -1,4 +1,4 @@
-import { Audio } from "expo-av";
+import { Audio, InterruptionModeIOS } from "expo-av";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import MusicControl, { Command } from "react-native-music-control";
@@ -49,7 +49,7 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         allowsRecordingIOS: false,
         playsInSilentModeIOS: true,
         staysActiveInBackground: true,
-        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+        interruptionModeIOS: InterruptionModeIOS.DoNotMix,
       });
       const { sound: soundObject } = await Audio.Sound.createAsync({
         uri: getPath(media),

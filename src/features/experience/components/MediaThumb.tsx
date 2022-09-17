@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   useColorScheme,
+  useWindowDimensions,
   View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
@@ -29,6 +30,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const { colors } = useTheme();
   const [t] = useTranslation(["media"]);
+  const { width } = useWindowDimensions();
   switch (getMediaType(media.mimetype)) {
     case MediaType.Image: {
       const onImagePress = () => {
@@ -62,8 +64,11 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
     case MediaType.Text: {
       return (
         <HTML
-          baseFontStyle={{ ...styles.htmlText, color }}
-          containerStyle={styles.textContainer}
+          baseStyle={styles.textContainer}
+          contentWidth={width - 20}
+          defaultTextProps={{
+            style: { ...styles.htmlText, color },
+          }}
           source={{ uri: getPath(media) }}
         />
       );

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Linking, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   Caption,
   Card,
@@ -10,6 +10,7 @@ import {
   Title,
 } from "react-native-paper";
 import { MediaDocument } from "../../../types/common/media";
+import { openInAppBrowser } from "../../../utils/linking";
 import MediaThumb from "./MediaThumb";
 
 type Props = {
@@ -48,7 +49,7 @@ const MediaItem: React.FC<Props> = ({ media }) => {
               <Divider style={styles.externalLinkDivider} />
               <Subheading>{t("media:links")}</Subheading>
               {media.externalLinks.map((l) => {
-                const onPress = () => Linking.openURL(l.url);
+                const onPress = () => openInAppBrowser(l.url);
                 const left = () => <List.Icon icon="open-in-new" />;
                 return (
                   <List.Section key={l.name}>

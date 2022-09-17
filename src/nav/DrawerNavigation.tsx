@@ -2,6 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { StackNavigationProp } from "@react-navigation/stack";
 import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
 import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
 import { RootStackNavigationProp } from "../types/nav/root";
@@ -16,7 +17,7 @@ import LanguageNavigator from "../features/language/nav/LanguageNavigator";
 const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 
 const DrawerNavigation: React.FC = () => {
-  const nav = useNavigation();
+  const nav = useNavigation<StackNavigationProp<RootStackNavigationProp>>();
   const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
   useEffect(() => {
     if (!isOnboardingComplete) {
@@ -24,7 +25,10 @@ const DrawerNavigation: React.FC = () => {
     }
   }, [isOnboardingComplete, nav]);
   return (
-    <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerContent {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
       <Drawer.Screen
         name="ExperienceManagement"

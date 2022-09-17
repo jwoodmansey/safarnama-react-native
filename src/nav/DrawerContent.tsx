@@ -26,7 +26,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const onPressLanguageSettings = () => navigate("Language");
 
   const experiences = useSelector(selectMyExperiences);
-  const [t] = useTranslation(["glossary", "manage", "about"]);
+  const [t] = useTranslation(["glossary", "manage", "about", "settings"]);
   return (
     <DrawerContentScrollView {...props}>
       <Drawer.Section title={t("glossary:experience")}>
@@ -52,12 +52,12 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
       <Drawer.Section title={t("settings:settings")}>
         <Drawer.Item
           icon="account-lock"
-          label={t("settings:privacy:privacy")}
+          label={t("settings:privacy.privacy")}
           onPress={onPressPrivacySettings}
         />
         <Drawer.Item
           icon="translate"
-          label={t("settings:language:language")}
+          label={t("settings:language.language")}
           onPress={onPressLanguageSettings}
         />
       </Drawer.Section>

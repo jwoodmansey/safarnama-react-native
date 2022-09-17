@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const LanguageNavigator: React.FC = () => {
   const [t] = useTranslation(["settings"]);
   return (
-    <Stack.Navigator mode="card">
+    <Stack.Navigator>
       <Stack.Screen
         name="LanguageScreen"
         component={PrivacyScreen}

@@ -8,7 +8,7 @@ import BackgroundGeolocation from "react-native-background-geolocation";
 import "react-native-gesture-handler";
 import PushNotification from "react-native-push-notification";
 import { enableScreens } from "react-native-screens";
-import { Constants } from "react-native-unimodules";
+import Constants from "expo-constants";
 import App from "./App";
 import { name as appName } from "./app.json";
 import { navigate } from "./src/nav/NavigationRef";
