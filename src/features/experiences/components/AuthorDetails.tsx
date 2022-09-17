@@ -4,7 +4,6 @@ import { StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
 import { Avatar, Colors, Paragraph, Title } from "react-native-paper";
 import Animated from "react-native-reanimated";
-import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { PublicProfile } from "../../../types/common/experience";
 
 type Props = {
@@ -32,7 +31,7 @@ const AuthorDetails: React.FC<Props> = ({ author, isVisible, onHide }) => {
           {author.photoURL ? (
             <Avatar.Image size={48} source={{ uri: author.photoURL }} />
           ) : (
-            <MaterialCommunityIcon size={48} name="account-circle" />
+            <Avatar.Text size={48} label={author.displayName} />
           )}
           <Title style={styles.title}>{author.displayName}</Title>
         </View>
