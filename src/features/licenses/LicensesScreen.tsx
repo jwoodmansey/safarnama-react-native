@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { Button, Card, Paragraph } from "react-native-paper";
+import { scrollIndicatorInsets } from "../../style/dimensions";
 
 const LICENSES_FILE = require("../../../licenses.json");
 
@@ -118,6 +119,7 @@ const LicensesScreen: React.FC = () => {
         renderItem={renderItem}
         ListHeaderComponent={renderHeader}
         keyExtractor={keyExtractor}
+        scrollIndicatorInsets={scrollIndicatorInsets}
       />
     </View>
   );

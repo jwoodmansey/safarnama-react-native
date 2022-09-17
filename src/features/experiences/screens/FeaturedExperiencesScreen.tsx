@@ -4,6 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import { loadFeaturedExperiences } from "../../../store/experience/experienceReducer";
 import { selectFeaturedExperiences } from "../../../store/experience/experienceSelectors";
+import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { ExperienceRefData } from "../../../types/common/experience";
 import FeaturedExperienceItem from "../components/FeaturedExperienceItem";
 import FeaturedHeader from "../components/FeaturedHeader";
@@ -24,6 +25,7 @@ const FeaturedExperiencesScreen: React.FC = () => {
       data={featuredExperiences}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
+      scrollIndicatorInsets={scrollIndicatorInsets}
     />
   );
 };

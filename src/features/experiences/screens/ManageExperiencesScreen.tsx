@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useSelector } from "react-redux";
 import { selectMyExperiences } from "../../../store/experience/experienceSelectors";
+import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { ExperienceSnapshotData } from "../../../types/common/experience";
 import ExperienceItem from "../components/ExperienceItem";
 
@@ -44,6 +45,7 @@ const ManageExperiencesScreen: React.FC = () => {
         </SafeAreaView>
       }
       keyExtractor={keyExtractor}
+      scrollIndicatorInsets={scrollIndicatorInsets}
     />
   );
 };

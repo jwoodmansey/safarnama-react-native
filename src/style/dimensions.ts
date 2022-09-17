@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from "react-native";
+import { Dimensions, Insets, Platform } from "react-native";
 
 export const smallPhoneMax = 375;
 export const mediumPhoneMax = 410;
@@ -42,3 +42,5 @@ export function deviceValue<T>(
       return largePhone || mediumPhone;
   }
 }
+
+export const scrollIndicatorInsets: Insets = { right: 1 };

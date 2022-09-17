@@ -15,6 +15,7 @@ import { MapNaviationProp } from "../../../types/nav/map";
 import { getPath } from "../../../store/mediaService";
 import { getMediaType, MediaType } from "../../../types/media";
 import PlaceIcon from "../components/PlaceIcon";
+import { scrollIndicatorInsets } from "../../../style/dimensions";
 
 type Nav = StackNavigationProp<MapNaviationProp, "ViewPlaceScreen">;
 
@@ -114,7 +115,7 @@ const PlaceListScreen: React.FC = () => {
     <FlatList
       contentContainerStyle={styles.list}
       data={places}
-      scrollIndicatorInsets={{ right: 1 }}
+      scrollIndicatorInsets={scrollIndicatorInsets}
       renderItem={renderItem}
     />
   );

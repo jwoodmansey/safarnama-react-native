@@ -4,6 +4,7 @@ import { FlatList, ListRenderItem, Platform, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
+import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { MediaDocument } from "../../../types/common/media";
 import { MapNaviationProp } from "../../../types/nav/map";
 import EmptyPlaceScreen from "../components/EmptyPlaceScreen";
@@ -67,6 +68,7 @@ const ViewPlaceScreen: React.FC = () => {
       renderItem={renderItem}
       ListEmptyComponent={<EmptyPlaceScreen />}
       ListFooterComponent={<PlaceFooter />}
+      scrollIndicatorInsets={scrollIndicatorInsets}
     />
   );
 };
