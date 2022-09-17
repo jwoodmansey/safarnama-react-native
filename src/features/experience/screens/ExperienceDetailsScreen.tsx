@@ -29,7 +29,6 @@ const ExperienceDetailsScreen: React.FC = () => {
   const route = useRoute<Route>();
   const { experience, experienceId } = route.params;
   const id = experience?._id || experienceId || "";
-  console.log("id", experienceId);
   const dispatch = useDispatch();
   const [isAuthorModalVisible, setAuthorModalVisible] = useState(false);
 
@@ -99,7 +98,6 @@ const ExperienceDetailsScreen: React.FC = () => {
       ]
     );
   };
-  console.log("display", displayExperience);
   const sizeInMb = (displayExperience.metaData.size / 1000000).toFixed(2);
 
   const padding = 10;
