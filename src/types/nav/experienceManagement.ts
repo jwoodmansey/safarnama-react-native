@@ -1,9 +1,9 @@
-import { ExperienceData, ExperienceRefData } from "../common/experience";
+import { ExperienceRefData } from "../common/experience";
 
 export type ExperienceManagementProp = {
   ManageExperiencesScreen: {};
   ExperienceDetailsScreen: {
-    experience?: ExperienceRefData | ExperienceData;
+    experience?: ExperienceRefData;
     experienceId?: string;
   };
 };

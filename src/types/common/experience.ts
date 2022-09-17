@@ -58,7 +58,7 @@ export type ExperienceRefData = {
   _id: string;
   snapshotId: string;
   name: string;
-  description: string;
+  description?: string;
   metaData: MetaData;
 };
 
