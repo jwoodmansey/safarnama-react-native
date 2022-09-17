@@ -52,7 +52,7 @@ const loadFeaturedExperiencesEpic = (action$: Observable<any>) =>
           loadedFeaturedExperiences({ featuredExperiences: response })
         ),
         catchError((e) => {
-          Alert.alert("Error", JSON.stringify(e));
+          // Alert.alert("Error", JSON.stringify(e));
           return EMPTY;
         })
       )
@@ -121,7 +121,10 @@ const downloadExperienceMediaEpic = (
             media: m.reduce(
               (prev, curr) => ({
                 ...prev,
-                [curr._id]: curr,
+                [curr._id]: {
+                  ...curr,
+                  localPath: `${dirs.DocumentDir}/${curr._id}`,
+                },
               }),
               {}
             ),
@@ -176,7 +179,7 @@ const removeExperienceEpic = (
             );
           }),
           catchError((e) => {
-            Alert.alert(JSON.stringify(e));
+            // Alert.alert(JSON.stringify(e));
             return EMPTY;
           })
         );

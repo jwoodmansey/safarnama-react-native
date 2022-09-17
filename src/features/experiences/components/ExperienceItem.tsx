@@ -24,7 +24,7 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
   const dispatch = useDispatch();
   const onPress = () => {
     nav.navigate("ExperienceDetailsScreen", {
-      experience: experience.data,
+      experienceId: experience.data._id,
     });
   };
   const onPressPlay = () => {

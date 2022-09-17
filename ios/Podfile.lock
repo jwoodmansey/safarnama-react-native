@@ -333,6 +333,8 @@ PODS:
     - React-Core
   - react-native-music-control (1.4.1):
     - React-Core
+  - react-native-netinfo (9.3.0):
+    - React-Core
   - react-native-pdf (6.5.0):
     - React-Core
   - react-native-progress-bar-android (1.0.4):
@@ -555,6 +557,7 @@ DEPENDENCIES:
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-music-control (from `../node_modules/react-native-music-control`)
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -681,6 +684,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-music-control:
     :path: "../node_modules/react-native-music-control"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   react-native-pdf:
     :path: "../node_modules/react-native-pdf"
   react-native-progress-bar-android:
@@ -800,6 +805,7 @@ SPEC CHECKSUMS:
   react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
   react-native-maps: 8b8bfada2c86205a7f5a07dd1f92f29b33ea83aa
   react-native-music-control: 3fc719c179a6562e18af1ac6e30ba9e33b397a31
+  react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-pdf: de35db0d8f1e5d37e65e887554f7d4bd062af56b
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
   react-native-safe-area-context: ebf8c413eb8b5f7c392a036a315eb7b46b96845f

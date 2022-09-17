@@ -4,7 +4,6 @@ import { StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
 import { Avatar, Colors, Paragraph, Title } from "react-native-paper";
 import Animated from "react-native-reanimated";
-import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { PublicProfile } from "../../../types/common/experience";
 
 type Props = {
@@ -12,6 +11,8 @@ type Props = {
   isVisible: boolean;
   onHide: () => void;
 };
+
+const AVATAR_SIZE = 48;
 
 const AuthorDetails: React.FC<Props> = ({ author, isVisible, onHide }) => {
   const { colors } = useTheme();
@@ -30,9 +31,12 @@ const AuthorDetails: React.FC<Props> = ({ author, isVisible, onHide }) => {
       >
         <View style={styles.titleContainer}>
           {author.photoURL ? (
-            <Avatar.Image size={48} source={{ uri: author.photoURL }} />
+            <Avatar.Image
+              size={AVATAR_SIZE}
+              source={{ uri: author.photoURL }}
+            />
           ) : (
-            <MaterialCommunityIcon size={48} name="account-circle" />
+            <Avatar.Text size={AVATAR_SIZE} label={author.displayName} />
           )}
           <Title style={styles.title}>{author.displayName}</Title>
         </View>

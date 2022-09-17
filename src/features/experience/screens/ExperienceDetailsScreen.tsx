@@ -1,5 +1,5 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
@@ -15,7 +15,10 @@ import {
 } from "../../../store/experience/experienceReducer";
 import { selectExperience } from "../../../store/experience/experienceSelectors";
 import { RootState } from "../../../store/rootReducer";
-import { ExperienceSnapshotData } from "../../../types/common/experience";
+import {
+  ExperienceRefData,
+  ExperienceSnapshotData,
+} from "../../../types/common/experience";
 import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
 import AuthorDetails from "../../experiences/components/AuthorDetails";
 
@@ -28,6 +31,7 @@ const ExperienceDetailsScreen: React.FC = () => {
   const id = experience?._id || experienceId || "";
   const dispatch = useDispatch();
   const [isAuthorModalVisible, setAuthorModalVisible] = useState(false);
+
   const experienceSnapshot = useSelector<
     RootState,
     ExperienceSnapshotData | undefined
@@ -35,9 +39,6 @@ const ExperienceDetailsScreen: React.FC = () => {
   useEffect(() => {
     dispatch(loadExperience({ id }));
   }, [dispatch, id]);
-  const onPressAuthor = (open: boolean) => () => {
-    setAuthorModalVisible(open);
-  };
   const ref = useRef<MapView>(null);
 
   useEffect(() => {
@@ -54,14 +55,32 @@ const ExperienceDetailsScreen: React.FC = () => {
     }
   }, [experienceSnapshot, nav]);
   const [t] = useTranslation(["manage", "glossary"]);
-  if (!experienceSnapshot) {
+
+  // This is so we can display some data from the ref, even if we don't have a complete snapshot yet
+  const displayExperience: ExperienceRefData | undefined = useMemo(() => {
+    if (experience) return experience;
+    if (experienceSnapshot)
+      return {
+        _id: experienceSnapshot.data._id,
+        snapshotId: experienceSnapshot._id,
+        name: experienceSnapshot.data.name,
+        description: experienceSnapshot.data.description,
+        metaData: experienceSnapshot.metaData,
+      };
+    return undefined;
+  }, [experienceSnapshot, experience]);
+
+  if (!displayExperience) {
     return <ProgressBar />;
   }
-  const sizeInMb = (experienceSnapshot.metaData.size / 1000000).toFixed(2);
+
+  const onPressAuthor = (open: boolean) => () => {
+    setAuthorModalVisible(open);
+  };
   const onPressPlay = () => {
     dispatch(setSelectedExperience({ id: experienceSnapshot?.data._id }));
     nav.goBack();
-    nav.navigate("MapScreen");
+    nav.navigate("MapScreen", {});
   };
   const onPressDownload = () => {
     Alert.alert(
@@ -79,6 +98,8 @@ const ExperienceDetailsScreen: React.FC = () => {
       ]
     );
   };
+  const sizeInMb = (displayExperience.metaData.size / 1000000).toFixed(2);
+
   const padding = 10;
   return (
     <View style={styles.container}>
@@ -109,19 +130,19 @@ const ExperienceDetailsScreen: React.FC = () => {
       </MapView>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View>
-          {experienceSnapshot.data.description ? (
+          {displayExperience.description ? (
             <Paragraph style={styles.description}>
-              {experienceSnapshot.data.description}
+              {displayExperience.description}
             </Paragraph>
           ) : null}
           <View style={styles.author}>
             <Chip
               onPress={onPressAuthor(true)}
               avatar={
-                experienceSnapshot.metaData.ownerPublicProfile.photoURL ? (
+                displayExperience.metaData.ownerPublicProfile.photoURL ? (
                   <FastImage
                     source={{
-                      uri: experienceSnapshot.metaData.ownerPublicProfile
+                      uri: displayExperience.metaData.ownerPublicProfile
                         .photoURL,
                     }}
                   />
@@ -130,7 +151,7 @@ const ExperienceDetailsScreen: React.FC = () => {
                 )
               }
             >
-              {experienceSnapshot.metaData.ownerPublicProfile.displayName}
+              {displayExperience.metaData.ownerPublicProfile.displayName}
             </Chip>
           </View>
           <Button
@@ -142,11 +163,11 @@ const ExperienceDetailsScreen: React.FC = () => {
             {t("manage:playExperience")}
           </Button>
           <Button
-            disabled={experienceSnapshot.downloaded}
+            disabled={experienceSnapshot?.downloaded}
             onPress={onPressDownload}
             mode="text"
           >
-            {experienceSnapshot.downloaded
+            {experienceSnapshot?.downloaded
               ? t("manage:downloaded")
               : t("manage:downloadSizeInMb", { sizeInMb })}
           </Button>
@@ -155,7 +176,7 @@ const ExperienceDetailsScreen: React.FC = () => {
       <AuthorDetails
         onHide={onPressAuthor(false)}
         isVisible={isAuthorModalVisible}
-        author={experienceSnapshot.metaData.ownerPublicProfile}
+        author={displayExperience.metaData.ownerPublicProfile}
       />
     </View>
   );
