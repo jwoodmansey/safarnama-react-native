@@ -67,7 +67,7 @@ const ActionMenu: React.FC<Props> = ({
         },
       ]}
       color="black"
-      fabStyle={[styles.fab, { marginBottom: bottom }]}
+      fabStyle={[styles.fab, { marginBottom: bottom || 20 }]}
       onStateChange={onStateChange}
     />
   );
