@@ -41,8 +41,8 @@
     "kmAway": "{{distance}}km away"
   },
   "media": {
-    "mediaCount": "{{count}} media item",
-    "mediaCount_plural": "{{count}} media items",
+    "mediaCount_one": "{{count}} media item",
+    "mediaCount_other": "{{count}} media items",
     "noMedia": "No media found",
     "noMediaSubtitle": "This place does not appear to have any associated media.",
     "unsupportedMedia": "Unsupported media: {{type}}",
