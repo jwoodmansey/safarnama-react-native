@@ -46,10 +46,10 @@ export const resources = {
   },
 };
 
-export const locale =
-  Platform.OS === "ios"
+export const locale: string =
+  (Platform.OS === "ios"
     ? NativeModules.SettingsManager.settings.AppleLocale
-    : NativeModules.I18nManager.localeIdentifier;
+    : NativeModules.I18nManager.localeIdentifier) || "en-GB";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next

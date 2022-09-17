@@ -16,8 +16,11 @@ import { getPath } from "../../../store/mediaService";
 import { getMediaType, MediaType } from "../../../types/media";
 import PlaceIcon from "../components/PlaceIcon";
 import { scrollIndicatorInsets } from "../../../style/dimensions";
+import { locale } from "../../../i18n/config";
 
 type Nav = StackNavigationProp<MapNaviationProp, "ViewPlaceScreen">;
+
+const formatter = Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
 
 const PlaceListScreen: React.FC = () => {
   const nav = useNavigation<Nav>();
@@ -97,12 +100,12 @@ const PlaceListScreen: React.FC = () => {
               {currentLocation &&
                 // eslint-disable-next-line i18next/no-literal-string
                 `\n${t("distance:kmAway", {
-                  distance: (
+                  distance: formatter.format(
                     haversine(currentLocation, {
                       longitude: item.location.coordinates[0],
                       latitude: item.location.coordinates[1],
                     }) / 1000
-                  ).toFixed(2),
+                  ),
                 })}`}
             </Paragraph>
           </Card.Content>
