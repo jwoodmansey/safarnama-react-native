@@ -28,6 +28,7 @@ const DrawerNavigation: React.FC = () => {
     <Drawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{ headerShown: false }}
+      useLegacyImplementation
     >
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
       <Drawer.Screen
