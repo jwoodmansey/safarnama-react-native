@@ -24,7 +24,11 @@ export default (
     catchError((error, source) => {
       console.error("global catchError hit");
       console.error(error);
-      crashlytics().recordError(error);
+      try {
+        crashlytics().recordError(error);
+      } catch (e) {
+        console.log("Cannot parse error");
+      }
       return source;
     })
   );

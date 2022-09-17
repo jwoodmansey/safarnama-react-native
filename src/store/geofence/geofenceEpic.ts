@@ -49,7 +49,7 @@ const onSetSelectedExperienceEpic = (
       from(setGeofences(experience)).pipe(
         ignoreElements(),
         catchError((e) => {
-          Alert.alert(JSON.stringify(e));
+          // Alert.alert(JSON.stringify(e));
           return EMPTY;
         })
       )
