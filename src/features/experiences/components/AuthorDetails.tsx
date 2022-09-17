@@ -12,6 +12,8 @@ type Props = {
   onHide: () => void;
 };
 
+const AVATAR_SIZE = 48;
+
 const AuthorDetails: React.FC<Props> = ({ author, isVisible, onHide }) => {
   const { colors } = useTheme();
   return (
@@ -29,9 +31,12 @@ const AuthorDetails: React.FC<Props> = ({ author, isVisible, onHide }) => {
       >
         <View style={styles.titleContainer}>
           {author.photoURL ? (
-            <Avatar.Image size={48} source={{ uri: author.photoURL }} />
+            <Avatar.Image
+              size={AVATAR_SIZE}
+              source={{ uri: author.photoURL }}
+            />
           ) : (
-            <Avatar.Text size={48} label={author.displayName} />
+            <Avatar.Text size={AVATAR_SIZE} label={author.displayName} />
           )}
           <Title style={styles.title}>{author.displayName}</Title>
         </View>
