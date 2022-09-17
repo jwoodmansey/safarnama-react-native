@@ -4,6 +4,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { getPath } from "../store/mediaService";
 import { MapNaviationProp } from "../types/nav/map";
 import AcknowledgementsOverlay from "./AcknowledgementsOverlay";
 
@@ -28,7 +29,7 @@ const ImageScreen: React.FC = () => {
           <FastImage
             style={styles.image}
             resizeMode="contain"
-            source={{ uri: media.path }}
+            source={{ uri: getPath(media) }}
           />
         </ReactNativeZoomableView>
       </SafeAreaView>

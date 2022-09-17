@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { getPath } from "../store/mediaService";
 import { MapNaviationProp } from "../types/nav/map";
 import AcknowledgementsOverlay from "./AcknowledgementsOverlay";
 
@@ -15,7 +16,7 @@ const PDFScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={[StyleSheet.absoluteFill]}>
-        <Pdf source={{ uri: media.path }} style={styles.pdf} />
+        <Pdf source={{ uri: getPath(media) }} style={styles.pdf} />
       </SafeAreaView>
       <AcknowledgementsOverlay acknowledgements={media.acknowledgements} />
     </View>
