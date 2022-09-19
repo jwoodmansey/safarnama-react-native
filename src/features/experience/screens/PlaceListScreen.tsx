@@ -20,7 +20,9 @@ import { locale } from "../../../i18n/config";
 
 type Nav = StackNavigationProp<MapNaviationProp, "ViewPlaceScreen">;
 
-const formatter = Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+const formatter = Intl.NumberFormat(locale, {
+  maximumFractionDigits: 2,
+});
 
 const PlaceListScreen: React.FC = () => {
   const nav = useNavigation<Nav>();

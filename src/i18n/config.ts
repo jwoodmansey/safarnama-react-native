@@ -49,12 +49,14 @@ export const resources = {
 export const locale: string =
   (Platform.OS === "ios"
     ? NativeModules.SettingsManager.settings.AppleLocale
-    : NativeModules.I18nManager.localeIdentifier) || "en-GB";
+    : NativeModules.I18nManager.localeIdentifier
+  )?.replace("_", "-") || "en-GB";
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
+    compatibilityJSON: "v3",
     lng: locale ? locale.substring(0, 2) : "en",
     fallbackLng: "en", // use en if detected lng is not available
     interpolation: {
