@@ -105,11 +105,11 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - Permission-Camera (3.3.1):
+  - Permission-Camera (3.6.1):
     - RNPermissions
-  - Permission-LocationAlways (3.3.1):
+  - Permission-LocationAlways (3.6.1):
     - RNPermissions
-  - Permission-LocationWhenInUse (3.3.1):
+  - Permission-LocationWhenInUse (3.6.1):
     - RNPermissions
   - PromisesObjC (2.1.0)
   - RCT-Folly (2021.06.28.00-v2):
@@ -335,7 +335,7 @@ PODS:
     - React-Core
   - react-native-netinfo (9.3.0):
     - React-Core
-  - react-native-pdf (6.5.0):
+  - react-native-pdf (6.6.2):
     - React-Core
   - react-native-progress-bar-android (1.0.4):
     - React
@@ -474,9 +474,9 @@ PODS:
     - RNFBApp
   - RNGestureHandler (2.4.2):
     - React-Core
-  - RNInAppBrowser (3.6.3):
+  - RNInAppBrowser (3.7.0):
     - React-Core
-  - RNPermissions (3.3.1):
+  - RNPermissions (3.6.1):
     - React-Core
   - RNReanimated (2.8.0):
     - DoubleConversion
@@ -784,9 +784,9 @@ SPEC CHECKSUMS:
   lottie-ios: 016449b5d8be0c3dcbcfa0a9988469999cd04c5d
   lottie-react-native: b702fab740cdb952a8e2354713d3beda63ff97b0
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  Permission-Camera: bae27a8503530770c35aadfecbb97ec71823382a
-  Permission-LocationAlways: fbf36cbdcabc3101f1168ad1ec45cfc5a6448cc4
-  Permission-LocationWhenInUse: 006c85c8de0c05b5d8be8e8029e4f6b813270293
+  Permission-Camera: bf6791b17c7f614b6826019fcfdcc286d3a107f6
+  Permission-LocationAlways: 8d99b025c9f73c696e0cdb367e42525f2e9a26f2
+  Permission-LocationWhenInUse: 3ba99e45c852763f730eabecec2870c2382b7bd4
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: 00581111c53531e39e3c6346ef0d2c0cf52a5a37
@@ -806,7 +806,7 @@ SPEC CHECKSUMS:
   react-native-maps: f4067ffa5044ade5bf98d6dde15014318a537c2f
   react-native-music-control: 3fc719c179a6562e18af1ac6e30ba9e33b397a31
   react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
-  react-native-pdf: de35db0d8f1e5d37e65e887554f7d4bd062af56b
+  react-native-pdf: 33c622cbdf776a649929e8b9d1ce2d313347c4fa
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
   react-native-safe-area-context: b456e1c40ec86f5593d58b275bd0e9603169daca
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
@@ -834,8 +834,8 @@ SPEC CHECKSUMS:
   RNFBCrashlytics: f2fdce92e0f561ed2b5a6ce5f86e43404ff67a18
   RNFBDynamicLinks: 20bd934c6c89ecba6af23a31c1de6b03786923ca
   RNGestureHandler: 61628a2c859172551aa2100d3e73d1e57878392f
-  RNInAppBrowser: 3ff3a3b8f458aaf25aaee879d057352862edf357
-  RNPermissions: 34d678157c800b25b22a488e4d8babb57456e796
+  RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
+  RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
   RNReanimated: 64573e25e078ae6bec03b891586d50b9ec284393
   RNScreens: 0df01424e9e0ed7827200d6ed1087ddd06c493f9
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
