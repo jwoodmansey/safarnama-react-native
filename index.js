@@ -15,8 +15,6 @@ import { navigate } from "./src/nav/NavigationRef";
 import { sendPlacePush } from "./src/utils/pushNotifications";
 
 // Before rendering any navigation stack
-
-console.log(Constants.systemFonts);
 enableScreens();
 
 const HeadlessTask = async (event) => {
