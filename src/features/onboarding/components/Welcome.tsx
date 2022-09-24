@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import { TAG } from "../../../config";
+import { APP_CONFIG } from "../../../config";
 import { deviceValue } from "../../../style/dimensions";
 import Header from "./Header";
 import PrimaryButton from "./PrimaryButton";
@@ -15,19 +15,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const [t] = useTranslation(["onboarding", "glossary"]);
   return (
     <>
-      {TAG === "Ports Past and Present" ? (
-        <FastImage
-          style={styles.imageStyle}
-          // eslint-disable-next-line global-require
-          source={require("../../../assets/images/ppp_master_logo.png")}
-        />
-      ) : (
-        <FastImage
-          style={styles.imageStyle}
-          // eslint-disable-next-line global-require
-          source={require("../../../assets/images/master_logo.png")}
-        />
-      )}
+      <FastImage style={styles.imageStyle} source={APP_CONFIG.logo} />
       <Header
         title={t("onboarding:welcome")}
         subheading={t("onboarding:welcomeSubtitle")}

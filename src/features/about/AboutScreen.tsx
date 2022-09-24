@@ -3,7 +3,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { Linking, ScrollView, StyleSheet } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Headline, Paragraph } from "react-native-paper";
-import { TAG } from "../../config";
+import { APP_CONFIG } from "../../config";
 import PlaceFooter from "../experience/components/PlaceFooter";
 
 const AboutScreen: React.FC = () => {
@@ -29,21 +29,9 @@ const AboutScreen: React.FC = () => {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
-      {TAG === "Ports Past and Present" ? (
-        <>
-          <FastImage
-            style={styles.image}
-            // eslint-disable-next-line global-require
-            source={require("../../assets/images/ppp_master_logo.png")}
-          />
-          <Headline>{t("about:projectName")}</Headline>
-        </>
-      ) : (
-        <FastImage
-          style={styles.image}
-          // eslint-disable-next-line global-require
-          source={require("../../assets/images/master_logo.png")}
-        />
+      <FastImage style={styles.image} source={APP_CONFIG.logo} />
+      {APP_CONFIG.showProjectName && (
+        <Headline>{t("about:projectName")}</Headline>
       )}
       <Trans i18n={i18n} t={t} i18nKey="about:aboutFull">
         <Paragraph style={styles.text}>
