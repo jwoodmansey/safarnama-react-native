@@ -5,7 +5,7 @@ import { View, Platform, StyleSheet } from "react-native";
 
 import BackgroundGeolocation from "react-native-background-geolocation";
 import { Caption } from "react-native-paper";
-import { PRIVACY_URL } from "../../../config";
+import { APP_CONFIG } from "../../../config";
 import { deviceValue } from "../../../style/dimensions";
 import { openInAppBrowser } from "../../../utils/linking";
 import Header from "./Header";
@@ -26,7 +26,7 @@ const Geolocation: React.FC<Props> = ({ onNext }) => {
     });
   };
   const onPressPrivacyPolicy = () => {
-    openInAppBrowser(PRIVACY_URL);
+    openInAppBrowser(APP_CONFIG.privacyUrl);
   };
 
   return (

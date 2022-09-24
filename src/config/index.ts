@@ -37,4 +37,3 @@ const config: Record<
 };
 
 export const APP_CONFIG = config[TAG];
-export const PRIVACY_URL = APP_CONFIG.privacyUrl;

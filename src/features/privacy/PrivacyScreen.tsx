@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, Paragraph, Subheading, Switch } from "react-native-paper";
-import { PRIVACY_URL } from "../../config";
+import { APP_CONFIG } from "../../config";
 import { openInAppBrowser } from "../../utils/linking";
 
 const PrivacyScreen: React.FC = () => {
@@ -12,7 +12,7 @@ const PrivacyScreen: React.FC = () => {
     crashlytics().isCrashlyticsCollectionEnabled
   );
   const onPressPrivacyPolicy = () => {
-    openInAppBrowser(PRIVACY_URL);
+    openInAppBrowser(APP_CONFIG.privacyUrl);
   };
 
   const toggleCrashlytics = () => {
