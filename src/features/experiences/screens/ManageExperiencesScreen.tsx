@@ -11,6 +11,8 @@ import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { ExperienceSnapshotData } from "../../../types/common/experience";
 import ExperienceItem from "../components/ExperienceItem";
 
+const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
+
 const ManageExperiencesScreen: React.FC = () => {
   const data = useSelector(selectMyExperiences);
   const renderItem: ListRenderItem<ExperienceSnapshotData> = ({ item }) => (
@@ -22,7 +24,6 @@ const ManageExperiencesScreen: React.FC = () => {
     nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
   };
   const [t] = useTranslation(["manage"]);
-  const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
   return (
     <FlatList
       contentContainerStyle={styles.container}

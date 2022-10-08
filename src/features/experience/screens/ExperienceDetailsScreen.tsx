@@ -171,6 +171,7 @@ const ExperienceDetailsScreen: React.FC = () => {
           <Button
             disabled={experienceSnapshot?.downloaded}
             onPress={onPressDownload}
+            icon={experienceSnapshot?.downloaded ? "map-check" : undefined}
             mode="text"
           >
             {experienceSnapshot?.downloaded

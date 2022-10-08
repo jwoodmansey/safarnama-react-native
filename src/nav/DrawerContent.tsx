@@ -33,7 +33,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
         {Object.values(experiences).map((e) => (
           <Drawer.Item
             key={e.data._id}
-            icon="map"
+            icon={e.downloaded ? "map-check" : "map"}
             label={e.data.name}
             onPress={onPressViewCurrent(e.data._id)}
           />

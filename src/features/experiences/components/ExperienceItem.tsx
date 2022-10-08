@@ -60,7 +60,9 @@ const ExperienceItem: React.FC<Props> = ({ experience }) => {
         <Button onPress={onPressPlay}>{t("manage:play")}</Button>
         <Button onPress={onPressRemove}>{t("manage:remove")}</Button>
         {experience.downloaded ? (
-          <Button disabled>{t("manage:downloaded")}</Button>
+          <Button disabled icon="map-check">
+            {t("manage:downloaded")}
+          </Button>
         ) : (
           <Button onPress={onPressDownload} icon="download">
             {t("manage:download")}
