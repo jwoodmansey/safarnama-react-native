@@ -28,7 +28,7 @@ const ExperienceDetailsScreen: React.FC = () => {
   const nav = useNavigation();
   const route = useRoute<Route>();
   const { experience, experienceId } = route.params;
-  const id = experience?._id || experienceId || "";
+  const id = experience?._id || experienceId;
   const dispatch = useDispatch();
   const [isAuthorModalVisible, setAuthorModalVisible] = useState(false);
 
@@ -37,7 +37,9 @@ const ExperienceDetailsScreen: React.FC = () => {
     ExperienceSnapshotData | undefined
   >((state) => selectExperience(state, id));
   useEffect(() => {
-    dispatch(loadExperience({ id }));
+    if (id) {
+      dispatch(loadExperience({ id }));
+    }
   }, [dispatch, id]);
   const ref = useRef<MapView>(null);
 
@@ -78,9 +80,11 @@ const ExperienceDetailsScreen: React.FC = () => {
     setAuthorModalVisible(open);
   };
   const onPressPlay = () => {
-    dispatch(setSelectedExperience({ id: experienceSnapshot?.data._id }));
-    nav.goBack();
-    nav.navigate("MapScreen", {});
+    if (id) {
+      dispatch(setSelectedExperience({ id }));
+      nav.goBack();
+      nav.navigate("MapScreen", {});
+    }
   };
   const onPressDownload = () => {
     Alert.alert(
@@ -92,7 +96,9 @@ const ExperienceDetailsScreen: React.FC = () => {
           text: t("manage:downloadSizeInMb", { sizeInMb }),
           style: "default",
           onPress: () => {
-            dispatch(downloadExperienceMedia({ id }));
+            if (id) {
+              dispatch(downloadExperienceMedia({ id }));
+            }
           },
         },
       ]
