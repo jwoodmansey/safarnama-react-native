@@ -21,7 +21,7 @@ export const selectMyExperiences: Selector<
   RootState,
   ExperienceSnapshotData[]
 > = (state) =>
-  Object.values(state.experience.experiences)?.filter((e) => e.played);
+  Object.values(state.experience.experiences)?.filter((e) => e.played) || [];
 
 export const selectFeaturedExperiences: Selector<
   RootState,
@@ -31,18 +31,16 @@ export const selectFeaturedExperiences: Selector<
     ?.slice(0)
     .sort((a, b) => a.name.localeCompare(b.name));
 
-export const selectAllKeys = createSelector(
-  [selectCurrentExperience],
-  (experience) =>
-    experience?.data.pointOfInterests?.reduce((prev, curr) => {
-      if (!curr.type.name) {
-        return prev;
-      }
-      return {
-        ...prev,
-        [curr.type.name]: curr.type,
-      };
-    }, {} as Record<string, PlaceType>)
+const selectAllKeys = createSelector([selectCurrentExperience], (experience) =>
+  experience?.data.pointOfInterests?.reduce((prev, curr) => {
+    if (!curr.type.name) {
+      return prev;
+    }
+    return {
+      ...prev,
+      [curr.type.name]: curr.type,
+    };
+  }, {} as Record<string, PlaceType>)
 );
 export const selectIsKeyModalVisible: Selector<RootState, boolean> = (state) =>
   state.experience.isKeyModalVisible === true;
@@ -52,6 +50,11 @@ export const selectKeyModal = createSelector(
     isVisible,
     keys: keys ? Object.values(keys) : [],
   })
+);
+export const selectExperienceHasRoutes = createSelector(
+  [selectCurrentExperience],
+  (experience) =>
+    experience?.data.routes !== undefined && experience.data.routes.length > 0
 );
 
 export const selectExperiences: Selector<
@@ -64,8 +67,9 @@ export const selectMedia: Selector<RootState, Record<string, MediaDocument>> = (
 ) => state.experience.media;
 
 export const selectExperience = createSelector(
-  [selectExperiences, selectMedia, (_: RootState, id: string) => id],
+  [selectExperiences, selectMedia, (_: RootState, id?: string) => id],
   (experiences, media, id) => {
+    if (!id) return undefined;
     const experience = experiences[id];
     if (!experience) return undefined;
     const geojson = {

@@ -5,12 +5,16 @@ import Modal from "react-native-modal";
 import { Caption, useTheme } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleKeyModal } from "../../../store/experience/experienceReducer";
-import { selectKeyModal } from "../../../store/experience/experienceSelectors";
+import {
+  selectExperienceHasRoutes,
+  selectKeyModal,
+} from "../../../store/experience/experienceSelectors";
 import PlaceIcon from "./PlaceIcon";
 
 const KeyModal: React.FC = () => {
   const [t] = useTranslation(["route"]);
   const data = useSelector(selectKeyModal);
+  const experienceHasRoutes = useSelector(selectExperienceHasRoutes);
   const dispatch = useDispatch();
   const { colors } = useTheme();
   const onHide = () => dispatch(toggleKeyModal(false));
@@ -38,14 +42,18 @@ const KeyModal: React.FC = () => {
             <Caption style={styles.title}>{key.name}</Caption>
           </View>
         ))}
-        <View style={styles.keyItemContainer}>
-          <PlaceIcon placeType={{ matIcon: "outlined_flag" }} />
-          <Caption style={styles.title}>{t("route:routeStart")}</Caption>
-        </View>
-        <View style={styles.keyItemContainer}>
-          <PlaceIcon placeType={{ matIcon: "flag" }} />
-          <Caption style={styles.title}>{t("route:routeEnd")}</Caption>
-        </View>
+        {experienceHasRoutes && (
+          <>
+            <View style={styles.keyItemContainer}>
+              <PlaceIcon placeType={{ matIcon: "outlined_flag" }} />
+              <Caption style={styles.title}>{t("route:routeStart")}</Caption>
+            </View>
+            <View style={styles.keyItemContainer}>
+              <PlaceIcon placeType={{ matIcon: "flag" }} />
+              <Caption style={styles.title}>{t("route:routeEnd")}</Caption>
+            </View>
+          </>
+        )}
       </View>
     </Modal>
   );
