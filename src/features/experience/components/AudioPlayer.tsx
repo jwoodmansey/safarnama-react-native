@@ -1,6 +1,6 @@
 import { Audio, InterruptionModeIOS } from "expo-av";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import MusicControl, { Command } from "react-native-music-control";
 import { Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -51,46 +51,48 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         staysActiveInBackground: true,
         interruptionModeIOS: InterruptionModeIOS.DoNotMix,
       });
-      const { sound: soundObject } = await Audio.Sound.createAsync({
-        uri: getPath(media),
-        name: media.description,
-      });
-      soundObject?.setOnPlaybackStatusUpdate((newStatus) => {
-        console.log("status");
-        if (newStatus.isLoaded) {
-          console.log("on status update");
-          const positionSeconds = msToSeconds(newStatus.positionMillis);
-          const durationSeconds = msToSeconds(newStatus.durationMillis);
-          setStatus({
-            isPlaying: newStatus.isPlaying,
-            positionSeconds,
-            durationSeconds,
-          });
-          // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
-          if (newStatus.isPlaying) {
-            MusicControl.setNowPlaying({
-              title: media.description,
-              notificationIcon: "ic_stat_name",
-              elapsedTime: positionSeconds,
-              duration: durationSeconds,
+      try {
+        const { sound: soundObject } = await Audio.Sound.createAsync({
+          uri: Platform.OS === "ios" ? media.path : getPath(media),
+          name: media.description,
+        });
+        soundObject?.setOnPlaybackStatusUpdate((newStatus) => {
+          if (newStatus.isLoaded) {
+            const positionSeconds = msToSeconds(newStatus.positionMillis);
+            const durationSeconds = msToSeconds(newStatus.durationMillis);
+            setStatus({
+              isPlaying: newStatus.isPlaying,
+              positionSeconds,
+              durationSeconds,
             });
-            MusicControl.enableBackgroundMode(true);
-            MusicControl.enableControl("play", true);
-            MusicControl.enableControl("pause", true);
-            MusicControl.enableControl("stop", true);
-            MusicControl.on(Command.play, () => {
-              soundObject.playAsync();
-            });
-            MusicControl.on(Command.pause, () => {
-              soundObject.pauseAsync();
-            });
-            MusicControl.on(Command.stop, () => {
-              soundObject.stopAsync();
-            });
+            // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
+            if (newStatus.isPlaying) {
+              MusicControl.setNowPlaying({
+                title: media.description,
+                notificationIcon: "ic_stat_name",
+                elapsedTime: positionSeconds,
+                duration: durationSeconds,
+              });
+              MusicControl.enableBackgroundMode(true);
+              MusicControl.enableControl("play", true);
+              MusicControl.enableControl("pause", true);
+              MusicControl.enableControl("stop", true);
+              MusicControl.on(Command.play, () => {
+                soundObject.playAsync();
+              });
+              MusicControl.on(Command.pause, () => {
+                soundObject.pauseAsync();
+              });
+              MusicControl.on(Command.stop, () => {
+                soundObject.stopAsync();
+              });
+            }
           }
-        }
-      });
-      setSound(soundObject);
+        });
+        setSound(soundObject);
+      } catch (e) {
+        console.log(e);
+      }
     };
     loadAudio();
   }, [media]);

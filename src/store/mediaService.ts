@@ -33,3 +33,20 @@ export const getPath = (media: MediaDocument): string => {
     ? `file://${media.localPath}`
     : media.localPath;
 };
+
+export const getFullPath = (media: MediaDocument): string => {
+  const path = getPath(media);
+
+  if (Platform.OS === "ios") {
+    const arr = path.split("/");
+    const { dirs } = RNFetchBlob.fs;
+    return `${dirs.DocumentDir}/${arr[arr.length - 1]}`;
+  }
+
+  return path;
+};
+
+export const getHtmlFromFile = (media: MediaDocument) => {
+  const fullPath = getFullPath(media);
+  return RNFetchBlob.fs.readFile(fullPath, "utf8");
+};

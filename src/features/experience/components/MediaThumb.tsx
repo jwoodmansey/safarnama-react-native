@@ -1,9 +1,10 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Video as ExpoVideo } from "expo-av";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Platform,
   StyleSheet,
   TouchableOpacity,
   useColorScheme,
@@ -14,7 +15,7 @@ import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
-import { getPath } from "../../../store/mediaService";
+import { getHtmlFromFile, getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
 import { getMediaType, MediaType } from "../../../types/media";
 import { MapNaviationProp } from "../../../types/nav/map";
@@ -31,19 +32,34 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
   const { colors } = useTheme();
   const [t] = useTranslation(["media"]);
   const { width } = useWindowDimensions();
-  switch (getMediaType(media.mimetype)) {
+
+  const [htmlContent, setHtmlContent] = useState<
+    { html: string } | undefined
+  >();
+  const type = getMediaType(media.mimetype);
+  useEffect(() => {
+    if (type === MediaType.Text && media.localPath) {
+      getHtmlFromFile(media).then((content) => {
+        setHtmlContent({ html: content });
+      });
+    }
+  }, [media, type]);
+
+  // todo move this to the selectors
+  const source = useMemo(() => {
+    return {
+      uri: getPath(media),
+    };
+  }, [media]);
+
+  switch (type) {
     case MediaType.Image: {
       const onImagePress = () => {
         nav.navigate("ImageScreen", { media });
       };
       return (
         <TouchableOpacity onPress={onImagePress}>
-          <FastImage
-            style={styles.image}
-            source={{
-              uri: getPath(media),
-            }}
-          />
+          <FastImage style={styles.image} source={source} />
         </TouchableOpacity>
       );
     }
@@ -54,7 +70,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
           usePoster={false}
           shouldPlay={false}
           style={styles.video}
-          source={{ uri: getPath(media) }}
+          source={Platform.OS === "android" ? source : { uri: media.path }}
         />
       );
     }
@@ -69,7 +85,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
           defaultTextProps={{
             style: { ...styles.htmlText, color },
           }}
-          source={{ uri: getPath(media) }}
+          source={htmlContent || source}
         />
       );
     }
@@ -83,7 +99,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
             singlePage
             fitPolicy={1}
             style={[styles.pdf, { backgroundColor: colors.card }]}
-            source={{ uri: getPath(media), cache: true }}
+            source={{ ...source, cache: true }}
           />
           <TouchableOpacity
             style={StyleSheet.absoluteFill}
