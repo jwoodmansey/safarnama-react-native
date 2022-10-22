@@ -63,6 +63,10 @@
       "optInToErrorReporting": "Opt-in to error reporting",
       "helpImprove": "Help improve $t(glossary:appName) by sending error reports, these may include installation UUIDs, and crash traces."
     },
+    "customise": {
+      "customise": "Customise",
+      "quickExperienceSwitching": "Quick experience switching"
+    },
     "language": {
       "language": "Language",
       "english": "English",

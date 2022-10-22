@@ -8,6 +8,7 @@ import PDFScreen from "../media/PDFScreen";
 import { MapNaviationProp } from "../types/nav/map";
 import DrawerToggle from "./DrawerToggle";
 import PlaceListScreen from "../features/experience/screens/PlaceListScreen";
+import ExperienceDetailsScreen from "../features/experience/screens/ExperienceDetailsScreen";
 
 const Stack = createStackNavigator<MapNaviationProp>();
 
@@ -54,6 +55,13 @@ const MapNavigation: React.FC = () => {
         options={{
           title: t("place:places"),
         }}
+      />
+      <Stack.Screen
+        name="ExperienceDetailsScreen"
+        component={ExperienceDetailsScreen}
+        options={({ route }) => ({
+          title: route.params.experience?.name,
+        })}
       />
     </Stack.Navigator>
   );

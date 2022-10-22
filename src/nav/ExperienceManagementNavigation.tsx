@@ -11,7 +11,7 @@ const Stack = createStackNavigator<ExperienceManagementProp>();
 const ExperienceManagementNavigation: React.FC = () => {
   const [t] = useTranslation(["manage"]);
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="ManageExperiencesScreen">
       <Stack.Screen
         name="ManageExperiencesScreen"
         component={ManageExperiencesScreen}

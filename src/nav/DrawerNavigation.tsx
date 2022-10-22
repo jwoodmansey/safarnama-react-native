@@ -13,6 +13,7 @@ import MapNavigation from "./MapNavigation";
 import AboutNavigator from "../features/about/nav/AboutNavigator";
 import PrivacyNavigator from "../features/privacy/nav/PrivacyNavigator";
 import LanguageNavigator from "../features/language/nav/LanguageNavigator";
+import SettingsNavigator from "../features/settings/nav/SettingsNavigator";
 
 const Drawer = createDrawerNavigator<RootStackNavigationProp>();
 
@@ -40,6 +41,7 @@ const DrawerNavigation: React.FC = () => {
       <Drawer.Screen name="About" component={AboutNavigator} />
       <Drawer.Screen name="Privacy" component={PrivacyNavigator} />
       <Drawer.Screen name="Language" component={LanguageNavigator} />
+      <Drawer.Screen name="Settings" component={SettingsNavigator} />
     </Drawer.Navigator>
   );
 };

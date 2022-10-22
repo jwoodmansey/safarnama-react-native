@@ -8,13 +8,23 @@ import { Drawer } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedExperience } from "../store/experience/experienceReducer";
 import { selectMyExperiences } from "../store/experience/experienceSelectors";
+import { selectQuickExperienceSwitching } from "../store/settings/settingsSelector";
 import { navigate } from "./NavigationRef";
 
 const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const dispatch = useDispatch();
+  const isQuickExperienceSwitchingEnabled = useSelector(
+    selectQuickExperienceSwitching
+  );
   const onPressViewCurrent = (id: string) => () => {
-    dispatch(setSelectedExperience({ id }));
-    navigate("MapScreen");
+    if (isQuickExperienceSwitchingEnabled) {
+      dispatch(setSelectedExperience({ id }));
+      navigate("MapScreen");
+    } else {
+      navigate("ExperienceDetailsScreen", {
+        experienceId: id,
+      });
+    }
   };
   const onPressFeatured = () =>
     navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
@@ -24,6 +34,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const onPressAbout = () => navigate("About");
   const onPressPrivacySettings = () => navigate("Privacy");
   const onPressLanguageSettings = () => navigate("Language");
+  const onPressCustomise = () => navigate("Settings");
 
   const experiences = useSelector(selectMyExperiences);
   const [t] = useTranslation(["glossary", "manage", "about", "settings"]);
@@ -59,6 +70,11 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
           icon="translate"
           label={t("settings:language.language")}
           onPress={onPressLanguageSettings}
+        />
+        <Drawer.Item
+          icon="cog"
+          label={t("settings:customise.customise")}
+          onPress={onPressCustomise}
         />
       </Drawer.Section>
       <Drawer.Section title={t("glossary:about")}>

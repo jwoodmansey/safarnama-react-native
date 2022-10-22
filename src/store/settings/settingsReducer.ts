@@ -6,20 +6,28 @@ export type LanguageSetting = keyof typeof resources | undefined;
 
 type SettingsState = {
   lng?: LanguageSetting;
+  quickExperienceSwitching?: boolean;
+};
+
+const initialState: SettingsState = {
+  lng: undefined,
+  quickExperienceSwitching: undefined,
 };
 
 const settingsSlice = createSlice({
   name: "settings",
-  initialState: {
-    lng: undefined,
-  } as SettingsState,
+  initialState,
   reducers: {
     changeLanguage: (state, action: PayloadAction<LanguageSetting>) => {
       state.lng = action.payload;
     },
+    setQuickExperienceSwitching: (state, action: PayloadAction<boolean>) => {
+      state.quickExperienceSwitching = action.payload;
+    },
   },
 });
 
-export const { changeLanguage } = settingsSlice.actions;
+export const { changeLanguage, setQuickExperienceSwitching } =
+  settingsSlice.actions;
 
 export default settingsSlice.reducer;
