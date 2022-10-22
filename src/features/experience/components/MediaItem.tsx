@@ -9,9 +9,11 @@ import {
   Subheading,
   Title,
 } from "react-native-paper";
+import dynamicLinks from "@react-native-firebase/dynamic-links";
 import { MediaDocument } from "../../../types/common/media";
 import { openInAppBrowser } from "../../../utils/linking";
 import MediaThumb from "./MediaThumb";
+import { handleDeeplink } from "../../../hooks/useDeeplinking";
 
 type Props = {
   media: MediaDocument;
@@ -49,7 +51,17 @@ const MediaItem: React.FC<Props> = ({ media }) => {
               <Divider style={styles.externalLinkDivider} />
               <Subheading>{t("media:links")}</Subheading>
               {media.externalLinks.map((l) => {
-                const onPress = () => openInAppBrowser(l.url);
+                const onPress = async () => {
+                  try {
+                    // First check if this was a dynamic link (likely a link to an experience)
+                    const resolved = await dynamicLinks().resolveLink(l.url);
+                    const result = handleDeeplink(resolved.url);
+                    if (result) return;
+                  } catch (e) {
+                    // noop
+                  }
+                  openInAppBrowser(l.url);
+                };
                 const left = () => <List.Icon icon="open-in-new" />;
                 return (
                   <List.Section key={l.name}>
