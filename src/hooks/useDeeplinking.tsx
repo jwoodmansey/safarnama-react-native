@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Linking } from "react-native";
 import { navigate } from "../nav/NavigationRef";
 
-const handleDeeplink = (url: string): boolean => {
+export const handleDeeplink = (url: string): boolean => {
   const split = url.split("/");
   if (split[split.length - 2] === "download") {
     navigate("ExperienceManagement", {

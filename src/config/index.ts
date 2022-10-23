@@ -1,7 +1,8 @@
 import { getBundleId } from "react-native-device-info";
 import { Source } from "react-native-fast-image";
 
-export const API_BASE_URL = "https://safarnama.lancs.ac.uk/api";
+export const BASE_URL = "https://safarnama.lancs.ac.uk/";
+export const API_BASE_URL = `${BASE_URL}/api`;
 
 type Tags = "Ports Past and Present" | "Safarnama";
 

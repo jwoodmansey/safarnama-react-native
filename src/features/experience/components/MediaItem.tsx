@@ -14,6 +14,7 @@ import { MediaDocument } from "../../../types/common/media";
 import { openInAppBrowser } from "../../../utils/linking";
 import MediaThumb from "./MediaThumb";
 import { handleDeeplink } from "../../../hooks/useDeeplinking";
+import { BASE_URL } from "../../../config";
 
 type Props = {
   media: MediaDocument;
@@ -53,12 +54,16 @@ const MediaItem: React.FC<Props> = ({ media }) => {
               {media.externalLinks.map((l) => {
                 const onPress = async () => {
                   try {
+                    console.log(media.externalLinks);
                     // First check if this was a dynamic link (likely a link to an experience)
                     const resolved = await dynamicLinks().resolveLink(l.url);
-                    const result = handleDeeplink(resolved.url);
-                    if (result) return;
+                    const handledDynamicLink = handleDeeplink(resolved.url);
+                    if (handledDynamicLink) return;
                   } catch (e) {
-                    // noop
+                    if (l.url.startsWith(BASE_URL)) {
+                      const handledLink = handleDeeplink(l.url);
+                      if (handledLink) return;
+                    }
                   }
                   openInAppBrowser(l.url);
                 };
