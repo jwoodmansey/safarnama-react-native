@@ -54,7 +54,6 @@ const MediaItem: React.FC<Props> = ({ media }) => {
               {media.externalLinks.map((l) => {
                 const onPress = async () => {
                   try {
-                    console.log(media.externalLinks);
                     // First check if this was a dynamic link (likely a link to an experience)
                     const resolved = await dynamicLinks().resolveLink(l.url);
                     const handledDynamicLink = handleDeeplink(resolved.url);
