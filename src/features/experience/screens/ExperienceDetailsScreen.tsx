@@ -8,6 +8,7 @@ import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useTranslation } from "react-i18next";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   downloadExperienceMedia,
   loadExperience,
@@ -25,7 +26,7 @@ import AuthorDetails from "../../experiences/components/AuthorDetails";
 type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
 
 const ExperienceDetailsScreen: React.FC = () => {
-  const nav = useNavigation();
+  const nav = useNavigation<StackNavigationProp<any>>();
   const route = useRoute<Route>();
   const { experience, experienceId } = route.params;
   const id = experience?._id || experienceId;
@@ -82,7 +83,7 @@ const ExperienceDetailsScreen: React.FC = () => {
   const onPressPlay = () => {
     if (id) {
       dispatch(setSelectedExperience({ id }));
-      nav.goBack();
+      nav.popToTop();
       nav.navigate("MapScreen", {});
     }
   };

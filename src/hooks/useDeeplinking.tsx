@@ -5,8 +5,23 @@ import { useCallback, useEffect, useState } from "react";
 import { Linking } from "react-native";
 import { navigate } from "../nav/NavigationRef";
 
+export const handleDeeplink = (url: string): boolean => {
+  const split = url.split("/");
+  if (split[split.length - 2] === "download") {
+    navigate("ExperienceManagement", {
+      screen: "ExperienceDetailsScreen",
+      params: {
+        experienceId: split[split.length - 1],
+      },
+    });
+    return true;
+  }
+  return false;
+};
+
 const useDeeplinking = () => {
   const [handledInitial, setHandledInitial] = useState(false);
+
   const handleDynamicLink = useCallback(
     (link: {
       dynamicLink: FirebaseDynamicLinksTypes.DynamicLink;
@@ -14,18 +29,10 @@ const useDeeplinking = () => {
     }) => {
       if (link.foreground || !handledInitial) {
         setHandledInitial(true);
-        const split = link.dynamicLink.url.split("/");
-        if (split[split.length - 2] === "download") {
-          navigate("ExperienceManagement", {
-            screen: "ExperienceDetailsScreen",
-            params: {
-              experienceId: split[split.length - 1],
-            },
-          });
-        }
+        handleDeeplink(link.dynamicLink.url);
       }
     },
-    [handledInitial, setHandledInitial]
+    [handledInitial]
   );
 
   useEffect(() => {
