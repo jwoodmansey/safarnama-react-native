@@ -16,6 +16,18 @@ import rootEpic from "./rootEpic";
 
 const epicMiddleware = createEpicMiddleware();
 
+const middlewares = getDefaultMiddleware({
+  serializableCheck: {
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  },
+}).concat(epicMiddleware);
+
+// flipper redux debugger
+if (__DEV__) {
+  const createDebugger = require("redux-flipper").default;
+  middlewares.push(createDebugger());
+}
+
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
@@ -27,11 +39,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }).concat(epicMiddleware),
+  middleware: middlewares,
 });
 
 const persistor = persistStore(store);
