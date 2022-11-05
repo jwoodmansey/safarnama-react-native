@@ -1,6 +1,6 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Video as ExpoVideo } from "expo-av";
+import { ResizeMode, Video as ExpoVideo } from "expo-av";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -70,6 +70,9 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
           usePoster={false}
           shouldPlay={false}
           style={styles.video}
+          resizeMode={
+            Platform.OS === "ios" ? ResizeMode.COVER : ResizeMode.CONTAIN
+          }
           source={Platform.OS === "android" ? source : { uri: media.path }}
         />
       );
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   video: {
-    height: 150,
+    height: 200,
     width: "100%",
   },
   audio: {
