@@ -6,20 +6,28 @@ export type LanguageSetting = keyof typeof resources | undefined;
 
 type SettingsState = {
   lng?: LanguageSetting;
+  hidePermissionsBanner: boolean;
+};
+
+const initialState: SettingsState = {
+  lng: undefined,
+  hidePermissionsBanner: false,
 };
 
 const settingsSlice = createSlice({
   name: "settings",
-  initialState: {
-    lng: undefined,
-  } as SettingsState,
+  initialState,
   reducers: {
     changeLanguage: (state, action: PayloadAction<LanguageSetting>) => {
       state.lng = action.payload;
     },
+    skippedPermissionsBanner: (state) => {
+      state.hidePermissionsBanner = true;
+    },
   },
 });
 
-export const { changeLanguage } = settingsSlice.actions;
+export const { changeLanguage, skippedPermissionsBanner } =
+  settingsSlice.actions;
 
 export default settingsSlice.reducer;

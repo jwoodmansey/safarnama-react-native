@@ -5,6 +5,7 @@ import MapView, { Region } from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { selectIsOnboardingComplete } from "../../../store/onboarding/onboardingSelectors";
+import LocationPermissionsBanner from "../../../ui/LocationPermissionsBanner";
 import OfflineBanner from "../../../ui/OfflineBanner";
 import ActionMenu from "../components/ActionMenu";
 import ExperienceMapView from "../components/ExperienceMapView";
@@ -91,6 +92,7 @@ const MapScreen: React.FC = () => {
       {!experience?.downloaded && (
         <OfflineBanner title={t("youAreOfflineAndNotDownloaded")} />
       )}
+      <LocationPermissionsBanner />
       <ActionMenu
         onPressCentre={centreMap}
         isRegionVisible={isRegionVisible}
