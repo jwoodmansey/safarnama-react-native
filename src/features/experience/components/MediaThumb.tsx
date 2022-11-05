@@ -103,6 +103,7 @@ const MediaThumb: React.FC<Props> = ({ media }) => {
             fitPolicy={1}
             style={[styles.pdf, { backgroundColor: colors.card }]}
             source={{ ...source, cache: true }}
+            trustAllCerts={false}
           />
           <TouchableOpacity
             style={StyleSheet.absoluteFill}

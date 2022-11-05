@@ -48,6 +48,7 @@ const PlaceItem: React.FC<Props> = ({ item, currentLocation, onPress }) => {
     if (pdfThumb) {
       return (
         <Pdf
+          trustAllCerts={false}
           singlePage
           fitPolicy={1}
           style={[styles.placeCardImage, { backgroundColor: colors.card }]}

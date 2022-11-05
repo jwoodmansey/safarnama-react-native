@@ -16,7 +16,11 @@ const PDFScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={[StyleSheet.absoluteFill]}>
-        <Pdf source={{ uri: getPath(media) }} style={styles.pdf} />
+        <Pdf
+          trustAllCerts={false}
+          source={{ uri: getPath(media), cache: true }}
+          style={styles.pdf}
+        />
       </SafeAreaView>
       <AcknowledgementsOverlay acknowledgements={media.acknowledgements} />
     </View>
