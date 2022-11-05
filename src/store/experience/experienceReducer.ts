@@ -34,22 +34,24 @@ type ExperienceState = {
   selectedPlace: PointOfInterestDocument | undefined;
   featuredExperiences: ExperienceRefData[];
   selectedExperience: string | undefined;
-  media: Record<string, MediaDocument>;
+  media: Record<string, MediaDocument & { localPath?: string }>;
   isKeyModalVisible?: boolean;
   isDownloading?: boolean;
 };
 
+const initialState: ExperienceState = {
+  experiences: {},
+  selectedPlace: undefined,
+  selectedExperience: undefined,
+  featuredExperiences: [],
+  media: {},
+  isKeyModalVisible: false,
+  isDownloading: false,
+};
+
 const experienceReducer = createSlice({
   name: "experience",
-  initialState: {
-    experiences: {},
-    selectedPlace: undefined,
-    selectedExperience: undefined,
-    featuredExperiences: [],
-    media: {},
-    isKeyModalVisible: false,
-    isDownloading: false,
-  } as ExperienceState,
+  initialState,
   reducers: {
     loadExperience: (_, __: LoadExperience) => {},
     loadedExperience: (state, action: LoadedExperiences) => {
@@ -57,15 +59,20 @@ const experienceReducer = createSlice({
         ...state.experiences[action.payload.experience.data._id],
         ...action.payload.experience,
       };
-      const newMedia = Object.values(
+      const media = Object.values(
         getMediaFromExperienceData(action.payload.experience)
-      ).filter((m) => state.media[m._id] === undefined);
+      );
       state.media = {
         ...state.media,
-        ...newMedia.reduce((acc, cur) => {
-          acc[cur._id] = cur;
-          return acc;
-        }, {} as Record<string, MediaDocument>),
+        ...media.reduce(
+          (acc, cur) => ({
+            ...acc,
+            [cur._id]: state.media[cur._id]
+              ? { ...cur, localPath: state.media[cur._id].localPath }
+              : cur,
+          }),
+          {} as Record<string, MediaDocument>
+        ),
       };
     },
     setSelectedExperience: (state, action: LoadExperience) => {
