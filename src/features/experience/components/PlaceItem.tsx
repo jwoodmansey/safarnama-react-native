@@ -4,9 +4,7 @@ import haversine from "haversine-distance";
 import { StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Card, Paragraph, Title } from "react-native-paper";
-import Pdf from "react-native-pdf";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "@react-navigation/native";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
 import { getPath } from "../../../store/mediaService";
 import { getMediaType, MediaType } from "../../../types/media";
@@ -25,7 +23,7 @@ type Props = {
 
 const PlaceItem: React.FC<Props> = ({ item, currentLocation, onPress }) => {
   const [t] = useTranslation(["distance", "media"]);
-  const { colors } = useTheme();
+  // const { colors } = useTheme();
 
   const renderThumb = () => {
     const imageThumb = item.media.find(
@@ -47,12 +45,12 @@ const PlaceItem: React.FC<Props> = ({ item, currentLocation, onPress }) => {
     );
     if (pdfThumb) {
       return (
-        <Pdf
-          trustAllCerts={false}
-          singlePage
-          fitPolicy={1}
-          style={[styles.placeCardImage, { backgroundColor: colors.card }]}
-          source={{ uri: getPath(pdfThumb), cache: true }}
+        <FastImage
+          style={styles.placeCardImage}
+          resizeMode="center"
+          source={{
+            uri: pdfThumb.thumbPath,
+          }}
         />
       );
     }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 
@@ -9,13 +9,21 @@ type Props = {
 const PlacesSearch: React.VFC<Props> = ({ onChangeText }) => {
   const [searchText, setSearchText] = useState("");
 
-  const change = (text: string) => {
-    onChangeText(text);
-    setSearchText(text);
-  };
+  const change = useCallback(
+    (text: string) => {
+      setSearchText(text);
+      onChangeText(text);
+    },
+    [onChangeText]
+  );
 
   return (
-    <Searchbar style={styles.search} onChangeText={change} value={searchText} />
+    <Searchbar
+      style={styles.search}
+      onChangeText={change}
+      value={searchText}
+      placeholder="Search..."
+    />
   );
 };
 
@@ -27,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlacesSearch;
+export default memo(PlacesSearch);
