@@ -22,7 +22,9 @@
     "removeExplanation": "Are you sure you want to remove this experience?",
     "experienceRemoved": "Experience removed",
     "youAreOffline": "You appear to be offline",
-    "youAreOfflineAndNotDownloaded": "You appear to be offline. This experience has not been downloaded, so some media may be unavailable."
+    "youAreOfflineAndNotDownloaded": "You appear to be offline. This experience has not been downloaded, so some media may be unavailable.",
+    "locationPermissionMissing": "$t(glossary:appName) requires location permissions to show your location on the map and to inform you of nearby places.",
+
   },
   "route": {
     "route": "Route",
@@ -90,6 +92,7 @@
     "skip": "Skip",
     "experience": "Experience",
     "about": "About",
-    "manage": "Manage"
+    "manage": "Manage",
+    "fix": "fix"
   }
 }
