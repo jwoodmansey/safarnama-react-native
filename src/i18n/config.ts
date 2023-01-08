@@ -5,6 +5,19 @@ import { TAG } from "../config";
 import en from "./en/index.json";
 import cy from "./cy/index.json";
 
+const SAFARNAMA_EN = {
+  about: {
+    ...en.about,
+    projectName: "Safarnama",
+    aboutFull:
+      "<0>With Safarnama you can download and explore curated cultural heritage experiences for Delhi, India: 'Gadhr se Azaadi, (Rebellion to Freedom), 1857-1947' and 'Delhi Partition City'. Users receive a push notification when they are close to a place of interest with media attached to it. Explore Delhi's heritage as part of your everyday commute or use the app to explore Delhi as a visitor.</0>",
+  },
+  glossary: {
+    ...en.glossary,
+    appName: "Safarnama",
+  },
+};
+
 // see https://github.com/i18next/i18next/issues/1504#issuecomment-742727015 for typesafety
 export const resources = {
   en: {

@@ -263,6 +263,12 @@ android {
             applicationIdSuffix '.portspastpresent'
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
+        wordsworth {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationIdSuffix '.wordsworth'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
     }
     buildTypes {
         debug {
