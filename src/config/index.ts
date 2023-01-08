@@ -9,6 +9,7 @@ type Tags = "Ports Past and Present" | "Safarnama" | "Dorothy Wordsworth Walks";
 const getTag = (): Tags => {
   switch (getBundleId()) {
     case "com.safarnama.safarnama.wordsworth":
+    case "com.safarnamasoftware.wordsworth":
       return "Dorothy Wordsworth Walks";
     case "com.safarnama.safarnama.portspastpresent":
     case "eu.portspastpresent.app":
