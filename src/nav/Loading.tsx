@@ -16,7 +16,10 @@ const Loading: React.FC = () => {
   return (
     <SpinnerOverlay
       overlayColor={colors.backdrop}
-      textContent={`Downloading media item ${downloading?.downloaded} of ${downloading?.total}`}
+      textContent={t("downloadingItems", {
+        total: downloading?.total,
+        downloaded: downloading?.downloaded,
+      })}
       textStyle={{ color: Colors.white }}
       visible={isVisible}
     />
