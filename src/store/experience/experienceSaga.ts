@@ -21,6 +21,7 @@ import {
   loadFeaturedExperiences,
   updateExperiences,
   downloadedMediaItem,
+  setWillDownloadMedia,
 } from "./experienceReducer";
 import { selectExperience, selectExperiences } from "./experienceSelectors";
 import { MediaDocument } from "../../types/common/media";
@@ -75,6 +76,7 @@ function* dowloadExperienceMediaSaga(action: LoadExperience) {
   const allMedia = getMediaFromExperienceData(experience);
 
   const mediaArray = [...Object.values(allMedia)];
+  yield put(setWillDownloadMedia({ media: mediaArray.map((m) => m._id) }));
   yield all(mediaArray.map((media) => call(downloadMediaItemSaga, media)));
   yield put(
     downloadedMedia({
