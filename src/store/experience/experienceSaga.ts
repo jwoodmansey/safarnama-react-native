@@ -22,6 +22,7 @@ import {
   updateExperiences,
   downloadedMediaItem,
   setWillDownloadMedia,
+  errorDownloadingMedia,
 } from "./experienceReducer";
 import { selectExperience, selectExperiences } from "./experienceSelectors";
 import { MediaDocument } from "../../types/common/media";
@@ -45,11 +46,11 @@ function* loadFeaturedExperiencesSaga() {
 
 function* updateExperiencesSaga() {
   const experiences = yield* select(selectExperiences);
-  Object.values(experiences)
-    .filter((e) => e.played === true)
-    .forEach((e) => {
-      put(loadExperience({ id: e.data._id }));
-    });
+  yield all(
+    Object.values(experiences)
+      .filter((e) => e.played === true)
+      .map((e) => put(loadExperience({ id: e.data._id })))
+  );
 }
 
 const { dirs } = RNFetchBlob.fs;
@@ -76,23 +77,27 @@ function* dowloadExperienceMediaSaga(action: LoadExperience) {
   const allMedia = getMediaFromExperienceData(experience);
 
   const mediaArray = [...Object.values(allMedia)];
-  yield put(setWillDownloadMedia({ media: mediaArray.map((m) => m._id) }));
-  yield all(mediaArray.map((media) => call(downloadMediaItemSaga, media)));
-  yield put(
-    downloadedMedia({
-      experienceId: id,
-      media: mediaArray.reduce(
-        (prev, curr) => ({
-          ...prev,
-          [curr._id]: {
-            ...curr,
-            localPath: `${dirs.DocumentDir}/${curr._id}`,
-          },
-        }),
-        {}
-      ),
-    })
-  );
+  try {
+    yield put(setWillDownloadMedia({ media: mediaArray.map((m) => m._id) }));
+    yield all(mediaArray.map((media) => call(downloadMediaItemSaga, media)));
+    yield put(
+      downloadedMedia({
+        experienceId: id,
+        media: mediaArray.reduce(
+          (prev, curr) => ({
+            ...prev,
+            [curr._id]: {
+              ...curr,
+              localPath: `${dirs.DocumentDir}/${curr._id}`,
+            },
+          }),
+          {}
+        ),
+      })
+    );
+  } catch (e) {
+    yield put(errorDownloadingMedia());
+  }
 }
 
 export default function* experienceSaga() {
