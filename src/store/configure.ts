@@ -11,16 +11,21 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import AsyncStorage from "@react-native-community/async-storage";
+import createSagaMiddleware from "redux-saga";
 import rootReducer from "./rootReducer";
 import rootEpic from "./rootEpic";
+import rootSaga from "./rootSaga";
 
 const epicMiddleware = createEpicMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = getDefaultMiddleware({
   serializableCheck: {
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
   },
-}).concat(epicMiddleware);
+})
+  .concat(epicMiddleware)
+  .concat(sagaMiddleware);
 
 // flipper redux debugger
 if (__DEV__) {
@@ -47,3 +52,4 @@ const persistor = persistStore(store);
 export { store, persistor };
 
 epicMiddleware.run(rootEpic);
+sagaMiddleware.run(rootSaga);

@@ -15,6 +15,9 @@ export type LoadExperience = PayloadAction<{ id: string }>;
 type LoadedExperiences = PayloadAction<{
   experience: ExperienceSnapshotData;
 }>;
+type DownloadedMediaItem = PayloadAction<{
+  id: string;
+}>;
 type DownloadedMedia = PayloadAction<{
   media: Record<string, MediaDocument>;
   experienceId: string;
@@ -112,6 +115,9 @@ const experienceReducer = createSlice({
       };
       state.isDownloading = false;
     },
+    downloadedMediaItem(state, action: DownloadedMediaItem) {
+      console.log("downloaded media item", action.payload);
+    },
     errorDownloadingMedia: (state) => {
       state.isDownloading = false;
     },
@@ -138,6 +144,7 @@ export const {
   loadFeaturedExperiences,
   loadedFeaturedExperiences,
   downloadExperienceMedia,
+  downloadedMediaItem,
   downloadedMedia,
   errorDownloadingMedia,
   toggleKeyModal,
