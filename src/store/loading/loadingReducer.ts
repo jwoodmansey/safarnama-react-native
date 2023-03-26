@@ -1,5 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  downloadedMedia,
+  downloadExperienceMedia,
+  errorDownloadingMedia,
+} from "../experience/experienceReducer";
 
 export type StartLoadingPayloadAction = PayloadAction<any>;
 
@@ -19,6 +24,18 @@ const loadingSlice = createSlice({
     stopLoading: (state) => {
       state.isLoading = false;
     },
+  },
+  extraReducers: (builder) => {
+    const startLoading = (state: LoadingState) => {
+      state.isLoading = true;
+    };
+    const stopLoading = (state: LoadingState) => {
+      state.isLoading = false;
+    };
+
+    builder.addCase(downloadExperienceMedia, startLoading);
+    builder.addCase(downloadedMedia, stopLoading);
+    builder.addCase(errorDownloadingMedia, stopLoading);
   },
 });
 
