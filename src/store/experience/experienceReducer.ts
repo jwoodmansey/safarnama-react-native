@@ -15,6 +15,12 @@ export type LoadExperience = PayloadAction<{ id: string }>;
 type LoadedExperiences = PayloadAction<{
   experience: ExperienceSnapshotData;
 }>;
+type DownloadedMediaItem = PayloadAction<{
+  id: string;
+}>;
+type WillDownloadMedia = PayloadAction<{
+  media: string[];
+}>;
 type DownloadedMedia = PayloadAction<{
   media: Record<string, MediaDocument>;
   experienceId: string;
@@ -37,6 +43,7 @@ type ExperienceState = {
   media: Record<string, MediaDocument & { localPath?: string }>;
   isKeyModalVisible?: boolean;
   isDownloading?: boolean;
+  downloadedMedia?: Record<string, boolean>;
 };
 
 const initialState: ExperienceState = {
@@ -100,8 +107,14 @@ const experienceReducer = createSlice({
     },
     downloadExperienceMedia: (state, _: LoadExperience) => {
       state.isDownloading = true;
+      state.downloadedMedia = {};
     },
-    downloadedMedia: (state, action: DownloadedMedia) => {
+    setWillDownloadMedia(state, action: WillDownloadMedia) {
+      state.downloadedMedia = action.payload.media.reduce((prev, curr) => {
+        return { ...prev, [curr]: false };
+      }, {} as Record<string, boolean>);
+    },
+    downloadedMedia(state, action: DownloadedMedia) {
       state.media = {
         ...state.media,
         ...action.payload.media,
@@ -111,6 +124,11 @@ const experienceReducer = createSlice({
         downloaded: true,
       };
       state.isDownloading = false;
+    },
+    downloadedMediaItem(state, action: DownloadedMediaItem) {
+      if (state.downloadedMedia) {
+        state.downloadedMedia[action.payload.id] = true;
+      }
     },
     errorDownloadingMedia: (state) => {
       state.isDownloading = false;
@@ -137,7 +155,9 @@ export const {
   setSelectedPlace,
   loadFeaturedExperiences,
   loadedFeaturedExperiences,
+  setWillDownloadMedia,
   downloadExperienceMedia,
+  downloadedMediaItem,
   downloadedMedia,
   errorDownloadingMedia,
   toggleKeyModal,

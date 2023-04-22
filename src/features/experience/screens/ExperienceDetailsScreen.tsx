@@ -1,14 +1,14 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { Alert, LayoutAnimation, StyleSheet, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
 import MapView, { Marker } from "react-native-maps";
 import { Button, Chip, Paragraph, ProgressBar } from "react-native-paper";
-import { useDispatch, useSelector } from "react-redux";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import { useTranslation } from "react-i18next";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { useDispatch, useSelector } from "react-redux";
 import {
   downloadExperienceMedia,
   loadExperience,
@@ -98,6 +98,10 @@ const ExperienceDetailsScreen: React.FC = () => {
           style: "default",
           onPress: () => {
             if (id) {
+              onPressPlay();
+              LayoutAnimation.configureNext(
+                LayoutAnimation.Presets.easeInEaseOut
+              );
               dispatch(downloadExperienceMedia({ id }));
             }
           },

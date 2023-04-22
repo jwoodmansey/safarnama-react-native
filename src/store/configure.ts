@@ -1,5 +1,6 @@
+import AsyncStorage from "@react-native-community/async-storage";
+import crashlytics from "@react-native-firebase/crashlytics";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { createEpicMiddleware } from "redux-observable";
 import {
   FLUSH,
   PAUSE,
@@ -10,17 +11,27 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
-import AsyncStorage from "@react-native-community/async-storage";
+import createSagaMiddleware from "redux-saga";
 import rootReducer from "./rootReducer";
-import rootEpic from "./rootEpic";
+import rootSaga from "./rootSaga";
 
-const epicMiddleware = createEpicMiddleware();
+const sagaMiddleware = createSagaMiddleware({
+  onError(error, errorInfo) {
+    console.error("global catchError hit");
+    console.error({ error, errorInfo });
+    try {
+      crashlytics().recordError(error);
+    } catch (e) {
+      console.log("Cannot parse error");
+    }
+  },
+});
 
 const middlewares = getDefaultMiddleware({
   serializableCheck: {
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
   },
-}).concat(epicMiddleware);
+}).concat(sagaMiddleware);
 
 // flipper redux debugger
 if (__DEV__) {
@@ -46,4 +57,4 @@ const persistor = persistStore(store);
 
 export { store, persistor };
 
-epicMiddleware.run(rootEpic);
+sagaMiddleware.run(rootSaga);

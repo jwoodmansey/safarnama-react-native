@@ -66,6 +66,22 @@ export const selectMedia: Selector<RootState, Record<string, MediaDocument>> = (
   state
 ) => state.experience.media;
 
+export const selectDownloadingMedia: Selector<
+  RootState,
+  { total: number; downloaded: number } | undefined
+> = (state) => {
+  if (!state.experience.downloadedMedia) return undefined;
+  const all = Object.values(state.experience.downloadedMedia);
+  const allDownloaded = all.filter((downloaded) => downloaded);
+  if (all.length === 0) {
+    return undefined;
+  }
+  return {
+    total: all.length,
+    downloaded: allDownloaded.length,
+  };
+};
+
 export const selectExperience = createSelector(
   [selectExperiences, selectMedia, (_: RootState, id?: string) => id],
   (experiences, media, id) => {

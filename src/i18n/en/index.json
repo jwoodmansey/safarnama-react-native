@@ -72,7 +72,8 @@
     }
   },
   "loading": {
-    "justASec": "Just a sec…"
+    "justASec": "Just a sec…",
+    "downloadingItems": "Downloading media item {{downloaded}} of {{total}}"
   },
   "onboarding": {
     "welcome": "Welcome",
