@@ -73,6 +73,9 @@ export const selectDownloadingMedia: Selector<
   if (!state.experience.downloadedMedia) return undefined;
   const all = Object.values(state.experience.downloadedMedia);
   const allDownloaded = all.filter((downloaded) => downloaded);
+  if (all.length === 0) {
+    return undefined;
+  }
   return {
     total: all.length,
     downloaded: allDownloaded.length,
