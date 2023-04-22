@@ -24,6 +24,7 @@ import {
 } from "react-native-paper";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import Loading from "./src/nav/Loading";
 import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
@@ -54,17 +55,19 @@ const App: React.FC = () => {
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
         <PersistGate loading={null} persistor={persistor}>
-          <PaperProvider
-            theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-          >
-            <NavigationContainer
+          <SafeAreaProvider>
+            <PaperProvider
               theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-              ref={navigationRef}
             >
-              <Loading />
-              <RootNavigation />
-            </NavigationContainer>
-          </PaperProvider>
+              <NavigationContainer
+                theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+                ref={navigationRef}
+              >
+                <RootNavigation />
+                <Loading />
+              </NavigationContainer>
+            </PaperProvider>
+          </SafeAreaProvider>
         </PersistGate>
       </I18nextProvider>
     </Provider>
