@@ -32,19 +32,29 @@ import { selectExperience, selectExperiences } from "./experienceSelectors";
 
 function* loadExperienceSaga(action: LoadExperience) {
   const { id } = action.payload;
-  const response: AxiosResponse<ExperienceSnapshotData> = yield call(
-    axios.get,
-    `${API_BASE_URL}/experience/${id}/snapshot`
-  );
-  yield put(loadedExperience({ experience: response.data }));
+  try {
+    const response: AxiosResponse<ExperienceSnapshotData> = yield call(
+      axios.get,
+      `${API_BASE_URL}/experience/${id}/snapshot`
+    );
+    yield put(loadedExperience({ experience: response.data }));
+  } catch (error) {
+    console.error("Could not load experience", { id, error });
+  }
 }
 
 function* loadFeaturedExperiencesSaga() {
-  const response: AxiosResponse<ExperienceRefData[]> = yield call(
-    axios.get,
-    `${API_BASE_URL}/experiences/featured`
-  );
-  yield put(loadedFeaturedExperiences({ featuredExperiences: response.data }));
+  try {
+    const response: AxiosResponse<ExperienceRefData[]> = yield call(
+      axios.get,
+      `${API_BASE_URL}/experiences/featured`
+    );
+    yield put(
+      loadedFeaturedExperiences({ featuredExperiences: response.data })
+    );
+  } catch (error) {
+    console.error("Could not load featured experiences", { error });
+  }
 }
 
 function* updateExperiencesSaga() {
