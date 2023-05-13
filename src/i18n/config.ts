@@ -18,25 +18,43 @@ const SAFARNAMA_EN = {
   },
 };
 
+const PPP_EN = {
+  about: {
+    ...en.about,
+    projectName: "Ports Past and Present",
+    aboutFull:
+      "<0>A project led by University College Cork in partnership with Aberystwyth University, the University of Wales Trinity St David and Wexford County Council examining the cultural heritage of the <0>ports in the Irish sea basin</0>. Funded by the European Regional Development Fund through the <1>Ireland Wales Cooperation programme</1>.</0>",
+  },
+  glossary: {
+    ...en.glossary,
+    appName: "Ports Past and Present",
+  },
+};
+
+const WORDSWORTH_EN = {
+  about: {
+    ...en.about,
+    projectName: "Dorothy Wordsworth Walks",
+    aboutFull:
+      "<0>With this app you can download and explore curated cultural heritage experiences for Dorothy Wordsworth Walks.</0>",
+  },
+  glossary: {
+    ...en.glossary,
+    appName: "Dorothy Wordsworth Walks",
+  },
+};
+
+const tagMap = {
+  Safarnama: SAFARNAMA_EN,
+  "Ports Past and Present": PPP_EN,
+  "Dorothy Wordsworth Walks": WORDSWORTH_EN,
+};
+
 // see https://github.com/i18next/i18next/issues/1504#issuecomment-742727015 for typesafety
 export const resources = {
   en: {
     ...en,
-    about: {
-      ...en.about,
-      projectName:
-        TAG === "Ports Past and Present"
-          ? "Ports, Past and Present"
-          : "Safarnama",
-      aboutFull:
-        TAG === "Ports Past and Present"
-          ? "<0>A project led by University College Cork in partnership with Aberystwyth University, the University of Wales Trinity St David and Wexford County Council examining the cultural heritage of the <0>ports in the Irish sea basin</0>. Funded by the European Regional Development Fund through the <1>Ireland Wales Cooperation programme</1>.</0>"
-          : "<0>With Safarnama you can download and explore curated cultural heritage experiences for Delhi, India: 'Gadhr se Azaadi, (Rebellion to Freedom), 1857-1947' and 'Delhi Partition City'. Users receive a push notification when they are close to a place of interest with media attached to it. Explore Delhi's heritage as part of your everyday commute or use the app to explore Delhi as a visitor.</0>",
-    },
-    glossary: {
-      ...en.glossary,
-      appName: TAG === "Ports Past and Present" ? "Port Places" : "Safarnama",
-    },
+    ...tagMap[TAG],
   },
   cy: {
     ...cy,
