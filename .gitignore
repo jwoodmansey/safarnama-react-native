@@ -71,3 +71,4 @@ web-build/
 android/app/safarnama-release.jks
 android/app/src/main/res/values/secrets.xml
 android/app/src/portsPastAndPresent/res/values/secrets.xml
+android/app/src/wordsworth/res/values/secrets.xml

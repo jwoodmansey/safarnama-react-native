@@ -152,8 +152,8 @@ android {
         applicationId "com.safarnama.safarnama"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 34
-        versionName "2.3.2"
+        versionCode 35
+        versionName "2.4.0"
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
         multiDexEnabled true
 
@@ -261,6 +261,12 @@ android {
             dimension 'default'
             minSdkVersion rootProject.ext.minSdkVersion
             applicationIdSuffix '.portspastpresent'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        wordsworth {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationIdSuffix '.wordsworth'
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
     }

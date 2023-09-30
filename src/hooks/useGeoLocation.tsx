@@ -31,6 +31,10 @@ const useGeoLocation = () => {
         logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
         stopOnTerminate: false, // <-- Allow the background-service to continue tracking when user closes the app.
         startOnBoot: true, // <-- Auto start tracking when device is powered-up.
+        backgroundPermissionRationale: {
+          message:
+            "Allowing background access to location will let us notify you when you're near a point of interest",
+        },
       },
       (state) => {
         console.log(
