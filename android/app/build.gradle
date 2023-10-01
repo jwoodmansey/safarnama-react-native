@@ -269,6 +269,12 @@ android {
             applicationIdSuffix '.wordsworth'
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
+        weaversOfWonder {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationIdSuffix '.weaversofwonder'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
     }
     buildTypes {
         debug {
