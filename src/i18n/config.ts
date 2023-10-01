@@ -44,10 +44,24 @@ const WORDSWORTH_EN = {
   },
 };
 
+const WEAVERS_OF_WONDER_EN = {
+  about: {
+    ...en.about,
+    projectName: "Weavers of Wonder",
+    aboutFull:
+      "<0>Come with us into the hustle and bustle of the street markets of West Bengal; there are pungent aromas and bright colours everywhere, but in this outing no one is going to try to sell you anything. You are going to be invisible, peacefully looking over our volunteers’ shoulders as they seek out the most ethical and local raw materials and equipment for Weavers of Wonders crafters to use to make their products. This is the first App to create for craft the provenance that has always been on show and factored into the price of the Fine Art on sale at auction houses such as Sotheby’s and Christie’s in London, New York and Paris. We want you to be able to visualise and trace back as much of the ecosystem of the craft product from West Bengal that you may soon hold in your hands. We want you to be able to see the numbers of people that your purchase is going to benefit, not only the crafter her- or himself, not only their family even, but a whole network of small traders and manufacturers in West Bengal and in India as a whole. If you have any suggestions about how we can improve this App, please get in touch: magedera@yahoo.com</0>",
+  },
+  glossary: {
+    ...en.glossary,
+    appName: "Weavers of Wonder",
+  },
+};
+
 const tagMap = {
   Safarnama: SAFARNAMA_EN,
   "Ports Past and Present": PPP_EN,
   "Dorothy Wordsworth Walks": WORDSWORTH_EN,
+  "Weavers of Wonder": WEAVERS_OF_WONDER_EN,
 };
 
 // see https://github.com/i18next/i18next/issues/1504#issuecomment-742727015 for typesafety
