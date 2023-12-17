@@ -25,10 +25,7 @@ const AboutScreen: React.FC = () => {
     }
   };
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
+    <ScrollView contentContainerStyle={styles.contentContainer}>
       <FastImage style={styles.image} source={APP_CONFIG.logo} />
       {APP_CONFIG.showProjectName && (
         <Headline>{t("about:projectName")}</Headline>
@@ -49,11 +46,8 @@ const AboutScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
   contentContainer: {
+    padding: 20,
     alignItems: "center",
   },
   text: {
