@@ -5,9 +5,9 @@ import ViewPlaceScreen from "../features/experience/screens/ViewPlaceScreen";
 import MapScreen from "../features/experience/screens/MapScreen";
 import ImageScreen from "../media/ImageScreen";
 import PDFScreen from "../media/PDFScreen";
-import { MapNaviationProp } from "../types/nav/map";
 import DrawerToggle from "./DrawerToggle";
 import PlaceListScreen from "../features/experience/screens/PlaceListScreen";
+import { MapNaviationProp } from "../types/nav/root";
 
 const Stack = createStackNavigator<MapNaviationProp>();
 
@@ -29,7 +29,7 @@ const MapNavigation: React.FC = () => {
         options={({ route }) => ({
           title: route?.params?.media.name
             ? route?.params?.media.name
-            : route?.params?.media.description,
+            : route?.params?.media.description || "",
         })}
       />
       <Stack.Screen
@@ -38,7 +38,7 @@ const MapNavigation: React.FC = () => {
         options={({ route }) => ({
           title: route?.params?.media.name
             ? route?.params?.media.name
-            : route?.params?.media.description,
+            : route?.params?.media.description || "",
         })}
       />
       <Stack.Screen

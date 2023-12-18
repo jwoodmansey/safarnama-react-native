@@ -7,7 +7,7 @@ import { FAB } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { toggleKeyModal } from "../../../store/experience/experienceReducer";
-import { MapNaviationProp } from "../../../types/nav/map";
+import { MapNaviationProp } from "../../../types/nav/root";
 
 type Props = {
   onPressCentre: () => void;

@@ -1,5 +1,3 @@
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, LayoutAnimation, StyleSheet, View } from "react-native";
@@ -20,14 +18,12 @@ import {
   ExperienceRefData,
   ExperienceSnapshotData,
 } from "../../../types/common/experience";
-import { ExperienceManagementProp } from "../../../types/nav/experienceManagement";
+import { ExperienceNavigationScreen } from "../../../types/nav/root";
 import AuthorDetails from "../../experiences/components/AuthorDetails";
 
-type Route = RouteProp<ExperienceManagementProp, "ExperienceDetailsScreen">;
-
-const ExperienceDetailsScreen: React.FC = () => {
-  const nav = useNavigation<StackNavigationProp<any>>();
-  const route = useRoute<Route>();
+const ExperienceDetailsScreen: ExperienceNavigationScreen<
+  "ExperienceDetailsScreen"
+> = ({ route, navigation }) => {
   const { experience, experienceId } = route.params;
   const id = experience?._id || experienceId;
   const dispatch = useDispatch();
@@ -52,11 +48,11 @@ const ExperienceDetailsScreen: React.FC = () => {
           longitude: p.location.coordinates[0],
         }))
       );
-      nav.setOptions({
+      navigation.setOptions({
         title: experienceSnapshot.data.name,
       });
     }
-  }, [experienceSnapshot, nav]);
+  }, [experienceSnapshot, navigation]);
   const [t] = useTranslation(["manage", "glossary"]);
 
   // This is so we can display some data from the ref, even if we don't have a complete snapshot yet
@@ -83,8 +79,8 @@ const ExperienceDetailsScreen: React.FC = () => {
   const onPressPlay = () => {
     if (id) {
       dispatch(setSelectedExperience({ id }));
-      nav.popToTop();
-      nav.navigate("MapScreen", {});
+      navigation.popToTop();
+      navigation.navigate("Map", { screen: "MapScreen" });
     }
   };
   const onPressDownload = () => {

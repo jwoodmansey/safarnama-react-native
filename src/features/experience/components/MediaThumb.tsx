@@ -1,15 +1,14 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { ResizeMode, Video as ExpoVideo } from "expo-av";
+import { Video as ExpoVideo, ResizeMode } from "expo-av";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Platform,
   StyleSheet,
   TouchableOpacity,
+  View,
   useColorScheme,
   useWindowDimensions,
-  View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
 import { Caption, Colors } from "react-native-paper";
@@ -17,8 +16,8 @@ import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
 import { getHtmlFromFile, getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
-import { getMediaType, MediaType } from "../../../types/media";
-import { MapNaviationProp } from "../../../types/nav/map";
+import { MediaType, getMediaType } from "../../../types/media";
+import { MapNaviationProp } from "../../../types/nav/root";
 import AudioPlayer from "./AudioPlayer";
 
 type Props = {
@@ -28,7 +27,7 @@ type Props = {
 const MediaThumb: React.FC<Props> = ({ media }) => {
   const scheme = useColorScheme();
   const color = scheme === "light" ? Colors.black : Colors.white;
-  const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
+  const nav = useNavigation<MapNaviationProp<"ViewPlaceScreen">>();
   const { colors } = useTheme();
   const [t] = useTranslation(["media"]);
   const { width } = useWindowDimensions();

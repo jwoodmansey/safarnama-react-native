@@ -1,19 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
 import { ExperienceRefData } from "../../../types/common/experience";
-import { AddExperienceProp } from "../../../types/nav/addExperience";
+import { RootStackScreenProps } from "../../../types/nav/root";
 
 type Props = {
   experience: ExperienceRefData;
 };
 
-type Nav = StackNavigationProp<AddExperienceProp, "FeaturedExperienceScreen">;
-
 const FeaturedExperienceItem: React.FC<Props> = ({ experience }) => {
-  const nav = useNavigation<Nav>();
+  const nav =
+    useNavigation<RootStackScreenProps<"AddExperience">["navigation"]>();
   const onPress = () => {
     nav.navigate("ExperienceDetailsScreen", { experience });
   };

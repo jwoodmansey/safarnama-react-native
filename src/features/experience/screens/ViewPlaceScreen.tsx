@@ -1,31 +1,33 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { FlatList, ListRenderItem, Platform, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { MediaDocument } from "../../../types/common/media";
-import { MapNaviationProp } from "../../../types/nav/map";
 import EmptyPlaceScreen from "../components/EmptyPlaceScreen";
 import MediaItem from "../components/MediaItem";
 import PlaceFooter from "../components/PlaceFooter";
 import PlaceMarker from "../components/PlaceMarker";
+import { MapNavigationScreen } from "../../../types/nav/root";
 
-type Route = RouteProp<MapNaviationProp, "ViewPlaceScreen">;
+const renderItem: ListRenderItem<MediaDocument> = ({ item }) => (
+  <MediaItem media={item} />
+);
+const keyExtractor = (p: MediaDocument) => p._id;
 
-const ViewPlaceScreen: React.FC = () => {
-  const { params } = useRoute<Route>();
-  let { place } = params;
+const ViewPlaceScreen: MapNavigationScreen<"ViewPlaceScreen"> = ({ route }) => {
   const exp = useSelector(selectCurrentExperience);
-  if (!place) {
-    place = exp?.data.pointOfInterests?.find((p) => p._id === params.placeId);
-  }
-  const keyExtractor = (p: MediaDocument) => p._id;
+
+  const place = useMemo(() => {
+    const { params } = route;
+    if (route.params.place) {
+      return route.params.place;
+    }
+    return exp?.data.pointOfInterests?.find((p) => p._id === params.placeId);
+  }, [exp?.data.pointOfInterests, route]);
+
   const ref = useRef<MapView>(null);
-  const renderItem: ListRenderItem<MediaDocument> = ({ item }) => (
-    <MediaItem media={item} />
-  );
 
   const renderHeader = useCallback(
     () =>
@@ -56,6 +58,10 @@ const ViewPlaceScreen: React.FC = () => {
       });
     }
   }, [place]);
+
+  const renderEmpty = useMemo(() => <EmptyPlaceScreen />, []);
+  const renderFooter = useMemo(() => <PlaceFooter />, []);
+
   if (!place) {
     return null;
   }
@@ -66,8 +72,8 @@ const ViewPlaceScreen: React.FC = () => {
       data={place.media}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
-      ListEmptyComponent={<EmptyPlaceScreen />}
-      ListFooterComponent={<PlaceFooter />}
+      ListEmptyComponent={renderEmpty}
+      ListFooterComponent={renderFooter}
       scrollIndicatorInsets={scrollIndicatorInsets}
     />
   );

@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import ExperienceDetailsScreen from "../features/experience/screens/ExperienceDetailsScreen";
 import ManageExperiencesScreen from "../features/experiences/screens/ManageExperiencesScreen";
-import { ExperienceManagementProp } from "../types/nav/experienceManagement";
+import { ExperienceManagementProp } from "../types/nav/root";
 import DrawerToggle from "./DrawerToggle";
 
 const Stack = createStackNavigator<ExperienceManagementProp>();
