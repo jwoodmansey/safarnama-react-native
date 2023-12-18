@@ -30,7 +30,7 @@ const DrawerNavigation: React.FC = () => {
       screenOptions={{ headerShown: false }}
       useLegacyImplementation
     >
-      <Drawer.Screen name="MapScreen" component={MapNavigation} />
+      <Drawer.Screen name="Map" component={MapNavigation} />
       <Drawer.Screen
         name="ExperienceManagement"
         component={ExperienceManagementNavigation}

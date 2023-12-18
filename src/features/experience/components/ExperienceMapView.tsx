@@ -9,6 +9,7 @@ import { PointOfInterestDocument } from "../../../types/common/point-of-interest
 import { RouteDocument } from "../../../types/common/route";
 import PlaceMarker from "./PlaceMarker";
 import Route from "./Route";
+import { RootStackScreenProps } from "../../../types/nav/root";
 
 type Props = {
   centreMap: () => void;
@@ -16,7 +17,7 @@ type Props = {
 
 const ExperienceMapView: React.FC<Props> = ({ centreMap }) => {
   const experience = useSelector(selectCurrentExperience);
-  const nav = useNavigation();
+  const nav = useNavigation<RootStackScreenProps<"Map">["navigation"]>();
   const [t] = useTranslation(["route"]);
   const [currentlyZoomedTo, setCurrentlyZoomedTo] = useState<string>();
   const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
@@ -29,7 +30,7 @@ const ExperienceMapView: React.FC<Props> = ({ centreMap }) => {
       } else if (!isOnboardingComplete) {
         nav.navigate("OnboardingScreen");
       } else {
-        nav.navigate("AddExperience");
+        nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
       }
     }
 
@@ -47,7 +48,10 @@ const ExperienceMapView: React.FC<Props> = ({ centreMap }) => {
     isOnboardingComplete,
   ]);
   const onPressPlace = (place: PointOfInterestDocument) => () => {
-    nav.navigate("ViewPlaceScreen", { place, name: place.name });
+    nav.navigate("Map", {
+      screen: "ViewPlaceScreen",
+      params: { place, name: place.name, placeId: place._id },
+    });
   };
   const onPressRoute = (route: RouteDocument) => () => {
     if (route.description) {

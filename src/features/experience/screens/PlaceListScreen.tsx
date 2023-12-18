@@ -1,5 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import FuzzySearch from "fuzzy-search";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { FlatList, ListRenderItem, StyleSheet } from "react-native";
@@ -8,17 +6,15 @@ import { useSelector } from "react-redux";
 import { selectCurrentExperience } from "../../../store/experience/experienceSelectors";
 import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
-import { MapNaviationProp } from "../../../types/nav/map";
+import { MapNavigationScreen } from "../../../types/nav/map";
 import PlaceItem from "../components/PlaceItem";
 import PlacesSearch from "../components/PlacesSearch";
 
-type Nav = StackNavigationProp<MapNaviationProp, "ViewPlaceScreen">;
-
 const keyExtractor = (place: PointOfInterestDocument) => place._id;
 
-const PlaceListScreen: React.FC = () => {
-  const nav = useNavigation<Nav>();
-
+const PlaceListScreen: MapNavigationScreen<"PlaceListScreen"> = ({
+  navigation,
+}) => {
   const exp = useSelector(selectCurrentExperience);
   const places = exp?.data.pointOfInterests;
   const search = useMemo(() => {
@@ -47,25 +43,31 @@ const PlaceListScreen: React.FC = () => {
     };
   }, []);
 
-  const onPressCard = (place: PointOfInterestDocument) => {
-    nav.navigate("ViewPlaceScreen", {
-      name: place.name,
-      placeId: place._id,
-      place,
-    });
-  };
+  const onPressCard = useCallback(
+    (place: PointOfInterestDocument) => {
+      navigation.navigate("ViewPlaceScreen", {
+        name: place.name,
+        placeId: place._id,
+        place,
+      });
+    },
+    [navigation]
+  );
 
-  const renderItem: ListRenderItem<PointOfInterestDocument> = ({ item }) => {
-    return (
-      <PlaceItem
-        item={item}
-        onPress={onPressCard}
-        currentLocation={currentLocation}
-      />
-    );
-  };
+  const renderItem: ListRenderItem<PointOfInterestDocument> = useCallback(
+    ({ item }) => {
+      return (
+        <PlaceItem
+          item={item}
+          onPress={onPressCard}
+          currentLocation={currentLocation}
+        />
+      );
+    },
+    [currentLocation, onPressCard]
+  );
 
-  const searchBar = useCallback(() => {
+  const searchBar = useMemo(() => {
     return <PlacesSearch onChangeText={setSearchText} />;
   }, []);
 

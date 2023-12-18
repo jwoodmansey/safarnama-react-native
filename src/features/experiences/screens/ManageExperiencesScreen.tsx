@@ -10,18 +10,20 @@ import { selectMyExperiences } from "../../../store/experience/experienceSelecto
 import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { ExperienceSnapshotData } from "../../../types/common/experience";
 import ExperienceItem from "../components/ExperienceItem";
+import { ExperienceNavigationScreen } from "../../../types/nav/root";
 
 const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
 
-const ManageExperiencesScreen: React.FC = () => {
+const ManageExperiencesScreen: ExperienceNavigationScreen<'ManageExperiencesScreen'> = ({
+  navigation
+}) => {
   const data = useSelector(selectMyExperiences);
   const renderItem: ListRenderItem<ExperienceSnapshotData> = ({ item }) => (
     <ExperienceItem experience={item} />
   );
   const { colors } = useTheme();
-  const nav = useNavigation();
   const onPressFind = () => {
-    nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
+    navigation.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
   };
   const [t] = useTranslation(["manage"]);
   return (

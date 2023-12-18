@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import MapView, { Region } from "react-native-maps";
@@ -10,6 +10,7 @@ import OfflineBanner from "../../../ui/OfflineBanner";
 import ActionMenu from "../components/ActionMenu";
 import ExperienceMapView from "../components/ExperienceMapView";
 import KeyModal from "../components/KeyModal";
+import { MapNavigationScreen } from "../../../types/nav/root";
 
 const INITIAL_REGION = {
   latitude: 28.7041,
@@ -18,7 +19,7 @@ const INITIAL_REGION = {
   longitudeDelta: 0.0421,
 };
 
-const MapScreen: React.FC = () => {
+const MapScreen: MapNavigationScreen<"MapScreen"> = () => {
   const mapRef = useRef<MapView>(null);
   const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
 
@@ -27,28 +28,31 @@ const MapScreen: React.FC = () => {
   const [isCentred, setIsCentred] = useState(true);
   const centering = useRef(false);
 
-  const onRegionChange = (region: Region) => {
-    // bbox extent in minX, minY, maxX, maxY order
-    if (
-      experience?.bbox &&
-      region.latitude > experience.bbox[1] &&
-      region.latitude < experience.bbox[3] &&
-      region.longitude > experience.bbox[0] &&
-      region.longitude < experience.bbox[2]
-    ) {
-      if (!isRegionVisible) {
-        setIsRegionVisible(true);
+  const onRegionChange = useCallback(
+    (region: Region) => {
+      // bbox extent in minX, minY, maxX, maxY order
+      if (
+        experience?.bbox &&
+        region.latitude > experience.bbox[1] &&
+        region.latitude < experience.bbox[3] &&
+        region.longitude > experience.bbox[0] &&
+        region.longitude < experience.bbox[2]
+      ) {
+        if (!isRegionVisible) {
+          setIsRegionVisible(true);
+        }
+      } else if (isRegionVisible) {
+        setIsRegionVisible(false);
       }
-    } else if (isRegionVisible) {
-      setIsRegionVisible(false);
-    }
-    if (!centering.current) {
-      setIsCentred(false);
-    }
-  };
+      if (!centering.current) {
+        setIsCentred(false);
+      }
+    },
+    [experience?.bbox, isRegionVisible]
+  );
 
-  const centreMap = () => {
-    if (experience) {
+  const centreMap = useCallback(() => {
+    if (experience?.data.pointOfInterests) {
       const edgePadding = 20;
       mapRef.current?.fitToCoordinates(
         experience?.data.pointOfInterests?.map((p) => ({
@@ -71,7 +75,7 @@ const MapScreen: React.FC = () => {
       }, 2000);
       setIsCentred(true);
     }
-  };
+  }, [experience?.data.pointOfInterests]);
 
   const [t] = useTranslation("manage");
 
