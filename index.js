@@ -6,9 +6,9 @@ import { AppRegistry } from "react-native";
 import BackgroundFetch from "react-native-background-fetch";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import "react-native-gesture-handler";
-import PushNotification from "react-native-push-notification";
+// import PushNotification from "react-native-push-notification";
 import { enableScreens } from "react-native-screens";
-import Constants from "expo-constants";
+// import Constants from "expo-constants";
 import App from "./App";
 import { name as appName } from "./app.json";
 import { navigate } from "./src/nav/NavigationRef";
@@ -73,17 +73,17 @@ const HeadlessTask = async (event) => {
 //   });
 // };
 
-PushNotification.configure({
-  requestPermissions: false,
-  onNotification: (e) => {
-    if (e.data.placeId) {
-      navigate("ViewPlaceScreen", {
-        placeId: e.data.placeId,
-        name: e.data.name,
-      });
-    }
-  },
-});
+// PushNotification.configure({
+//   requestPermissions: false,
+//   onNotification: (e) => {
+//     if (e.data.placeId) {
+//       navigate("ViewPlaceScreen", {
+//         placeId: e.data.placeId,
+//         name: e.data.name,
+//       });
+//     }
+//   },
+// });
 
 AppRegistry.registerComponent(appName, () => App);
 

@@ -1693,9 +1693,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/cli@npm:0.22.19":
-  version: 0.22.19
-  resolution: "@expo/cli@npm:0.22.19"
+"@expo/cli@npm:0.22.20":
+  version: 0.22.20
+  resolution: "@expo/cli@npm:0.22.20"
   dependencies:
     "@0no-co/graphql.web": ^1.0.8
     "@babel/runtime": ^7.20.0
@@ -1771,7 +1771,7 @@ __metadata:
     ws: ^8.12.1
   bin:
     expo-internal: build/bin/cli
-  checksum: 018fce419cd9546d225b15177b066220560265c6fa85f7ea0aa49d52037384f7837fe71724c3492b2b4a4eaecefcbce8395b5c3476c7ae3be52769d468afa9f3
+  checksum: 59a39c02de6462a1da5e47fac5d0a3596e92925f7d1a8448163ab3dde6998544afc724fa0743016f2270697dec6e6c5663203ce9c04a5671b9fb9e5ecf11ce9d
   languageName: node
   linkType: hard
 
@@ -3219,7 +3219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/async-storage@npm:^1.12.1, @react-native-community/async-storage@npm:^1.6.1":
+"@react-native-community/async-storage@npm:^1.12.1":
   version: 1.12.1
   resolution: "@react-native-community/async-storage@npm:1.12.1"
   dependencies:
@@ -4374,16 +4374,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native-vector-icons@npm:^6.4.10":
-  version: 6.4.18
-  resolution: "@types/react-native-vector-icons@npm:6.4.18"
-  dependencies:
-    "@types/react": "*"
-    "@types/react-native": ^0.70
-  checksum: 1ef458cb5e7a37f41eb400e3153940b1b152e4df76a7c06c7a47c712dbfe46e14b9999f04dde1bd074f338f850e161c6c925174ddea33386b74f8112c940065b
-  languageName: node
-  linkType: hard
-
 "@types/react-native-video@npm:^5.0.13":
   version: 5.0.20
   resolution: "@types/react-native-video@npm:5.0.20"
@@ -4400,15 +4390,6 @@ __metadata:
   dependencies:
     "@types/react": ^17
   checksum: b248f03569fa7d747d07478d63c11c8c3e67f24a527a0ebeaf7424b205ba01e92819dbe44439234d4871d79842e7fbe83d2870956f5ad2e689e1e23f5f53edf1
-  languageName: node
-  linkType: hard
-
-"@types/react-native@npm:^0.70":
-  version: 0.70.19
-  resolution: "@types/react-native@npm:0.70.19"
-  dependencies:
-    "@types/react": "*"
-  checksum: 79b504fa56340631079e7c20ea0d9412ec14147b76d0ce189f4403936f529ef1e6fd031383afab117846c5ae039123bcf3afc948bae4432269c6780282726f71
   languageName: node
   linkType: hard
 
@@ -4869,7 +4850,6 @@ __metadata:
     "@types/react": ^18.2.6
     "@types/react-native": ^0.67.6
     "@types/react-native-push-notification": ^8.1.0
-    "@types/react-native-vector-icons": ^6.4.10
     "@types/react-native-video": ^5.0.13
     "@types/react-test-renderer": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^4.22.0
@@ -4904,30 +4884,23 @@ __metadata:
     react-native-background-fetch: ^4.2.7
     react-native-background-geolocation: ^4.18.6
     react-native-blob-util: ^0.21.2
-    react-native-camera: ^4.2.1
     react-native-clean-project: ^4.0.1
     react-native-device-info: ^14.0.4
     react-native-fast-image: ^8.6.3
     react-native-gesture-handler: ^2.24.0
-    react-native-image-pan-zoom: ^2.1.12
-    react-native-image-zoom-viewer: ^3.0.1
     react-native-inappbrowser-reborn: ^3.7.0
     react-native-loading-spinner-overlay: ^3.0.1
     react-native-maps: ^1.20.1
-    react-native-modal: ^13.0.1
+    react-native-modal: ^14.0.0-rc.1
     react-native-music-control: ^1.4.1
     react-native-paper: ^5.13.1
     react-native-pdf: ^6.7.7
     react-native-permissions: ^5.2.6
-    react-native-push-notification: ^8.1.1
-    react-native-qrcode-scanner: ^1.5.5
     react-native-reanimated: ^3.17.1
     react-native-render-html: ^6.3.4
-    react-native-safe-area-context: ^5.2.0
+    react-native-safe-area-context: ^5.3.0
     react-native-screens: ^4.9.2
-    react-native-splash-screen: ^3.3.0
     react-native-vector-icons: ^10.2.0
-    react-native-webview: ^13.13.4
     react-redux: ^8.0.2
     react-test-renderer: 18.3.1
     redux: ^4.2.0
@@ -7749,11 +7722,11 @@ __metadata:
   linkType: hard
 
 "expo@npm:^52.0.38":
-  version: 52.0.38
-  resolution: "expo@npm:52.0.38"
+  version: 52.0.39
+  resolution: "expo@npm:52.0.39"
   dependencies:
     "@babel/runtime": ^7.20.0
-    "@expo/cli": 0.22.19
+    "@expo/cli": 0.22.20
     "@expo/config": ~10.0.11
     "@expo/config-plugins": ~9.0.17
     "@expo/fingerprint": 0.11.11
@@ -7785,7 +7758,7 @@ __metadata:
       optional: true
   bin:
     expo: bin/cli
-  checksum: a0fd33792b6181505f74d5af606f006a7025db36a9fa1128d6e86117f5f4f955e108f13ad52c1df72246abd1608dbdaa9c038fccb9c115790efcb2b2e673fd29
+  checksum: c783be1980806803aaa3173aec950b4d5d9d3852643b78ffe1832313218ae6b36294b42c121342a095a98f0925728d6eca858a5f6ee48d42eb2ab41cbeee9970
   languageName: node
   linkType: hard
 
@@ -8874,7 +8847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:*, invariant@npm:2.2.4, invariant@npm:^2.2.4":
+"invariant@npm:*, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -11067,11 +11040,11 @@ __metadata:
   linkType: hard
 
 "nanoid@npm:^3.3.7":
-  version: 3.3.9
-  resolution: "nanoid@npm:3.3.9"
+  version: 3.3.10
+  resolution: "nanoid@npm:3.3.10"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 42b1dc3e05d6d4f846e65538dd6fbdf78419d8ef60c531f0faf3264cc90600041ebb53c4276013947e03dc3c9a1ac1fce5bb9e1c3a634db608e95349d7e9d3b6
+  checksum: fcc505b06a816c847d2ad4f5690893d4f9dc61863291d065b2b02d879be4ae60d09faf44f2c619ec08f732b627cf34f6d3dd2913e52d3fe287dedb0b84448c91
   languageName: node
   linkType: hard
 
@@ -11982,7 +11955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:*, prop-types@npm:^15.5.10, prop-types@npm:^15.5.7, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:*, prop-types@npm:^15.5.7, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -12177,12 +12150,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-animatable@npm:1.3.3":
-  version: 1.3.3
-  resolution: "react-native-animatable@npm:1.3.3"
+"react-native-animatable@npm:1.4.0":
+  version: 1.4.0
+  resolution: "react-native-animatable@npm:1.4.0"
   dependencies:
-    prop-types: ^15.7.2
-  checksum: eb35821de36ae4eb00f97d99fc22ed79bd017248092ff1299f9d46a7ab946de16d2e6d6bfbf4cab5ef77d0d3bf47684aec761a7670ec7d36aae8d77ab8ddd171
+    prop-types: ^15.8.1
+  checksum: a1b211aff745b97351d78643d641fa298f7d71524eaf22fee8a69257ce52e85d6b3caf8e7fd26a521af34984fba7402b7c632c35ea69d618769387d1dcb6b32a
   languageName: node
   linkType: hard
 
@@ -12212,15 +12185,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: e8558a00a7aeaf619b7661f251649ac15e28b62836fc3dad9890ae69d57dd498ef8f7de0de6bb45294ff7a6119ebe71e89f7e343f0b67dcf76e40852460adf11
-  languageName: node
-  linkType: hard
-
-"react-native-camera@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "react-native-camera@npm:4.2.1"
-  dependencies:
-    prop-types: ^15.6.2
-  checksum: 0e84ce657774694d1cc49395c43a8f2caabc03df36aa77aacfb5c797ad8cfe0368f4807deccc54e82ff2b193e8c2d1ce7ad504eedf7a9fc4719b38e39958a804
   languageName: node
   linkType: hard
 
@@ -12280,28 +12244,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-image-pan-zoom@npm:^2.1.12":
-  version: 2.1.12
-  resolution: "react-native-image-pan-zoom@npm:2.1.12"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 826ed254d27b079cb985b63c65d0f504f11987b68ae71bac0e1c0e99dc24d5816fc9b8d053eb04737c60c018ad520a1e9c4b99af26952646ccabe9fc2b3bd64f
-  languageName: node
-  linkType: hard
-
-"react-native-image-zoom-viewer@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "react-native-image-zoom-viewer@npm:3.0.1"
-  dependencies:
-    react-native-image-pan-zoom: ^2.1.12
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: bd32e382100fece8f815bacabe276f8f05a7c1edc1ff8485149fd863780de7d11a1a8241b837adad957e53ce1e19ef249410fdb312bc43fb7071b57fb879b78d
-  languageName: node
-  linkType: hard
-
 "react-native-inappbrowser-reborn@npm:^3.7.0":
   version: 3.7.0
   resolution: "react-native-inappbrowser-reborn@npm:3.7.0"
@@ -12350,16 +12292,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-modal@npm:^13.0.1":
-  version: 13.0.1
-  resolution: "react-native-modal@npm:13.0.1"
+"react-native-modal@npm:^14.0.0-rc.1":
+  version: 14.0.0-rc.1
+  resolution: "react-native-modal@npm:14.0.0-rc.1"
   dependencies:
-    prop-types: ^15.6.2
-    react-native-animatable: 1.3.3
+    react-native-animatable: 1.4.0
   peerDependencies:
     react: "*"
-    react-native: ">=0.65.0"
-  checksum: 15985fd6aaae7a2134ec1003c63abd384f4a17beabd0a80b74033c98eccee29161aa07150f479373fb43106cfb33b5837b7a4f1d2b721ff03b3727490c830a07
+    react-native: ">=0.70.0"
+  checksum: 19bca96dde148c14ed4cc0e52fedd0a12ca952815e4dcbea31d0a98962d75dc3c011c677f5f9cd15f2b88f78ccd03134647b280724bc6de148c25e28eea1a7e4
   languageName: node
   linkType: hard
 
@@ -12402,16 +12343,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-permissions@npm:^2.0.2":
-  version: 2.2.2
-  resolution: "react-native-permissions@npm:2.2.2"
-  peerDependencies:
-    react: ">=16.8.6"
-    react-native: ">=0.60.0"
-  checksum: cfc2b9d9c1e70a965faea108f546b34909cff36bc453e854ea6f129d3fa41c67d0db2fedd13d6041417276f9fd30c03b1aa44e0e20ffb883be3135a28fc94993
-  languageName: node
-  linkType: hard
-
 "react-native-permissions@npm:^5.2.6":
   version: 5.2.6
   resolution: "react-native-permissions@npm:5.2.6"
@@ -12423,29 +12354,6 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 313895bbd29c947d3f2b26dd58bec031a0216c4527c49ee48061e6167dedb8e690bb7cd27a1628d282b09bc31b05d48f998ebabcd7fc3e7ccb0da2bc8de3098d
-  languageName: node
-  linkType: hard
-
-"react-native-push-notification@npm:^8.1.1":
-  version: 8.1.1
-  resolution: "react-native-push-notification@npm:8.1.1"
-  peerDependencies:
-    "@react-native-community/push-notification-ios": ^1.10.1
-    react-native: ">=0.33"
-  checksum: 64d500c1163eaa4eee549e6e2f8204cac643f91ae918a227e9d93f8261afdebbdaa7ba5d12da0039155cbf6a599032dd15be4ebe53737cbeeadec4469893f00d
-  languageName: node
-  linkType: hard
-
-"react-native-qrcode-scanner@npm:^1.5.5":
-  version: 1.6.0
-  resolution: "react-native-qrcode-scanner@npm:1.6.0"
-  dependencies:
-    "@react-native-community/async-storage": ^1.6.1
-    prop-types: ^15.5.10
-    react-native-permissions: ^2.0.2
-  peerDependencies:
-    react-native-camera: ">=1.0.2"
-  checksum: 89fdd8132fa0944949f54d902c7245da96cd488536eae0b2f9923d518a822a4dec606f22001871344b6438149f446639b952fe2be281965d1be91b9af1a47bed
   languageName: node
   linkType: hard
 
@@ -12493,7 +12401,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^5.2.0":
+"react-native-safe-area-context@npm:^5.3.0":
   version: 5.3.0
   resolution: "react-native-safe-area-context@npm:5.3.0"
   peerDependencies:
@@ -12516,15 +12424,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-splash-screen@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "react-native-splash-screen@npm:3.3.0"
-  peerDependencies:
-    react-native: ">=0.57.0"
-  checksum: 14c565d5d4214f55586dcf6f7abd12d99d3e0667f67de3bda7aa24988971567b283a4187fbc0c6269c83b3c21d59d1950335c61bb0780ec2d065e20b3b9199d0
-  languageName: node
-  linkType: hard
-
 "react-native-vector-icons@npm:^10.2.0":
   version: 10.2.0
   resolution: "react-native-vector-icons@npm:10.2.0"
@@ -12537,19 +12436,6 @@ __metadata:
     fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
   checksum: fda930df4e63f12533268f5b339ebe4c77c691eae43503328466b3087ed868a06a4593fd246e75ac6b5ec955543eec35608c7922191bdcc3b3a94ed7f3575ef0
-  languageName: node
-  linkType: hard
-
-"react-native-webview@npm:^13.13.4":
-  version: 13.13.4
-  resolution: "react-native-webview@npm:13.13.4"
-  dependencies:
-    escape-string-regexp: ^4.0.0
-    invariant: 2.2.4
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 5dc6580a974c25c701f4e17027145c583574b3efc50a9d799328c82d169e0806fed6d1517652b9d1a4d877a0e8d7e70f98838e271399c763576a2cf6b60a8c29
   languageName: node
   linkType: hard
 

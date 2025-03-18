@@ -1,7 +1,7 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Colors } from "react-native-paper";
+import { MD2Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getPath } from "../store/mediaService";
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   pdf: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: Colors.black,
+    backgroundColor: MD2Colors.black,
   },
 });
 

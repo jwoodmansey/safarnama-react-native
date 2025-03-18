@@ -1,6 +1,6 @@
 import React from "react";
 import LottieView from "lottie-react-native";
-import PushNotification from "react-native-push-notification";
+// import PushNotification from "react-native-push-notification";
 import { StyleSheet, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import Header from "./Header";
@@ -16,7 +16,7 @@ type Props = {
 const OnBoardingPushNotifications: React.FC<Props> = ({ onNext }) => {
   const [t] = useTranslation(["onboarding", "glossary"]);
   const onPressEnabled = async () => {
-    await PushNotification.requestPermissions(["alert", "badge", "sound"]);
+    // await PushNotification.requestPermissions(["alert", "badge", "sound"]);
     onNext();
   };
   return (

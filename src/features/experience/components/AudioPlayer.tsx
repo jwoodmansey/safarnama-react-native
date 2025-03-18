@@ -1,8 +1,8 @@
-import { Audio, InterruptionModeIOS } from "expo-av";
+// import { Audio, InterruptionModeIOS } from "expo-av";
 import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import MusicControl, { Command } from "react-native-music-control";
-import { Colors, Text } from "react-native-paper";
+import { MD2Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
@@ -111,12 +111,16 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
       {!status.isPlaying ? (
         <>
           <TouchableOpacity onPress={playAudio} style={styles.button}>
-            <MaterialCommunityIcon color={Colors.black} size={50} name="play" />
+            <MaterialCommunityIcon
+              color={MD2Colors.black}
+              size={50}
+              name="play"
+            />
           </TouchableOpacity>
           {status.positionSeconds > 0 && (
             <TouchableOpacity onPress={stopAudio} style={styles.button}>
               <MaterialCommunityIcon
-                color={Colors.black}
+                color={MD2Colors.black}
                 size={50}
                 name="stop"
               />
@@ -125,7 +129,11 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         </>
       ) : (
         <TouchableOpacity onPress={pauseAudio} style={styles.button}>
-          <MaterialCommunityIcon color={Colors.black} size={50} name="pause" />
+          <MaterialCommunityIcon
+            color={MD2Colors.black}
+            size={50}
+            name="pause"
+          />
         </TouchableOpacity>
       )}
       <Text>{format(status.positionSeconds)} / </Text>
@@ -144,7 +152,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 100,
     marginEnd: 10,
-    backgroundColor: Colors.grey100,
+    backgroundColor: MD2Colors.grey100,
   },
 });
 

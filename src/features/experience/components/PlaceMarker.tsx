@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Platform } from "react-native";
 import { Circle, Marker } from "react-native-maps";
-import { Colors } from "react-native-paper";
+import { MD2Colors } from "react-native-paper";
 import { PointOfInterestDocument } from "../../../types/common/point-of-interest";
 import PlaceIcon from "./PlaceIcon";
 
@@ -14,7 +14,7 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
   return (
     <>
       <Marker
-        pinColor={Colors.red100}
+        pinColor={MD2Colors.red100}
         onPress={onPress}
         tracksViewChanges={Platform.OS === "android"}
         coordinate={{

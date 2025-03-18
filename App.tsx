@@ -18,9 +18,10 @@ import React from "react";
 import { I18nextProvider } from "react-i18next";
 import { useColorScheme } from "react-native";
 import {
-  DarkTheme as PaperDarkTheme,
+  MD2DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
+  ThemeBase,
 } from "react-native-paper";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -31,7 +32,7 @@ import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
 import i18n from "./src/i18n/config";
 
-const CombinedDefaultTheme: ReactNativePaper.Theme & Theme = {
+const CombinedDefaultTheme: ThemeBase & Theme = {
   ...PaperDefaultTheme,
   ...NavigationDefaultTheme,
   colors: {
@@ -39,7 +40,7 @@ const CombinedDefaultTheme: ReactNativePaper.Theme & Theme = {
     ...NavigationDefaultTheme.colors,
   },
 };
-const CombinedDarkTheme: ReactNativePaper.Theme & Theme = {
+const CombinedDarkTheme: ThemeBase & Theme = {
   ...PaperDarkTheme,
   ...NavigationDarkTheme,
   colors: {
@@ -57,10 +58,10 @@ const App: React.FC = () => {
         <PersistGate loading={null} persistor={persistor}>
           <SafeAreaProvider>
             <PaperProvider
-              theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+            // theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
             >
               <NavigationContainer
-                theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
+                // theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
                 ref={navigationRef}
               >
                 <RootNavigation />

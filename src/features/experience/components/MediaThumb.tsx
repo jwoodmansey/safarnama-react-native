@@ -1,6 +1,6 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { ResizeMode, Video as ExpoVideo } from "expo-av";
+// import { ResizeMode, Video as ExpoVideo } from "expo-av";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -12,7 +12,7 @@ import {
   View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
-import { Caption, Colors } from "react-native-paper";
+import { Caption, MD2Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
 import { getHtmlFromFile, getPath } from "../../../store/mediaService";
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   unsupported: {
     fontStyle: "italic",
-    color: Colors.grey600,
+    color: MD2Colors.grey600,
   },
   image: {
     maxHeight: 500,

@@ -4,6 +4,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+// background-geolocation
 Project background_geolocation = project(':react-native-background-geolocation')
 apply from: "${background_geolocation.projectDir}/app.gradle"
 
@@ -26,7 +27,7 @@ react {
     //   The list of variants to that are debuggable. For those we're going to
     //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
     //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
-     debuggableVariants = ["safarnamaDebug", "wordsWorthDebug", "portsPastAndPresentDebug"]
+    // debuggableVariants = ["liteDebug", "prodDebug"]
 
     /* Bundling */
     //   A list containing the node command and its flags. Default is just 'node'.
@@ -82,15 +83,13 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.safarnama"
+    namespace "com.safarnama.safarnama"
     defaultConfig {
         applicationId "com.safarnama.safarnama"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 35
         versionName "2.4.0"
-        missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
-        multiDexEnabled true
     }
     signingConfigs {
         debug {
@@ -99,30 +98,13 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-                release {
+                        release {
             storeFile file('safarnama-release.jks')
             storePassword 'delhi89'
             keyAlias = 'key0'
             keyPassword 'delhi89'
         }
-    }
-        flavorDimensions 'default'
-    productFlavors {
-        safarnama {
-            dimension 'default'
-        }
-        portsPastAndPresent {
-            dimension 'default'
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationIdSuffix '.portspastpresent'
-            targetSdkVersion rootProject.ext.targetSdkVersion
-        }
-        wordsworth {
-            dimension 'default'
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationIdSuffix '.wordsworth'
-            targetSdkVersion rootProject.ext.targetSdkVersion
-        }
+        
     }
     buildTypes {
         debug {
@@ -135,7 +117,6 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             shrinkResources false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            proguardFiles "${background_geolocation.projectDir}/proguard-rules.pro"
         }
     }
 }
@@ -143,10 +124,6 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-    implementation 'com.google.firebase:firebase-messaging:21.1.0'
-
-    implementation project(':react-native-splash-screen')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

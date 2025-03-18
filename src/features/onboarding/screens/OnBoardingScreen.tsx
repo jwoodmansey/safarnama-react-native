@@ -9,7 +9,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { Colors } from "react-native-paper";
+import { MD2Colors } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { complete } from "../../../store/onboarding/onboardingReducer";
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 10 / 2,
-    backgroundColor: Colors.blue500,
+    backgroundColor: MD2Colors.blue500,
     marginLeft: 10,
   },
   paginationDotsInactive: {
