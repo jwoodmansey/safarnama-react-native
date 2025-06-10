@@ -18,6 +18,9 @@ import React from "react";
 import { I18nextProvider } from "react-i18next";
 import { useColorScheme } from "react-native";
 import {
+  adaptNavigationTheme,
+  MD3DarkTheme,
+  MD3LightTheme,
   MD2DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider,
@@ -31,6 +34,18 @@ import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
 import i18n from "./src/i18n/config";
+
+//Add MD3LightTheme AND MD3DarkTheme i
+
+const { LightTheme, DarkTheme } = adaptNavigationTheme({
+  reactNavigationLight: NavigationDefaultTheme,
+  reactNavigationDark: NavigationDarkTheme,
+});
+
+// export const ThemeContext = createContext({
+//   isDark: false,
+//   theme: LightTheme,
+// });
 
 const CombinedDefaultTheme: ThemeBase & Theme = {
   ...PaperDefaultTheme,
@@ -51,19 +66,22 @@ const CombinedDarkTheme: ThemeBase & Theme = {
 
 const App: React.FC = () => {
   const colorScheme = useColorScheme();
-  const isDarkMode = colorScheme === "dark";
+  const isDarkTheme = colorScheme == "dark";
+  const theme = isDarkTheme ? MD3DarkTheme : MD3LightTheme;
+
+  // Paper theme (MD3)
+  const paperTheme = isDarkTheme ? MD3DarkTheme : MD3LightTheme;
+
+  // Navigation theme adaptado
+  const navigationTheme = isDarkTheme ? DarkTheme : LightTheme;
+
   return (
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
         <PersistGate loading={null} persistor={persistor}>
           <SafeAreaProvider>
-            <PaperProvider
-            // theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-            >
-              <NavigationContainer
-                // theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-                ref={navigationRef}
-              >
+            <PaperProvider theme={paperTheme}>
+              <NavigationContainer theme={navigationTheme} ref={navigationRef}>
                 <RootNavigation />
                 <Loading />
               </NavigationContainer>
