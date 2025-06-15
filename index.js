@@ -7,7 +7,6 @@ import BackgroundFetch from "react-native-background-fetch";
 import BackgroundGeolocation from "react-native-background-geolocation";
 import "react-native-gesture-handler";
 import { enableScreens } from "react-native-screens";
-// import Constants from "expo-constants";
 import App from "./App";
 import { name as appName } from "./app.json";
 import {
