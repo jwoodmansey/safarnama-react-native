@@ -1,6 +1,6 @@
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-// import { ResizeMode, Video as ExpoVideo } from "expo-av";
+import { ResizeMode, Video as ExpoVideo } from "expo-av";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -27,7 +27,7 @@ type Props = {
 
 const MediaThumb: React.FC<Props> = ({ media }) => {
   const scheme = useColorScheme();
-  const color = scheme === "light" ? Colors.black : Colors.white;
+  const color = scheme === "light" ? MD2Colors.black : MD2Colors.white;
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const { colors } = useTheme();
   const [t] = useTranslation(["media"]);

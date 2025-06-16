@@ -4876,8 +4876,10 @@ __metadata:
     eslint-plugin-react-hooks: ^4.2.0
     eslint-plugin-react-native: ^3.10.0
     expo: ^52.0.38
-    expo-av: ~15.0.2
+    expo-audio: ^0.4.6
+    expo-av: ~15.1.6
     expo-constants: ^17.0.8
+    expo-video: ^2.2.1
     fbjs: ^3.0.5
     fuzzy-search: ^3.2.1
     geojson: ^0.5.0
@@ -7643,9 +7645,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-av@npm:~15.0.2":
-  version: 15.0.2
-  resolution: "expo-av@npm:15.0.2"
+"expo-audio@npm:^0.4.6":
+  version: 0.4.6
+  resolution: "expo-audio@npm:0.4.6"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: b5087b2e75032d057246eeb98c3538f24594d3f7bd0fa16ce5dd8ff0f40463f5bc37d09c51bfde20ca19bf6b818903bea1ef6acd6c45fcd628baad5f49ebf976
+  languageName: node
+  linkType: hard
+
+"expo-av@npm:~15.1.6":
+  version: 15.1.6
+  resolution: "expo-av@npm:15.1.6"
   peerDependencies:
     expo: "*"
     react: "*"
@@ -7654,7 +7667,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: f4ffdfe2bd7b07c9dc08d8c30289968d2e15e4cb70cfc4a1c4659a86ceed86553d5aceac04809f33bdcc7dd93883b59c204e71bf1d4a3f21bfea02a9cbd3a90b
+  checksum: 1cbac4a15ad1736eca134dc6eabf702fb732c306fb7e5e3b2e45534f2c55392bd6511920b6c918ead6772f43aa9c18b7f490377c91c9c86d056816f9734a5ea5
   languageName: node
   linkType: hard
 
@@ -7729,6 +7742,17 @@ __metadata:
   dependencies:
     invariant: ^2.2.4
   checksum: 7b2952f1220b55eb03f395d1549525edeb5bff7bf805257d9652ea4ef85ea71e34ad13b5971f1b559e7aa080f41130846b24cbe3d754660c08196c3ce899143b
+  languageName: node
+  linkType: hard
+
+"expo-video@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "expo-video@npm:2.2.1"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: f4633925b9ec3374420d8f305255967643f7985a05ea9f4873e9e40e97c3573d043709f79eb683b406a5c51a7d506727e861d3f404fc4a6234053f65e362f322
   languageName: node
   linkType: hard
 

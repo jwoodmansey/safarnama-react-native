@@ -12,7 +12,7 @@ import {
 import dynamicLinks from "@react-native-firebase/dynamic-links";
 import { MediaDocument } from "../../../types/common/media";
 import { openInAppBrowser } from "../../../utils/linking";
-// import MediaThumb from "./MediaThumb";
+import MediaThumb from "./MediaThumb";
 import { handleDeeplink } from "../../../hooks/useDeeplinking";
 import { BASE_URL } from "../../../config";
 
@@ -29,7 +29,7 @@ const MediaItem: React.FC<Props> = ({ media }) => {
   const [t] = useTranslation(["media"]);
   return (
     <Card style={styles.container}>
-      {/* <MediaThumb media={media} /> */}
+      <MediaThumb media={media} />
       {(!isEmpty(media.name) ||
         !isEmpty(media.description) ||
         !isEmpty(media.acknowledgements) ||
