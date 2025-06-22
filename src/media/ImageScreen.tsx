@@ -1,7 +1,7 @@
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getPath } from "../store/mediaService";
@@ -13,6 +13,7 @@ type Route = RouteProp<MapNaviationProp, "PDFScreen">;
 const ImageScreen: React.FC = () => {
   const route = useRoute<Route>();
   const { media } = route.params;
+  const { width } = useWindowDimensions();
   return (
     <View style={styles.container}>
       <SafeAreaView
@@ -27,7 +28,7 @@ const ImageScreen: React.FC = () => {
           bindToBorders
         >
           <FastImage
-            style={styles.image}
+            style={[styles.image, { width }]}
             resizeMode="contain"
             source={{ uri: getPath(media) }}
           />
