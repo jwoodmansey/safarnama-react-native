@@ -14,8 +14,8 @@
     "pod-install": "cd ios && RCT_NEW_ARCH_ENABLED=0 bundle exec pod install"
   },
   "dependencies": {
-    "@dudigital/react-native-zoomable-view": "^1.1.4",
     "@notifee/react-native": "^9.1.8",
+    "@openspacelabs/react-native-zoomable-view": "^2.4.2",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "^11.4.1",
@@ -62,7 +62,7 @@
     "react-native-permissions": "^5.2.6",
     "react-native-reanimated": "^3.17.1",
     "react-native-render-html": "^6.3.4",
-    "react-native-safe-area-context": "^5.3.0",
+    "react-native-safe-area-context": "^5.5.0",
     "react-native-screens": "^4.9.2",
     "react-native-vector-icons": "^10.2.0",
     "react-native-vision-camera": "^4.6.4",
@@ -87,7 +87,6 @@
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^29.5.13",
     "@types/react": "^19.0.0",
-    "@types/react-native": "^0.67.6",
     "@types/react-native-push-notification": "^8.1.0",
     "@types/react-native-video": "^5.0.13",
     "@types/react-test-renderer": "^19.0.0",

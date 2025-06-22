@@ -1,4 +1,4 @@
-import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
+import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";

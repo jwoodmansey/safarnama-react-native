@@ -1701,19 +1701,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dudigital/react-native-zoomable-view@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "@dudigital/react-native-zoomable-view@npm:1.1.4"
-  dependencies:
-    prop-types: ^15.7.2
-    react-native: ">=0.54.0"
-  peerDependencies:
-    react: ">=16.8.0"
-    react-native: ">=0.54.0"
-  checksum: e3cdbe1b2ed73744a974009912c05e24b3aa363b70ce026c93888ccbe13673e914245dc882f720ced2fcedad56d9db77f85cba5a3d40577532834c49b7ee6223
-  languageName: node
-  linkType: hard
-
 "@egjs/hammerjs@npm:^2.0.17":
   version: 2.0.17
   resolution: "@egjs/hammerjs@npm:2.0.17"
@@ -3233,6 +3220,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@openspacelabs/react-native-zoomable-view@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "@openspacelabs/react-native-zoomable-view@npm:2.4.2"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=16.8.0"
+    react-native: ">=0.54.0"
+  checksum: 770cef702d656f064928f0c300cfb4ee008ca7f638c9dc8cba6ac9a4170fc7f734f11535df32dbe13e28c1ea3ab3bd85febce2da36f7b8ae642eaa7fe3c97995
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -4561,13 +4560,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.14
-  resolution: "@types/prop-types@npm:15.7.14"
-  checksum: d0c5407b9ccc3dd5fae0ccf9b1007e7622ba5e6f1c18399b4f24dff33619d469da4b9fa918a374f19dc0d9fe6a013362aab0b844b606cfc10676efba3f5f736d
-  languageName: node
-  linkType: hard
-
 "@types/ramda@npm:^0.27.40, @types/ramda@npm:^0.27.44":
   version: 0.27.66
   resolution: "@types/ramda@npm:0.27.66"
@@ -4594,15 +4586,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.67.6":
-  version: 0.67.26
-  resolution: "@types/react-native@npm:0.67.26"
-  dependencies:
-    "@types/react": ^17
-  checksum: b248f03569fa7d747d07478d63c11c8c3e67f24a527a0ebeaf7424b205ba01e92819dbe44439234d4871d79842e7fbe83d2870956f5ad2e689e1e23f5f53edf1
-  languageName: node
-  linkType: hard
-
 "@types/react-test-renderer@npm:^19.0.0":
   version: 19.1.0
   resolution: "@types/react-test-renderer@npm:19.1.0"
@@ -4621,30 +4604,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17":
-  version: 17.0.83
-  resolution: "@types/react@npm:17.0.83"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": ^0.16
-    csstype: ^3.0.2
-  checksum: c237dc47fc19bbe1af14ff89d0e9b749abfb95c0d9c3bca8292539f3d4a4b22c2a359db5e405cd274999a62e1a5fadc8e0eafe62ecc070ff3b2bbba89600b35e
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:^19.0.0":
   version: 19.1.8
   resolution: "@types/react@npm:19.1.8"
   dependencies:
     csstype: ^3.0.2
   checksum: 17e0c74d9c01214938fa805aaa8b97925bf3c5514e88fdf94bec42c0a6d4abbc63d4e30255db176f46fd7f0aa89f8085b9b2b2fa5abaffbbf7e5009386ada892
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:^0.16":
-  version: 0.16.8
-  resolution: "@types/scheduler@npm:0.16.8"
-  checksum: 6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
   languageName: node
   linkType: hard
 
@@ -5039,8 +5004,8 @@ __metadata:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
     "@babel/runtime": ^7.25.0
-    "@dudigital/react-native-zoomable-view": ^1.1.4
     "@notifee/react-native": ^9.1.8
+    "@openspacelabs/react-native-zoomable-view": ^2.4.2
     "@react-native-community/async-storage": ^1.12.1
     "@react-native-community/cli": 18.0.0
     "@react-native-community/cli-platform-android": 18.0.0
@@ -5065,7 +5030,6 @@ __metadata:
     "@types/geojson": ^7946.0.7
     "@types/jest": ^29.5.13
     "@types/react": ^19.0.0
-    "@types/react-native": ^0.67.6
     "@types/react-native-push-notification": ^8.1.0
     "@types/react-native-video": ^5.0.13
     "@types/react-test-renderer": ^19.0.0
@@ -5116,7 +5080,7 @@ __metadata:
     react-native-permissions: ^5.2.6
     react-native-reanimated: ^3.17.1
     react-native-render-html: ^6.3.4
-    react-native-safe-area-context: ^5.3.0
+    react-native-safe-area-context: ^5.5.0
     react-native-screens: ^4.9.2
     react-native-vector-icons: ^10.2.0
     react-native-vision-camera: ^4.6.4
@@ -12944,13 +12908,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "react-native-safe-area-context@npm:5.3.0"
+"react-native-safe-area-context@npm:^5.5.0":
+  version: 5.5.0
+  resolution: "react-native-safe-area-context@npm:5.5.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 21f18b1286fc7bc6f38f864b7468848c16c58106ae429633e8f655dabb80571beba19ac8aa8bc5e1b2e926d75afddd7ded919a56450aa00c36d56f7fb421f782
+  checksum: e04fd9e9f52cbc73f495c4ef7ad527ec48398b17032cbbba412bd72d8b2c9a7b184b57e8e8a72edc3e6c41832442596dafbfee7d29ca9d1dd85081991dd834f5
   languageName: node
   linkType: hard
 
@@ -13002,7 +12966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:*, react-native@npm:>=0.54.0":
+"react-native@npm:*":
   version: 0.78.0
   resolution: "react-native@npm:0.78.0"
   dependencies:
