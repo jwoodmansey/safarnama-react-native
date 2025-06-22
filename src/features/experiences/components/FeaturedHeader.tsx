@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   QRAnimation: {
     height: 150,
+    width: 150,
     top: -5,
   },
   description: {
