@@ -5,7 +5,7 @@ import {
 } from "expo-audio";
 import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
-// import MusicControl, { Command } from "react-native-music-control";
+import MusicControl, { Command } from "react-native-music-control";
 import { MD2Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPath } from "../../../store/mediaService";
@@ -40,22 +40,26 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
   };
   const pauseAudio = async () => {
     sound?.pause();
-    // MusicControl.updatePlayback({ state: MusicControl.STATE_PAUSED });
+    if (Platform.OS === "ios") {
+      MusicControl.updatePlayback({ state: MusicControl.STATE_PAUSED });
+    }
   };
   const stopAudio = async () => {
     sound?.pause();
     sound?.seekTo(0);
-    // MusicControl.updatePlayback({ state: MusicControl.STATE_STOPPED });
+    if (Platform.OS === "ios") {
+      MusicControl.updatePlayback({ state: MusicControl.STATE_STOPPED });
+    }
   };
 
   useEffect(() => {
     const loadAudio = async () => {
-      // await setAudioModeAsync({
-      //   allowsRecording: false,
-      //   playsInSilentMode: true,
-      //   shouldPlayInBackground: true,
-      //   interruptionMode: "doNotMix",
-      // });
+      await setAudioModeAsync({
+        allowsRecording: false,
+        playsInSilentMode: true,
+        shouldPlayInBackground: true,
+        interruptionMode: "doNotMix",
+      });
       try {
         // this throws TypeError: Cannot read property 'EventEmitter' of undefined, js engine: hermes [Component Stack]
         const soundObject = createAudioPlayer({
@@ -65,40 +69,41 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         //   uri: Platform.OS === "ios" ? media.path : getPath(media),
         //   name: media.description,
         // });
-        // soundObject?.addListener("playbackStatusUpdate", (newStatus) => {
-        //   if (newStatus.isLoaded) {
-        //     const positionSeconds = msToSeconds(newStatus.currentTime);
-        //     const durationSeconds = msToSeconds(newStatus.duration);
-        //     setStatus({
-        //       isPlaying: newStatus.playing,
-        //       positionSeconds,
-        //       durationSeconds,
-        //     });
-        //     // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
-        //     if (newStatus.playing) {
-        //       // MusicControl.setNowPlaying({
-        //       //   title: media.description,
-        //       //   notificationIcon: "ic_stat_name",
-        //       //   elapsedTime: positionSeconds,
-        //       //   duration: durationSeconds,
-        //       // });
-        //       // MusicControl.enableBackgroundMode(true);
-        //       // MusicControl.enableControl("play", true);
-        //       // MusicControl.enableControl("pause", true);
-        //       // MusicControl.enableControl("stop", true);
-        //       // MusicControl.on(Command.play, () => {
-        //       //   soundObject.play();
-        //       // });
-        //       // MusicControl.on(Command.pause, () => {
-        //       //   soundObject.pause();
-        //       // });
-        //       // MusicControl.on(Command.stop, () => {
-        //       //   soundObject.pause();
-        //       //   soundObject.seekTo(0);
-        //       // });
-        //     }
-        //   }
-        // });
+        soundObject?.addListener("playbackStatusUpdate", (newStatus) => {
+          if (newStatus.isLoaded) {
+            console.log(newStatus);
+            const positionSeconds = Math.round(newStatus.currentTime);
+            const durationSeconds = Math.round(newStatus.duration);
+            setStatus({
+              isPlaying: newStatus.playing,
+              positionSeconds,
+              durationSeconds,
+            });
+            // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
+            if (Platform.OS === "ios" && newStatus.playing) {
+              MusicControl.setNowPlaying({
+                title: media.description,
+                notificationIcon: "ic_stat_name",
+                elapsedTime: positionSeconds,
+                duration: durationSeconds,
+              });
+              MusicControl.enableBackgroundMode(true);
+              MusicControl.enableControl("play", true);
+              MusicControl.enableControl("pause", true);
+              MusicControl.enableControl("stop", true);
+              MusicControl.on(Command.play, () => {
+                soundObject.play();
+              });
+              MusicControl.on(Command.pause, () => {
+                soundObject.pause();
+              });
+              MusicControl.on(Command.stop, () => {
+                soundObject.pause();
+                soundObject.seekTo(0);
+              });
+            }
+          }
+        });
         setSound(soundObject);
       } catch (e) {
         console.log(e);
