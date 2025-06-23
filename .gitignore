@@ -81,3 +81,5 @@ yarn-error.log
 android/app/src/main/res/values/keys.xml
 android/app/debug.keystore
 android/app/safarnama-release.jks
+android/app/src/portsPastAndPresent/res/values/keys.xml
+android/app/src/wordsworth/res/values/keys.xml

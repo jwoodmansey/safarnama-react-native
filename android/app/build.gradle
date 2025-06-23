@@ -98,13 +98,31 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-                        release {
+        release {
             storeFile file('safarnama-release.jks')
             storePassword 'delhi89'
             keyAlias = 'key0'
             keyPassword 'delhi89'
         }
-        
+
+    }
+    flavorDimensions 'default'
+    productFlavors {
+        safarnama {
+            dimension 'default'
+        }
+        portsPastAndPresent {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationIdSuffix '.portspastpresent'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
+        wordsworth {
+            dimension 'default'
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationIdSuffix '.wordsworth'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+        }
     }
     buildTypes {
         debug {
