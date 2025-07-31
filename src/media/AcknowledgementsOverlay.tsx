@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { Caption, Colors } from "react-native-paper";
+import { Caption, MD2Colors } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = {
@@ -20,7 +20,7 @@ const AcknowledgementsOverlay: React.FC<Props> = ({ acknowledgements }) => {
 
 const styles = StyleSheet.create({
   acknowledgements: {
-    color: Colors.white,
+    color: MD2Colors.white,
     padding: 16,
     fontStyle: "italic",
   },

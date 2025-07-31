@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import SpinnerOverlay from "react-native-loading-spinner-overlay";
 import {
   Card,
-  Colors,
+  MD2Colors,
   ProgressBar,
   Subheading,
   useTheme,
@@ -28,7 +28,7 @@ const Loading: React.FC = () => {
       <SpinnerOverlay
         overlayColor={colors.backdrop}
         textContent={t("justASec")}
-        textStyle={{ color: Colors.white }}
+        textStyle={{ color: MD2Colors.white }}
         visible={isVisible}
       />
     );

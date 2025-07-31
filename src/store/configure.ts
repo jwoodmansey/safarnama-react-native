@@ -33,12 +33,6 @@ const middlewares = getDefaultMiddleware({
   },
 }).concat(sagaMiddleware);
 
-// flipper redux debugger
-if (__DEV__) {
-  const createDebugger = require("redux-flipper").default;
-  middlewares.push(createDebugger());
-}
-
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,

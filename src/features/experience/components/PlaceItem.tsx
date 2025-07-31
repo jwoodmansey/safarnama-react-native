@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 20,
     marginVertical: 10,
-    flexDirection: "row",
   },
   placeCard: {
     flexDirection: "row",

@@ -9,60 +9,46 @@
  */
 
 import {
+  NavigationContainer,
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
-  NavigationContainer,
-  Theme,
 } from "@react-navigation/native";
 import React from "react";
 import { I18nextProvider } from "react-i18next";
 import { useColorScheme } from "react-native";
 import {
-  DarkTheme as PaperDarkTheme,
-  DefaultTheme as PaperDefaultTheme,
+  adaptNavigationTheme,
+  MD3DarkTheme,
+  MD3LightTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import i18n from "./src/i18n/config";
 import Loading from "./src/nav/Loading";
 import { navigationRef } from "./src/nav/NavigationRef";
 import RootNavigation from "./src/nav/RootNavigation";
 import { persistor, store } from "./src/store/configure";
-import i18n from "./src/i18n/config";
 
-const CombinedDefaultTheme: ReactNativePaper.Theme & Theme = {
-  ...PaperDefaultTheme,
-  ...NavigationDefaultTheme,
-  colors: {
-    ...PaperDefaultTheme.colors,
-    ...NavigationDefaultTheme.colors,
-  },
-};
-const CombinedDarkTheme: ReactNativePaper.Theme & Theme = {
-  ...PaperDarkTheme,
-  ...NavigationDarkTheme,
-  colors: {
-    ...PaperDarkTheme.colors,
-    ...NavigationDarkTheme.colors,
-  },
-};
+const { LightTheme, DarkTheme } = adaptNavigationTheme({
+  reactNavigationLight: NavigationDefaultTheme,
+  reactNavigationDark: NavigationDarkTheme,
+});
 
 const App: React.FC = () => {
   const colorScheme = useColorScheme();
-  const isDarkMode = colorScheme === "dark";
+  const isDarkTheme = colorScheme == "dark";
+  const paperTheme = isDarkTheme ? MD3DarkTheme : MD3LightTheme;
+  const navigationTheme = isDarkTheme ? DarkTheme : LightTheme;
+
   return (
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
         <PersistGate loading={null} persistor={persistor}>
           <SafeAreaProvider>
-            <PaperProvider
-              theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-            >
-              <NavigationContainer
-                theme={isDarkMode ? CombinedDarkTheme : CombinedDefaultTheme}
-                ref={navigationRef}
-              >
+            <PaperProvider theme={paperTheme}>
+              <NavigationContainer theme={navigationTheme} ref={navigationRef}>
                 <RootNavigation />
                 <Loading />
               </NavigationContainer>

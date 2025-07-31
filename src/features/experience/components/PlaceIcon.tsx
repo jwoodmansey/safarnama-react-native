@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import FastImage from "react-native-fast-image";
-import { Colors } from "react-native-paper";
+import { MD2Colors } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { PlaceType } from "../../../types/common/point-of-interest";
@@ -11,7 +11,7 @@ type Props = {
   size?: number;
 };
 
-const DEFAULT_COLOR = Colors.red500;
+const DEFAULT_COLOR = MD2Colors.red500;
 const DEFAULT_SIZE = 30;
 
 const PlaceIcon: React.FC<Props> = ({
