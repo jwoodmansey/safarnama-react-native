@@ -16,7 +16,7 @@ const PlaceMarker: React.FC<Props> = ({ data, onPress }) => {
       <Marker
         pinColor={MD2Colors.red100}
         onPress={onPress}
-        tracksViewChanges={false}
+        tracksViewChanges={Platform.OS === "android"}
         coordinate={{
           latitude: data.location.coordinates[1],
           longitude: data.location.coordinates[0],
