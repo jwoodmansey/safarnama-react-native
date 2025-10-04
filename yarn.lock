@@ -4618,7 +4618,7 @@ __metadata:
     react-i18next: ^11.18.6
     react-native: 0.79.4
     react-native-background-fetch: ^4.2.7
-    react-native-background-geolocation: ^4.18.6
+    react-native-background-geolocation: ^4.19.0
     react-native-blob-util: ^0.21.2
     react-native-clean-project: ^4.0.1
     react-native-device-info: ^14.0.4
@@ -4636,7 +4636,7 @@ __metadata:
     react-native-render-html: ^6.3.4
     react-native-safe-area-context: ^5.5.0
     react-native-screens: ^4.9.2
-    react-native-vector-icons: ^10.2.0
+    react-native-vector-icons: ^10.3.0
     react-native-vision-camera: ^4.6.4
     react-redux: ^9.2.0
     react-test-renderer: 19.0.0
@@ -11420,12 +11420,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-background-geolocation@npm:^4.18.6":
-  version: 4.18.6
-  resolution: "react-native-background-geolocation@npm:4.18.6"
+"react-native-background-geolocation@npm:^4.19.0":
+  version: 4.19.0
+  resolution: "react-native-background-geolocation@npm:4.19.0"
   dependencies:
     react-native-background-fetch: ~4.2.6
-  checksum: 097bd2e777259f43ec93f1d6b14e31c804ce1af04b694ef1cc92008542b2a24de9137e7673a50c8165d4208b82f45ffe8e221cf94c88c445c7d40b0cd159908e
+  checksum: 9af5c9d25ce46e4cdcb5a8e3f90c2299d4e1bfc95937053a02da20c08e1154e690c2a2a1ff913bbf716898096b95001769da88a6579e813fdaa617eb675b662f
   languageName: node
   linkType: hard
 
@@ -11687,9 +11687,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vector-icons@npm:^10.2.0":
-  version: 10.2.0
-  resolution: "react-native-vector-icons@npm:10.2.0"
+"react-native-vector-icons@npm:^10.3.0":
+  version: 10.3.0
+  resolution: "react-native-vector-icons@npm:10.3.0"
   dependencies:
     prop-types: ^15.7.2
     yargs: ^16.1.1
@@ -11698,7 +11698,7 @@ __metadata:
     fa5-upgrade: bin/fa5-upgrade.sh
     fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
-  checksum: fda930df4e63f12533268f5b339ebe4c77c691eae43503328466b3087ed868a06a4593fd246e75ac6b5ec955543eec35608c7922191bdcc3b3a94ed7f3575ef0
+  checksum: 5c431fd9a8e6efd355e34ed28ca7fa7eed30e89362280cbd1e474e6d16148c6c37f5c950a525ec0b428c79dc74b9fb7a61171fc509b6ab253e111456f3e49b71
   languageName: node
   linkType: hard
 
