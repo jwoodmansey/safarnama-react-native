@@ -6,7 +6,7 @@ type Props = {
   onChangeText: (text: string) => void;
 };
 
-const PlacesSearch: React.VFC<Props> = ({ onChangeText }) => {
+const PlacesSearch: React.FC<Props> = ({ onChangeText }) => {
   const [searchText, setSearchText] = useState("");
 
   const change = useCallback(

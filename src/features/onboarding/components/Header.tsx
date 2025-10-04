@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { Subheading, Title } from "react-native-paper";
 
@@ -7,7 +7,11 @@ type Props = {
   subheading: string;
 };
 
-const Header: React.FC<Props> = ({ title, subheading, children }) => {
+const Header: React.FC<PropsWithChildren<Props>> = ({
+  title,
+  subheading,
+  children,
+}) => {
   return (
     <ScrollView style={styles.container}>
       <Title style={styles.text}>{title}</Title>

@@ -1,17 +1,23 @@
 import { NavigationContainerRef } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { createRef, RefObject } from "react";
+import { RefObject } from "react";
 import { RootStackNavigationProp } from "../types/nav/root";
 
-export const navigationRef: RefObject<
-  NavigationContainerRef<RootStackNavigationProp>
-> = createRef();
+import { createNavigationContainerRef } from "@react-navigation/native";
+export const navigationRef =
+  createNavigationContainerRef<RootStackNavigationProp>();
 
-export function navigate(
-  name: keyof RootStackNavigationProp,
-  params?: StackNavigationProp<RootStackNavigationProp>
+export function navigate<RouteName extends keyof RootStackNavigationProp>(
+  ...args: RouteName extends unknown
+    ? undefined extends RootStackNavigationProp[RouteName]
+      ?
+          | [screen: RouteName]
+          | [screen: RouteName, params: RootStackNavigationProp[RouteName]]
+      : [screen: RouteName, params: RootStackNavigationProp[RouteName]]
+    : never
 ) {
-  navigationRef.current?.navigate(name, params);
+  // if (navigationRef.isReady()) {
+  navigationRef.navigate(...args);
+  // }
 }
 
 export function goBack() {
