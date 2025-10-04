@@ -11,9 +11,13 @@ export const createChannel = () => {
     name: "Place of interest",
   });
 };
-
 export const sendPlacePush = (event: GeofenceEvent) => {
   console.log("Sending place push", event);
+  // navigate("ViewPlaceScreen", {
+  //   placeId: event.identifier,
+  //   name: event.extras.name,
+  // });
+
   notifee.displayNotification({
     // eslint-disable-next-line i18next/no-literal-string
     title: `📍 ${event.extras?.name}`,

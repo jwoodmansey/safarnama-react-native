@@ -71,7 +71,7 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         // });
         soundObject?.addListener("playbackStatusUpdate", (newStatus) => {
           if (newStatus.isLoaded) {
-            console.log(newStatus);
+            // console.log(newStatus);
             const positionSeconds = Math.round(newStatus.currentTime);
             const durationSeconds = Math.round(newStatus.duration);
             setStatus({
