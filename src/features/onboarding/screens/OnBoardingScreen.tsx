@@ -9,13 +9,14 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { Colors } from "react-native-paper";
+import { MD2Colors } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import { complete } from "../../../store/onboarding/onboardingReducer";
 import Geolocation from "../components/Geolocation";
 import PushNotification from "../components/PushNotification";
 import Welcome from "../components/Welcome";
+import { useRootStackNavigation } from "../../../nav/hooks";
 
 const OnboardingScreen: React.FC = () => {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
@@ -27,11 +28,14 @@ const OnboardingScreen: React.FC = () => {
 
   const { currentPage: pageIndex } = sliderState;
   const ref = useRef<ScrollView>(null);
-  const nav = useNavigation();
+  const nav = useRootStackNavigation();
   const dispatch = useDispatch();
 
   const onComplete = () => {
-    nav.navigate("Drawer", { screen: "AddExperience" });
+    nav.navigate("Drawer", {
+      screen: "AddExperience",
+      params: { screen: "FeaturedExperienceScreen", params: {} },
+    });
     dispatch(complete());
   };
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -115,7 +119,7 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 10 / 2,
-    backgroundColor: Colors.blue500,
+    backgroundColor: MD2Colors.blue500,
     marginLeft: 10,
   },
   paginationDotsInactive: {

@@ -7,7 +7,7 @@ type Props = {
   title?: string;
 };
 
-const OfflineBanner: React.VFC<Props> = ({ title }) => {
+const OfflineBanner: React.FC<Props> = ({ title }) => {
   const isOnline = useIsOnline();
   const [hasDismissed, setHasDismissed] = useState(false);
   const [t] = useTranslation(["glossary", "manage"]);

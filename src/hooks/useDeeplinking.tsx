@@ -66,8 +66,8 @@ const useDeeplinking = () => {
     [handleDynamicLink]
   );
   useEffect(() => {
-    Linking.addEventListener("url", handleNativeUrl);
-    return () => Linking.removeEventListener("url", handleNativeUrl);
+    const listener = Linking.addEventListener("url", handleNativeUrl);
+    return () => listener.remove();
   }, [handleNativeUrl]);
 
   // Background links

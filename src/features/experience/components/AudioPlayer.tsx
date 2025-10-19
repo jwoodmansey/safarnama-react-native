@@ -1,8 +1,12 @@
-import { Audio, InterruptionModeIOS } from "expo-av";
+import {
+  setAudioModeAsync,
+  createAudioPlayer,
+  AudioPlayer as ExpoAudioPlayer,
+} from "expo-audio";
 import React, { useEffect, useState } from "react";
 import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import MusicControl, { Command } from "react-native-music-control";
-import { Colors, Text } from "react-native-paper";
+import { MD2Colors, Text } from "react-native-paper";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPath } from "../../../store/mediaService";
 import { MediaDocument } from "../../../types/common/media";
@@ -20,7 +24,7 @@ function msToSeconds(ms: number | undefined) {
 }
 
 const AudioPlayer: React.FC<Props> = ({ media }) => {
-  const [sound, setSound] = useState<Audio.Sound | undefined>(undefined);
+  const [sound, setSound] = useState<ExpoAudioPlayer | undefined>(undefined);
   const [status, setStatus] = useState<{
     durationSeconds: number;
     positionSeconds: number;
@@ -32,41 +36,51 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
   });
 
   const playAudio = async () => {
-    await sound?.playAsync();
+    sound?.play();
   };
   const pauseAudio = async () => {
-    await sound?.pauseAsync();
-    MusicControl.updatePlayback({ state: MusicControl.STATE_PAUSED });
+    sound?.pause();
+    if (Platform.OS === "ios") {
+      MusicControl.updatePlayback({ state: MusicControl.STATE_PAUSED });
+    }
   };
   const stopAudio = async () => {
-    await sound?.stopAsync();
-    MusicControl.updatePlayback({ state: MusicControl.STATE_STOPPED });
+    sound?.pause();
+    sound?.seekTo(0);
+    if (Platform.OS === "ios") {
+      MusicControl.updatePlayback({ state: MusicControl.STATE_STOPPED });
+    }
   };
 
   useEffect(() => {
     const loadAudio = async () => {
-      await Audio.setAudioModeAsync({
-        allowsRecordingIOS: false,
-        playsInSilentModeIOS: true,
-        staysActiveInBackground: true,
-        interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+      await setAudioModeAsync({
+        allowsRecording: false,
+        playsInSilentMode: true,
+        shouldPlayInBackground: true,
+        interruptionMode: "doNotMix",
       });
       try {
-        const { sound: soundObject } = await Audio.Sound.createAsync({
+        // this throws TypeError: Cannot read property 'EventEmitter' of undefined, js engine: hermes [Component Stack]
+        const soundObject = createAudioPlayer({
           uri: Platform.OS === "ios" ? media.path : getPath(media),
-          name: media.description,
         });
-        soundObject?.setOnPlaybackStatusUpdate((newStatus) => {
+        // const { sound: soundObject } = await Audio.Sound.createAsync({
+        //   uri: Platform.OS === "ios" ? media.path : getPath(media),
+        //   name: media.description,
+        // });
+        soundObject?.addListener("playbackStatusUpdate", (newStatus) => {
           if (newStatus.isLoaded) {
-            const positionSeconds = msToSeconds(newStatus.positionMillis);
-            const durationSeconds = msToSeconds(newStatus.durationMillis);
+            // console.log(newStatus);
+            const positionSeconds = Math.round(newStatus.currentTime);
+            const durationSeconds = Math.round(newStatus.duration);
             setStatus({
-              isPlaying: newStatus.isPlaying,
+              isPlaying: newStatus.playing,
               positionSeconds,
               durationSeconds,
             });
             // todo this probably all needs moving to redux, or we're going to have conflicts between different audio items
-            if (newStatus.isPlaying) {
+            if (Platform.OS === "ios" && newStatus.playing) {
               MusicControl.setNowPlaying({
                 title: media.description,
                 notificationIcon: "ic_stat_name",
@@ -78,13 +92,14 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
               MusicControl.enableControl("pause", true);
               MusicControl.enableControl("stop", true);
               MusicControl.on(Command.play, () => {
-                soundObject.playAsync();
+                soundObject.play();
               });
               MusicControl.on(Command.pause, () => {
-                soundObject.pauseAsync();
+                soundObject.pause();
               });
               MusicControl.on(Command.stop, () => {
-                soundObject.stopAsync();
+                soundObject.pause();
+                soundObject.seekTo(0);
               });
             }
           }
@@ -100,8 +115,8 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
   useEffect(() => {
     return sound
       ? () => {
-          MusicControl.stopControl();
-          sound.unloadAsync();
+          // MusicControl.stopControl();
+          sound.remove();
         }
       : undefined;
   }, [sound, media]);
@@ -111,12 +126,16 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
       {!status.isPlaying ? (
         <>
           <TouchableOpacity onPress={playAudio} style={styles.button}>
-            <MaterialCommunityIcon color={Colors.black} size={50} name="play" />
+            <MaterialCommunityIcon
+              color={MD2Colors.black}
+              size={50}
+              name="play"
+            />
           </TouchableOpacity>
           {status.positionSeconds > 0 && (
             <TouchableOpacity onPress={stopAudio} style={styles.button}>
               <MaterialCommunityIcon
-                color={Colors.black}
+                color={MD2Colors.black}
                 size={50}
                 name="stop"
               />
@@ -125,7 +144,11 @@ const AudioPlayer: React.FC<Props> = ({ media }) => {
         </>
       ) : (
         <TouchableOpacity onPress={pauseAudio} style={styles.button}>
-          <MaterialCommunityIcon color={Colors.black} size={50} name="pause" />
+          <MaterialCommunityIcon
+            color={MD2Colors.black}
+            size={50}
+            name="pause"
+          />
         </TouchableOpacity>
       )}
       <Text>{format(status.positionSeconds)} / </Text>
@@ -144,7 +167,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 100,
     marginEnd: 10,
-    backgroundColor: Colors.grey100,
+    backgroundColor: MD2Colors.grey100,
   },
 });
 

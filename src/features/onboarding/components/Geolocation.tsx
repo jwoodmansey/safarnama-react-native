@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   },
   animation: {
     height: deviceValue(100, 200),
+    width: deviceValue(100, 200),
   },
   subtitle: {
     fontSize: 14,

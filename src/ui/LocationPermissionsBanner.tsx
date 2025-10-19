@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/rootReducer";
 import { skippedPermissionsBanner } from "../store/settings/settingsReducer";
 
-const LocationPermissionsBanner: React.VFC = () => {
+const LocationPermissionsBanner: React.FC = () => {
   const [authStatus, setAuthStatus] = useState<AuthorizationStatus>(0);
 
   const dispatch = useDispatch();

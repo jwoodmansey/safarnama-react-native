@@ -4,13 +4,14 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
+import { useAddExperienceNavigation } from "../../../nav/hooks";
 
 const QRAnimation = require("../../../assets/anim/qr_code.json");
 
 const FeaturedHeader: React.FC = () => {
-  const nav = useNavigation();
+  const nav = useAddExperienceNavigation();
   const onPress = () => {
-    nav.navigate("ScanQRCodeScreen");
+    nav.navigate("ScanQRCodeScreen", {});
   };
   const [t] = useTranslation(["manage"]);
   return (
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
   },
   QRAnimation: {
     height: 150,
+    width: 150,
     top: -5,
   },
   description: {

@@ -2,7 +2,7 @@ import { useTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 import { Platform, StatusBar, useColorScheme } from "react-native";
-import SplashScreen from "react-native-splash-screen";
+// import SplashScreen from "react-native-splash-screen";
 import { useDispatch } from "react-redux";
 import OnboardingScreen from "../features/onboarding/screens/OnBoardingScreen";
 import useDeeplinking from "../hooks/useDeeplinking";
@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 const RootNavigation: React.FC = () => {
   useEffect(() => {
-    SplashScreen.hide();
+    // SplashScreen.hide();
   }, []);
   const scheme = useColorScheme();
   const theme = useTheme();

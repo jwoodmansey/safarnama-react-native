@@ -12,7 +12,7 @@ import {
   View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
-import { Caption, Colors } from "react-native-paper";
+import { Caption, MD2Colors } from "react-native-paper";
 import Pdf from "react-native-pdf";
 import HTML from "react-native-render-html";
 import { getHtmlFromFile, getPath } from "../../../store/mediaService";
@@ -27,7 +27,7 @@ type Props = {
 
 const MediaThumb: React.FC<Props> = ({ media }) => {
   const scheme = useColorScheme();
-  const color = scheme === "light" ? Colors.black : Colors.white;
+  const color = scheme === "light" ? MD2Colors.black : MD2Colors.white;
   const nav = useNavigation<StackNavigationProp<MapNaviationProp>>();
   const { colors } = useTheme();
   const [t] = useTranslation(["media"]);
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   unsupported: {
     fontStyle: "italic",
-    color: Colors.grey600,
+    color: MD2Colors.grey600,
   },
   image: {
     maxHeight: 500,

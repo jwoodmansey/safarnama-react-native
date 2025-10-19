@@ -8,6 +8,8 @@ import {
 import { RootState } from "../rootReducer";
 import { MediaDocument } from "../../types/common/media";
 import { PlaceType } from "../../types/common/point-of-interest";
+import { Feature, FeatureCollection } from "geojson";
+import { StatusBar } from "react-native";
 
 export const selectCurrentExperience: Selector<
   RootState,
@@ -82,18 +84,24 @@ export const selectDownloadingMedia: Selector<
   };
 };
 
+const EMPTY_FEATURES: Feature[] = [];
 export const selectExperience = createSelector(
   [selectExperiences, selectMedia, (_: RootState, id?: string) => id],
   (experiences, media, id) => {
     if (!id) return undefined;
     const experience = experiences[id];
     if (!experience) return undefined;
-    const geojson = {
+    const geojson: FeatureCollection = {
       type: "FeatureCollection",
-      features: experience.data.pointOfInterests?.map((p) => ({
-        type: "Feature",
-        geometry: p.location,
-      })),
+      features:
+        experience.data.pointOfInterests?.map(
+          (p) =>
+            ({
+              type: "Feature",
+              geometry: p.location,
+              properties: {},
+            } satisfies Feature)
+        ) || EMPTY_FEATURES,
     };
     const bb = bbox(geojson);
     return experience

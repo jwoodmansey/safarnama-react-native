@@ -56,14 +56,12 @@ const ActionMenu: React.FC<Props> = ({
                 icon: "backup-restore",
                 label: "Centre experience",
                 onPress: onPressCentre,
-                small: isRegionVisible,
               },
             ]),
         {
           icon: "map-marker-multiple",
           label: "All places",
           onPress: onPressList,
-          small: false,
         },
       ]}
       color="black"

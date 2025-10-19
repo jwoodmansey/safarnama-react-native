@@ -2,7 +2,7 @@ import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
-import { Avatar, Colors, Paragraph, Title } from "react-native-paper";
+import { Avatar, MD2Colors, Paragraph, Title } from "react-native-paper";
 import Animated from "react-native-reanimated";
 import { PublicProfile } from "../../../types/common/experience";
 
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   modal: {
     justifyContent: "flex-end",
     margin: 0,
-    color: Colors.white,
+    color: MD2Colors.white,
   },
   container: {
     minHeight: 300,

@@ -26,6 +26,7 @@ const isEmpty = (str?: string | any[]): boolean =>
   (typeof str === "string" && str.trim().length === 0);
 
 const MediaItem: React.FC<Props> = ({ media }) => {
+  console.log({ media });
   const [t] = useTranslation(["media"]);
   return (
     <Card style={styles.container}>

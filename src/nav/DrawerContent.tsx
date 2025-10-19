@@ -14,12 +14,18 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ ...props }) => {
   const dispatch = useDispatch();
   const onPressViewCurrent = (id: string) => () => {
     dispatch(setSelectedExperience({ id }));
-    navigate("MapScreen");
+    navigate("MapScreen", { screen: "MapScreen", params: {} });
   };
   const onPressFeatured = () =>
-    navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
+    navigate("AddExperience", {
+      screen: "FeaturedExperienceScreen",
+      params: {},
+    });
   const onPressManage = () =>
-    navigate("ExperienceManagement", { screen: "ManageExperiencesScreen" });
+    navigate("ExperienceManagement", {
+      screen: "ManageExperiencesScreen",
+      params: {},
+    });
   const onPressLicenses = () => navigate("Licenses");
   const onPressAbout = () => navigate("About");
   const onPressPrivacySettings = () => navigate("Privacy");

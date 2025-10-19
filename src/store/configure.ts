@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import crashlytics from "@react-native-firebase/crashlytics";
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
@@ -11,12 +11,14 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
-import createSagaMiddleware from "redux-saga";
 import rootReducer from "./rootReducer";
 import rootSaga from "./rootSaga";
 
-const sagaMiddleware = createSagaMiddleware({
-  onError(error, errorInfo) {
+// Temporary workaround - see https://github.com/redux-saga/redux-saga/issues/2709
+const createSagaMiddleware = require("redux-saga");
+
+const sagaMiddleware = createSagaMiddleware.default({
+  onError(error: any, errorInfo: any) {
     console.error("global catchError hit");
     console.error({ error, errorInfo });
     try {
@@ -26,18 +28,6 @@ const sagaMiddleware = createSagaMiddleware({
     }
   },
 });
-
-const middlewares = getDefaultMiddleware({
-  serializableCheck: {
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  },
-}).concat(sagaMiddleware);
-
-// flipper redux debugger
-if (__DEV__) {
-  const createDebugger = require("redux-flipper").default;
-  middlewares.push(createDebugger());
-}
 
 const persistConfig = {
   key: "root",
@@ -50,7 +40,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: middlewares,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(sagaMiddleware),
 });
 
 const persistor = persistStore(store);

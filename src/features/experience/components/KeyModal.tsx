@@ -27,6 +27,7 @@ const KeyModal: React.FC = () => {
       onDismiss={onHide}
       onSwipeComplete={onHide}
       onBackdropPress={onHide}
+      coverScreen
     >
       <View
         style={[
