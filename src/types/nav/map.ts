@@ -9,6 +9,6 @@ export type MapNaviationProp = {
   ViewPlaceScreen: {
     place?: PointOfInterestDocument;
     placeId: string;
-    name: string;
+    name?: string;
   };
 };

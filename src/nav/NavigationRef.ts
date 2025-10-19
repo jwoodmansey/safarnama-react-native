@@ -1,18 +1,18 @@
 import { NavigationContainerRef } from "@react-navigation/native";
 import { RefObject } from "react";
-import { RootStackNavigationProp } from "../types/nav/root";
+import { DrawerStackNavigationProp } from "../types/nav/root";
 
 import { createNavigationContainerRef } from "@react-navigation/native";
 export const navigationRef =
-  createNavigationContainerRef<RootStackNavigationProp>();
+  createNavigationContainerRef<DrawerStackNavigationProp>();
 
-export function navigate<RouteName extends keyof RootStackNavigationProp>(
+export function navigate<RouteName extends keyof DrawerStackNavigationProp>(
   ...args: RouteName extends unknown
-    ? undefined extends RootStackNavigationProp[RouteName]
+    ? undefined extends DrawerStackNavigationProp[RouteName]
       ?
           | [screen: RouteName]
-          | [screen: RouteName, params: RootStackNavigationProp[RouteName]]
-      : [screen: RouteName, params: RootStackNavigationProp[RouteName]]
+          | [screen: RouteName, params: DrawerStackNavigationProp[RouteName]]
+      : [screen: RouteName, params: DrawerStackNavigationProp[RouteName]]
     : never
 ) {
   // if (navigationRef.isReady()) {

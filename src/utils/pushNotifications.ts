@@ -47,9 +47,19 @@ export const listenForPushPressEvents = async () => {
     }
     const placeId = event.detail.notification?.data?.placeId;
     const name = event.detail.notification?.data?.name;
-    navigate("ViewPlaceScreen", {
-      placeId,
-      name,
+    if (placeId === undefined || typeof placeId !== "string") {
+      return;
+    }
+    if (name !== undefined && typeof name !== "string") {
+      return;
+    }
+
+    navigate("MapScreen", {
+      screen: "ViewPlaceScreen",
+      params: {
+        placeId: placeId,
+        name,
+      },
     });
   });
 };

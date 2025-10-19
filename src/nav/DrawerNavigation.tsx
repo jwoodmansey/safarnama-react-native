@@ -1,23 +1,22 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { StackNavigationProp } from "@react-navigation/stack";
+import AboutNavigator from "../features/about/nav/AboutNavigator";
+import LanguageNavigator from "../features/language/nav/LanguageNavigator";
 import LicensesNavigation from "../features/licenses/nav/LicensesNavigator";
+import PrivacyNavigator from "../features/privacy/nav/PrivacyNavigator";
 import { selectIsOnboardingComplete } from "../store/onboarding/onboardingSelectors";
-import { RootStackNavigationProp } from "../types/nav/root";
+import { DrawerStackNavigationProp } from "../types/nav/root";
 import AddExperienceNavigation from "./AddExperienceNavigation";
 import DrawerContent from "./DrawerContent";
 import ExperienceManagementNavigation from "./ExperienceManagementNavigation";
+import { useRootStackNavigation } from "./hooks";
 import MapNavigation from "./MapNavigation";
-import AboutNavigator from "../features/about/nav/AboutNavigator";
-import PrivacyNavigator from "../features/privacy/nav/PrivacyNavigator";
-import LanguageNavigator from "../features/language/nav/LanguageNavigator";
 
-const Drawer = createDrawerNavigator<RootStackNavigationProp>();
+const Drawer = createDrawerNavigator<DrawerStackNavigationProp>();
 
 const DrawerNavigation: React.FC = () => {
-  const nav = useNavigation<StackNavigationProp<RootStackNavigationProp>>();
+  const nav = useRootStackNavigation();
   const isOnboardingComplete = useSelector(selectIsOnboardingComplete);
   useEffect(() => {
     if (!isOnboardingComplete) {
@@ -28,7 +27,6 @@ const DrawerNavigation: React.FC = () => {
     <Drawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{ headerShown: false }}
-      useLegacyImplementation
     >
       <Drawer.Screen name="MapScreen" component={MapNavigation} />
       <Drawer.Screen

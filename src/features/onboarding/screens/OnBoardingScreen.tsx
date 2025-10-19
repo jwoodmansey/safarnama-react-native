@@ -16,6 +16,7 @@ import { complete } from "../../../store/onboarding/onboardingReducer";
 import Geolocation from "../components/Geolocation";
 import PushNotification from "../components/PushNotification";
 import Welcome from "../components/Welcome";
+import { useRootStackNavigation } from "../../../nav/hooks";
 
 const OnboardingScreen: React.FC = () => {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
@@ -27,11 +28,14 @@ const OnboardingScreen: React.FC = () => {
 
   const { currentPage: pageIndex } = sliderState;
   const ref = useRef<ScrollView>(null);
-  const nav = useNavigation();
+  const nav = useRootStackNavigation();
   const dispatch = useDispatch();
 
   const onComplete = () => {
-    nav.navigate("Drawer", { screen: "AddExperience" });
+    nav.navigate("Drawer", {
+      screen: "AddExperience",
+      params: { screen: "FeaturedExperienceScreen", params: {} },
+    });
     dispatch(complete());
   };
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {

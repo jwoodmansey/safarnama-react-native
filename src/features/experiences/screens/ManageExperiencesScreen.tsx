@@ -10,6 +10,7 @@ import { selectMyExperiences } from "../../../store/experience/experienceSelecto
 import { scrollIndicatorInsets } from "../../../style/dimensions";
 import { ExperienceSnapshotData } from "../../../types/common/experience";
 import ExperienceItem from "../components/ExperienceItem";
+import { useDrawerStackNavigation } from "../../../nav/hooks";
 
 const keyExtractor = (experience: ExperienceSnapshotData) => experience._id;
 
@@ -19,9 +20,12 @@ const ManageExperiencesScreen: React.FC = () => {
     <ExperienceItem experience={item} />
   );
   const { colors } = useTheme();
-  const nav = useNavigation();
+  const nav = useDrawerStackNavigation();
   const onPressFind = () => {
-    nav.navigate("AddExperience", { screen: "FeaturedExperienceScreen" });
+    nav.navigate("AddExperience", {
+      screen: "FeaturedExperienceScreen",
+      params: {},
+    });
   };
   const [t] = useTranslation(["manage"]);
   return (
@@ -32,7 +36,7 @@ const ManageExperiencesScreen: React.FC = () => {
       ListEmptyComponent={
         <SafeAreaView edges={["bottom"]} style={styles.emptyContainer}>
           <MaterialCommunityIcon
-            color={colors.text}
+            color={colors.onSurface}
             size={32}
             name="information-outline"
           />
